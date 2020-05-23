@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>zhaops&#39;s blog</title>
+    <url>/2020/05/23/README/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>Apollo(阿波罗)分布式部署.md</title>
-    <url>/2018/01/20/Apollo(%E9%98%BF%E6%B3%A2%E7%BD%97)%E5%88%86%E5%B8%83%E5%BC%8F%E9%83%A8%E7%BD%B2/</url>
+    <url>/2020/05/23/Apollo%E5%88%86%E5%B8%83%E5%BC%8F%E9%83%A8%E7%BD%B2/</url>
     <content><![CDATA[<h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>Apollo（阿波罗）是携程框架部门研发的分布式配置中心，能够集中化管理应用不同环境、不同集群的配置，配置修改后能够实时推送到应用端，并且具备规范的权限、流程治理等特性，适用于微服务配置管理场景。<br><a href="https://github.com/zhaops-hub/apollo" target="_blank" rel="noopener">github地址</a>  </p>
 <p>直接搭建多环境Apollo  </p>
 <p>Apollo目前支持以下环境：</p>
@@ -40,7 +45,7 @@
 <li>apollo-configservice: apollo 注册中心</li>
 </ul>
 <p>一套环境（apollo-adminservice，apollo-configservice）两个服务，apollo-portal只部署一个就可以，可以配置多个环境进行管理</p>
-<p><img src="2E92C8AF3C4941B094F1C5CAC3526F99" alt="image"></p>
+<p><img src="D:%5C%E9%A1%B9%E7%9B%AE%5CmyHexo%5Csource%5Cimages%5Capollo_install_1.png" alt="image"></p>
 <p>编译代码（必须先装jdk 和 Maven ）<br>windows 直接双击 build.bat<br>linux build.sh<br><img src="284B3A88CE984811B34DAC8C445E84B9" alt="image"></p>
 <p>编译完的截图</p>
 <p><img src="C5FB938767E04C9B9AF9EEBDE2009F18" alt="image"></p>
@@ -122,8 +127,7 @@
         <category>Apollo</category>
       </categories>
       <tags>
-        <tag>Hexo</tag>
-        <tag>NexT</tag>
+        <tag>Apollo</tag>
       </tags>
   </entry>
 </search>
