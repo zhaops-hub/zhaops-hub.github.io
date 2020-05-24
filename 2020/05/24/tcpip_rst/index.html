@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="tcp/ip," />
 
 
 
@@ -88,12 +88,23 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="zhaops&#39;s blog">
-<meta property="og:url" content="https://zhaops-hub.github.io/archives/index.html">
+<meta name="description" content="tcp连接异常终止的情况。一般来说，导致这种情况的原因一般有很多种，比如：  拒绝连接请求，比如：A想和B建立tcp连接，但是A的连接请求中使用了一个不存在的端口（比如：这个端口超出65535的范围），那么B就可以发送RST报文段拒绝这个请求。  异常终止连接，如:A和B的tcp连接出现了异常，然后B希望终止这条异常的连接，于是就可以发送一个RST报文段终止这个连接  终止空闲的连接，如A和B之间">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TCP协议连接复位(RST)">
+<meta property="og:url" content="https://zhaops-hub.github.io/2020/05/24/tcpip_rst/index.html">
 <meta property="og:site_name" content="zhaops&#39;s blog">
+<meta property="og:description" content="tcp连接异常终止的情况。一般来说，导致这种情况的原因一般有很多种，比如：  拒绝连接请求，比如：A想和B建立tcp连接，但是A的连接请求中使用了一个不存在的端口（比如：这个端口超出65535的范围），那么B就可以发送RST报文段拒绝这个请求。  异常终止连接，如:A和B的tcp连接出现了异常，然后B希望终止这条异常的连接，于是就可以发送一个RST报文段终止这个连接  终止空闲的连接，如A和B之间">
+<meta property="og:image" content="https://zhaops-hub.github.io/2020/05/24/tcpip_rst/1.png">
+<meta property="og:image" content="https://zhaops-hub.github.io/2020/05/24/tcpip_rst/2.png">
+<meta property="og:image" content="https://zhaops-hub.github.io/2020/05/24/tcpip_rst/3.png">
+<meta property="og:image" content="https://zhaops-hub.github.io/2020/05/24/tcpip_rst/4.png">
+<meta property="og:image" content="https://zhaops-hub.github.io/2020/05/24/tcpip_rst/5.png">
+<meta property="article:published_time" content="2020-05-24T12:41:08.000Z">
+<meta property="article:modified_time" content="2020-05-24T09:16:22.464Z">
 <meta property="article:author" content="zhaops">
+<meta property="article:tag" content="tcp&#x2F;ip">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zhaops-hub.github.io/2020/05/24/tcpip_rst/1.png">
 
 
 
@@ -123,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="https://zhaops-hub.github.io/archives/"/>
+  <link rel="canonical" href="https://zhaops-hub.github.io/2020/05/24/tcpip_rst/"/>
 
 
 
 
 
-  <title>归档 | zhaops's blog</title>
+  <title>TCP协议连接复位(RST) | zhaops's blog</title>
   
 
 
@@ -148,7 +159,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband">
   
     </div>
@@ -267,259 +278,264 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhaops-hub.github.io/2020/05/24/tcpip_rst/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhaops">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhaops's blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">TCP协议连接复位(RST)</h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-24T20:41:08+08:00">
+                2020-05-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-        嗯..! 目前共计 6 篇日志。 继续努力。
-      </span>
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/tcp-ip/" itemprop="url" rel="index">
+                    <span itemprop="name">tcp/ip</span>
+                  </a>
+                </span>
 
-      
-
-        
-        
-        
-
-        
+                
+                
+              
+            </span>
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2020">2020</h1>
-          </div>
-        
-        
 
-        
+          
+            
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2020/05/24/tcpip_2msl/" itemprop="url">
-              
-                <span itemprop="name">为什么TCP4次挥手时等待为2MSL？</span>
-              
-            </a>
-        
-      </h2>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2020-05-24T20:41:08+08:00"
-              content="2020-05-24" >
-          05-24
-        </time>
-      </div>
+          
 
-    </header>
-  </article>
+          
 
+        </div>
+      </header>
+    
 
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2020/05/24/tcpip_halfopen/" itemprop="url">
-              
-                <span itemprop="name">TCP半打开连接及同时打开同时关闭</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2020-05-24T20:41:08+08:00"
-              content="2020-05-24" >
-          05-24
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2020/05/24/tcpip_rst/" itemprop="url">
-              
-                <span itemprop="name">TCP协议连接复位(RST)</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2020-05-24T20:41:08+08:00"
-              content="2020-05-24" >
-          05-24
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <p>tcp连接异常终止的情况。一般来说，导致这种情况的原因一般有很多种，比如：</p>
+<ul>
+<li><p>拒绝连接请求，比如：A想和B建立tcp连接，但是A的连接请求中使用了一个不存在的端口（比如：这个端口超出65535的范围），那么B就可以发送RST报文段拒绝这个请求。</p>
+</li>
+<li><p>异常终止连接，如:A和B的tcp连接出现了异常，然后B希望终止这条异常的连接，于是就可以发送一个RST报文段终止这个连接</p>
+</li>
+<li><p>终止空闲的连接，如A和B之间的tcp连接已经很久没有传输数据了，空闲太长时间，可以发送RST报文段来终止这个连接。</p>
+</li>
+</ul>
+<p>  这里我们只针对拒绝连接请求和异常终止连接做详细介绍。</p>
+<h3 id="拒绝连接"><a href="#拒绝连接" class="headerlink" title="拒绝连接"></a>拒绝连接</h3><p><img src="/2020/05/24/tcpip_rst/1.png" alt></p>
+<p>拒绝连接一般是由服务器主动发起的，因为客户端发起请求连接携带的目的端口，可能服务器并没有开启LISTEN状态。因此服务器在收到这样的报文段后会发送一个RST报文段，在这个报文里把RST和ACK都置为1，它确认了SYN报文段并同时重置了该tcp连接，然后服务器等待另一个连接。客户端在收到RST+ACK报文段后就会进入CLOSED状态。</p>
+<p>telnet 登录一个没有的端口，用wireshark 抓包查看</p>
+<p>telnet登录和发送SYN序号</p>
+<p><img src="/2020/05/24/tcpip_rst/2.png" alt></p>
+<p><img src="/2020/05/24/tcpip_rst/3.png" alt></p>
+<p>服务端抓包服务器，rst，ack 报文</p>
+<p><img src="/2020/05/24/tcpip_rst/4.png" alt></p>
+<h3 id="异常终止连接"><a href="#异常终止连接" class="headerlink" title="异常终止连接"></a>异常终止连接</h3><p><img src="/2020/05/24/tcpip_rst/5.png" alt></p>
+<p>出现异常终止连接的原因有很多种，可能是进程出现bug了或者由于数据出现了不一致（不想发送数据了），对于这种情况，tcp有可能终止一条连接。也就是说，在这些情况下，就可以发送RST报文段异常终止连接。</p>
+<p>客户端由于队列中的数据出现了不一致，发送了RST+ACK报文段异常终止连接，注意：在发送RST+ACK报文段的时候会丢弃掉队列中的所有数据，服务器也会把队列中的所有数据都丢弃掉，并通过一个ICMP差错报告报文通知服务器，然后双方都进入CLOSED状态。</p>
+<p>在一些情况下，我们可能想让服务端把数据发送完，然后再关闭tcp连接，而不是马上发送RST报文终止这条连接，那么可以在套接字编程中使用SO_LINGER选项。SO_LINGER选项是用来设置延迟关闭的时间，等待套接字发送缓冲区中的数据发送完成，但是并不保证数据一定会被对方接收，只是等待一段时间后，再正常关闭tcp连接。如果SO_LINGER设置为0，则会清除队列中的所有数据，直接发送RST报文关闭连接</p>
+<p><strong>需要注意的是：对于RST报文段，另一端不需要发送任何响应，因为发送完RST报文后，这条tcp连接就关闭了，也就没有必要确认了</strong>，收到RST的一方将终止该连接，并通知应用层复位连接。</p>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2020/05/23/README/" itemprop="url">
-              
-                <span itemprop="name">zhaops's blog</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2020-05-23T20:41:08+08:00"
-              content="2020-05-23" >
-          05-23
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2020/05/23/Apollo%E5%88%86%E5%B8%83%E5%BC%8F%E9%83%A8%E7%BD%B2/" itemprop="url">
-              
-                <span itemprop="name">Apollo(阿波罗)分布式部署.md</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2020-05-23T20:41:08+08:00"
-              content="2020-05-23" >
-          05-23
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2020/05/23/docker_dockerfile/" itemprop="url">
-              
-                <span itemprop="name">DockerFile 使用</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2020-05-23T20:41:08+08:00"
-              content="2020-05-23" >
-          05-23
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+
+     <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+
+<div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2020/05/24/tcpip_rst/">TCP协议连接复位(RST)</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 zhaops 的个人博客">zhaops</a></p>
+  <p><span>发布时间:</span>2020年05月24日 - 20:05</p>
+  <p><span>最后更新:</span>2020年05月24日 - 17:05</p>
+  <p><span>原始链接:</span><a href="/2020/05/24/tcpip_rst/" title="TCP协议连接复位(RST)">https://zhaops-hub.github.io/2020/05/24/tcpip_rst/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://zhaops-hub.github.io/2020/05/24/tcpip_rst/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+    });
+    });  
+</script>
+
+      
+</div>
+
+
+    
+
+    
+
+    
+ 
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/tcp-ip/" rel="tag"><i class="fa fa-tag"></i> tcp/ip</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/05/23/README/" rel="next" title="zhaops's blog">
+                <i class="fa fa-chevron-left"></i> zhaops's blog
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/05/24/tcpip_halfopen/" rel="prev" title="TCP半打开连接及同时打开同时关闭">
+                TCP半打开连接及同时打开同时关闭 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
 
 
           </div>
@@ -527,6 +543,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -547,8 +567,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -649,6 +678,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#拒绝连接"><span class="nav-number">1.</span> <span class="nav-text">拒绝连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异常终止连接"><span class="nav-number">2.</span> <span class="nav-text">异常终止连接</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -816,6 +861,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

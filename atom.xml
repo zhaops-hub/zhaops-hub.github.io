@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://zhaops-hub.github.io/"/>
-  <updated>2020-05-23T14:24:37.960Z</updated>
+  <updated>2020-05-24T06:18:17.361Z</updated>
   <id>https://zhaops-hub.github.io/</id>
   
   <author>
@@ -15,6 +15,110 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>为什么TCP4次挥手时等待为2MSL？</title>
+    <link href="https://zhaops-hub.github.io/2020/05/24/tcpip_2msl/"/>
+    <id>https://zhaops-hub.github.io/2020/05/24/tcpip_2msl/</id>
+    <published>2020-05-24T12:41:08.000Z</published>
+    <updated>2020-05-24T06:18:17.361Z</updated>
+    
+    <content type="html"><![CDATA[<p>通信所要解决的首要问题就是，<strong>保持通信双方的信息对称，使通信双方处于同步状态。</strong></p><p>先来一个例子：<br>罗密欧大学期间写信给中学同学朱丽叶，信的内容如下：</p><p><strong>小叶子，我喜欢你！</strong></p><p>这封信发出之后，罗密欧无法知道朱丽叶能否收到，只有收到小叶子的回信，才能知道自己的信已经到达对方。</p><p>三天之后，小叶子回信了，信的内容如下：</p><p><strong>小欧，来信已阅，我也喜欢你…</strong></p><p>此时，小叶子眼中双方的状态是：<strong>互相爱慕</strong>！</p><p>如果小欧收到回信，小欧眼中双方的状态也是：互相爱慕！</p><p>如果小欧没有收到回信，小欧眼中双方的状态是：<strong>单相思</strong>！</p><p>小叶子为了杜绝小欧模棱两可的状态，使他与自己达成“<strong>互相爱慕</strong>”的共识，需要做以下工作：</p><p>1）先耐心地等小欧的第三封信</p><p>2）如果若干天没有收到回信，需要把自己的第二封信再次发出</p><p>如果收到了小欧的回信，那么双方的状态终于同步了：“互相爱慕”！</p><p>即使2）发生了，N天之后也可以达成同步状态。</p><p>之后，双方可以甜言蜜语地谈恋爱了。</p><p>TCP四次挥手也遵循相似的套路。</p><p>主动断开的一侧为A，被动断开的一侧为B。</p><p><strong>第一个消息：A发FIN</strong></p><p><strong>第二个消息：B回复ACK（回复的同时把tcp链接关掉，tcp处于半关闭状态）</strong></p><p><strong>第三个消息：B发出FIN</strong></p><p>此时此刻：B单方面认为自己与A达成了共识，即双方都同意关闭连接。</p><p>此时，B能释放这个TCP连接占用的内存资源吗？<strong>不能，B一定要确保A收到自己的ACK、FIN。</strong></p><p>所以B需要静静地等待A的第四个消息的到来：</p><p><strong>第四个消息：A发出ACK，用于确认收到B的FIN</strong></p><p>当B接收到此消息，即认为双方达成了同步：双方都知道连接可以释放了，此时B可以安全地释放此TCP连接所占用的内存资源、端口号。</p><p>所以<strong>被动关闭的B无需任何wait time，直接释放资源。</strong></p><p>但，A并不知道B是否接到自己的ACK，A是这么想的：</p><p>1）如果B没有收到自己的ACK，会超时重传FiN</p><p>那么A再次接到重传的FIN，会再次发送ACK</p><p>2）如果B收到自己的ACK，也不会再发任何消息，包括ACK</p><p>无论是1还是2，A都需要等待，要取这两种情况等待时间的最大值，<strong>以应对最坏的情况发生</strong>，这个最坏情况是：</p><p>去向ACK消息最大存活时间（MSL) + 来向FIN消息的最大存活时间(MSL)。</p><p>这恰恰就是<strong>2MSL( Maximum Segment Life)。</strong></p><p>等待2MSL时间，A就可以放心地释放TCP占用的资源、端口号，<strong>此时可以使用该端口号连接任何服务器。</strong></p><p><strong>为何一定要等2MSL？</strong><br><strong>如果不等，释放的端口可能会重连刚断开的服务器端口，这样依然存活在网络里的老的TCP报文可能与新TCP连接报文冲突，造成数据冲突，为避免此种情况，需要耐心等待网络老的TCP连接的活跃报文全部死翘翘，2MSL时间可以满足这个需求（尽管非常保守）！</strong></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;通信所要解决的首要问题就是，&lt;strong&gt;保持通信双方的信息对称，使通信双方处于同步状态。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;先来一个例子：&lt;br&gt;罗密欧大学期间写信给中学同学朱丽叶，信的内容如下：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;小叶子，我喜欢你！&lt;/strong&gt;&lt;/p&gt;
+      
+    
+    </summary>
+    
+    
+      <category term="tcp/ip" scheme="https://zhaops-hub.github.io/categories/tcp-ip/"/>
+    
+    
+      <category term="tcp/ip" scheme="https://zhaops-hub.github.io/tags/tcp-ip/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>TCP半打开连接及同时打开同时关闭</title>
+    <link href="https://zhaops-hub.github.io/2020/05/24/tcpip_halfopen/"/>
+    <id>https://zhaops-hub.github.io/2020/05/24/tcpip_halfopen/</id>
+    <published>2020-05-24T12:41:08.000Z</published>
+    <updated>2020-05-24T10:26:17.892Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="TCP半打开连接"><a href="#TCP半打开连接" class="headerlink" title="TCP半打开连接"></a>TCP半打开连接</h3><p>如果一方已经关闭或者异常终止连接而另外一方却还不知道，这样的连接就称为半打开连接（Half open connection）。处于半打开的连接，如果双方不进行数据通信，是发现不了问题的，只有在通信是才真正的察觉到这个连接已经处于半打开状态，如果双方不传输数据的话，仍处于连接状态的一方就不会检测另外一方已经出现异常</p><p>半打开连接的一个常见的原因是客户端或者服务器突然掉电而不是正常的结束应用程序后再关机，这样即使重新启动后，原来的连接信息已经消失了，对端仍然保持半打开状态，如果需要发数据的话，这边收到之后 其实发现这个连接并不存在了，就会回复RST包告知，这个时候就需要重新建立连接了！</p><p>接下来使用SSH协议复制一下这个场景：</p><ul><li>telnet 链接centos服务器 192.168.179.130 23</li><li>建立连接成功，可以在client进行linux操作</li></ul><p><img src="/2020/05/24/tcpip_halfopen/1.png" alt></p><ul><li><p>需要模拟服务器出现异常，先关掉网卡，然后关机（关掉网卡，为了避免关机时服务器主动退出发送FIN包）</p><ul><li><p>我这边复现不了，管理网卡客户端这边就立马监听到断开了；直接关机的话就发送 FIN包了</p><p><img src="/2020/05/24/tcpip_halfopen/2.png" alt></p></li></ul></li><li><p>重新打开服务器</p></li><li><p>操作客户端，发现已经出现了异常，无法通信，并提示重新连接， 这个时候实际上客户端发送的包被服务器给RST了，因为之前的连接信息已经丢失了</p></li><li><p>重新连接之后可以正常的进行通信</p></li><li><p>服务器重新启动，之前的连接信息都已经丢失，所以它将复位所有信息，因此它不知道数据报文段提到的连接，<strong>处理原则就是接收方以复位做应答</strong></p></li></ul><h3 id="同时打开"><a href="#同时打开" class="headerlink" title="同时打开"></a>同时打开</h3><p>两个应用程序同时彼此执行主动打开的情况，2端的端口需要一致，这就需要双方都熟知端口，这种情况发生的概率很小 ，这里简单的介绍一下</p><p>场景：</p><ul><li><p>PC1的应用程序使用端口7777 与PC2的端口8888  执行主动打开</p></li><li><p>PC2的应用程序使用端口8888 与PC1的端口7777 执行主动打开</p></li><li><p>SYN包同时打开对端，这种情况即为同时打开</p></li></ul><p>  <strong>TCP中，对于同时打开它仅建立一条连接而不是两条连接</strong>，状态变迁图如下：同时发送SYN包，然后收到进行确认直接进入ESTABLISHED状态，可以看到同时打开需要连接建立需要4个报文段，比三次握手多一次！</p><p>  <img src="/2020/05/24/tcpip_halfopen/3.png" alt></p><p>这种情况复现不了，用书上的一张图</p><p>​    <img src="/2020/05/24/tcpip_halfopen/4.png" alt></p><p>第 1,2行 执行2个 SYN ,第3,4行执行了2个 SYN,ACK</p><h3 id="同时关闭"><a href="#同时关闭" class="headerlink" title="同时关闭"></a>同时关闭</h3><p>有同时打开，理所应当的也有同时关闭的场景，TCP协议也允许同时关闭。状态变化可以看到下图了，同时发送FIN包，两端同时执行主动关闭，进入FIN_WAIT_1的状态，从FIN_WAIT_1状态收到FIN包的时候进入CLOSING状态，然后回复ACK，进入TIME_WAIT状态。</p><p><img src="/2020/05/24/tcpip_halfopen/5.png" alt></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;TCP半打开连接&quot;&gt;&lt;a href=&quot;#TCP半打开连接&quot; class=&quot;headerlink&quot; title=&quot;TCP半打开连接&quot;&gt;&lt;/a&gt;TCP半打开连接&lt;/h3&gt;&lt;p&gt;如果一方已经关闭或者异常终止连接而另外一方却还不知道，这样的连接就称为半打开连接（Half 
+      
+    
+    </summary>
+    
+    
+      <category term="tcp/ip" scheme="https://zhaops-hub.github.io/categories/tcp-ip/"/>
+    
+    
+      <category term="tcp/ip" scheme="https://zhaops-hub.github.io/tags/tcp-ip/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>TCP协议连接复位(RST)</title>
+    <link href="https://zhaops-hub.github.io/2020/05/24/tcpip_rst/"/>
+    <id>https://zhaops-hub.github.io/2020/05/24/tcpip_rst/</id>
+    <published>2020-05-24T12:41:08.000Z</published>
+    <updated>2020-05-24T09:16:22.464Z</updated>
+    
+    <content type="html"><![CDATA[<p>tcp连接异常终止的情况。一般来说，导致这种情况的原因一般有很多种，比如：</p><ul><li><p>拒绝连接请求，比如：A想和B建立tcp连接，但是A的连接请求中使用了一个不存在的端口（比如：这个端口超出65535的范围），那么B就可以发送RST报文段拒绝这个请求。</p></li><li><p>异常终止连接，如:A和B的tcp连接出现了异常，然后B希望终止这条异常的连接，于是就可以发送一个RST报文段终止这个连接</p></li><li><p>终止空闲的连接，如A和B之间的tcp连接已经很久没有传输数据了，空闲太长时间，可以发送RST报文段来终止这个连接。</p></li></ul><p>  这里我们只针对拒绝连接请求和异常终止连接做详细介绍。</p><h3 id="拒绝连接"><a href="#拒绝连接" class="headerlink" title="拒绝连接"></a>拒绝连接</h3><p><img src="/2020/05/24/tcpip_rst/1.png" alt></p><p>拒绝连接一般是由服务器主动发起的，因为客户端发起请求连接携带的目的端口，可能服务器并没有开启LISTEN状态。因此服务器在收到这样的报文段后会发送一个RST报文段，在这个报文里把RST和ACK都置为1，它确认了SYN报文段并同时重置了该tcp连接，然后服务器等待另一个连接。客户端在收到RST+ACK报文段后就会进入CLOSED状态。</p><p>telnet 登录一个没有的端口，用wireshark 抓包查看</p><p>telnet登录和发送SYN序号</p><p><img src="/2020/05/24/tcpip_rst/2.png" alt></p><p><img src="/2020/05/24/tcpip_rst/3.png" alt></p><p>服务端抓包服务器，rst，ack 报文</p><p><img src="/2020/05/24/tcpip_rst/4.png" alt></p><h3 id="异常终止连接"><a href="#异常终止连接" class="headerlink" title="异常终止连接"></a>异常终止连接</h3><p><img src="/2020/05/24/tcpip_rst/5.png" alt></p><p>出现异常终止连接的原因有很多种，可能是进程出现bug了或者由于数据出现了不一致（不想发送数据了），对于这种情况，tcp有可能终止一条连接。也就是说，在这些情况下，就可以发送RST报文段异常终止连接。</p><p>客户端由于队列中的数据出现了不一致，发送了RST+ACK报文段异常终止连接，注意：在发送RST+ACK报文段的时候会丢弃掉队列中的所有数据，服务器也会把队列中的所有数据都丢弃掉，并通过一个ICMP差错报告报文通知服务器，然后双方都进入CLOSED状态。</p><p>在一些情况下，我们可能想让服务端把数据发送完，然后再关闭tcp连接，而不是马上发送RST报文终止这条连接，那么可以在套接字编程中使用SO_LINGER选项。SO_LINGER选项是用来设置延迟关闭的时间，等待套接字发送缓冲区中的数据发送完成，但是并不保证数据一定会被对方接收，只是等待一段时间后，再正常关闭tcp连接。如果SO_LINGER设置为0，则会清除队列中的所有数据，直接发送RST报文关闭连接</p><p><strong>需要注意的是：对于RST报文段，另一端不需要发送任何响应，因为发送完RST报文后，这条tcp连接就关闭了，也就没有必要确认了</strong>，收到RST的一方将终止该连接，并通知应用层复位连接。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;tcp连接异常终止的情况。一般来说，导致这种情况的原因一般有很多种，比如：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;拒绝连接请求，比如：A想和B建立tcp连接，但是A的连接请求中使用了一个不存在的端口（比如：这个端口超出65535的范围），那么B就可以发送RST报文段拒绝这个请求。
+      
+    
+    </summary>
+    
+    
+      <category term="tcp/ip" scheme="https://zhaops-hub.github.io/categories/tcp-ip/"/>
+    
+    
+      <category term="tcp/ip" scheme="https://zhaops-hub.github.io/tags/tcp-ip/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>zhaops&#39;s blog</title>
+    <link href="https://zhaops-hub.github.io/2020/05/23/README/"/>
+    <id>https://zhaops-hub.github.io/2020/05/23/README/</id>
+    <published>2020-05-23T12:41:08.000Z</published>
+    <updated>2020-05-23T15:05:03.175Z</updated>
+    
+    <content type="html"><![CDATA[<img src="/2020/05/23/README/index.jpeg">]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;img src=&quot;/2020/05/23/README/index.jpeg&quot;&gt;
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Apollo(阿波罗)分布式部署.md</title>
@@ -43,33 +147,11 @@
   </entry>
   
   <entry>
-    <title>zhaops&#39;s blog</title>
-    <link href="https://zhaops-hub.github.io/2020/05/23/README/"/>
-    <id>https://zhaops-hub.github.io/2020/05/23/README/</id>
-    <published>2020-05-23T12:41:08.000Z</published>
-    <updated>2020-05-23T15:05:03.175Z</updated>
-    
-    <content type="html"><![CDATA[<img src="/2020/05/23/README/index.jpeg">]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;img src=&quot;/2020/05/23/README/index.jpeg&quot;&gt;
-      
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
     <title>DockerFile 使用</title>
     <link href="https://zhaops-hub.github.io/2020/05/23/docker_dockerfile/"/>
     <id>https://zhaops-hub.github.io/2020/05/23/docker_dockerfile/</id>
     <published>2020-05-23T12:41:08.000Z</published>
-    <updated>2020-05-24T02:00:13.731Z</updated>
+    <updated>2020-05-24T02:39:02.906Z</updated>
     
     <content type="html"><![CDATA[<h3 id="什么是dockerfile"><a href="#什么是dockerfile" class="headerlink" title="什么是dockerfile?"></a>什么是dockerfile?</h3><p>Dockerfile是一个包含用于组合映像的命令的文本文档。可以使用在命令行中调用任何命令。 Docker通过读取Dockerfile中的指令自动生成映像。</p><p>docker build命令用于从Dockerfile构建映像。可以在docker build命令中使用-f标志指向文件系统中任何位置的Dockerfile。<br>例：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -f /path/to/a/Dockerfile</span><br></pre></td></tr></table></figure><h3 id="Dockerfile的基本结构"><a href="#Dockerfile的基本结构" class="headerlink" title="Dockerfile的基本结构"></a>Dockerfile的基本结构</h3><p>Dockerfile 一般分为四部分：基础镜像信息、维护者信息、镜像操作指令和容器启动时执行指令，’#’ 为 Dockerfile 中的注释。</p><h3 id="Dockerfile文件说明"><a href="#Dockerfile文件说明" class="headerlink" title="Dockerfile文件说明"></a>Dockerfile文件说明</h3><p>Docker以从上到下的顺序运行Dockerfile的指令。为了指定基本映像，第一条指令必须是FROM。一个声明以＃字符开头则被视为注释。可以在Docker文件中使用RUN，CMD，FROM，EXPOSE，ENV等指令。</p><h3 id="docker-build-命令详解"><a href="#docker-build-命令详解" class="headerlink" title="docker build 命令详解"></a>docker build 命令详解</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">docker build [OPTIONS] PATH | URL | -</span><br><span class="line"></span><br><span class="line">--build-arg=[] :设置镜像创建时的变量；</span><br><span class="line"></span><br><span class="line">--cpu-shares :设置 cpu 使用权重；</span><br><span class="line"></span><br><span class="line">--cpu-period :限制 CPU CFS周期；</span><br><span class="line"></span><br><span class="line">--cpu-quota :限制 CPU CFS配额；</span><br><span class="line"></span><br><span class="line">--cpuset-cpus :指定使用的CPU id；</span><br><span class="line"></span><br><span class="line">--cpuset-mems :指定使用的内存 id；</span><br><span class="line"></span><br><span class="line">--disable-content-trust :忽略校验，默认开启；</span><br><span class="line"></span><br><span class="line">-f :指定要使用的Dockerfile路径；</span><br><span class="line"></span><br><span class="line">--force-rm :设置镜像过程中删除中间容器；</span><br><span class="line"></span><br><span class="line">--isolation :使用容器隔离技术；</span><br><span class="line"></span><br><span class="line">--label=[] :设置镜像使用的元数据；</span><br><span class="line"></span><br><span class="line">-m :设置内存最大值；</span><br><span class="line"></span><br><span class="line">--memory-swap :设置Swap的最大值为内存+swap，"-1"表示不限swap；</span><br><span class="line"></span><br><span class="line">--no-cache :创建镜像的过程不使用缓存；</span><br><span class="line"></span><br><span class="line">--pull :尝试去更新镜像的新版本；</span><br><span class="line"></span><br><span class="line">--quiet, -q :安静模式，成功后只输出镜像 ID；</span><br><span class="line"></span><br><span class="line">--rm :设置镜像成功后删除中间容器；</span><br><span class="line"></span><br><span class="line">--shm-size :设置/dev/shm的大小，默认值是64M；</span><br><span class="line"></span><br><span class="line">--ulimit :Ulimit配置。</span><br><span class="line"></span><br><span class="line">--tag, -t: 镜像的名字及标签，通常 name:tag 或者 name 格式；可以在一次构建中为一个镜像设置多个标签。</span><br><span class="line"></span><br><span class="line">--network: 默认 default。在构建期间设置RUN指令的网络模式</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 实例</span><br><span class="line"></span><br><span class="line">// 使用当前目录的 Dockerfile 创建镜像，标签为 runoob/ubuntu:v1。</span><br><span class="line">docker build -t runoob/ubuntu:v1 . </span><br><span class="line"></span><br><span class="line">// 使用URL github.com/creack/docker-firefox 的 Dockerfile 创建镜像。</span><br><span class="line">docker build github.com/creack/docker-firefox</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 也可以通过 -f Dockerfile 文件的位置：</span><br><span class="line"><span class="meta">$</span><span class="bash"> docker build -f /path/to/a/Dockerfile .</span></span><br><span class="line"></span><br><span class="line">// 在 Docker 守护进程执行 Dockerfile 中的指令前，首先会对 Dockerfile 进行语法检查，有语法错误时会返回：</span><br><span class="line"><span class="meta">$</span><span class="bash"> docker build -t <span class="built_in">test</span>/myapp .</span></span><br><span class="line">Sending build context to Docker daemon 2.048 kB</span><br><span class="line">Error response from daemon: Unknown instruction: RUNCMD</span><br></pre></td></tr></table></figure>]]></content>
     
