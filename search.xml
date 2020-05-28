@@ -6,59 +6,138 @@
     <content><![CDATA[<img src="/2020/05/23/README/index.jpeg">]]></content>
   </entry>
   <entry>
-    <title>DockerFile 使用</title>
-    <url>/2020/05/23/docker_dockerfile/</url>
-    <content><![CDATA[<h3 id="什么是dockerfile"><a href="#什么是dockerfile" class="headerlink" title="什么是dockerfile?"></a>什么是dockerfile?</h3><p>Dockerfile是一个包含用于组合映像的命令的文本文档。可以使用在命令行中调用任何命令。 Docker通过读取Dockerfile中的指令自动生成映像。</p>
-<p>docker build命令用于从Dockerfile构建映像。可以在docker build命令中使用-f标志指向文件系统中任何位置的Dockerfile。<br>例：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker build -f /path/to/a/Dockerfile</span><br></pre></td></tr></table></figure>
-
-<h3 id="Dockerfile的基本结构"><a href="#Dockerfile的基本结构" class="headerlink" title="Dockerfile的基本结构"></a>Dockerfile的基本结构</h3><p>Dockerfile 一般分为四部分：基础镜像信息、维护者信息、镜像操作指令和容器启动时执行指令，’#’ 为 Dockerfile 中的注释。</p>
-<h3 id="Dockerfile文件说明"><a href="#Dockerfile文件说明" class="headerlink" title="Dockerfile文件说明"></a>Dockerfile文件说明</h3><p>Docker以从上到下的顺序运行Dockerfile的指令。为了指定基本映像，第一条指令必须是FROM。一个声明以＃字符开头则被视为注释。可以在Docker文件中使用RUN，CMD，FROM，EXPOSE，ENV等指令。</p>
-<h3 id="docker-build-命令详解"><a href="#docker-build-命令详解" class="headerlink" title="docker build 命令详解"></a>docker build 命令详解</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker build [OPTIONS] PATH | URL | -</span><br><span class="line"></span><br><span class="line">--build-arg=[] :设置镜像创建时的变量；</span><br><span class="line"></span><br><span class="line">--cpu-shares :设置 cpu 使用权重；</span><br><span class="line"></span><br><span class="line">--cpu-period :限制 CPU CFS周期；</span><br><span class="line"></span><br><span class="line">--cpu-quota :限制 CPU CFS配额；</span><br><span class="line"></span><br><span class="line">--cpuset-cpus :指定使用的CPU id；</span><br><span class="line"></span><br><span class="line">--cpuset-mems :指定使用的内存 id；</span><br><span class="line"></span><br><span class="line">--disable-content-trust :忽略校验，默认开启；</span><br><span class="line"></span><br><span class="line">-f :指定要使用的Dockerfile路径；</span><br><span class="line"></span><br><span class="line">--force-rm :设置镜像过程中删除中间容器；</span><br><span class="line"></span><br><span class="line">--isolation :使用容器隔离技术；</span><br><span class="line"></span><br><span class="line">--label=[] :设置镜像使用的元数据；</span><br><span class="line"></span><br><span class="line">-m :设置内存最大值；</span><br><span class="line"></span><br><span class="line">--memory-swap :设置Swap的最大值为内存+swap，"-1"表示不限swap；</span><br><span class="line"></span><br><span class="line">--no-cache :创建镜像的过程不使用缓存；</span><br><span class="line"></span><br><span class="line">--pull :尝试去更新镜像的新版本；</span><br><span class="line"></span><br><span class="line">--quiet, -q :安静模式，成功后只输出镜像 ID；</span><br><span class="line"></span><br><span class="line">--rm :设置镜像成功后删除中间容器；</span><br><span class="line"></span><br><span class="line">--shm-size :设置/dev/shm的大小，默认值是64M；</span><br><span class="line"></span><br><span class="line">--ulimit :Ulimit配置。</span><br><span class="line"></span><br><span class="line">--tag, -t: 镜像的名字及标签，通常 name:tag 或者 name 格式；可以在一次构建中为一个镜像设置多个标签。</span><br><span class="line"></span><br><span class="line">--network: 默认 default。在构建期间设置RUN指令的网络模式</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 实例</span><br><span class="line"></span><br><span class="line">// 使用当前目录的 Dockerfile 创建镜像，标签为 runoob/ubuntu:v1。</span><br><span class="line">docker build -t runoob/ubuntu:v1 . </span><br><span class="line"></span><br><span class="line">// 使用URL github.com/creack/docker-firefox 的 Dockerfile 创建镜像。</span><br><span class="line">docker build github.com/creack/docker-firefox</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 也可以通过 -f Dockerfile 文件的位置：</span><br><span class="line"><span class="meta">$</span><span class="bash"> docker build -f /path/to/a/Dockerfile .</span></span><br><span class="line"></span><br><span class="line">// 在 Docker 守护进程执行 Dockerfile 中的指令前，首先会对 Dockerfile 进行语法检查，有语法错误时会返回：</span><br><span class="line"><span class="meta">$</span><span class="bash"> docker build -t <span class="built_in">test</span>/myapp .</span></span><br><span class="line">Sending build context to Docker daemon 2.048 kB</span><br><span class="line">Error response from daemon: Unknown instruction: RUNCMD</span><br></pre></td></tr></table></figure>]]></content>
+    <title>移位存储详解</title>
+    <url>/2020/05/28/c_shift/</url>
+    <content><![CDATA[<h3 id="IEEE-754-浮点数存储标准"><a href="#IEEE-754-浮点数存储标准" class="headerlink" title="IEEE 754 浮点数存储标准"></a>IEEE 754 浮点数存储标准</h3><p>规定浮点数格式如下：</p>
+<p><img src="/2020/05/28/c_shift/1.png" alt></p>
+<p>s表示符号位，当s=0，V为正数；当s=1，V为负数</p>
+<p>E表示8位阶码，采用移位存储</p>
+<p>M表示23位尾数，如M为10100….，那么M所代表的二进制浮点数为M’=1+1/2+1/2^2=1.75，2&gt;M’&gt;=1</p>
+<p>根据32位数计算为十进制：V=(−1)^s × M’ × 2^(E−127)，</p>
+<h3 id="移位存储详解"><a href="#移位存储详解" class="headerlink" title="移位存储详解"></a>移位存储详解</h3><p>如果采用传统的高bit表示正负的方法，将-127-127分为两个区间表示：</p>
+<p>第一个区间：0 000000 0~ 0 111111 1 即 +0 到 127</p>
+<p>第二个区间：1 000000 0~ 1 111111 1 即 -0 到 -127</p>
+<p>很明显存在+0和-0的问题，如果采用移位存储技术，即在原始数值的基础上加 127，全部转换为&gt;=0的数进行表示：</p>
+<p>此时最高位不是符号位，8bit可以表示0<del>255，那么原始数值可以表示-127</del>128，分别如下</p>
+<p>第一个区间：0 000000 0~ 0 111111 1 ，直接大小0~127 ，减去127后表达范围 -127 到 0</p>
+<p>第二个区间：1 000000 0~ 1 111111 1 ，直接大小128~255，减去127后表达范围 1 到 128</p>
+<p>也就是可以使用 8位二进制来表示从 -127~128 共计 127个负数+零（0）+128个正数总共 256个数，且使用移位存储即没有+0和-0的问题，又充分的使用这个新生成的 8位二进制数来最大限度的表示单精度浮点数的幂指数（阶码）</p>
+<hr>
+<p>如果不用以为存储，有 正0 负0 的问题</p>
+<p>自己搞几个例子</p>
+<p>0: <code>0 + 127 = 127</code>   <code>0 000000 0 + 0 111111 1 = 0 111111 1</code></p>
+<p>1: <code>1 + 127 = 128</code>  <code>0 000000 1 + 0 111111 1 = 1 000000 0</code></p>
+<p>2: <code>2 + 127 = 129</code>   <code>0 000001 0 + 111111 1 = 1 000000 1</code></p>
+<p>-1: <code>-1 + 127 = 126, 127 - 1</code>  <code>0 111111 1 - 0 000000 1 = 0 111111 0</code> </p>
+]]></content>
       <categories>
-        <category>docker</category>
+        <category>C语言</category>
       </categories>
       <tags>
-        <tag>docker</tag>
+        <tag>C语言</tag>
       </tags>
   </entry>
   <entry>
-    <title>Docker 部署 MongoDB + MongoDB-express</title>
-    <url>/2020/05/27/mongodb_install/</url>
-    <content><![CDATA[<h2 id="MongoDB-Docker-镜像安装"><a href="#MongoDB-Docker-镜像安装" class="headerlink" title="MongoDB Docker 镜像安装"></a>MongoDB Docker 镜像安装</h2><p>MongoDB 提供官方镜像，下载安装镜像方法如下：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 获取mongo镜像</span></span><br><span class="line">docker pull mongo</span><br><span class="line"><span class="meta">#</span><span class="bash"> 获取管理页面镜像</span></span><br><span class="line">docker pull mongo-express</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="MongoDB-容器创建"><a href="#MongoDB-容器创建" class="headerlink" title="MongoDB 容器创建"></a>MongoDB 容器创建</h2><h3 id="mongoDB"><a href="#mongoDB" class="headerlink" title="mongoDB"></a>mongoDB</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker run --name mongo -p 27017:27017 -v /opt/mongodb/:/data/db -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=abc123 -d mongo</span><br></pre></td></tr></table></figure>
-
-<p><code>-p</code> 指定容器的端口映射，mongodb 默认端口为 27017</p>
-<p><code>-v</code> 为设置容器的挂载目录，这里是将/opt/mongodb/即本机中的目录挂载到容器中的/data/db中，作为 mongodb 的存储目录</p>
-<p><code>MONGO_INITDB_ROOT_USERNAME</code> 环境变量，root用户名</p>
-<p><code>MONGO_INITDB_ROOT_PASSWORD</code> 环境变量，root密码</p>
-<p><code>--name</code> 为设置该容器的名称</p>
-<p><code>-d</code> 设置容器以守护进程方式运行</p>
-<p><img src="/2020/05/27/mongodb_install/1.png" alt></p>
-<h3 id="mongo-express"><a href="#mongo-express" class="headerlink" title="mongo-express"></a>mongo-express</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker run --name mongo-express --link mongo  -d -p 8081:8081 -e ME_CONFIG_OPTIONS_EDITORTHEME="3024-night" -e ME_CONFIG_BASICAUTH_USERNAME="mongoexpress" -e ME_CONFIG_BASICAUTH_PASSWORD="mongoexpress" -e ME_CONFIG_MONGODB_ADMINUSERNAME="admin" -e ME_CONFIG_MONGODB_ADMINPASSWORD="abc123"  mongo-express</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="docker-compose"><a href="#docker-compose" class="headerlink" title="docker-compose"></a>docker-compose</h2><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># docker-compose.yaml</span></span><br><span class="line"><span class="attr">version:</span> <span class="string">'3'</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">mongo:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">mongo:latest</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">mongo</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">"27017:27017"</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">MONGO_INITDB_ROOT_USERNAME=root</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">MONGO_INITDB_ROOT_PASSWORD=abc123</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./data:/data/db</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/usr/share/zoneinfo/Asia/Shanghai:/etc/localtime:ro</span> </span><br><span class="line">    <span class="attr">logging:</span></span><br><span class="line">      <span class="attr">driver:</span> <span class="string">"journald"</span></span><br><span class="line">  <span class="attr">mongo-express:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">mongo-express:latest</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">mongo-express</span></span><br><span class="line">    <span class="attr">links:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">mongo</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">"8081:8081"</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">ME_CONFIG_OPTIONS_EDITORTHEME=3024-night</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">ME_CONFIG_BASICAUTH_USERNAME=root</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">ME_CONFIG_BASICAUTH_PASSWORD=abc123</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">ME_CONFIG_MONGODB_ADMINUSERNAME=root</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">ME_CONFIG_MONGODB_ADMINPASSWORD=abc123</span></span><br><span class="line">    <span class="attr">logging:</span></span><br><span class="line">      <span class="attr">driver:</span> <span class="string">"journald"</span></span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker-compose -f mongo.yml up -d</span><br></pre></td></tr></table></figure>
-
-
-
-<p><strong>如果发现密码登录失败，请确认安装之前 宿主机的映射目录里面是空的  /opt/mongodb</strong></p>
-<p><img src="/2020/05/27/mongodb_install/2.png" alt></p>
+    <title>浮点数转换二进制</title>
+    <url>/2020/05/28/c_float/</url>
+    <content><![CDATA[<h2 id="浮点数在计算机中是如何表示的？"><a href="#浮点数在计算机中是如何表示的？" class="headerlink" title="浮点数在计算机中是如何表示的？"></a>浮点数在计算机中是如何表示的？</h2><p>浮点数在计算机中的存储方式遵循IEEE 754 浮点数计数标准，可以表示为：</p>
+<p><img src="/2020/05/28/c_float/1.png" alt></p>
+<p>采用<strong>尾数 + 阶码</strong>的编码方式，更通俗一点说，就是类似于数学课本上所学的<strong>科学计数法</strong>表示方式：<strong>有效数字 + 指数位</strong>！</p>
+<p>因此，只要给出：<strong>符号（S）</strong>、<strong>阶码部分（E）</strong>、<strong>尾数部分（M）</strong> 这三个维度的信息，一个浮点数的表示就完全确定下来了，所以<code>float</code>和<code>double</code>这两种类型的浮点数在计算机中的存储结构就表示成下图所示这个样子：</p>
+<p><img src="/2020/05/28/c_float/2.png" alt></p>
+<ul>
+<li><p><strong>符号部分（S）</strong></p>
+<p><code>0</code>-正 <code>1</code>-负</p>
+</li>
+<li><p><strong>阶码部分（E）（指数部分）</strong></p>
+<p>对于<code>float</code>型浮点数，指数部分<code>8</code>位，考虑可正可负，因此可以表示的指数范围为<code>-127 ~ 128</code></p>
+<p>对于<code>double</code>型浮点数，指数部分<code>11</code>位，考虑可正可负，因此可以表示的指数范围为<code>-1023 ~ 1024</code></p>
+</li>
+<li><p><strong>尾数部分（M）</strong></p>
+<p>浮点数的精度是由尾数的位数来决定的：</p>
+<ul>
+<li>对于<code>float</code>型浮点数，尾数部分<code>23</code>位，换算成十进制就是 <code>2^23=8388608</code>，所以十进制精度只有<code>6 ~ 7</code>位；</li>
+<li>对于<code>double</code>型浮点数，尾数部分<code>52</code>位，换算成十进制就是 <code>2^52 = 4503599627370496</code>，所以十进制精度只有<code>15 ~ 16</code>位</li>
+</ul>
+</li>
+</ul>
+<p>以，浮点数交给计算机存储的时候，可能会有<strong>精度丢失</strong>问题！！！因此使用时需要格外小心，如果真因为这一块出了bug，定位问题还是非常艰难的，所以预防工作要做好。</p>
+<h2 id="先来个简单的例子"><a href="#先来个简单的例子" class="headerlink" title="先来个简单的例子"></a>先来个简单的例子</h2><p>比如：<strong>把十进制小数<code>0.875</code>转换成二进制，具体怎么操作？</strong></p>
+<ul>
+<li><p><strong>以小数点为界，拆分</strong></p>
+</li>
+<li><p><strong>整数部分转换</strong></p>
+<p>整数转二进制我想大家应该都熟悉，使用：<strong>除2取余法</strong> 即可。而这里的<code>0.875</code>整数部分为0，无需操作</p>
+</li>
+<li><p><strong>小数部分转换</strong></p>
+<p>小数部分的转换不同于整数部分，采用的是 <strong>“乘2取整法”</strong> ，图示一下就明白了</p>
+<p><img src="/2020/05/28/c_float/3.png" alt></p>
+</li>
+<li><p><strong>合并结果</strong></p>
+<p><code>整数部分 + 小数部分</code>，最终得到二进制结果为<code>0.111</code>。</p>
+</li>
+</ul>
+<p>  所以该结果按照上一节所述的<strong>尾数 + 阶码</strong>的计算机计数方式，则可以表示为：</p>
+<p>  <img src="/2020/05/28/c_float/4.png" alt></p>
+<p>  <strong>0.111 = 1.11*2^-1</strong>  类似于科学计数法</p>
+<p>  所以对应可得：</p>
+<ul>
+<li><strong>符号位</strong>：<code>0</code></li>
+<li><strong>阶码（E）部分</strong>：若以<code>float</code>为例，应为 <code>127 +（-1）= 126</code>，因此二进制表示为：<code>01111110</code></li>
+<li><strong>尾数部分（M）</strong>：若以<code>float</code>为例，应为<code>23</code>位，因此尾部补齐后为<code>11000000000000000000000</code></li>
+</ul>
+<p>因此最终的总结果为（以<code>32</code>位精度<code>float</code>表示）：</p>
+<p><code>00111111011000000000000000000000</code></p>
+<h2 id="再来个复杂点例子"><a href="#再来个复杂点例子" class="headerlink" title="再来个复杂点例子"></a>再来个复杂点例子</h2><p>再比如：<strong>把十进制小数<code>6.36</code>转换成二进制，具体怎么操作？</strong></p>
+<p><img src="/2020/05/28/c_float/5.png" alt></p>
+<p>整数部分 + 小数部分，因此最终得到的结果二进制结果为<code>110.01011100...</code>。</p>
+<p>还是按照上一节所述的<strong>尾数 + 阶码</strong>的计算机计数方式，则可以表示为：</p>
+<p><img src="/2020/05/28/c_float/6.png" alt></p>
+<ul>
+<li><strong>符号位</strong>：0</li>
+<li><strong>阶码（E）部分</strong>：若以<code>float</code>为例，应为 <code>127 +（2）= 129</code>，因此二进制表示为：<code>10000001</code></li>
+<li><strong>尾数部分（M）</strong>：<code>1001011100...</code>，其实它本身无限不循环，但若以<code>float</code>型精度来截取<code>23</code>位，则可以表示为<code>10010111000010100011111</code></li>
+</ul>
+<p>因此最终的总结果为（以<code>32</code>位精度<code>float</code>表示）：</p>
+<p><code>01000000110010111000010100011111</code></p>
 ]]></content>
       <categories>
-        <category>MongoDB</category>
+        <category>C语言</category>
       </categories>
       <tags>
-        <tag>MongoDB</tag>
+        <tag>C语言</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>TCP之Nagle算法&amp;&amp;延迟ACK</title>
+    <url>/2020/05/27/tcpip_nagle/</url>
+    <content><![CDATA[<h2 id="Nagle算法"><a href="#Nagle算法" class="headerlink" title="Nagle算法"></a>Nagle算法</h2><p>是为了减少广域网的小分组数目，从而减小网络拥塞的出现；</p>
+<p>该算法要求一个tcp连接上最多只能有一个未被确认的未完成的小分组，在该分组ack到达之前不能发送其他的小分组，tcp需要收集这些少量的分组，并在ack到来时以一个分组的方式发送出去；其中小分组的定义是小于MSS的任何分组；</p>
+<p>该算法的优越之处在于它是自适应的，确认到达的越快，数据也就发哦送的越快；而在希望减少微小分组数目的低速广域网上，则会发送更少的分组；</p>
+<h2 id="延迟ACK"><a href="#延迟ACK" class="headerlink" title="延迟ACK"></a>延迟ACK</h2><p>如果tcp对每个数据包都发送一个ack确认，那么只是一个单独的数据包为了发送一个ack代价比较高，所以tcp会延迟一段时间，如果这段时间内有数据发送到对端，则捎带发送ack，如果在延迟ack定时器触发时候，发现ack尚未发送，则立即单独发送；</p>
+<p>延迟ACK好处</p>
+<ul>
+<li>避免糊涂窗口综合症；</li>
+<li>发送数据的时候将ack捎带发送，不必单独发送ack；</li>
+<li>如果延迟时间内有多个数据段到达，那么允许协议栈发送一个ack确认多个报文段；</li>
+</ul>
+<h2 id="当Nagle遇上延迟ACK"><a href="#当Nagle遇上延迟ACK" class="headerlink" title="当Nagle遇上延迟ACK"></a>当Nagle遇上延迟ACK</h2><p>试想如下典型操作，写-写-读，即通过多个写小片数据向对端发送单个逻辑的操作，两次写数据长度小于MSS，当第一次写数据到达对端后，对端延迟ack，不发送ack，而本端因为要发送的数据长度小于MSS，所以nagle算法起作用，数据并不会立即发送，而是等待对端发送的第一次数据确认ack；这样的情况下，需要等待对端超时发送ack，然后本段才能发送第二次写的数据，从而造成延迟；</p>
+<p><code>MSS</code>（Maximum Segment Size，最大报文段大小）的概念是指TCP层所能够接收的最大段大小，该值只包括TCP段的数据部分，不包括选项部分。</p>
+<h2 id="关闭Nagle算法"><a href="#关闭Nagle算法" class="headerlink" title="关闭Nagle算法"></a>关闭Nagle算法</h2><p>使用TCP套接字选项TCP_NODELAY可以关闭套接字选项;</p>
+<p>如下场景考虑关闭Nagle算法：</p>
+<ul>
+<li>对端不向本端发送数据，并且对延时比较敏感的操作；这种操作没法捎带ack；</li>
+<li>如上写-写-读操作；对于此种情况，优先使用其他方式，而不是关闭Nagle算法：</li>
+</ul>
+<p>–使用writev，而不是两次调用write，单个writev调用会使tcp输出一次而不是两次，只产生一个tcp分节，这是首选方法；</p>
+<p>–把两次写操作的数据复制到单个缓冲区，然后对缓冲区调用一次write；</p>
+<p>–关闭Nagle算法，调用write两次；有损于网络，通常不考虑；</p>
+]]></content>
+      <categories>
+        <category>tcp/ip</category>
+      </categories>
+      <tags>
+        <tag>tcp/ip</tag>
       </tags>
   </entry>
   <entry>
@@ -112,6 +191,142 @@
       </categories>
       <tags>
         <tag>tcp/ip</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Docker 部署 MongoDB + MongoDB-express</title>
+    <url>/2020/05/27/mongodb_install/</url>
+    <content><![CDATA[<h2 id="MongoDB-Docker-镜像安装"><a href="#MongoDB-Docker-镜像安装" class="headerlink" title="MongoDB Docker 镜像安装"></a>MongoDB Docker 镜像安装</h2><p>MongoDB 提供官方镜像，下载安装镜像方法如下：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 获取mongo镜像</span></span><br><span class="line">docker pull mongo</span><br><span class="line"><span class="meta">#</span><span class="bash"> 获取管理页面镜像</span></span><br><span class="line">docker pull mongo-express</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="MongoDB-容器创建"><a href="#MongoDB-容器创建" class="headerlink" title="MongoDB 容器创建"></a>MongoDB 容器创建</h2><h3 id="mongoDB"><a href="#mongoDB" class="headerlink" title="mongoDB"></a>mongoDB</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker run --name mongo -p 27017:27017 -v /opt/mongodb/:/data/db -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=abc123 -d mongo</span><br></pre></td></tr></table></figure>
+
+<p><code>-p</code> 指定容器的端口映射，mongodb 默认端口为 27017</p>
+<p><code>-v</code> 为设置容器的挂载目录，这里是将/opt/mongodb/即本机中的目录挂载到容器中的/data/db中，作为 mongodb 的存储目录</p>
+<p><code>MONGO_INITDB_ROOT_USERNAME</code> 环境变量，root用户名</p>
+<p><code>MONGO_INITDB_ROOT_PASSWORD</code> 环境变量，root密码</p>
+<p><code>--name</code> 为设置该容器的名称</p>
+<p><code>-d</code> 设置容器以守护进程方式运行</p>
+<p><img src="/2020/05/27/mongodb_install/1.png" alt></p>
+<h3 id="mongo-express"><a href="#mongo-express" class="headerlink" title="mongo-express"></a>mongo-express</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker run --name mongo-express --link mongo  -d -p 8081:8081 -e ME_CONFIG_OPTIONS_EDITORTHEME="3024-night" -e ME_CONFIG_BASICAUTH_USERNAME="mongoexpress" -e ME_CONFIG_BASICAUTH_PASSWORD="mongoexpress" -e ME_CONFIG_MONGODB_ADMINUSERNAME="admin" -e ME_CONFIG_MONGODB_ADMINPASSWORD="abc123"  mongo-express</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="docker-compose"><a href="#docker-compose" class="headerlink" title="docker-compose"></a>docker-compose</h2><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># docker-compose.yaml</span></span><br><span class="line"><span class="attr">version:</span> <span class="string">'3'</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">mongo:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">mongo:latest</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">mongo</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">"27017:27017"</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">MONGO_INITDB_ROOT_USERNAME=root</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">MONGO_INITDB_ROOT_PASSWORD=abc123</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./data:/data/db</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/usr/share/zoneinfo/Asia/Shanghai:/etc/localtime:ro</span> </span><br><span class="line">    <span class="attr">logging:</span></span><br><span class="line">      <span class="attr">driver:</span> <span class="string">"journald"</span></span><br><span class="line">  <span class="attr">mongo-express:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">mongo-express:latest</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">mongo-express</span></span><br><span class="line">    <span class="attr">links:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">mongo</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">"8081:8081"</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">ME_CONFIG_OPTIONS_EDITORTHEME=3024-night</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">ME_CONFIG_BASICAUTH_USERNAME=root</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">ME_CONFIG_BASICAUTH_PASSWORD=abc123</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">ME_CONFIG_MONGODB_ADMINUSERNAME=root</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">ME_CONFIG_MONGODB_ADMINPASSWORD=abc123</span></span><br><span class="line">    <span class="attr">logging:</span></span><br><span class="line">      <span class="attr">driver:</span> <span class="string">"journald"</span></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker-compose -f mongo.yml up -d</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>如果发现密码登录失败，请确认安装之前 宿主机的映射目录里面是空的  /opt/mongodb</strong></p>
+<p><img src="/2020/05/27/mongodb_install/2.png" alt></p>
+]]></content>
+      <categories>
+        <category>MongoDB</category>
+      </categories>
+      <tags>
+        <tag>MongoDB</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>TCP协议连接复位(RST)</title>
+    <url>/2020/05/24/tcpip_rst/</url>
+    <content><![CDATA[<p>tcp连接异常终止的情况。一般来说，导致这种情况的原因一般有很多种，比如：</p>
+<ul>
+<li><p>拒绝连接请求，比如：A想和B建立tcp连接，但是A的连接请求中使用了一个不存在的端口（比如：这个端口超出65535的范围），那么B就可以发送RST报文段拒绝这个请求。</p>
+</li>
+<li><p>异常终止连接，如:A和B的tcp连接出现了异常，然后B希望终止这条异常的连接，于是就可以发送一个RST报文段终止这个连接</p>
+</li>
+<li><p>终止空闲的连接，如A和B之间的tcp连接已经很久没有传输数据了，空闲太长时间，可以发送RST报文段来终止这个连接。</p>
+</li>
+</ul>
+<p>  这里我们只针对拒绝连接请求和异常终止连接做详细介绍。</p>
+<h3 id="拒绝连接"><a href="#拒绝连接" class="headerlink" title="拒绝连接"></a>拒绝连接</h3><p><img src="/2020/05/24/tcpip_rst/1.png" alt></p>
+<p>拒绝连接一般是由服务器主动发起的，因为客户端发起请求连接携带的目的端口，可能服务器并没有开启LISTEN状态。因此服务器在收到这样的报文段后会发送一个RST报文段，在这个报文里把RST和ACK都置为1，它确认了SYN报文段并同时重置了该tcp连接，然后服务器等待另一个连接。客户端在收到RST+ACK报文段后就会进入CLOSED状态。</p>
+<p>telnet 登录一个没有的端口，用wireshark 抓包查看</p>
+<p>telnet登录和发送SYN序号</p>
+<p><img src="/2020/05/24/tcpip_rst/2.png" alt></p>
+<p><img src="/2020/05/24/tcpip_rst/3.png" alt></p>
+<p>服务端抓包服务器，rst，ack 报文</p>
+<p><img src="/2020/05/24/tcpip_rst/4.png" alt></p>
+<h3 id="异常终止连接"><a href="#异常终止连接" class="headerlink" title="异常终止连接"></a>异常终止连接</h3><p><img src="/2020/05/24/tcpip_rst/5.png" alt></p>
+<p>出现异常终止连接的原因有很多种，可能是进程出现bug了或者由于数据出现了不一致（不想发送数据了），对于这种情况，tcp有可能终止一条连接。也就是说，在这些情况下，就可以发送RST报文段异常终止连接。</p>
+<p>客户端由于队列中的数据出现了不一致，发送了RST+ACK报文段异常终止连接，注意：在发送RST+ACK报文段的时候会丢弃掉队列中的所有数据，服务器也会把队列中的所有数据都丢弃掉，并通过一个ICMP差错报告报文通知服务器，然后双方都进入CLOSED状态。</p>
+<p>在一些情况下，我们可能想让服务端把数据发送完，然后再关闭tcp连接，而不是马上发送RST报文终止这条连接，那么可以在套接字编程中使用SO_LINGER选项。SO_LINGER选项是用来设置延迟关闭的时间，等待套接字发送缓冲区中的数据发送完成，但是并不保证数据一定会被对方接收，只是等待一段时间后，再正常关闭tcp连接。如果SO_LINGER设置为0，则会清除队列中的所有数据，直接发送RST报文关闭连接</p>
+<p><strong>需要注意的是：对于RST报文段，另一端不需要发送任何响应，因为发送完RST报文后，这条tcp连接就关闭了，也就没有必要确认了</strong>，收到RST的一方将终止该连接，并通知应用层复位连接。</p>
+]]></content>
+      <categories>
+        <category>tcp/ip</category>
+      </categories>
+      <tags>
+        <tag>tcp/ip</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>为什么TCP4次挥手时等待为2MSL？</title>
+    <url>/2020/05/24/tcpip_2msl/</url>
+    <content><![CDATA[<p>通信所要解决的首要问题就是，<strong>保持通信双方的信息对称，使通信双方处于同步状态。</strong></p>
+<p>先来一个例子：<br>罗密欧大学期间写信给中学同学朱丽叶，信的内容如下：</p>
+<p><strong>小叶子，我喜欢你！</strong></p>
+<p>这封信发出之后，罗密欧无法知道朱丽叶能否收到，只有收到小叶子的回信，才能知道自己的信已经到达对方。</p>
+<p>三天之后，小叶子回信了，信的内容如下：</p>
+<p><strong>小欧，来信已阅，我也喜欢你…</strong></p>
+<p>此时，小叶子眼中双方的状态是：<strong>互相爱慕</strong>！</p>
+<p>如果小欧收到回信，小欧眼中双方的状态也是：互相爱慕！</p>
+<p>如果小欧没有收到回信，小欧眼中双方的状态是：<strong>单相思</strong>！</p>
+<p>小叶子为了杜绝小欧模棱两可的状态，使他与自己达成“<strong>互相爱慕</strong>”的共识，需要做以下工作：</p>
+<p>1）先耐心地等小欧的第三封信</p>
+<p>2）如果若干天没有收到回信，需要把自己的第二封信再次发出</p>
+<p>如果收到了小欧的回信，那么双方的状态终于同步了：“互相爱慕”！</p>
+<p>即使2）发生了，N天之后也可以达成同步状态。</p>
+<p>之后，双方可以甜言蜜语地谈恋爱了。</p>
+<p>TCP四次挥手也遵循相似的套路。</p>
+<p>主动断开的一侧为A，被动断开的一侧为B。</p>
+<p><strong>第一个消息：A发FIN</strong></p>
+<p><strong>第二个消息：B回复ACK（回复的同时把tcp链接关掉，tcp处于半关闭状态）</strong></p>
+<p><strong>第三个消息：B发出FIN</strong></p>
+<p>此时此刻：B单方面认为自己与A达成了共识，即双方都同意关闭连接。</p>
+<p>此时，B能释放这个TCP连接占用的内存资源吗？<strong>不能，B一定要确保A收到自己的ACK、FIN。</strong></p>
+<p>所以B需要静静地等待A的第四个消息的到来：</p>
+<p><strong>第四个消息：A发出ACK，用于确认收到B的FIN</strong></p>
+<p>当B接收到此消息，即认为双方达成了同步：双方都知道连接可以释放了，此时B可以安全地释放此TCP连接所占用的内存资源、端口号。</p>
+<p>所以<strong>被动关闭的B无需任何wait time，直接释放资源。</strong></p>
+<p>但，A并不知道B是否接到自己的ACK，A是这么想的：</p>
+<p>1）如果B没有收到自己的ACK，会超时重传FiN</p>
+<p>那么A再次接到重传的FIN，会再次发送ACK</p>
+<p>2）如果B收到自己的ACK，也不会再发任何消息，包括ACK</p>
+<p>无论是1还是2，A都需要等待，要取这两种情况等待时间的最大值，<strong>以应对最坏的情况发生</strong>，这个最坏情况是：</p>
+<p>去向ACK消息最大存活时间（MSL) + 来向FIN消息的最大存活时间(MSL)。</p>
+<p>这恰恰就是<strong>2MSL( Maximum Segment Life)。</strong></p>
+<p>等待2MSL时间，A就可以放心地释放TCP占用的资源、端口号，<strong>此时可以使用该端口号连接任何服务器。</strong></p>
+<p><strong>为何一定要等2MSL？</strong><br><strong>如果不等，释放的端口可能会重连刚断开的服务器端口，这样依然存活在网络里的老的TCP报文可能与新TCP连接报文冲突，造成数据冲突，为避免此种情况，需要耐心等待网络老的TCP连接的活跃报文全部死翘翘，2MSL时间可以满足这个需求（尽管非常保守）！</strong></p>
+]]></content>
+      <categories>
+        <category>tcp/ip</category>
+      </categories>
+      <tags>
+        <tag>tcp/ip</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>DockerFile 使用</title>
+    <url>/2020/05/23/docker_dockerfile/</url>
+    <content><![CDATA[<h3 id="什么是dockerfile"><a href="#什么是dockerfile" class="headerlink" title="什么是dockerfile?"></a>什么是dockerfile?</h3><p>Dockerfile是一个包含用于组合映像的命令的文本文档。可以使用在命令行中调用任何命令。 Docker通过读取Dockerfile中的指令自动生成映像。</p>
+<p>docker build命令用于从Dockerfile构建映像。可以在docker build命令中使用-f标志指向文件系统中任何位置的Dockerfile。<br>例：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker build -f /path/to/a/Dockerfile</span><br></pre></td></tr></table></figure>
+
+<h3 id="Dockerfile的基本结构"><a href="#Dockerfile的基本结构" class="headerlink" title="Dockerfile的基本结构"></a>Dockerfile的基本结构</h3><p>Dockerfile 一般分为四部分：基础镜像信息、维护者信息、镜像操作指令和容器启动时执行指令，’#’ 为 Dockerfile 中的注释。</p>
+<h3 id="Dockerfile文件说明"><a href="#Dockerfile文件说明" class="headerlink" title="Dockerfile文件说明"></a>Dockerfile文件说明</h3><p>Docker以从上到下的顺序运行Dockerfile的指令。为了指定基本映像，第一条指令必须是FROM。一个声明以＃字符开头则被视为注释。可以在Docker文件中使用RUN，CMD，FROM，EXPOSE，ENV等指令。</p>
+<h3 id="docker-build-命令详解"><a href="#docker-build-命令详解" class="headerlink" title="docker build 命令详解"></a>docker build 命令详解</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker build [OPTIONS] PATH | URL | -</span><br><span class="line"></span><br><span class="line">--build-arg=[] :设置镜像创建时的变量；</span><br><span class="line"></span><br><span class="line">--cpu-shares :设置 cpu 使用权重；</span><br><span class="line"></span><br><span class="line">--cpu-period :限制 CPU CFS周期；</span><br><span class="line"></span><br><span class="line">--cpu-quota :限制 CPU CFS配额；</span><br><span class="line"></span><br><span class="line">--cpuset-cpus :指定使用的CPU id；</span><br><span class="line"></span><br><span class="line">--cpuset-mems :指定使用的内存 id；</span><br><span class="line"></span><br><span class="line">--disable-content-trust :忽略校验，默认开启；</span><br><span class="line"></span><br><span class="line">-f :指定要使用的Dockerfile路径；</span><br><span class="line"></span><br><span class="line">--force-rm :设置镜像过程中删除中间容器；</span><br><span class="line"></span><br><span class="line">--isolation :使用容器隔离技术；</span><br><span class="line"></span><br><span class="line">--label=[] :设置镜像使用的元数据；</span><br><span class="line"></span><br><span class="line">-m :设置内存最大值；</span><br><span class="line"></span><br><span class="line">--memory-swap :设置Swap的最大值为内存+swap，"-1"表示不限swap；</span><br><span class="line"></span><br><span class="line">--no-cache :创建镜像的过程不使用缓存；</span><br><span class="line"></span><br><span class="line">--pull :尝试去更新镜像的新版本；</span><br><span class="line"></span><br><span class="line">--quiet, -q :安静模式，成功后只输出镜像 ID；</span><br><span class="line"></span><br><span class="line">--rm :设置镜像成功后删除中间容器；</span><br><span class="line"></span><br><span class="line">--shm-size :设置/dev/shm的大小，默认值是64M；</span><br><span class="line"></span><br><span class="line">--ulimit :Ulimit配置。</span><br><span class="line"></span><br><span class="line">--tag, -t: 镜像的名字及标签，通常 name:tag 或者 name 格式；可以在一次构建中为一个镜像设置多个标签。</span><br><span class="line"></span><br><span class="line">--network: 默认 default。在构建期间设置RUN指令的网络模式</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 实例</span><br><span class="line"></span><br><span class="line">// 使用当前目录的 Dockerfile 创建镜像，标签为 runoob/ubuntu:v1。</span><br><span class="line">docker build -t runoob/ubuntu:v1 . </span><br><span class="line"></span><br><span class="line">// 使用URL github.com/creack/docker-firefox 的 Dockerfile 创建镜像。</span><br><span class="line">docker build github.com/creack/docker-firefox</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 也可以通过 -f Dockerfile 文件的位置：</span><br><span class="line"><span class="meta">$</span><span class="bash"> docker build -f /path/to/a/Dockerfile .</span></span><br><span class="line"></span><br><span class="line">// 在 Docker 守护进程执行 Dockerfile 中的指令前，首先会对 Dockerfile 进行语法检查，有语法错误时会返回：</span><br><span class="line"><span class="meta">$</span><span class="bash"> docker build -t <span class="built_in">test</span>/myapp .</span></span><br><span class="line">Sending build context to Docker daemon 2.048 kB</span><br><span class="line">Error response from daemon: Unknown instruction: RUNCMD</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>docker</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
       </tags>
   </entry>
   <entry>
@@ -237,86 +452,6 @@
       </categories>
       <tags>
         <tag>Apollo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>为什么TCP4次挥手时等待为2MSL？</title>
-    <url>/2020/05/24/tcpip_2msl/</url>
-    <content><![CDATA[<p>通信所要解决的首要问题就是，<strong>保持通信双方的信息对称，使通信双方处于同步状态。</strong></p>
-<p>先来一个例子：<br>罗密欧大学期间写信给中学同学朱丽叶，信的内容如下：</p>
-<p><strong>小叶子，我喜欢你！</strong></p>
-<p>这封信发出之后，罗密欧无法知道朱丽叶能否收到，只有收到小叶子的回信，才能知道自己的信已经到达对方。</p>
-<p>三天之后，小叶子回信了，信的内容如下：</p>
-<p><strong>小欧，来信已阅，我也喜欢你…</strong></p>
-<p>此时，小叶子眼中双方的状态是：<strong>互相爱慕</strong>！</p>
-<p>如果小欧收到回信，小欧眼中双方的状态也是：互相爱慕！</p>
-<p>如果小欧没有收到回信，小欧眼中双方的状态是：<strong>单相思</strong>！</p>
-<p>小叶子为了杜绝小欧模棱两可的状态，使他与自己达成“<strong>互相爱慕</strong>”的共识，需要做以下工作：</p>
-<p>1）先耐心地等小欧的第三封信</p>
-<p>2）如果若干天没有收到回信，需要把自己的第二封信再次发出</p>
-<p>如果收到了小欧的回信，那么双方的状态终于同步了：“互相爱慕”！</p>
-<p>即使2）发生了，N天之后也可以达成同步状态。</p>
-<p>之后，双方可以甜言蜜语地谈恋爱了。</p>
-<p>TCP四次挥手也遵循相似的套路。</p>
-<p>主动断开的一侧为A，被动断开的一侧为B。</p>
-<p><strong>第一个消息：A发FIN</strong></p>
-<p><strong>第二个消息：B回复ACK（回复的同时把tcp链接关掉，tcp处于半关闭状态）</strong></p>
-<p><strong>第三个消息：B发出FIN</strong></p>
-<p>此时此刻：B单方面认为自己与A达成了共识，即双方都同意关闭连接。</p>
-<p>此时，B能释放这个TCP连接占用的内存资源吗？<strong>不能，B一定要确保A收到自己的ACK、FIN。</strong></p>
-<p>所以B需要静静地等待A的第四个消息的到来：</p>
-<p><strong>第四个消息：A发出ACK，用于确认收到B的FIN</strong></p>
-<p>当B接收到此消息，即认为双方达成了同步：双方都知道连接可以释放了，此时B可以安全地释放此TCP连接所占用的内存资源、端口号。</p>
-<p>所以<strong>被动关闭的B无需任何wait time，直接释放资源。</strong></p>
-<p>但，A并不知道B是否接到自己的ACK，A是这么想的：</p>
-<p>1）如果B没有收到自己的ACK，会超时重传FiN</p>
-<p>那么A再次接到重传的FIN，会再次发送ACK</p>
-<p>2）如果B收到自己的ACK，也不会再发任何消息，包括ACK</p>
-<p>无论是1还是2，A都需要等待，要取这两种情况等待时间的最大值，<strong>以应对最坏的情况发生</strong>，这个最坏情况是：</p>
-<p>去向ACK消息最大存活时间（MSL) + 来向FIN消息的最大存活时间(MSL)。</p>
-<p>这恰恰就是<strong>2MSL( Maximum Segment Life)。</strong></p>
-<p>等待2MSL时间，A就可以放心地释放TCP占用的资源、端口号，<strong>此时可以使用该端口号连接任何服务器。</strong></p>
-<p><strong>为何一定要等2MSL？</strong><br><strong>如果不等，释放的端口可能会重连刚断开的服务器端口，这样依然存活在网络里的老的TCP报文可能与新TCP连接报文冲突，造成数据冲突，为避免此种情况，需要耐心等待网络老的TCP连接的活跃报文全部死翘翘，2MSL时间可以满足这个需求（尽管非常保守）！</strong></p>
-]]></content>
-      <categories>
-        <category>tcp/ip</category>
-      </categories>
-      <tags>
-        <tag>tcp/ip</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>TCP协议连接复位(RST)</title>
-    <url>/2020/05/24/tcpip_rst/</url>
-    <content><![CDATA[<p>tcp连接异常终止的情况。一般来说，导致这种情况的原因一般有很多种，比如：</p>
-<ul>
-<li><p>拒绝连接请求，比如：A想和B建立tcp连接，但是A的连接请求中使用了一个不存在的端口（比如：这个端口超出65535的范围），那么B就可以发送RST报文段拒绝这个请求。</p>
-</li>
-<li><p>异常终止连接，如:A和B的tcp连接出现了异常，然后B希望终止这条异常的连接，于是就可以发送一个RST报文段终止这个连接</p>
-</li>
-<li><p>终止空闲的连接，如A和B之间的tcp连接已经很久没有传输数据了，空闲太长时间，可以发送RST报文段来终止这个连接。</p>
-</li>
-</ul>
-<p>  这里我们只针对拒绝连接请求和异常终止连接做详细介绍。</p>
-<h3 id="拒绝连接"><a href="#拒绝连接" class="headerlink" title="拒绝连接"></a>拒绝连接</h3><p><img src="/2020/05/24/tcpip_rst/1.png" alt></p>
-<p>拒绝连接一般是由服务器主动发起的，因为客户端发起请求连接携带的目的端口，可能服务器并没有开启LISTEN状态。因此服务器在收到这样的报文段后会发送一个RST报文段，在这个报文里把RST和ACK都置为1，它确认了SYN报文段并同时重置了该tcp连接，然后服务器等待另一个连接。客户端在收到RST+ACK报文段后就会进入CLOSED状态。</p>
-<p>telnet 登录一个没有的端口，用wireshark 抓包查看</p>
-<p>telnet登录和发送SYN序号</p>
-<p><img src="/2020/05/24/tcpip_rst/2.png" alt></p>
-<p><img src="/2020/05/24/tcpip_rst/3.png" alt></p>
-<p>服务端抓包服务器，rst，ack 报文</p>
-<p><img src="/2020/05/24/tcpip_rst/4.png" alt></p>
-<h3 id="异常终止连接"><a href="#异常终止连接" class="headerlink" title="异常终止连接"></a>异常终止连接</h3><p><img src="/2020/05/24/tcpip_rst/5.png" alt></p>
-<p>出现异常终止连接的原因有很多种，可能是进程出现bug了或者由于数据出现了不一致（不想发送数据了），对于这种情况，tcp有可能终止一条连接。也就是说，在这些情况下，就可以发送RST报文段异常终止连接。</p>
-<p>客户端由于队列中的数据出现了不一致，发送了RST+ACK报文段异常终止连接，注意：在发送RST+ACK报文段的时候会丢弃掉队列中的所有数据，服务器也会把队列中的所有数据都丢弃掉，并通过一个ICMP差错报告报文通知服务器，然后双方都进入CLOSED状态。</p>
-<p>在一些情况下，我们可能想让服务端把数据发送完，然后再关闭tcp连接，而不是马上发送RST报文终止这条连接，那么可以在套接字编程中使用SO_LINGER选项。SO_LINGER选项是用来设置延迟关闭的时间，等待套接字发送缓冲区中的数据发送完成，但是并不保证数据一定会被对方接收，只是等待一段时间后，再正常关闭tcp连接。如果SO_LINGER设置为0，则会清除队列中的所有数据，直接发送RST报文关闭连接</p>
-<p><strong>需要注意的是：对于RST报文段，另一端不需要发送任何响应，因为发送完RST报文后，这条tcp连接就关闭了，也就没有必要确认了</strong>，收到RST的一方将终止该连接，并通知应用层复位连接。</p>
-]]></content>
-      <categories>
-        <category>tcp/ip</category>
-      </categories>
-      <tags>
-        <tag>tcp/ip</tag>
       </tags>
   </entry>
 </search>

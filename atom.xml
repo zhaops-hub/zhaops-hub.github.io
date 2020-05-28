@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://zhaops-hub.github.io/"/>
-  <updated>2020-05-27T14:42:00.051Z</updated>
+  <updated>2020-05-28T15:34:15.286Z</updated>
   <id>https://zhaops-hub.github.io/</id>
   
   <author>
@@ -15,6 +15,85 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>移位存储详解</title>
+    <link href="https://zhaops-hub.github.io/2020/05/28/c_shift/"/>
+    <id>https://zhaops-hub.github.io/2020/05/28/c_shift/</id>
+    <published>2020-05-28T12:41:08.000Z</published>
+    <updated>2020-05-28T15:34:15.286Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="IEEE-754-浮点数存储标准"><a href="#IEEE-754-浮点数存储标准" class="headerlink" title="IEEE 754 浮点数存储标准"></a>IEEE 754 浮点数存储标准</h3><p>规定浮点数格式如下：</p><p><img src="/2020/05/28/c_shift/1.png" alt></p><p>s表示符号位，当s=0，V为正数；当s=1，V为负数</p><p>E表示8位阶码，采用移位存储</p><p>M表示23位尾数，如M为10100….，那么M所代表的二进制浮点数为M’=1+1/2+1/2^2=1.75，2&gt;M’&gt;=1</p><p>根据32位数计算为十进制：V=(−1)^s × M’ × 2^(E−127)，</p><h3 id="移位存储详解"><a href="#移位存储详解" class="headerlink" title="移位存储详解"></a>移位存储详解</h3><p>如果采用传统的高bit表示正负的方法，将-127-127分为两个区间表示：</p><p>第一个区间：0 000000 0~ 0 111111 1 即 +0 到 127</p><p>第二个区间：1 000000 0~ 1 111111 1 即 -0 到 -127</p><p>很明显存在+0和-0的问题，如果采用移位存储技术，即在原始数值的基础上加 127，全部转换为&gt;=0的数进行表示：</p><p>此时最高位不是符号位，8bit可以表示0<del>255，那么原始数值可以表示-127</del>128，分别如下</p><p>第一个区间：0 000000 0~ 0 111111 1 ，直接大小0~127 ，减去127后表达范围 -127 到 0</p><p>第二个区间：1 000000 0~ 1 111111 1 ，直接大小128~255，减去127后表达范围 1 到 128</p><p>也就是可以使用 8位二进制来表示从 -127~128 共计 127个负数+零（0）+128个正数总共 256个数，且使用移位存储即没有+0和-0的问题，又充分的使用这个新生成的 8位二进制数来最大限度的表示单精度浮点数的幂指数（阶码）</p><hr><p>如果不用以为存储，有 正0 负0 的问题</p><p>自己搞几个例子</p><p>0: <code>0 + 127 = 127</code>   <code>0 000000 0 + 0 111111 1 = 0 111111 1</code></p><p>1: <code>1 + 127 = 128</code>  <code>0 000000 1 + 0 111111 1 = 1 000000 0</code></p><p>2: <code>2 + 127 = 129</code>   <code>0 000001 0 + 111111 1 = 1 000000 1</code></p><p>-1: <code>-1 + 127 = 126, 127 - 1</code>  <code>0 111111 1 - 0 000000 1 = 0 111111 0</code> </p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;IEEE-754-浮点数存储标准&quot;&gt;&lt;a href=&quot;#IEEE-754-浮点数存储标准&quot; class=&quot;headerlink&quot; title=&quot;IEEE 754 浮点数存储标准&quot;&gt;&lt;/a&gt;IEEE 754 浮点数存储标准&lt;/h3&gt;&lt;p&gt;规定浮点数格式如下：&lt;/p&gt;
+      
+    
+    </summary>
+    
+    
+      <category term="C语言" scheme="https://zhaops-hub.github.io/categories/C%E8%AF%AD%E8%A8%80/"/>
+    
+    
+      <category term="C语言" scheme="https://zhaops-hub.github.io/tags/C%E8%AF%AD%E8%A8%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>浮点数转换二进制</title>
+    <link href="https://zhaops-hub.github.io/2020/05/28/c_float/"/>
+    <id>https://zhaops-hub.github.io/2020/05/28/c_float/</id>
+    <published>2020-05-28T12:41:08.000Z</published>
+    <updated>2020-05-28T14:47:20.247Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="浮点数在计算机中是如何表示的？"><a href="#浮点数在计算机中是如何表示的？" class="headerlink" title="浮点数在计算机中是如何表示的？"></a>浮点数在计算机中是如何表示的？</h2><p>浮点数在计算机中的存储方式遵循IEEE 754 浮点数计数标准，可以表示为：</p><p><img src="/2020/05/28/c_float/1.png" alt></p><p>采用<strong>尾数 + 阶码</strong>的编码方式，更通俗一点说，就是类似于数学课本上所学的<strong>科学计数法</strong>表示方式：<strong>有效数字 + 指数位</strong>！</p><p>因此，只要给出：<strong>符号（S）</strong>、<strong>阶码部分（E）</strong>、<strong>尾数部分（M）</strong> 这三个维度的信息，一个浮点数的表示就完全确定下来了，所以<code>float</code>和<code>double</code>这两种类型的浮点数在计算机中的存储结构就表示成下图所示这个样子：</p><p><img src="/2020/05/28/c_float/2.png" alt></p><ul><li><p><strong>符号部分（S）</strong></p><p><code>0</code>-正 <code>1</code>-负</p></li><li><p><strong>阶码部分（E）（指数部分）</strong></p><p>对于<code>float</code>型浮点数，指数部分<code>8</code>位，考虑可正可负，因此可以表示的指数范围为<code>-127 ~ 128</code></p><p>对于<code>double</code>型浮点数，指数部分<code>11</code>位，考虑可正可负，因此可以表示的指数范围为<code>-1023 ~ 1024</code></p></li><li><p><strong>尾数部分（M）</strong></p><p>浮点数的精度是由尾数的位数来决定的：</p><ul><li>对于<code>float</code>型浮点数，尾数部分<code>23</code>位，换算成十进制就是 <code>2^23=8388608</code>，所以十进制精度只有<code>6 ~ 7</code>位；</li><li>对于<code>double</code>型浮点数，尾数部分<code>52</code>位，换算成十进制就是 <code>2^52 = 4503599627370496</code>，所以十进制精度只有<code>15 ~ 16</code>位</li></ul></li></ul><p>以，浮点数交给计算机存储的时候，可能会有<strong>精度丢失</strong>问题！！！因此使用时需要格外小心，如果真因为这一块出了bug，定位问题还是非常艰难的，所以预防工作要做好。</p><h2 id="先来个简单的例子"><a href="#先来个简单的例子" class="headerlink" title="先来个简单的例子"></a>先来个简单的例子</h2><p>比如：<strong>把十进制小数<code>0.875</code>转换成二进制，具体怎么操作？</strong></p><ul><li><p><strong>以小数点为界，拆分</strong></p></li><li><p><strong>整数部分转换</strong></p><p>整数转二进制我想大家应该都熟悉，使用：<strong>除2取余法</strong> 即可。而这里的<code>0.875</code>整数部分为0，无需操作</p></li><li><p><strong>小数部分转换</strong></p><p>小数部分的转换不同于整数部分，采用的是 <strong>“乘2取整法”</strong> ，图示一下就明白了</p><p><img src="/2020/05/28/c_float/3.png" alt></p></li><li><p><strong>合并结果</strong></p><p><code>整数部分 + 小数部分</code>，最终得到二进制结果为<code>0.111</code>。</p></li></ul><p>  所以该结果按照上一节所述的<strong>尾数 + 阶码</strong>的计算机计数方式，则可以表示为：</p><p>  <img src="/2020/05/28/c_float/4.png" alt></p><p>  <strong>0.111 = 1.11*2^-1</strong>  类似于科学计数法</p><p>  所以对应可得：</p><ul><li><strong>符号位</strong>：<code>0</code></li><li><strong>阶码（E）部分</strong>：若以<code>float</code>为例，应为 <code>127 +（-1）= 126</code>，因此二进制表示为：<code>01111110</code></li><li><strong>尾数部分（M）</strong>：若以<code>float</code>为例，应为<code>23</code>位，因此尾部补齐后为<code>11000000000000000000000</code></li></ul><p>因此最终的总结果为（以<code>32</code>位精度<code>float</code>表示）：</p><p><code>00111111011000000000000000000000</code></p><h2 id="再来个复杂点例子"><a href="#再来个复杂点例子" class="headerlink" title="再来个复杂点例子"></a>再来个复杂点例子</h2><p>再比如：<strong>把十进制小数<code>6.36</code>转换成二进制，具体怎么操作？</strong></p><p><img src="/2020/05/28/c_float/5.png" alt></p><p>整数部分 + 小数部分，因此最终得到的结果二进制结果为<code>110.01011100...</code>。</p><p>还是按照上一节所述的<strong>尾数 + 阶码</strong>的计算机计数方式，则可以表示为：</p><p><img src="/2020/05/28/c_float/6.png" alt></p><ul><li><strong>符号位</strong>：0</li><li><strong>阶码（E）部分</strong>：若以<code>float</code>为例，应为 <code>127 +（2）= 129</code>，因此二进制表示为：<code>10000001</code></li><li><strong>尾数部分（M）</strong>：<code>1001011100...</code>，其实它本身无限不循环，但若以<code>float</code>型精度来截取<code>23</code>位，则可以表示为<code>10010111000010100011111</code></li></ul><p>因此最终的总结果为（以<code>32</code>位精度<code>float</code>表示）：</p><p><code>01000000110010111000010100011111</code></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;浮点数在计算机中是如何表示的？&quot;&gt;&lt;a href=&quot;#浮点数在计算机中是如何表示的？&quot; class=&quot;headerlink&quot; title=&quot;浮点数在计算机中是如何表示的？&quot;&gt;&lt;/a&gt;浮点数在计算机中是如何表示的？&lt;/h2&gt;&lt;p&gt;浮点数在计算机中的存储方式遵循IEE
+      
+    
+    </summary>
+    
+    
+      <category term="C语言" scheme="https://zhaops-hub.github.io/categories/C%E8%AF%AD%E8%A8%80/"/>
+    
+    
+      <category term="C语言" scheme="https://zhaops-hub.github.io/tags/C%E8%AF%AD%E8%A8%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>TCP之Nagle算法&amp;&amp;延迟ACK</title>
+    <link href="https://zhaops-hub.github.io/2020/05/27/tcpip_nagle/"/>
+    <id>https://zhaops-hub.github.io/2020/05/27/tcpip_nagle/</id>
+    <published>2020-05-27T14:41:08.000Z</published>
+    <updated>2020-05-27T15:35:23.013Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Nagle算法"><a href="#Nagle算法" class="headerlink" title="Nagle算法"></a>Nagle算法</h2><p>是为了减少广域网的小分组数目，从而减小网络拥塞的出现；</p><p>该算法要求一个tcp连接上最多只能有一个未被确认的未完成的小分组，在该分组ack到达之前不能发送其他的小分组，tcp需要收集这些少量的分组，并在ack到来时以一个分组的方式发送出去；其中小分组的定义是小于MSS的任何分组；</p><p>该算法的优越之处在于它是自适应的，确认到达的越快，数据也就发哦送的越快；而在希望减少微小分组数目的低速广域网上，则会发送更少的分组；</p><h2 id="延迟ACK"><a href="#延迟ACK" class="headerlink" title="延迟ACK"></a>延迟ACK</h2><p>如果tcp对每个数据包都发送一个ack确认，那么只是一个单独的数据包为了发送一个ack代价比较高，所以tcp会延迟一段时间，如果这段时间内有数据发送到对端，则捎带发送ack，如果在延迟ack定时器触发时候，发现ack尚未发送，则立即单独发送；</p><p>延迟ACK好处</p><ul><li>避免糊涂窗口综合症；</li><li>发送数据的时候将ack捎带发送，不必单独发送ack；</li><li>如果延迟时间内有多个数据段到达，那么允许协议栈发送一个ack确认多个报文段；</li></ul><h2 id="当Nagle遇上延迟ACK"><a href="#当Nagle遇上延迟ACK" class="headerlink" title="当Nagle遇上延迟ACK"></a>当Nagle遇上延迟ACK</h2><p>试想如下典型操作，写-写-读，即通过多个写小片数据向对端发送单个逻辑的操作，两次写数据长度小于MSS，当第一次写数据到达对端后，对端延迟ack，不发送ack，而本端因为要发送的数据长度小于MSS，所以nagle算法起作用，数据并不会立即发送，而是等待对端发送的第一次数据确认ack；这样的情况下，需要等待对端超时发送ack，然后本段才能发送第二次写的数据，从而造成延迟；</p><p><code>MSS</code>（Maximum Segment Size，最大报文段大小）的概念是指TCP层所能够接收的最大段大小，该值只包括TCP段的数据部分，不包括选项部分。</p><h2 id="关闭Nagle算法"><a href="#关闭Nagle算法" class="headerlink" title="关闭Nagle算法"></a>关闭Nagle算法</h2><p>使用TCP套接字选项TCP_NODELAY可以关闭套接字选项;</p><p>如下场景考虑关闭Nagle算法：</p><ul><li>对端不向本端发送数据，并且对延时比较敏感的操作；这种操作没法捎带ack；</li><li>如上写-写-读操作；对于此种情况，优先使用其他方式，而不是关闭Nagle算法：</li></ul><p>–使用writev，而不是两次调用write，单个writev调用会使tcp输出一次而不是两次，只产生一个tcp分节，这是首选方法；</p><p>–把两次写操作的数据复制到单个缓冲区，然后对缓冲区调用一次write；</p><p>–关闭Nagle算法，调用write两次；有损于网络，通常不考虑；</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;Nagle算法&quot;&gt;&lt;a href=&quot;#Nagle算法&quot; class=&quot;headerlink&quot; title=&quot;Nagle算法&quot;&gt;&lt;/a&gt;Nagle算法&lt;/h2&gt;&lt;p&gt;是为了减少广域网的小分组数目，从而减小网络拥塞的出现；&lt;/p&gt;
+&lt;p&gt;该算法要求一个tcp连接上最多
+      
+    
+    </summary>
+    
+    
+      <category term="tcp/ip" scheme="https://zhaops-hub.github.io/categories/tcp-ip/"/>
+    
+    
+      <category term="tcp/ip" scheme="https://zhaops-hub.github.io/tags/tcp-ip/"/>
+    
+  </entry>
   
   <entry>
     <title>Docker 部署 MongoDB + MongoDB-express</title>
@@ -39,32 +118,6 @@
     
     
       <category term="MongoDB" scheme="https://zhaops-hub.github.io/tags/MongoDB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>TCP半打开连接及同时打开同时关闭</title>
-    <link href="https://zhaops-hub.github.io/2020/05/24/tcpip_halfopen/"/>
-    <id>https://zhaops-hub.github.io/2020/05/24/tcpip_halfopen/</id>
-    <published>2020-05-24T12:41:08.000Z</published>
-    <updated>2020-05-27T14:40:23.406Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="TCP半打开连接"><a href="#TCP半打开连接" class="headerlink" title="TCP半打开连接"></a>TCP半打开连接</h3><p>如果一方已经关闭或者异常终止连接而另外一方却还不知道，这样的连接就称为半打开连接（Half open connection）。处于半打开的连接，如果双方不进行数据通信，是发现不了问题的，只有在通信是才真正的察觉到这个连接已经处于半打开状态，如果双方不传输数据的话，仍处于连接状态的一方就不会检测另外一方已经出现异常</p><p>半打开连接的一个常见的原因是客户端或者服务器突然掉电而不是正常的结束应用程序后再关机，这样即使重新启动后，原来的连接信息已经消失了，对端仍然保持半打开状态，如果需要发数据的话，这边收到之后 其实发现这个连接并不存在了，就会回复RST包告知，这个时候就需要重新建立连接了！</p><p>接下来使用SSH协议复制一下这个场景：</p><ul><li>telnet 链接centos服务器 192.168.179.130 23</li><li>建立连接成功，可以在client进行linux操作</li></ul><p><img src="/2020/05/24/tcpip_halfopen/1.png" alt></p><ul><li><p>需要模拟服务器出现异常，先关掉网卡，然后关机（关掉网卡，为了避免关机时服务器主动退出发送FIN包）</p><ul><li><p>我这边复现不了，管理网卡客户端这边就立马监听到断开了；直接关机的话就发送 FIN包了</p><p><img src="/2020/05/24/tcpip_halfopen/2.png" alt></p></li></ul></li><li><p>重新打开服务器</p></li><li><p>操作客户端，发现已经出现了异常，无法通信，并提示重新连接， 这个时候实际上客户端发送的包被服务器给RST了，因为之前的连接信息已经丢失了</p></li><li><p>重新连接之后可以正常的进行通信</p></li><li><p>服务器重新启动，之前的连接信息都已经丢失，所以它将复位所有信息，因此它不知道数据报文段提到的连接，<strong>处理原则就是接收方以复位做应答</strong></p></li></ul><h3 id="同时打开"><a href="#同时打开" class="headerlink" title="同时打开"></a>同时打开</h3><p>两个应用程序同时彼此执行主动打开的情况，2端的端口需要一致，这就需要双方都熟知端口，这种情况发生的概率很小 ，这里简单的介绍一下</p><p>场景：</p><ul><li><p>PC1的应用程序使用端口7777 与PC2的端口8888  执行主动打开</p></li><li><p>PC2的应用程序使用端口8888 与PC1的端口7777 执行主动打开</p></li><li><p>SYN包同时打开对端，这种情况即为同时打开</p></li></ul><p>  <strong>TCP中，对于同时打开它仅建立一条连接而不是两条连接</strong>，状态变迁图如下：同时发送SYN包，然后收到进行确认直接进入ESTABLISHED状态，可以看到同时打开需要连接建立需要4个报文段，比三次握手多一次！</p><p>  <img src="/2020/05/24/tcpip_halfopen/3.png" alt></p><p>这种情况复现不了，用书上的一张图</p><p>​    <img src="/2020/05/24/tcpip_halfopen/4.png" alt></p><p>第 1,2行 执行2个 SYN ,第3,4行执行了2个 SYN,ACK</p><h3 id="同时关闭"><a href="#同时关闭" class="headerlink" title="同时关闭"></a>同时关闭</h3><p>有同时打开，理所应当的也有同时关闭的场景，TCP协议也允许同时关闭。状态变化可以看到下图了，同时发送FIN包，两端同时执行主动关闭，进入FIN_WAIT_1的状态，从FIN_WAIT_1状态收到FIN包的时候进入CLOSING状态，然后回复ACK，进入TIME_WAIT状态。</p><p><img src="/2020/05/24/tcpip_halfopen/5.png" alt></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;TCP半打开连接&quot;&gt;&lt;a href=&quot;#TCP半打开连接&quot; class=&quot;headerlink&quot; title=&quot;TCP半打开连接&quot;&gt;&lt;/a&gt;TCP半打开连接&lt;/h3&gt;&lt;p&gt;如果一方已经关闭或者异常终止连接而另外一方却还不知道，这样的连接就称为半打开连接（Half 
-      
-    
-    </summary>
-    
-    
-      <category term="tcp/ip" scheme="https://zhaops-hub.github.io/categories/tcp-ip/"/>
-    
-    
-      <category term="tcp/ip" scheme="https://zhaops-hub.github.io/tags/tcp-ip/"/>
     
   </entry>
   
@@ -125,6 +178,32 @@
   </entry>
   
   <entry>
+    <title>TCP半打开连接及同时打开同时关闭</title>
+    <link href="https://zhaops-hub.github.io/2020/05/24/tcpip_halfopen/"/>
+    <id>https://zhaops-hub.github.io/2020/05/24/tcpip_halfopen/</id>
+    <published>2020-05-24T12:41:08.000Z</published>
+    <updated>2020-05-27T14:40:23.406Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="TCP半打开连接"><a href="#TCP半打开连接" class="headerlink" title="TCP半打开连接"></a>TCP半打开连接</h3><p>如果一方已经关闭或者异常终止连接而另外一方却还不知道，这样的连接就称为半打开连接（Half open connection）。处于半打开的连接，如果双方不进行数据通信，是发现不了问题的，只有在通信是才真正的察觉到这个连接已经处于半打开状态，如果双方不传输数据的话，仍处于连接状态的一方就不会检测另外一方已经出现异常</p><p>半打开连接的一个常见的原因是客户端或者服务器突然掉电而不是正常的结束应用程序后再关机，这样即使重新启动后，原来的连接信息已经消失了，对端仍然保持半打开状态，如果需要发数据的话，这边收到之后 其实发现这个连接并不存在了，就会回复RST包告知，这个时候就需要重新建立连接了！</p><p>接下来使用SSH协议复制一下这个场景：</p><ul><li>telnet 链接centos服务器 192.168.179.130 23</li><li>建立连接成功，可以在client进行linux操作</li></ul><p><img src="/2020/05/24/tcpip_halfopen/1.png" alt></p><ul><li><p>需要模拟服务器出现异常，先关掉网卡，然后关机（关掉网卡，为了避免关机时服务器主动退出发送FIN包）</p><ul><li><p>我这边复现不了，管理网卡客户端这边就立马监听到断开了；直接关机的话就发送 FIN包了</p><p><img src="/2020/05/24/tcpip_halfopen/2.png" alt></p></li></ul></li><li><p>重新打开服务器</p></li><li><p>操作客户端，发现已经出现了异常，无法通信，并提示重新连接， 这个时候实际上客户端发送的包被服务器给RST了，因为之前的连接信息已经丢失了</p></li><li><p>重新连接之后可以正常的进行通信</p></li><li><p>服务器重新启动，之前的连接信息都已经丢失，所以它将复位所有信息，因此它不知道数据报文段提到的连接，<strong>处理原则就是接收方以复位做应答</strong></p></li></ul><h3 id="同时打开"><a href="#同时打开" class="headerlink" title="同时打开"></a>同时打开</h3><p>两个应用程序同时彼此执行主动打开的情况，2端的端口需要一致，这就需要双方都熟知端口，这种情况发生的概率很小 ，这里简单的介绍一下</p><p>场景：</p><ul><li><p>PC1的应用程序使用端口7777 与PC2的端口8888  执行主动打开</p></li><li><p>PC2的应用程序使用端口8888 与PC1的端口7777 执行主动打开</p></li><li><p>SYN包同时打开对端，这种情况即为同时打开</p></li></ul><p>  <strong>TCP中，对于同时打开它仅建立一条连接而不是两条连接</strong>，状态变迁图如下：同时发送SYN包，然后收到进行确认直接进入ESTABLISHED状态，可以看到同时打开需要连接建立需要4个报文段，比三次握手多一次！</p><p>  <img src="/2020/05/24/tcpip_halfopen/3.png" alt></p><p>这种情况复现不了，用书上的一张图</p><p>​    <img src="/2020/05/24/tcpip_halfopen/4.png" alt></p><p>第 1,2行 执行2个 SYN ,第3,4行执行了2个 SYN,ACK</p><h3 id="同时关闭"><a href="#同时关闭" class="headerlink" title="同时关闭"></a>同时关闭</h3><p>有同时打开，理所应当的也有同时关闭的场景，TCP协议也允许同时关闭。状态变化可以看到下图了，同时发送FIN包，两端同时执行主动关闭，进入FIN_WAIT_1的状态，从FIN_WAIT_1状态收到FIN包的时候进入CLOSING状态，然后回复ACK，进入TIME_WAIT状态。</p><p><img src="/2020/05/24/tcpip_halfopen/5.png" alt></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;TCP半打开连接&quot;&gt;&lt;a href=&quot;#TCP半打开连接&quot; class=&quot;headerlink&quot; title=&quot;TCP半打开连接&quot;&gt;&lt;/a&gt;TCP半打开连接&lt;/h3&gt;&lt;p&gt;如果一方已经关闭或者异常终止连接而另外一方却还不知道，这样的连接就称为半打开连接（Half 
+      
+    
+    </summary>
+    
+    
+      <category term="tcp/ip" scheme="https://zhaops-hub.github.io/categories/tcp-ip/"/>
+    
+    
+      <category term="tcp/ip" scheme="https://zhaops-hub.github.io/tags/tcp-ip/"/>
+    
+  </entry>
+  
+  <entry>
     <title>zhaops&#39;s blog</title>
     <link href="https://zhaops-hub.github.io/2020/05/23/README/"/>
     <id>https://zhaops-hub.github.io/2020/05/23/README/</id>
@@ -143,32 +222,6 @@
     </summary>
     
     
-    
-  </entry>
-  
-  <entry>
-    <title>DockerFile 使用</title>
-    <link href="https://zhaops-hub.github.io/2020/05/23/docker_dockerfile/"/>
-    <id>https://zhaops-hub.github.io/2020/05/23/docker_dockerfile/</id>
-    <published>2020-05-23T12:41:08.000Z</published>
-    <updated>2020-05-24T02:39:02.906Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="什么是dockerfile"><a href="#什么是dockerfile" class="headerlink" title="什么是dockerfile?"></a>什么是dockerfile?</h3><p>Dockerfile是一个包含用于组合映像的命令的文本文档。可以使用在命令行中调用任何命令。 Docker通过读取Dockerfile中的指令自动生成映像。</p><p>docker build命令用于从Dockerfile构建映像。可以在docker build命令中使用-f标志指向文件系统中任何位置的Dockerfile。<br>例：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -f /path/to/a/Dockerfile</span><br></pre></td></tr></table></figure><h3 id="Dockerfile的基本结构"><a href="#Dockerfile的基本结构" class="headerlink" title="Dockerfile的基本结构"></a>Dockerfile的基本结构</h3><p>Dockerfile 一般分为四部分：基础镜像信息、维护者信息、镜像操作指令和容器启动时执行指令，’#’ 为 Dockerfile 中的注释。</p><h3 id="Dockerfile文件说明"><a href="#Dockerfile文件说明" class="headerlink" title="Dockerfile文件说明"></a>Dockerfile文件说明</h3><p>Docker以从上到下的顺序运行Dockerfile的指令。为了指定基本映像，第一条指令必须是FROM。一个声明以＃字符开头则被视为注释。可以在Docker文件中使用RUN，CMD，FROM，EXPOSE，ENV等指令。</p><h3 id="docker-build-命令详解"><a href="#docker-build-命令详解" class="headerlink" title="docker build 命令详解"></a>docker build 命令详解</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">docker build [OPTIONS] PATH | URL | -</span><br><span class="line"></span><br><span class="line">--build-arg=[] :设置镜像创建时的变量；</span><br><span class="line"></span><br><span class="line">--cpu-shares :设置 cpu 使用权重；</span><br><span class="line"></span><br><span class="line">--cpu-period :限制 CPU CFS周期；</span><br><span class="line"></span><br><span class="line">--cpu-quota :限制 CPU CFS配额；</span><br><span class="line"></span><br><span class="line">--cpuset-cpus :指定使用的CPU id；</span><br><span class="line"></span><br><span class="line">--cpuset-mems :指定使用的内存 id；</span><br><span class="line"></span><br><span class="line">--disable-content-trust :忽略校验，默认开启；</span><br><span class="line"></span><br><span class="line">-f :指定要使用的Dockerfile路径；</span><br><span class="line"></span><br><span class="line">--force-rm :设置镜像过程中删除中间容器；</span><br><span class="line"></span><br><span class="line">--isolation :使用容器隔离技术；</span><br><span class="line"></span><br><span class="line">--label=[] :设置镜像使用的元数据；</span><br><span class="line"></span><br><span class="line">-m :设置内存最大值；</span><br><span class="line"></span><br><span class="line">--memory-swap :设置Swap的最大值为内存+swap，"-1"表示不限swap；</span><br><span class="line"></span><br><span class="line">--no-cache :创建镜像的过程不使用缓存；</span><br><span class="line"></span><br><span class="line">--pull :尝试去更新镜像的新版本；</span><br><span class="line"></span><br><span class="line">--quiet, -q :安静模式，成功后只输出镜像 ID；</span><br><span class="line"></span><br><span class="line">--rm :设置镜像成功后删除中间容器；</span><br><span class="line"></span><br><span class="line">--shm-size :设置/dev/shm的大小，默认值是64M；</span><br><span class="line"></span><br><span class="line">--ulimit :Ulimit配置。</span><br><span class="line"></span><br><span class="line">--tag, -t: 镜像的名字及标签，通常 name:tag 或者 name 格式；可以在一次构建中为一个镜像设置多个标签。</span><br><span class="line"></span><br><span class="line">--network: 默认 default。在构建期间设置RUN指令的网络模式</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 实例</span><br><span class="line"></span><br><span class="line">// 使用当前目录的 Dockerfile 创建镜像，标签为 runoob/ubuntu:v1。</span><br><span class="line">docker build -t runoob/ubuntu:v1 . </span><br><span class="line"></span><br><span class="line">// 使用URL github.com/creack/docker-firefox 的 Dockerfile 创建镜像。</span><br><span class="line">docker build github.com/creack/docker-firefox</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 也可以通过 -f Dockerfile 文件的位置：</span><br><span class="line"><span class="meta">$</span><span class="bash"> docker build -f /path/to/a/Dockerfile .</span></span><br><span class="line"></span><br><span class="line">// 在 Docker 守护进程执行 Dockerfile 中的指令前，首先会对 Dockerfile 进行语法检查，有语法错误时会返回：</span><br><span class="line"><span class="meta">$</span><span class="bash"> docker build -t <span class="built_in">test</span>/myapp .</span></span><br><span class="line">Sending build context to Docker daemon 2.048 kB</span><br><span class="line">Error response from daemon: Unknown instruction: RUNCMD</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;什么是dockerfile&quot;&gt;&lt;a href=&quot;#什么是dockerfile&quot; class=&quot;headerlink&quot; title=&quot;什么是dockerfile?&quot;&gt;&lt;/a&gt;什么是dockerfile?&lt;/h3&gt;&lt;p&gt;Dockerfile是一个包含用于组合映像的命令
-      
-    
-    </summary>
-    
-    
-      <category term="docker" scheme="https://zhaops-hub.github.io/categories/docker/"/>
-    
-    
-      <category term="docker" scheme="https://zhaops-hub.github.io/tags/docker/"/>
     
   </entry>
   
@@ -195,6 +248,32 @@
     
     
       <category term="Apollo" scheme="https://zhaops-hub.github.io/tags/Apollo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>DockerFile 使用</title>
+    <link href="https://zhaops-hub.github.io/2020/05/23/docker_dockerfile/"/>
+    <id>https://zhaops-hub.github.io/2020/05/23/docker_dockerfile/</id>
+    <published>2020-05-23T12:41:08.000Z</published>
+    <updated>2020-05-24T02:39:02.906Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="什么是dockerfile"><a href="#什么是dockerfile" class="headerlink" title="什么是dockerfile?"></a>什么是dockerfile?</h3><p>Dockerfile是一个包含用于组合映像的命令的文本文档。可以使用在命令行中调用任何命令。 Docker通过读取Dockerfile中的指令自动生成映像。</p><p>docker build命令用于从Dockerfile构建映像。可以在docker build命令中使用-f标志指向文件系统中任何位置的Dockerfile。<br>例：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -f /path/to/a/Dockerfile</span><br></pre></td></tr></table></figure><h3 id="Dockerfile的基本结构"><a href="#Dockerfile的基本结构" class="headerlink" title="Dockerfile的基本结构"></a>Dockerfile的基本结构</h3><p>Dockerfile 一般分为四部分：基础镜像信息、维护者信息、镜像操作指令和容器启动时执行指令，’#’ 为 Dockerfile 中的注释。</p><h3 id="Dockerfile文件说明"><a href="#Dockerfile文件说明" class="headerlink" title="Dockerfile文件说明"></a>Dockerfile文件说明</h3><p>Docker以从上到下的顺序运行Dockerfile的指令。为了指定基本映像，第一条指令必须是FROM。一个声明以＃字符开头则被视为注释。可以在Docker文件中使用RUN，CMD，FROM，EXPOSE，ENV等指令。</p><h3 id="docker-build-命令详解"><a href="#docker-build-命令详解" class="headerlink" title="docker build 命令详解"></a>docker build 命令详解</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">docker build [OPTIONS] PATH | URL | -</span><br><span class="line"></span><br><span class="line">--build-arg=[] :设置镜像创建时的变量；</span><br><span class="line"></span><br><span class="line">--cpu-shares :设置 cpu 使用权重；</span><br><span class="line"></span><br><span class="line">--cpu-period :限制 CPU CFS周期；</span><br><span class="line"></span><br><span class="line">--cpu-quota :限制 CPU CFS配额；</span><br><span class="line"></span><br><span class="line">--cpuset-cpus :指定使用的CPU id；</span><br><span class="line"></span><br><span class="line">--cpuset-mems :指定使用的内存 id；</span><br><span class="line"></span><br><span class="line">--disable-content-trust :忽略校验，默认开启；</span><br><span class="line"></span><br><span class="line">-f :指定要使用的Dockerfile路径；</span><br><span class="line"></span><br><span class="line">--force-rm :设置镜像过程中删除中间容器；</span><br><span class="line"></span><br><span class="line">--isolation :使用容器隔离技术；</span><br><span class="line"></span><br><span class="line">--label=[] :设置镜像使用的元数据；</span><br><span class="line"></span><br><span class="line">-m :设置内存最大值；</span><br><span class="line"></span><br><span class="line">--memory-swap :设置Swap的最大值为内存+swap，"-1"表示不限swap；</span><br><span class="line"></span><br><span class="line">--no-cache :创建镜像的过程不使用缓存；</span><br><span class="line"></span><br><span class="line">--pull :尝试去更新镜像的新版本；</span><br><span class="line"></span><br><span class="line">--quiet, -q :安静模式，成功后只输出镜像 ID；</span><br><span class="line"></span><br><span class="line">--rm :设置镜像成功后删除中间容器；</span><br><span class="line"></span><br><span class="line">--shm-size :设置/dev/shm的大小，默认值是64M；</span><br><span class="line"></span><br><span class="line">--ulimit :Ulimit配置。</span><br><span class="line"></span><br><span class="line">--tag, -t: 镜像的名字及标签，通常 name:tag 或者 name 格式；可以在一次构建中为一个镜像设置多个标签。</span><br><span class="line"></span><br><span class="line">--network: 默认 default。在构建期间设置RUN指令的网络模式</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 实例</span><br><span class="line"></span><br><span class="line">// 使用当前目录的 Dockerfile 创建镜像，标签为 runoob/ubuntu:v1。</span><br><span class="line">docker build -t runoob/ubuntu:v1 . </span><br><span class="line"></span><br><span class="line">// 使用URL github.com/creack/docker-firefox 的 Dockerfile 创建镜像。</span><br><span class="line">docker build github.com/creack/docker-firefox</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 也可以通过 -f Dockerfile 文件的位置：</span><br><span class="line"><span class="meta">$</span><span class="bash"> docker build -f /path/to/a/Dockerfile .</span></span><br><span class="line"></span><br><span class="line">// 在 Docker 守护进程执行 Dockerfile 中的指令前，首先会对 Dockerfile 进行语法检查，有语法错误时会返回：</span><br><span class="line"><span class="meta">$</span><span class="bash"> docker build -t <span class="built_in">test</span>/myapp .</span></span><br><span class="line">Sending build context to Docker daemon 2.048 kB</span><br><span class="line">Error response from daemon: Unknown instruction: RUNCMD</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;什么是dockerfile&quot;&gt;&lt;a href=&quot;#什么是dockerfile&quot; class=&quot;headerlink&quot; title=&quot;什么是dockerfile?&quot;&gt;&lt;/a&gt;什么是dockerfile?&lt;/h3&gt;&lt;p&gt;Dockerfile是一个包含用于组合映像的命令
+      
+    
+    </summary>
+    
+    
+      <category term="docker" scheme="https://zhaops-hub.github.io/categories/docker/"/>
+    
+    
+      <category term="docker" scheme="https://zhaops-hub.github.io/tags/docker/"/>
     
   </entry>
   

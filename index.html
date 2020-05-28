@@ -411,6 +411,561 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhaops-hub.github.io/2020/05/28/c_shift/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhaops">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhaops's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/05/28/c_shift/" itemprop="url">移位存储详解</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-28T20:41:08+08:00">
+                2020-05-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index">
+                    <span itemprop="name">C语言</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="IEEE-754-浮点数存储标准"><a href="#IEEE-754-浮点数存储标准" class="headerlink" title="IEEE 754 浮点数存储标准"></a>IEEE 754 浮点数存储标准</h3><p>规定浮点数格式如下：</p>
+<p><img src="/2020/05/28/c_shift/1.png" alt></p>
+<p>s表示符号位，当s=0，V为正数；当s=1，V为负数</p>
+<p>E表示8位阶码，采用移位存储</p>
+<p>M表示23位尾数，如M为10100….，那么M所代表的二进制浮点数为M’=1+1/2+1/2^2=1.75，2&gt;M’&gt;=1</p>
+<p>根据32位数计算为十进制：V=(−1)^s × M’ × 2^(E−127)，</p>
+<h3 id="移位存储详解"><a href="#移位存储详解" class="headerlink" title="移位存储详解"></a>移位存储详解</h3><p>如果采用传统的高bit表示正负的方法，将-127-127分为两个区间表示：</p>
+<p>第一个区间：0 000000 0~ 0 111111 1 即 +0 到 127</p>
+<p>第二个区间：1 000000 0~ 1 111111 1 即 -0 到 -127</p>
+<p>很明显存在+0和-0的问题，如果采用移位存储技术，即在原始数值的基础上加 127，全部转换为&gt;=0的数进行表示：</p>
+<p>此时最高位不是符号位，8bit可以表示0<del>255，那么原始数值可以表示-127</del>128，分别如下</p>
+<p>第一个区间：0 000000 0~ 0 111111 1 ，直接大小0~127 ，减去127后表达范围 -127 到 0</p>
+<p>第二个区间：1 000000 0~ 1 111111 1 ，直接大小128~255，减去127后表达范围 1 到 128</p>
+<p>也就是可以使用 8位二进制来表示从 -127~128 共计 127个负数+零（0）+128个正数总共 256个数，且使用移位存储即没有+0和-0的问题，又充分的使用这个新生成的 8位二进制数来最大限度的表示单精度浮点数的幂指数（阶码）</p>
+<hr>
+<p>如果不用以为存储，有 正0 负0 的问题</p>
+<p>自己搞几个例子</p>
+<p>0: <code>0 + 127 = 127</code>   <code>0 000000 0 + 0 111111 1 = 0 111111 1</code></p>
+<p>1: <code>1 + 127 = 128</code>  <code>0 000000 1 + 0 111111 1 = 1 000000 0</code></p>
+<p>2: <code>2 + 127 = 129</code>   <code>0 000001 0 + 111111 1 = 1 000000 1</code></p>
+<p>-1: <code>-1 + 127 = 126, 127 - 1</code>  <code>0 111111 1 - 0 000000 1 = 0 111111 0</code> </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+     <div>
+    
+</div>
+
+
+<div>
+      
+</div>
+
+
+    
+
+    
+
+    
+ 
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhaops-hub.github.io/2020/05/28/c_float/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhaops">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhaops's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/05/28/c_float/" itemprop="url">浮点数转换二进制</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-28T20:41:08+08:00">
+                2020-05-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index">
+                    <span itemprop="name">C语言</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="浮点数在计算机中是如何表示的？"><a href="#浮点数在计算机中是如何表示的？" class="headerlink" title="浮点数在计算机中是如何表示的？"></a>浮点数在计算机中是如何表示的？</h2><p>浮点数在计算机中的存储方式遵循IEEE 754 浮点数计数标准，可以表示为：</p>
+<p><img src="/2020/05/28/c_float/1.png" alt></p>
+<p>采用<strong>尾数 + 阶码</strong>的编码方式，更通俗一点说，就是类似于数学课本上所学的<strong>科学计数法</strong>表示方式：<strong>有效数字 + 指数位</strong>！</p>
+<p>因此，只要给出：<strong>符号（S）</strong>、<strong>阶码部分（E）</strong>、<strong>尾数部分（M）</strong> 这三个维度的信息，一个浮点数的表示就完全确定下来了，所以<code>float</code>和<code>double</code>这两种类型的浮点数在计算机中的存储结构就表示成下图所示这个样子：</p>
+<p><img src="/2020/05/28/c_float/2.png" alt></p>
+<ul>
+<li><p><strong>符号部分（S）</strong></p>
+<p><code>0</code>-正 <code>1</code>-负</p>
+</li>
+<li><p><strong>阶码部分（E）（指数部分）</strong></p>
+<p>对于<code>float</code>型浮点数，指数部分<code>8</code>位，考虑可正可负，因此可以表示的指数范围为<code>-127 ~ 128</code></p>
+<p>对于<code>double</code>型浮点数，指数部分<code>11</code>位，考虑可正可负，因此可以表示的指数范围为<code>-1023 ~ 1024</code></p>
+</li>
+<li><p><strong>尾数部分（M）</strong></p>
+<p>浮点数的精度是由尾数的位数来决定的：</p>
+<ul>
+<li>对于<code>float</code>型浮点数，尾数部分<code>23</code>位，换算成十进制就是 <code>2^23=8388608</code>，所以十进制精度只有<code>6 ~ 7</code>位；</li>
+<li>对于<code>double</code>型浮点数，尾数部分<code>52</code>位，换算成十进制就是 <code>2^52 = 4503599627370496</code>，所以十进制精度只有<code>15 ~ 16</code>位</li>
+</ul>
+</li>
+</ul>
+<p>以，浮点数交给计算机存储的时候，可能会有<strong>精度丢失</strong>问题！！！因此使用时需要格外小心，如果真因为这一块出了bug，定位问题还是非常艰难的，所以预防工作要做好。</p>
+<h2 id="先来个简单的例子"><a href="#先来个简单的例子" class="headerlink" title="先来个简单的例子"></a>先来个简单的例子</h2><p>比如：<strong>把十进制小数<code>0.875</code>转换成二进制，具体怎么操作？</strong></p>
+<ul>
+<li><p><strong>以小数点为界，拆分</strong></p>
+</li>
+<li><p><strong>整数部分转换</strong></p>
+<p>整数转二进制我想大家应该都熟悉，使用：<strong>除2取余法</strong> 即可。而这里的<code>0.875</code>整数部分为0，无需操作</p>
+</li>
+<li><p><strong>小数部分转换</strong></p>
+<p>小数部分的转换不同于整数部分，采用的是 <strong>“乘2取整法”</strong> ，图示一下就明白了</p>
+<p><img src="/2020/05/28/c_float/3.png" alt></p>
+</li>
+<li><p><strong>合并结果</strong></p>
+<p><code>整数部分 + 小数部分</code>，最终得到二进制结果为<code>0.111</code>。</p>
+</li>
+</ul>
+<p>  所以该结果按照上一节所述的<strong>尾数 + 阶码</strong>的计算机计数方式，则可以表示为：</p>
+<p>  <img src="/2020/05/28/c_float/4.png" alt></p>
+<p>  <strong>0.111 = 1.11*2^-1</strong>  类似于科学计数法</p>
+<p>  所以对应可得：</p>
+<ul>
+<li><strong>符号位</strong>：<code>0</code></li>
+<li><strong>阶码（E）部分</strong>：若以<code>float</code>为例，应为 <code>127 +（-1）= 126</code>，因此二进制表示为：<code>01111110</code></li>
+<li><strong>尾数部分（M）</strong>：若以<code>float</code>为例，应为<code>23</code>位，因此尾部补齐后为<code>11000000000000000000000</code></li>
+</ul>
+<p>因此最终的总结果为（以<code>32</code>位精度<code>float</code>表示）：</p>
+<p><code>00111111011000000000000000000000</code></p>
+<h2 id="再来个复杂点例子"><a href="#再来个复杂点例子" class="headerlink" title="再来个复杂点例子"></a>再来个复杂点例子</h2><p>再比如：<strong>把十进制小数<code>6.36</code>转换成二进制，具体怎么操作？</strong></p>
+<p><img src="/2020/05/28/c_float/5.png" alt></p>
+<p>整数部分 + 小数部分，因此最终得到的结果二进制结果为<code>110.01011100...</code>。</p>
+<p>还是按照上一节所述的<strong>尾数 + 阶码</strong>的计算机计数方式，则可以表示为：</p>
+<p><img src="/2020/05/28/c_float/6.png" alt></p>
+<ul>
+<li><strong>符号位</strong>：0</li>
+<li><strong>阶码（E）部分</strong>：若以<code>float</code>为例，应为 <code>127 +（2）= 129</code>，因此二进制表示为：<code>10000001</code></li>
+<li><strong>尾数部分（M）</strong>：<code>1001011100...</code>，其实它本身无限不循环，但若以<code>float</code>型精度来截取<code>23</code>位，则可以表示为<code>10010111000010100011111</code></li>
+</ul>
+<p>因此最终的总结果为（以<code>32</code>位精度<code>float</code>表示）：</p>
+<p><code>01000000110010111000010100011111</code></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+     <div>
+    
+</div>
+
+
+<div>
+      
+</div>
+
+
+    
+
+    
+
+    
+ 
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhaops-hub.github.io/2020/05/27/tcpip_nagle/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhaops">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhaops's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/05/27/tcpip_nagle/" itemprop="url">TCP之Nagle算法&&延迟ACK</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-27T22:41:08+08:00">
+                2020-05-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/tcp-ip/" itemprop="url" rel="index">
+                    <span itemprop="name">tcp/ip</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Nagle算法"><a href="#Nagle算法" class="headerlink" title="Nagle算法"></a>Nagle算法</h2><p>是为了减少广域网的小分组数目，从而减小网络拥塞的出现；</p>
+<p>该算法要求一个tcp连接上最多只能有一个未被确认的未完成的小分组，在该分组ack到达之前不能发送其他的小分组，tcp需要收集这些少量的分组，并在ack到来时以一个分组的方式发送出去；其中小分组的定义是小于MSS的任何分组；</p>
+<p>该算法的优越之处在于它是自适应的，确认到达的越快，数据也就发哦送的越快；而在希望减少微小分组数目的低速广域网上，则会发送更少的分组；</p>
+<h2 id="延迟ACK"><a href="#延迟ACK" class="headerlink" title="延迟ACK"></a>延迟ACK</h2><p>如果tcp对每个数据包都发送一个ack确认，那么只是一个单独的数据包为了发送一个ack代价比较高，所以tcp会延迟一段时间，如果这段时间内有数据发送到对端，则捎带发送ack，如果在延迟ack定时器触发时候，发现ack尚未发送，则立即单独发送；</p>
+<p>延迟ACK好处</p>
+<ul>
+<li>避免糊涂窗口综合症；</li>
+<li>发送数据的时候将ack捎带发送，不必单独发送ack；</li>
+<li>如果延迟时间内有多个数据段到达，那么允许协议栈发送一个ack确认多个报文段；</li>
+</ul>
+<h2 id="当Nagle遇上延迟ACK"><a href="#当Nagle遇上延迟ACK" class="headerlink" title="当Nagle遇上延迟ACK"></a>当Nagle遇上延迟ACK</h2><p>试想如下典型操作，写-写-读，即通过多个写小片数据向对端发送单个逻辑的操作，两次写数据长度小于MSS，当第一次写数据到达对端后，对端延迟ack，不发送ack，而本端因为要发送的数据长度小于MSS，所以nagle算法起作用，数据并不会立即发送，而是等待对端发送的第一次数据确认ack；这样的情况下，需要等待对端超时发送ack，然后本段才能发送第二次写的数据，从而造成延迟；</p>
+<p><code>MSS</code>（Maximum Segment Size，最大报文段大小）的概念是指TCP层所能够接收的最大段大小，该值只包括TCP段的数据部分，不包括选项部分。</p>
+<h2 id="关闭Nagle算法"><a href="#关闭Nagle算法" class="headerlink" title="关闭Nagle算法"></a>关闭Nagle算法</h2><p>使用TCP套接字选项TCP_NODELAY可以关闭套接字选项;</p>
+<p>如下场景考虑关闭Nagle算法：</p>
+<ul>
+<li>对端不向本端发送数据，并且对延时比较敏感的操作；这种操作没法捎带ack；</li>
+<li>如上写-写-读操作；对于此种情况，优先使用其他方式，而不是关闭Nagle算法：</li>
+</ul>
+<p>–使用writev，而不是两次调用write，单个writev调用会使tcp输出一次而不是两次，只产生一个tcp分节，这是首选方法；</p>
+<p>–把两次写操作的数据复制到单个缓冲区，然后对缓冲区调用一次write；</p>
+<p>–关闭Nagle算法，调用write两次；有损于网络，通常不考虑；</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+     <div>
+    
+</div>
+
+
+<div>
+      
+</div>
+
+
+    
+
+    
+
+    
+ 
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zhaops-hub.github.io/2020/05/24/tcpip_halfopen/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1602,7 +2157,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1613,7 +2168,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1624,7 +2179,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -1739,7 +2294,7 @@
 <span class="post-meta-divider">|</span>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共6.7k字</span>
+  <span class="post-count">博客全站共8.7k字</span>
 </div>
         
 
