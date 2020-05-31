@@ -282,6 +282,192 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhaops-hub.github.io/2020/05/24/tcpip_2msl/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhaops">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhaops's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/05/24/tcpip_2msl/" itemprop="url">为什么TCP4次挥手时等待为2MSL？</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-24T20:41:08+08:00">
+                2020-05-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/tcp-ip/" itemprop="url" rel="index">
+                    <span itemprop="name">tcp/ip</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>通信所要解决的首要问题就是，<strong>保持通信双方的信息对称，使通信双方处于同步状态。</strong></p>
+<p>先来一个例子：<br>罗密欧大学期间写信给中学同学朱丽叶，信的内容如下：</p>
+<p><strong>小叶子，我喜欢你！</strong></p>
+<p>这封信发出之后，罗密欧无法知道朱丽叶能否收到，只有收到小叶子的回信，才能知道自己的信已经到达对方。</p>
+<p>三天之后，小叶子回信了，信的内容如下：</p>
+<p><strong>小欧，来信已阅，我也喜欢你…</strong></p>
+<p>此时，小叶子眼中双方的状态是：<strong>互相爱慕</strong>！</p>
+<p>如果小欧收到回信，小欧眼中双方的状态也是：互相爱慕！</p>
+<p>如果小欧没有收到回信，小欧眼中双方的状态是：<strong>单相思</strong>！</p>
+<p>小叶子为了杜绝小欧模棱两可的状态，使他与自己达成“<strong>互相爱慕</strong>”的共识，需要做以下工作：</p>
+<p>1）先耐心地等小欧的第三封信</p>
+<p>2）如果若干天没有收到回信，需要把自己的第二封信再次发出</p>
+<p>如果收到了小欧的回信，那么双方的状态终于同步了：“互相爱慕”！</p>
+<p>即使2）发生了，N天之后也可以达成同步状态。</p>
+<p>之后，双方可以甜言蜜语地谈恋爱了。</p>
+<p>TCP四次挥手也遵循相似的套路。</p>
+<p>主动断开的一侧为A，被动断开的一侧为B。</p>
+<p><strong>第一个消息：A发FIN</strong></p>
+<p><strong>第二个消息：B回复ACK（回复的同时把tcp链接关掉，tcp处于半关闭状态）</strong></p>
+<p><strong>第三个消息：B发出FIN</strong></p>
+<p>此时此刻：B单方面认为自己与A达成了共识，即双方都同意关闭连接。</p>
+<p>此时，B能释放这个TCP连接占用的内存资源吗？<strong>不能，B一定要确保A收到自己的ACK、FIN。</strong></p>
+<p>所以B需要静静地等待A的第四个消息的到来：</p>
+<p><strong>第四个消息：A发出ACK，用于确认收到B的FIN</strong></p>
+<p>当B接收到此消息，即认为双方达成了同步：双方都知道连接可以释放了，此时B可以安全地释放此TCP连接所占用的内存资源、端口号。</p>
+<p>所以<strong>被动关闭的B无需任何wait time，直接释放资源。</strong></p>
+<p>但，A并不知道B是否接到自己的ACK，A是这么想的：</p>
+<p>1）如果B没有收到自己的ACK，会超时重传FiN</p>
+<p>那么A再次接到重传的FIN，会再次发送ACK</p>
+<p>2）如果B收到自己的ACK，也不会再发任何消息，包括ACK</p>
+<p>无论是1还是2，A都需要等待，要取这两种情况等待时间的最大值，<strong>以应对最坏的情况发生</strong>，这个最坏情况是：</p>
+<p>去向ACK消息最大存活时间（MSL) + 来向FIN消息的最大存活时间(MSL)。</p>
+<p>这恰恰就是<strong>2MSL( Maximum Segment Life)。</strong></p>
+<p>等待2MSL时间，A就可以放心地释放TCP占用的资源、端口号，<strong>此时可以使用该端口号连接任何服务器。</strong></p>
+<p><strong>为何一定要等2MSL？</strong><br><strong>如果不等，释放的端口可能会重连刚断开的服务器端口，这样依然存活在网络里的老的TCP报文可能与新TCP连接报文冲突，造成数据冲突，为避免此种情况，需要耐心等待网络老的TCP连接的活跃报文全部死翘翘，2MSL时间可以满足这个需求（尽管非常保守）！</strong></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+     <div>
+    
+</div>
+
+
+<div>
+      
+</div>
+
+
+    
+
+    
+
+    
+ 
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zhaops-hub.github.io/2020/05/23/docker_dockerfile/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -745,7 +931,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -882,7 +1068,7 @@
 <span class="post-meta-divider">|</span>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共10.8k字</span>
+  <span class="post-count">博客全站共13.1k字</span>
 </div>
         
 
