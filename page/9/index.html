@@ -221,15 +221,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/11/02/srs/k8s%E9%83%A8%E7%BD%B2/" target="_self">
-          k8s部署
+        <a href="/2021/11/02/ssl/%E5%88%B6%E4%BD%9C%E8%AF%81%E4%B9%A6/" target="_self">
+          制作ssl证书
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2021/11/02/srs/k8s%E9%83%A8%E7%BD%B2/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/11/02/ssl/%E5%88%B6%E4%BD%9C%E8%AF%81%E4%B9%A6/" target="_self">
         <div>
-          证书1kubectl create secret generic 92-ssl --from-file=ssh-privatekey=172.16.100.92-key.pem --from-file=ssh-publickey=172.16.100.92.pem  配置文件srs.yaml 12345678910111213141516171819202122232425262728293031
+          制作根证书 openssl默认生成的是v1版本的证书，浏览器目前只支持v3版本的证书，v3 版本证书生成时需要在cnf配置文件中增加扩展属性 subjectAltName 扩展属性指定自签名证书ip地址或者dns；必须设置，不设置会导致浏览器提示不安全 配置文件在生成csr的时候可以设置默认值 配置文件在生成crt的时候可以设置扩展属性  ca.conf 123456789101112131415
         </div>
       </a>
 
@@ -253,7 +253,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/srs/" class="category-chain-item">srs</a>
+  <a href="/categories/ssl/" class="category-chain-item">ssl</a>
   
   
 
@@ -270,7 +270,7 @@
             
               <a href="/tags/%E5%BC%80%E5%8F%91/">#开发</a>
             
-              <a href="/tags/srs/">#srs</a>
+              <a href="/tags/ssl/">#ssl</a>
             
           </div>
         
