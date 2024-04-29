@@ -282,6 +282,67 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2021/11/30/hadoop/hdfs%E6%93%8D%E4%BD%9C/" target="_self">
+          hdfs操作
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/11/30/hadoop/hdfs%E6%93%8D%E4%BD%9C/" target="_self">
+        <div>
+          HDFS（Hadoop Distributed File System）：分布式文件系统 操作HDFS操作命令 hdfs dfs **** -mkdir 创建目录  举例：    hdfs dfs -mkdir /aaa ​                hdfs dfs -mkdir -p /bbb/ccc   -p表示如果父目录不存在 则先创建父目录  -ls    查看某个目录   -ls
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-30 10:52" pubdate>
+              2021-11-30
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/hadoop/" class="category-chain-item">hadoop</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/hadoop/">#hadoop</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2021/11/30/hadoop/hive%E9%83%A8%E7%BD%B2/" target="_self">
           hive部署
         </a>
@@ -343,15 +404,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/11/30/hadoop/hue%E5%AE%89%E8%A3%85/" target="_self">
-          hue安装
+        <a href="/2021/11/30/hadoop/kafka%E9%9B%86%E7%BE%A4/" target="_self">
+          kafka集群
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2021/11/30/hadoop/hue%E5%AE%89%E8%A3%85/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/11/30/hadoop/kafka%E9%9B%86%E7%BE%A4/" target="_self">
         <div>
-          1234567891011version: &#x27;3.1&#x27;services:  mongo:    image: gethue/hue:latest    container_name: hue    restart: always    ports:      - 8888:8888     volumes:      - ./hue.ini:/usr/share/hue/des
+          版本kafka_2.12-3.0.0 集群规划   机器 ip    cdh1 172.16.100.63   cdh2 172.16.100.64   cdh3 172.16.100.71   配置服务器 时间同步 免密码登录 hosts 关闭防火墙 安装jdk  在所有服务器(cdh1,cdh2,cdh3)配置环境变量把安装包上传到服务器 vi /etc/profile.d/kafka.sh
         </div>
       </a>
 
@@ -404,15 +465,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/11/30/hadoop/kafka%E9%9B%86%E7%BE%A4/" target="_self">
-          kafka集群
+        <a href="/2021/11/30/hadoop/hue%E5%AE%89%E8%A3%85/" target="_self">
+          hue安装
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2021/11/30/hadoop/kafka%E9%9B%86%E7%BE%A4/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/11/30/hadoop/hue%E5%AE%89%E8%A3%85/" target="_self">
         <div>
-          版本kafka_2.12-3.0.0 集群规划   机器 ip    cdh1 172.16.100.63   cdh2 172.16.100.64   cdh3 172.16.100.71   配置服务器 时间同步 免密码登录 hosts 关闭防火墙 安装jdk  在所有服务器(cdh1,cdh2,cdh3)配置环境变量把安装包上传到服务器 vi /etc/profile.d/kafka.sh
+          1234567891011version: &#x27;3.1&#x27;services:  mongo:    image: gethue/hue:latest    container_name: hue    restart: always    ports:      - 8888:8888     volumes:      - ./hue.ini:/usr/share/hue/des
         </div>
       </a>
 
@@ -761,69 +822,6 @@
               <a href="/tags/%E8%BF%90%E7%BB%B4/">#运维</a>
             
               <a href="/tags/jenkins/">#jenkins</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/11/24/k8s/etcd%E5%AE%89%E8%A3%85/" target="_self">
-          etcd安装
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2021/11/24/k8s/etcd%E5%AE%89%E8%A3%85/" target="_self">
-        <div>
-          版本etcd Version: 3.5.1 单机版本安装下载安装包解压到服务器https://github.com/etcd-io/etcd/releases 解压到 /soyuan/k8s/etcd 命令移动到：mv /soyuan/k8s/etcd/etcd-v3.5.1-linux-amd64/etcd* /usr/local/bin/ 安装到系统服务vi /usr/lib/systemd/
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-11-24 16:58" pubdate>
-              2021-11-24
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/k8s/" class="category-chain-item">k8s</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E8%BF%90%E7%BB%B4/">#运维</a>
-            
-              <a href="/tags/k8s/">#k8s</a>
             
           </div>
         
