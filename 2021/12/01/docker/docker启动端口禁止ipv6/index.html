@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/wiki/img/favicon.png">
-  <link rel="icon" href="/wiki/img/favicon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -19,19 +19,19 @@
     <meta name="description" content="centos 上 docker有的时候启动会监听ipv6地址 []，这个时候页面就访问不了了，可以把系统的ipv6禁用掉 使用命令ifconfig 可查看ipv6地址   修改配置&#x2F;etc&#x2F;default&#x2F;grub 增加配置 ipv6.disable&#x3D;1 1234567GRUB_TIMEOUT&#x3D;5GRUB_DISTRIBUTOR&#x3D;&quot;$(sed &amp;#x27;s, release .*$,">
 <meta property="og:type" content="article">
 <meta property="og:title" content="docker启动端口禁止ipv6">
-<meta property="og:url" content="https://zps111.gitee.io/wiki/2021/12/01/docker/docker%E5%90%AF%E5%8A%A8%E7%AB%AF%E5%8F%A3%E7%A6%81%E6%AD%A2ipv6/index.html">
+<meta property="og:url" content="https://zhaops-hub.github.io/2021/12/01/docker/docker%E5%90%AF%E5%8A%A8%E7%AB%AF%E5%8F%A3%E7%A6%81%E6%AD%A2ipv6/index.html">
 <meta property="og:site_name" content="zps">
 <meta property="og:description" content="centos 上 docker有的时候启动会监听ipv6地址 []，这个时候页面就访问不了了，可以把系统的ipv6禁用掉 使用命令ifconfig 可查看ipv6地址   修改配置&#x2F;etc&#x2F;default&#x2F;grub 增加配置 ipv6.disable&#x3D;1 1234567GRUB_TIMEOUT&#x3D;5GRUB_DISTRIBUTOR&#x3D;&quot;$(sed &amp;#x27;s, release .*$,">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://zps111.gitee.io/img/docker/1.png">
-<meta property="og:image" content="https://zps111.gitee.io/img/docker/2.png">
+<meta property="og:image" content="https://zhaops-hub.github.io/img/docker/1.png">
+<meta property="og:image" content="https://zhaops-hub.github.io/img/docker/2.png">
 <meta property="article:published_time" content="2021-12-01T09:15:06.000Z">
 <meta property="article:modified_time" content="2023-02-25T09:54:34.174Z">
 <meta property="article:author" content="赵培胜">
 <meta property="article:tag" content="docker">
 <meta property="article:tag" content="开发">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://zps111.gitee.io/img/docker/1.png">
+<meta name="twitter:image" content="https://zhaops-hub.github.io/img/docker/1.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -45,7 +45,7 @@
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
 
-  <link  rel="stylesheet" href="/wiki/lib/hint/hint.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
 
@@ -61,12 +61,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
 
 
-<link  rel="stylesheet" href="/wiki/css/main.css" />
+<link  rel="stylesheet" href="/css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/wiki/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/wiki/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
 
 
@@ -75,15 +75,15 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"zps111.gitee.io","root":"/wiki/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/wiki/local-search.xml"};
+    var CONFIG = {"hostname":"zhaops-hub.github.io","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
       Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
     }
   </script>
-  <script  src="/wiki/js/utils.js" ></script>
-  <script  src="/wiki/js/color-schema.js" ></script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
   
 
 
@@ -100,7 +100,7 @@
 <div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/wiki/">
+    <a class="navbar-brand" href="/">
       <strong>zhaopeisheng blog</strong>
     </a>
 
@@ -119,7 +119,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/wiki/">
+              <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
                 首页
               </a>
@@ -131,7 +131,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/wiki/archives/">
+              <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 归档
               </a>
@@ -143,7 +143,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/wiki/categories/">
+              <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 分类
               </a>
@@ -155,7 +155,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/wiki/tags/">
+              <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
               </a>
@@ -167,7 +167,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/wiki/about/">
+              <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
                 关于
               </a>
@@ -196,7 +196,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/wiki/img/bj.jpeg') no-repeat center center; background-size: cover;">
+     style="background: url('/img/bj.jpeg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -285,7 +285,7 @@
 <p>centos 上 docker有的时候启动会监听ipv6地址 []，这个时候页面就访问不了了，可以把系统的ipv6禁用掉</p>
 <p>使用命令ifconfig 可查看ipv6地址</p>
 </blockquote>
-<p><img src="/img/docker/1.png" srcset="/wiki/img/loading.gif" lazyload></p>
+<p><img src="/img/docker/1.png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="修改配置"><a href="#修改配置" class="headerlink" title="修改配置"></a>修改配置</h3><p><code>/etc/default/grub</code></p>
 <p>增加配置 <code>ipv6.disable=1</code></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell">GRUB_TIMEOUT=5<br>GRUB_DISTRIBUTOR=&quot;$(sed &#x27;s, release .*$,,g&#x27; /etc/system-release)&quot;<br>GRUB_DEFAULT=saved<br>GRUB_DISABLE_SUBMENU=true<br>GRUB_TERMINAL_OUTPUT=&quot;console&quot;<br>GRUB_CMDLINE_LINUX=&quot;ipv6.disable=1 crashkernel=auto rd.lvm.lv=cl/root rd.lvm.lv=cl/swap rhgb quiet&quot;<br>GRUB_DISABLE_RECOVERY=&quot;true&quot;<br></code></pre></td></tr></table></figure>
@@ -293,7 +293,7 @@
 <h3 id="执行命令"><a href="#执行命令" class="headerlink" title="执行命令"></a>执行命令</h3><p><code>grub2-mkconfig -o /boot/grub2/grub.cfg</code></p>
 <h3 id="重启生效"><a href="#重启生效" class="headerlink" title="重启生效"></a>重启生效</h3><p><code>reboot</code></p>
 <h3 id="检查是否生效"><a href="#检查是否生效" class="headerlink" title="检查是否生效"></a>检查是否生效</h3><p><code>ifconfig</code></p>
-<p><img src="/img/docker/2.png" srcset="/wiki/img/loading.gif" lazyload></p>
+<p><img src="/img/docker/2.png" srcset="/img/loading.gif" lazyload></p>
 
                 
               </div>
@@ -312,7 +312,7 @@
     
       <span class="category-chain">
         
-  <a href="/wiki/categories/docker/" class="category-chain-item">docker</a>
+  <a href="/categories/docker/" class="category-chain-item">docker</a>
   
   
 
@@ -327,9 +327,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/wiki/tags/docker/">#docker</a>
+        <a href="/tags/docker/">#docker</a>
       
-        <a href="/wiki/tags/%E5%BC%80%E5%8F%91/">#开发</a>
+        <a href="/tags/%E5%BC%80%E5%8F%91/">#开发</a>
       
     </div>
   
@@ -342,7 +342,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>docker启动端口禁止ipv6</div>
-      <div>https://zps111.gitee.io/wiki/2021/12/01/docker/docker启动端口禁止ipv6/</div>
+      <div>https://zhaops-hub.github.io/2021/12/01/docker/docker启动端口禁止ipv6/</div>
     </div>
     <div class="license-meta">
       
@@ -386,7 +386,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/wiki/2021/12/03/apollo/apollo%20%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83%E5%A4%9A%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/" title="apollo 配置中心多环境部署">
+                      <a href="/2021/12/03/apollo/apollo%20%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83%E5%A4%9A%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/" title="apollo 配置中心多环境部署">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">apollo 配置中心多环境部署</span>
                         <span class="visible-mobile">上一篇</span>
@@ -396,7 +396,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/wiki/2021/11/30/hadoop/hadoop%E9%9B%86%E7%BE%A4/" title="hadoop集群">
+                      <a href="/2021/11/30/hadoop/hadoop%E9%9B%86%E7%BE%A4/" title="hadoop集群">
                         <span class="hidden-mobile">hadoop集群</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -544,7 +544,7 @@
         >
           
             <span style="visibility: hidden; width: 0">|</span>
-            <img src="/wiki/img/police_beian.png" srcset="/wiki/img/loading.gif" lazyload alt="police-icon"/>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
           
           <span>京ICP备2020044488号-1</span>
         </a>
@@ -575,8 +575,8 @@
 
 <script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
 <script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
-<script  src="/wiki/js/events.js" ></script>
-<script  src="/wiki/js/plugins.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 
   <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
@@ -598,7 +598,7 @@
 
 
   
-    <script  src="/wiki/js/img-lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -697,7 +697,7 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script  src="/wiki/js/local-search.js" ></script>
+  <script  src="/js/local-search.js" ></script>
 
   <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
@@ -707,7 +707,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/wiki/js/boot.js" ></script>
+<script  src="/js/boot.js" ></script>
 
 
   

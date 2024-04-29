@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/wiki/img/favicon.png">
-  <link rel="icon" href="/wiki/img/favicon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -19,25 +19,25 @@
     <meta name="description" content="Apollo（阿波罗）是一款可靠的分布式配置管理中心，诞生于携程框架研发部，能够集中化管理应用不同环境、不同集群的配置，配置修改后能够实时推送到应用端，并且具备规范的权限、流程治理等特性，适用于微服务配置管理场景。  下载源码gitree: https:&#x2F;&#x2F;gitee.com&#x2F;apolloconfig&#x2F;apollo github: https:&#x2F;&#x2F;github.com&#x2F;apolloconfig&#x2F;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="apollo 配置中心多环境部署">
-<meta property="og:url" content="https://zps111.gitee.io/wiki/2021/12/03/apollo/apollo%20%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83%E5%A4%9A%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/index.html">
+<meta property="og:url" content="https://zhaops-hub.github.io/2021/12/03/apollo/apollo%20%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83%E5%A4%9A%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/index.html">
 <meta property="og:site_name" content="zps">
 <meta property="og:description" content="Apollo（阿波罗）是一款可靠的分布式配置管理中心，诞生于携程框架研发部，能够集中化管理应用不同环境、不同集群的配置，配置修改后能够实时推送到应用端，并且具备规范的权限、流程治理等特性，适用于微服务配置管理场景。  下载源码gitree: https:&#x2F;&#x2F;gitee.com&#x2F;apolloconfig&#x2F;apollo github: https:&#x2F;&#x2F;github.com&#x2F;apolloconfig&#x2F;">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://zps111.gitee.io/img/apollo/1.png">
-<meta property="og:image" content="https://zps111.gitee.io/img/apollo/2.png">
-<meta property="og:image" content="https://zps111.gitee.io/img/apollo/3.png">
-<meta property="og:image" content="https://zps111.gitee.io/img/apollo/5.png">
-<meta property="og:image" content="https://zps111.gitee.io/img/apollo/6.png">
-<meta property="og:image" content="https://zps111.gitee.io/img/apollo/7.png">
-<meta property="og:image" content="https://zps111.gitee.io/img/apollo/8.png">
-<meta property="og:image" content="https://zps111.gitee.io/img/apollo/9.png">
+<meta property="og:image" content="https://zhaops-hub.github.io/img/apollo/1.png">
+<meta property="og:image" content="https://zhaops-hub.github.io/img/apollo/2.png">
+<meta property="og:image" content="https://zhaops-hub.github.io/img/apollo/3.png">
+<meta property="og:image" content="https://zhaops-hub.github.io/img/apollo/5.png">
+<meta property="og:image" content="https://zhaops-hub.github.io/img/apollo/6.png">
+<meta property="og:image" content="https://zhaops-hub.github.io/img/apollo/7.png">
+<meta property="og:image" content="https://zhaops-hub.github.io/img/apollo/8.png">
+<meta property="og:image" content="https://zhaops-hub.github.io/img/apollo/9.png">
 <meta property="article:published_time" content="2021-12-03T02:52:06.000Z">
 <meta property="article:modified_time" content="2023-02-25T09:54:34.174Z">
 <meta property="article:author" content="赵培胜">
 <meta property="article:tag" content="apollo">
 <meta property="article:tag" content="运维">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://zps111.gitee.io/img/apollo/1.png">
+<meta name="twitter:image" content="https://zhaops-hub.github.io/img/apollo/1.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -51,7 +51,7 @@
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
 
-  <link  rel="stylesheet" href="/wiki/lib/hint/hint.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
 
@@ -67,12 +67,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
 
 
-<link  rel="stylesheet" href="/wiki/css/main.css" />
+<link  rel="stylesheet" href="/css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/wiki/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/wiki/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
 
 
@@ -81,15 +81,15 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"zps111.gitee.io","root":"/wiki/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/wiki/local-search.xml"};
+    var CONFIG = {"hostname":"zhaops-hub.github.io","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
       Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
     }
   </script>
-  <script  src="/wiki/js/utils.js" ></script>
-  <script  src="/wiki/js/color-schema.js" ></script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
   
 
 
@@ -106,7 +106,7 @@
 <div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/wiki/">
+    <a class="navbar-brand" href="/">
       <strong>zhaopeisheng blog</strong>
     </a>
 
@@ -125,7 +125,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/wiki/">
+              <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
                 首页
               </a>
@@ -137,7 +137,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/wiki/archives/">
+              <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 归档
               </a>
@@ -149,7 +149,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/wiki/categories/">
+              <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 分类
               </a>
@@ -161,7 +161,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/wiki/tags/">
+              <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
               </a>
@@ -173,7 +173,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/wiki/about/">
+              <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
                 关于
               </a>
@@ -202,7 +202,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/wiki/img/bj.jpeg') no-repeat center center; background-size: cover;">
+     style="background: url('/img/bj.jpeg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -294,9 +294,9 @@
 <p>github: <code>https://github.com/apolloconfig/apollo</code></p>
 <p>文档地址：<code>https://www.apolloconfig.com/#/zh/README</code> 源码里面也有完整的文档，根目录下 <code>docs</code> <code>doc</code> 文件夹</p>
 <p>下载完的代码目录</p>
-<p><img src="/img/apollo/1.png" srcset="/wiki/img/loading.gif" lazyload></p>
+<p><img src="/img/apollo/1.png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="各模块介绍"><a href="#各模块介绍" class="headerlink" title="各模块介绍"></a>各模块介绍</h3><h4 id="config-service"><a href="#config-service" class="headerlink" title="config service"></a>config service</h4><p>代码路径：<code>apollo-configservice</code></p>
-<p><img src="/img/apollo/2.png" srcset="/wiki/img/loading.gif" lazyload></p>
+<p><img src="/img/apollo/2.png" srcset="/img/loading.gif" lazyload></p>
 <ul>
 <li>提供配置获取接口</li>
 <li>提供配置更新推送接口（基于Http long polling）<ul>
@@ -320,14 +320,14 @@
 </ul>
 <h3 id="源码编译部署"><a href="#源码编译部署" class="headerlink" title="源码编译部署"></a>源码编译部署</h3><p>多环境部署就是每一套环境，部署一套 <code>config service</code> 和 <code>admin service</code>；<code>protal</code> 是一套。</p>
 <p>每个<code>config service</code> 和 <code>admin service</code> 也可以做集群横向扩展，使用同一套数据库，然后做个<code>nginx</code>反向代理负载均衡，<code>protal</code>里面配置代理后的地址；多个config service的时候，数据库的Eureka需要配置多个config的地址，它们会互相复制。</p>
-<p><img src="/img/apollo/3.png" srcset="/wiki/img/loading.gif" lazyload></p>
+<p><img src="/img/apollo/3.png" srcset="/img/loading.gif" lazyload></p>
 <h4 id="修改编译配置文件"><a href="#修改编译配置文件" class="headerlink" title="修改编译配置文件"></a>修改编译配置文件</h4><p>源码下载下来可以直接拿<code>IDEA</code>打开，安装maven 直接安装依赖；或者直接运行 <code>/script/build.sh</code> 脚本进行打包。</p>
 <p><code>build.sh</code></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">!/bin/sh</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash"></span><br><span class="language-bash"><span class="hljs-comment"># Copyright 2021 Apollo Authors</span></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash"></span><br><span class="language-bash"><span class="hljs-comment"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">you may not use this file except <span class="hljs-keyword">in</span> compliance with the License.</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">You may obtain a copy of the License at</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash"></span><br><span class="language-bash"><span class="hljs-comment"># http://www.apache.org/licenses/LICENSE-2.0</span></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash"></span><br><span class="language-bash"><span class="hljs-comment"># Unless required by applicable law or agreed to in writing, software</span></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">distributed under the License is distributed on an <span class="hljs-string">&quot;AS IS&quot;</span> BASIS,</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">See the License <span class="hljs-keyword">for</span> the specific language governing permissions and</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">limitations under the License.</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash"></span><br><span class="language-bash"></span><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">apollo config db info</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">config service，admin service 数据库信息</span><br>apollo_config_db_url=&#x27;jdbc:mysql://221.226.4.130:48005/ApolloConfigDB_dev_92?serverTimezone=GMT%2b8&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;zeroDateTimeBehavior=convertToNull&amp;useSSL=false&amp;serverTimezone=GMT%2b8&#x27;<br>apollo_config_db_username=&#x27;root&#x27;<br>apollo_config_db_password=&#x27;soyuan.123&#x27;<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">apollo portal db info</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">portal 数据库信息</span><br>apollo_portal_db_url=&#x27;jdbc:mysql://221.226.4.130:48005/ApolloPortalDB?serverTimezone=GMT%2b8&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;zeroDateTimeBehavior=convertToNull&amp;useSSL=false&amp;serverTimezone=GMT%2b8&#x27;<br>apollo_portal_db_username=&#x27;root&#x27;<br>apollo_portal_db_password=&#x27;soyuan.123&#x27;<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">meta server url, different environments should have different meta server addresses</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">各个环境的config地址 数据库信息</span><br>dev_meta=http://172.16.100.92:8080<br>fat_meta=http://fill-in-fat-meta-server:8080<br>uat_meta=http://fill-in-uat-meta-server:8080<br>pro_meta=http://221.226.4.130:48025<br><br>META_SERVERS_OPTS=&quot;-Ddev_meta=$dev_meta -Dfat_meta=$fat_meta -Duat_meta=$uat_meta -Dpro_meta=$pro_meta&quot;<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">=============== Please <span class="hljs-keyword">do</span> not modify the following content =============== <span class="hljs-comment">#</span></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">go to script directory</span><br>cd &quot;$&#123;0%/*&#125;&quot; || exit <br><br>cd ..<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">package config-service and admin-service</span><br>echo &quot;==== starting to build config-service and admin-service ====&quot;<br><br>mvn clean package -DskipTests -pl apollo-configservice,apollo-adminservice -am -Dapollo_profile=github -Dspring_datasource_url=$apollo_config_db_url -Dspring_datasource_username=$apollo_config_db_username -Dspring_datasource_password=$apollo_config_db_password<br><br>echo &quot;==== building config-service and admin-service finished ====&quot;<br><br>echo &quot;==== starting to build portal ====&quot;<br><br>mvn clean package -DskipTests -pl apollo-portal -am -Dapollo_profile=github,auth -Dspring_datasource_url=$apollo_portal_db_url -Dspring_datasource_username=$apollo_portal_db_username -Dspring_datasource_password=$apollo_portal_db_password $META_SERVERS_OPTS<br><br>echo &quot;==== building portal finished ====&quot;<br></code></pre></td></tr></table></figure>
 
 <p><strong>数据库链接字符串一定要注意，源码中的默认格式低版本mysql不支持会报错</strong></p>
 <h4 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h4><p>配置文件修改后，开始打包，直接运行<code>./build.sh</code>,成功接口如下。</p>
-<p><img src="/img/apollo/5.png" srcset="/wiki/img/loading.gif" lazyload></p>
+<p><img src="/img/apollo/5.png" srcset="/img/loading.gif" lazyload></p>
 <p>生成的包分别位于一下目录</p>
 <ul>
 <li> configservice：<code>apollo-configservice\target\apollo-configservice-2.0.0-SNAPSHOT-github.zip</code></li>
@@ -356,13 +356,13 @@
 </tbody></table>
 <h5 id="172-16-100-92"><a href="#172-16-100-92" class="headerlink" title="172.16.100.92"></a>172.16.100.92</h5><p>把 <code>build.sh</code>  <code>configservice</code> 的配置文件改成  <code>172.16.100.92</code> 的配置。</p>
 <p><code>apollo-configservice-2.0.0-SNAPSHOT-github.zip</code> 上传到服务器，解压出来目录结构如下</p>
-<p><img src="/img/apollo/6.png" srcset="/wiki/img/loading.gif" lazyload></p>
+<p><img src="/img/apollo/6.png" srcset="/img/loading.gif" lazyload></p>
 <p>如果想改启动端口，和日志输出目录，修改 <code>script/startup.sh</code> 的  <code>LOG_DIR</code> <code>SERVER_PORT</code></p>
 <p>启动：<code>./script/startup.sh</code></p>
 <p>停止: <code>./script/shutdown.sh</code></p>
 <hr>
 <p><code>apollo-adminservice-2.0.0-SNAPSHOT-github.zip</code> 上传到服务器，解压出来目录结构如下</p>
-<p><img src="/img/apollo/7.png" srcset="/wiki/img/loading.gif" lazyload></p>
+<p><img src="/img/apollo/7.png" srcset="/img/loading.gif" lazyload></p>
 <p>如果想改启动端口，和日志输出目录，修改 <code>script/startup.sh</code> 的  <code>LOG_DIR</code> <code>SERVER_PORT</code></p>
 <p>启动：<code>./script/startup.sh</code></p>
 <p>停止: <code>./script/shutdown.sh</code></p>
@@ -375,9 +375,9 @@
 
 
 <p>数据库修改环境列表</p>
-<p><img src="/img/apollo/8.png" srcset="/wiki/img/loading.gif" lazyload></p>
+<p><img src="/img/apollo/8.png" srcset="/img/loading.gif" lazyload></p>
 <p><code>apollo-portal-2.0.0-SNAPSHOT-github.zip</code> 上传到服务器，解压目录如下</p>
-<p><img src="/img/apollo/9.png" srcset="/wiki/img/loading.gif" lazyload></p>
+<p><img src="/img/apollo/9.png" srcset="/img/loading.gif" lazyload></p>
 <p>如果想改启动端口，和日志输出目录，修改 <code>script/startup.sh</code> 的  <code>LOG_DIR</code> <code>SERVER_PORT</code></p>
 <p>启动：<code>./script/startup.sh</code></p>
 <p>停止: <code>./script/shutdown.sh</code></p>
@@ -423,7 +423,7 @@
     
       <span class="category-chain">
         
-  <a href="/wiki/categories/apollo/" class="category-chain-item">apollo</a>
+  <a href="/categories/apollo/" class="category-chain-item">apollo</a>
   
   
 
@@ -438,9 +438,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/wiki/tags/apollo/">#apollo</a>
+        <a href="/tags/apollo/">#apollo</a>
       
-        <a href="/wiki/tags/%E8%BF%90%E7%BB%B4/">#运维</a>
+        <a href="/tags/%E8%BF%90%E7%BB%B4/">#运维</a>
       
     </div>
   
@@ -453,7 +453,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>apollo 配置中心多环境部署</div>
-      <div>https://zps111.gitee.io/wiki/2021/12/03/apollo/apollo 配置中心多环境部署/</div>
+      <div>https://zhaops-hub.github.io/2021/12/03/apollo/apollo 配置中心多环境部署/</div>
     </div>
     <div class="license-meta">
       
@@ -497,7 +497,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/wiki/2021/12/03/apollo/apollo%20%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83%E5%A4%9A%E7%8E%AF%E5%A2%83docker%E7%89%88%E6%9C%AC/" title="apollo 配置中心多环境docker版本">
+                      <a href="/2021/12/03/apollo/apollo%20%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83%E5%A4%9A%E7%8E%AF%E5%A2%83docker%E7%89%88%E6%9C%AC/" title="apollo 配置中心多环境docker版本">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">apollo 配置中心多环境docker版本</span>
                         <span class="visible-mobile">上一篇</span>
@@ -507,7 +507,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/wiki/2021/12/01/docker/docker%E5%90%AF%E5%8A%A8%E7%AB%AF%E5%8F%A3%E7%A6%81%E6%AD%A2ipv6/" title="docker启动端口禁止ipv6">
+                      <a href="/2021/12/01/docker/docker%E5%90%AF%E5%8A%A8%E7%AB%AF%E5%8F%A3%E7%A6%81%E6%AD%A2ipv6/" title="docker启动端口禁止ipv6">
                         <span class="hidden-mobile">docker启动端口禁止ipv6</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -655,7 +655,7 @@
         >
           
             <span style="visibility: hidden; width: 0">|</span>
-            <img src="/wiki/img/police_beian.png" srcset="/wiki/img/loading.gif" lazyload alt="police-icon"/>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
           
           <span>京ICP备2020044488号-1</span>
         </a>
@@ -686,8 +686,8 @@
 
 <script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
 <script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
-<script  src="/wiki/js/events.js" ></script>
-<script  src="/wiki/js/plugins.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 
   <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
@@ -709,7 +709,7 @@
 
 
   
-    <script  src="/wiki/js/img-lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -808,7 +808,7 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script  src="/wiki/js/local-search.js" ></script>
+  <script  src="/js/local-search.js" ></script>
 
   <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
@@ -818,7 +818,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/wiki/js/boot.js" ></script>
+<script  src="/js/boot.js" ></script>
 
 
   

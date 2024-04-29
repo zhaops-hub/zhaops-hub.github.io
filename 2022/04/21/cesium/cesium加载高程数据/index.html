@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/wiki/img/favicon.png">
-  <link rel="icon" href="/wiki/img/favicon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -19,20 +19,20 @@
     <meta name="description" content="高程数据下载国家地理空间数据下载：http:&#x2F;&#x2F;www.gscloud.cn 这上面的高程数据下载，高度有问题，这个需要在研究一下。用我再百度云盘里面下载好的，格式是 tif 格式。   2022-6-5  高度有问题是因为，选择的类型不对，下载时选择GDEMV2 30M 分辨率数字高程数据   高程数据切片cesium使用格式是 terrain，必须用工具切片。 使用 cesiumlab 工具来">
 <meta property="og:type" content="article">
 <meta property="og:title" content="cesium加载高程数据">
-<meta property="og:url" content="https://zps111.gitee.io/wiki/2022/04/21/cesium/cesium%E5%8A%A0%E8%BD%BD%E9%AB%98%E7%A8%8B%E6%95%B0%E6%8D%AE/index.html">
+<meta property="og:url" content="https://zhaops-hub.github.io/2022/04/21/cesium/cesium%E5%8A%A0%E8%BD%BD%E9%AB%98%E7%A8%8B%E6%95%B0%E6%8D%AE/index.html">
 <meta property="og:site_name" content="zps">
 <meta property="og:description" content="高程数据下载国家地理空间数据下载：http:&#x2F;&#x2F;www.gscloud.cn 这上面的高程数据下载，高度有问题，这个需要在研究一下。用我再百度云盘里面下载好的，格式是 tif 格式。   2022-6-5  高度有问题是因为，选择的类型不对，下载时选择GDEMV2 30M 分辨率数字高程数据   高程数据切片cesium使用格式是 terrain，必须用工具切片。 使用 cesiumlab 工具来">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://zps111.gitee.io/img/dem/3.png">
-<meta property="og:image" content="https://zps111.gitee.io/img/dem/1.png">
-<meta property="og:image" content="https://zps111.gitee.io/img/dem/2.png">
+<meta property="og:image" content="https://zhaops-hub.github.io/img/dem/3.png">
+<meta property="og:image" content="https://zhaops-hub.github.io/img/dem/1.png">
+<meta property="og:image" content="https://zhaops-hub.github.io/img/dem/2.png">
 <meta property="article:published_time" content="2022-04-21T02:52:06.000Z">
 <meta property="article:modified_time" content="2023-02-25T09:54:34.174Z">
 <meta property="article:author" content="赵培胜">
 <meta property="article:tag" content="cesium">
 <meta property="article:tag" content="GIS">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://zps111.gitee.io/img/dem/3.png">
+<meta name="twitter:image" content="https://zhaops-hub.github.io/img/dem/3.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -46,7 +46,7 @@
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
 
-  <link  rel="stylesheet" href="/wiki/lib/hint/hint.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
 
@@ -62,12 +62,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
 
 
-<link  rel="stylesheet" href="/wiki/css/main.css" />
+<link  rel="stylesheet" href="/css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/wiki/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/wiki/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
 
 
@@ -76,15 +76,15 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"zps111.gitee.io","root":"/wiki/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/wiki/local-search.xml"};
+    var CONFIG = {"hostname":"zhaops-hub.github.io","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
       Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
     }
   </script>
-  <script  src="/wiki/js/utils.js" ></script>
-  <script  src="/wiki/js/color-schema.js" ></script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
   
 
 
@@ -101,7 +101,7 @@
 <div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/wiki/">
+    <a class="navbar-brand" href="/">
       <strong>zhaopeisheng blog</strong>
     </a>
 
@@ -120,7 +120,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/wiki/">
+              <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
                 首页
               </a>
@@ -132,7 +132,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/wiki/archives/">
+              <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 归档
               </a>
@@ -144,7 +144,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/wiki/categories/">
+              <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 分类
               </a>
@@ -156,7 +156,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/wiki/tags/">
+              <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
               </a>
@@ -168,7 +168,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/wiki/about/">
+              <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
                 关于
               </a>
@@ -197,7 +197,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/wiki/img/bj.jpeg') no-repeat center center; background-size: cover;">
+     style="background: url('/img/bj.jpeg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -289,12 +289,12 @@
 <li>2022-6-5</li>
 </ul>
 <p>高度有问题是因为，选择的类型不对，下载时选择<code>GDEMV2 30M 分辨率数字高程数据</code></p>
-<p><img src="/img/dem/3.png" srcset="/wiki/img/loading.gif" lazyload></p>
+<p><img src="/img/dem/3.png" srcset="/img/loading.gif" lazyload></p>
 </blockquote>
 <h2 id="高程数据切片"><a href="#高程数据切片" class="headerlink" title="高程数据切片"></a>高程数据切片</h2><p>cesium使用格式是 <code>terrain</code>，必须用工具切片。</p>
 <p>使用 <code>cesiumlab</code> 工具来切片 web端的，官网地址 <code>http://www.cesiumlab.com/</code> ，下载安装。</p>
-<p><img src="/img/dem/1.png" srcset="/wiki/img/loading.gif" lazyload></p>
-<p><img src="/img/dem/2.png" srcset="/wiki/img/loading.gif" lazyload></p>
+<p><img src="/img/dem/1.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/dem/2.png" srcset="/img/loading.gif" lazyload></p>
 <h2 id="搭建高程数据服务"><a href="#搭建高程数据服务" class="headerlink" title="搭建高程数据服务"></a>搭建高程数据服务</h2><p>使用<code>nginx</code>代理，</p>
 <p><code>docker-compose.yaml</code></p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">version:</span> <span class="hljs-string">&quot;3&quot;</span><br><span class="hljs-attr">services:</span><br>  <span class="hljs-attr">3dtiles:</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">nginx</span><br>    <span class="hljs-attr">container_name:</span> <span class="hljs-string">3dtiles</span><br>    <span class="hljs-attr">ports:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-number">10000</span><span class="hljs-string">:80</span><br>    <span class="hljs-attr">volumes:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">./conf.d:/etc/nginx/conf.d</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">./data:/data</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span><br></code></pre></td></tr></table></figure>
@@ -322,7 +322,7 @@
     
       <span class="category-chain">
         
-  <a href="/wiki/categories/cesium/" class="category-chain-item">cesium</a>
+  <a href="/categories/cesium/" class="category-chain-item">cesium</a>
   
   
 
@@ -337,9 +337,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/wiki/tags/cesium/">#cesium</a>
+        <a href="/tags/cesium/">#cesium</a>
       
-        <a href="/wiki/tags/GIS/">#GIS</a>
+        <a href="/tags/GIS/">#GIS</a>
       
     </div>
   
@@ -352,7 +352,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>cesium加载高程数据</div>
-      <div>https://zps111.gitee.io/wiki/2022/04/21/cesium/cesium加载高程数据/</div>
+      <div>https://zhaops-hub.github.io/2022/04/21/cesium/cesium加载高程数据/</div>
     </div>
     <div class="license-meta">
       
@@ -396,7 +396,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/wiki/2022/04/22/cesium/%E7%94%B5%E5%AD%90%E5%9C%B0%E5%9B%BE%E7%93%A6%E7%89%87%E4%B8%8B%E8%BD%BD/" title="电子地图瓦片下载">
+                      <a href="/2022/04/22/cesium/%E7%94%B5%E5%AD%90%E5%9C%B0%E5%9B%BE%E7%93%A6%E7%89%87%E4%B8%8B%E8%BD%BD/" title="电子地图瓦片下载">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">电子地图瓦片下载</span>
                         <span class="visible-mobile">上一篇</span>
@@ -406,7 +406,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/wiki/2022/04/20/cesium/gdal/" title="gdal">
+                      <a href="/2022/04/20/cesium/gdal/" title="gdal">
                         <span class="hidden-mobile">gdal</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -554,7 +554,7 @@
         >
           
             <span style="visibility: hidden; width: 0">|</span>
-            <img src="/wiki/img/police_beian.png" srcset="/wiki/img/loading.gif" lazyload alt="police-icon"/>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
           
           <span>京ICP备2020044488号-1</span>
         </a>
@@ -585,8 +585,8 @@
 
 <script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
 <script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
-<script  src="/wiki/js/events.js" ></script>
-<script  src="/wiki/js/plugins.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 
   <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
@@ -608,7 +608,7 @@
 
 
   
-    <script  src="/wiki/js/img-lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -707,7 +707,7 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script  src="/wiki/js/local-search.js" ></script>
+  <script  src="/js/local-search.js" ></script>
 
   <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
@@ -717,7 +717,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/wiki/js/boot.js" ></script>
+<script  src="/js/boot.js" ></script>
 
 
   
