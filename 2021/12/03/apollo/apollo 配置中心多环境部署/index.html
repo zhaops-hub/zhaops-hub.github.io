@@ -1,0 +1,830 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/wiki/img/favicon.png">
+  <link rel="icon" href="/wiki/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="赵培胜">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Apollo（阿波罗）是一款可靠的分布式配置管理中心，诞生于携程框架研发部，能够集中化管理应用不同环境、不同集群的配置，配置修改后能够实时推送到应用端，并且具备规范的权限、流程治理等特性，适用于微服务配置管理场景。  下载源码gitree: https:&#x2F;&#x2F;gitee.com&#x2F;apolloconfig&#x2F;apollo github: https:&#x2F;&#x2F;github.com&#x2F;apolloconfig&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="apollo 配置中心多环境部署">
+<meta property="og:url" content="https://zps111.gitee.io/wiki/2021/12/03/apollo/apollo%20%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83%E5%A4%9A%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/index.html">
+<meta property="og:site_name" content="zps">
+<meta property="og:description" content="Apollo（阿波罗）是一款可靠的分布式配置管理中心，诞生于携程框架研发部，能够集中化管理应用不同环境、不同集群的配置，配置修改后能够实时推送到应用端，并且具备规范的权限、流程治理等特性，适用于微服务配置管理场景。  下载源码gitree: https:&#x2F;&#x2F;gitee.com&#x2F;apolloconfig&#x2F;apollo github: https:&#x2F;&#x2F;github.com&#x2F;apolloconfig&#x2F;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zps111.gitee.io/img/apollo/1.png">
+<meta property="og:image" content="https://zps111.gitee.io/img/apollo/2.png">
+<meta property="og:image" content="https://zps111.gitee.io/img/apollo/3.png">
+<meta property="og:image" content="https://zps111.gitee.io/img/apollo/5.png">
+<meta property="og:image" content="https://zps111.gitee.io/img/apollo/6.png">
+<meta property="og:image" content="https://zps111.gitee.io/img/apollo/7.png">
+<meta property="og:image" content="https://zps111.gitee.io/img/apollo/8.png">
+<meta property="og:image" content="https://zps111.gitee.io/img/apollo/9.png">
+<meta property="article:published_time" content="2021-12-03T02:52:06.000Z">
+<meta property="article:modified_time" content="2023-02-25T09:54:34.174Z">
+<meta property="article:author" content="赵培胜">
+<meta property="article:tag" content="apollo">
+<meta property="article:tag" content="运维">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://zps111.gitee.io/img/apollo/1.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>apollo 配置中心多环境部署 - zps</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="/wiki/lib/hint/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/wiki/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/wiki/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/wiki/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zps111.gitee.io","root":"/wiki/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/wiki/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/wiki/js/utils.js" ></script>
+  <script  src="/wiki/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/wiki/">
+      <strong>zhaopeisheng blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/wiki/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/wiki/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/wiki/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/wiki/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/wiki/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/wiki/img/bj.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="apollo 配置中心多环境部署"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2021-12-03 10:52" pubdate>
+          2021年12月3日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          6.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          21 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">apollo 配置中心多环境部署</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <blockquote>
+<p>Apollo（阿波罗）是一款可靠的分布式配置管理中心，诞生于携程框架研发部，能够集中化管理应用不同环境、不同集群的配置，配置修改后能够实时推送到应用端，并且具备规范的权限、流程治理等特性，适用于微服务配置管理场景。</p>
+</blockquote>
+<h3 id="下载源码"><a href="#下载源码" class="headerlink" title="下载源码"></a>下载源码</h3><p>gitree: <code>https://gitee.com/apolloconfig/apollo</code></p>
+<p>github: <code>https://github.com/apolloconfig/apollo</code></p>
+<p>文档地址：<code>https://www.apolloconfig.com/#/zh/README</code> 源码里面也有完整的文档，根目录下 <code>docs</code> <code>doc</code> 文件夹</p>
+<p>下载完的代码目录</p>
+<p><img src="/img/apollo/1.png" srcset="/wiki/img/loading.gif" lazyload></p>
+<h3 id="各模块介绍"><a href="#各模块介绍" class="headerlink" title="各模块介绍"></a>各模块介绍</h3><h4 id="config-service"><a href="#config-service" class="headerlink" title="config service"></a>config service</h4><p>代码路径：<code>apollo-configservice</code></p>
+<p><img src="/img/apollo/2.png" srcset="/wiki/img/loading.gif" lazyload></p>
+<ul>
+<li>提供配置获取接口</li>
+<li>提供配置更新推送接口（基于Http long polling）<ul>
+<li>服务端使用<a target="_blank" rel="noopener" href="http://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/web/context/request/async/DeferredResult.html">Spring DeferredResult</a>实现异步化，从而大大增加长连接数量</li>
+<li>目前使用的tomcat embed默认配置是最多10000个连接（可以调整），使用了4C8G的虚拟机实测可以支撑10000个连接，所以满足需求（一个应用实例只会发起一个长连接）。</li>
+</ul>
+</li>
+<li>接口服务对象为Apollo客户端</li>
+</ul>
+<h4 id="admin-service"><a href="#admin-service" class="headerlink" title="admin service"></a>admin service</h4><p>代码路径：<code>apollo-adminservice</code></p>
+<ul>
+<li>提供配置管理接口</li>
+<li>提供配置修改、发布等接口</li>
+<li>接口服务对象为Portal</li>
+</ul>
+<h4 id="protal"><a href="#protal" class="headerlink" title="protal"></a>protal</h4><p>代码路径：<code>apollo-protal</code></p>
+<ul>
+<li>提供Web界面供用户管理配置</li>
+<li>通过Meta Server获取Admin Service服务列表（IP+Port），通过IP+Port访问服务</li>
+<li>在Portal侧做load balance、错误重试</li>
+</ul>
+<h3 id="源码编译部署"><a href="#源码编译部署" class="headerlink" title="源码编译部署"></a>源码编译部署</h3><p>多环境部署就是每一套环境，部署一套 <code>config service</code> 和 <code>admin service</code>；<code>protal</code> 是一套。</p>
+<p>每个<code>config service</code> 和 <code>admin service</code> 也可以做集群横向扩展，使用同一套数据库，然后做个<code>nginx</code>反向代理负载均衡，<code>protal</code>里面配置代理后的地址；多个config service的时候，数据库的Eureka需要配置多个config的地址，它们会互相复制。</p>
+<p><img src="/img/apollo/3.png" srcset="/wiki/img/loading.gif" lazyload></p>
+<h4 id="修改编译配置文件"><a href="#修改编译配置文件" class="headerlink" title="修改编译配置文件"></a>修改编译配置文件</h4><p>源码下载下来可以直接拿<code>IDEA</code>打开，安装maven 直接安装依赖；或者直接运行 <code>/script/build.sh</code> 脚本进行打包。</p>
+<p><code>build.sh</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">!/bin/sh</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash"></span><br><span class="language-bash"><span class="hljs-comment"># Copyright 2021 Apollo Authors</span></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash"></span><br><span class="language-bash"><span class="hljs-comment"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">you may not use this file except <span class="hljs-keyword">in</span> compliance with the License.</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">You may obtain a copy of the License at</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash"></span><br><span class="language-bash"><span class="hljs-comment"># http://www.apache.org/licenses/LICENSE-2.0</span></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash"></span><br><span class="language-bash"><span class="hljs-comment"># Unless required by applicable law or agreed to in writing, software</span></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">distributed under the License is distributed on an <span class="hljs-string">&quot;AS IS&quot;</span> BASIS,</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">See the License <span class="hljs-keyword">for</span> the specific language governing permissions and</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">limitations under the License.</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash"></span><br><span class="language-bash"></span><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">apollo config db info</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">config service，admin service 数据库信息</span><br>apollo_config_db_url=&#x27;jdbc:mysql://221.226.4.130:48005/ApolloConfigDB_dev_92?serverTimezone=GMT%2b8&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;zeroDateTimeBehavior=convertToNull&amp;useSSL=false&amp;serverTimezone=GMT%2b8&#x27;<br>apollo_config_db_username=&#x27;root&#x27;<br>apollo_config_db_password=&#x27;soyuan.123&#x27;<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">apollo portal db info</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">portal 数据库信息</span><br>apollo_portal_db_url=&#x27;jdbc:mysql://221.226.4.130:48005/ApolloPortalDB?serverTimezone=GMT%2b8&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;zeroDateTimeBehavior=convertToNull&amp;useSSL=false&amp;serverTimezone=GMT%2b8&#x27;<br>apollo_portal_db_username=&#x27;root&#x27;<br>apollo_portal_db_password=&#x27;soyuan.123&#x27;<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">meta server url, different environments should have different meta server addresses</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">各个环境的config地址 数据库信息</span><br>dev_meta=http://172.16.100.92:8080<br>fat_meta=http://fill-in-fat-meta-server:8080<br>uat_meta=http://fill-in-uat-meta-server:8080<br>pro_meta=http://221.226.4.130:48025<br><br>META_SERVERS_OPTS=&quot;-Ddev_meta=$dev_meta -Dfat_meta=$fat_meta -Duat_meta=$uat_meta -Dpro_meta=$pro_meta&quot;<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">=============== Please <span class="hljs-keyword">do</span> not modify the following content =============== <span class="hljs-comment">#</span></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">go to script directory</span><br>cd &quot;$&#123;0%/*&#125;&quot; || exit <br><br>cd ..<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">package config-service and admin-service</span><br>echo &quot;==== starting to build config-service and admin-service ====&quot;<br><br>mvn clean package -DskipTests -pl apollo-configservice,apollo-adminservice -am -Dapollo_profile=github -Dspring_datasource_url=$apollo_config_db_url -Dspring_datasource_username=$apollo_config_db_username -Dspring_datasource_password=$apollo_config_db_password<br><br>echo &quot;==== building config-service and admin-service finished ====&quot;<br><br>echo &quot;==== starting to build portal ====&quot;<br><br>mvn clean package -DskipTests -pl apollo-portal -am -Dapollo_profile=github,auth -Dspring_datasource_url=$apollo_portal_db_url -Dspring_datasource_username=$apollo_portal_db_username -Dspring_datasource_password=$apollo_portal_db_password $META_SERVERS_OPTS<br><br>echo &quot;==== building portal finished ====&quot;<br></code></pre></td></tr></table></figure>
+
+<p><strong>数据库链接字符串一定要注意，源码中的默认格式低版本mysql不支持会报错</strong></p>
+<h4 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h4><p>配置文件修改后，开始打包，直接运行<code>./build.sh</code>,成功接口如下。</p>
+<p><img src="/img/apollo/5.png" srcset="/wiki/img/loading.gif" lazyload></p>
+<p>生成的包分别位于一下目录</p>
+<ul>
+<li> configservice：<code>apollo-configservice\target\apollo-configservice-2.0.0-SNAPSHOT-github.zip</code></li>
+<li>adminservice：<code>apollo-adminservice\target\apollo-adminservice-2.0.0-SNAPSHOT-github.zip</code></li>
+<li>protal：<code>apollo-portal\target\apollo-portal-2.0.0-SNAPSHOT-github.zip</code></li>
+</ul>
+<h4 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h4><p>环境列表</p>
+<table>
+<thead>
+<tr>
+<th>服务器</th>
+<th>环境名称</th>
+<th>部署服务</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>172.16.100.92</td>
+<td>DEV</td>
+<td>configservice,adminservice,protal</td>
+</tr>
+<tr>
+<td>221.226.4.130</td>
+<td>PRO</td>
+<td>configservice,adminservice</td>
+</tr>
+</tbody></table>
+<h5 id="172-16-100-92"><a href="#172-16-100-92" class="headerlink" title="172.16.100.92"></a>172.16.100.92</h5><p>把 <code>build.sh</code>  <code>configservice</code> 的配置文件改成  <code>172.16.100.92</code> 的配置。</p>
+<p><code>apollo-configservice-2.0.0-SNAPSHOT-github.zip</code> 上传到服务器，解压出来目录结构如下</p>
+<p><img src="/img/apollo/6.png" srcset="/wiki/img/loading.gif" lazyload></p>
+<p>如果想改启动端口，和日志输出目录，修改 <code>script/startup.sh</code> 的  <code>LOG_DIR</code> <code>SERVER_PORT</code></p>
+<p>启动：<code>./script/startup.sh</code></p>
+<p>停止: <code>./script/shutdown.sh</code></p>
+<hr>
+<p><code>apollo-adminservice-2.0.0-SNAPSHOT-github.zip</code> 上传到服务器，解压出来目录结构如下</p>
+<p><img src="/img/apollo/7.png" srcset="/wiki/img/loading.gif" lazyload></p>
+<p>如果想改启动端口，和日志输出目录，修改 <code>script/startup.sh</code> 的  <code>LOG_DIR</code> <code>SERVER_PORT</code></p>
+<p>启动：<code>./script/startup.sh</code></p>
+<p>停止: <code>./script/shutdown.sh</code></p>
+<h5 id="221-226-4-130"><a href="#221-226-4-130" class="headerlink" title="221.226.4.130"></a>221.226.4.130</h5><p>把 <code>build.sh</code>  <code>configservice</code> 的配置文件改成  <code>221.226.4.130</code> 的配置。</p>
+<p>部署启动过程同上。</p>
+<h5 id="protal-1"><a href="#protal-1" class="headerlink" title="protal"></a>protal</h5><p>管理页面为了安全，部署到内网只能内网访问</p>
+<p>把 <code>build.sh</code>  <code>meta server url</code> 的配置文件改成对应的环境的地址，然后打包</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">dev_meta=http://172.16.100.92:8080<br>fat_meta=http://fill-in-fat-meta-server:8080<br>uat_meta=http://fill-in-uat-meta-server:8080<br>pro_meta=http://221.226.4.130:48025<br></code></pre></td></tr></table></figure>
+
+
+
+<p>数据库修改环境列表</p>
+<p><img src="/img/apollo/8.png" srcset="/wiki/img/loading.gif" lazyload></p>
+<p><code>apollo-portal-2.0.0-SNAPSHOT-github.zip</code> 上传到服务器，解压目录如下</p>
+<p><img src="/img/apollo/9.png" srcset="/wiki/img/loading.gif" lazyload></p>
+<p>如果想改启动端口，和日志输出目录，修改 <code>script/startup.sh</code> 的  <code>LOG_DIR</code> <code>SERVER_PORT</code></p>
+<p>启动：<code>./script/startup.sh</code></p>
+<p>停止: <code>./script/shutdown.sh</code></p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>默认登录账号密码 <code>apollo/admin</code></p>
+<p>创建应用可以添加多个 <code>namespace</code>，<code>集群</code> 对配置文件进行管理</p>
+<h3 id="问题排查"><a href="#问题排查" class="headerlink" title="问题排查"></a>问题排查</h3><p> <a target="_blank" rel="noopener" href="https://github.com/apolloconfig/apollo/wiki/%E9%83%A8%E7%BD%B2&%E5%BC%80%E5%8F%91%E9%81%87%E5%88%B0%E7%9A%84%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98">部署&amp;开发遇到的常见问题</a></p>
+<h3 id="admin-server-或者-config-server-注册了内网IP，导致portal或者client访问不了admin-server或config-server"><a href="#admin-server-或者-config-server-注册了内网IP，导致portal或者client访问不了admin-server或config-server" class="headerlink" title="admin server 或者 config server 注册了内网IP，导致portal或者client访问不了admin server或config server"></a>admin server 或者 config server 注册了内网IP，导致portal或者client访问不了admin server或config server</h3><p><strong>推荐第二种方案，直接在<code>startup.sh</code> 增加启动参数</strong></p>
+<p>分布式部署的时候，<code>apollo-configservice</code>和<code>apollo-adminservice</code>需要把自己的IP和端口注册到Meta Server（apollo-configservice本身）。</p>
+<p>Apollo客户端和Portal会从Meta Server获取服务的地址（IP+端口），然后通过服务地址直接访问。</p>
+<p>所以如果实际部署的机器有多块网卡（如docker），或者存在某些网卡的IP是Apollo客户端和Portal无法访问的（如网络安全限制），那么我们就需要在<code>apollo-configservice</code>和<code>apollo-adminservice</code>中做相关限制以避免Eureka将这些网卡的IP注册到Meta Server。</p>
+<h4 id="方案一：-忽略某些网卡"><a href="#方案一：-忽略某些网卡" class="headerlink" title="方案一： 忽略某些网卡"></a>方案一： 忽略某些网卡</h4><p>具体文档可以参考<a target="_blank" rel="noopener" href="http://projects.spring.io/spring-cloud/spring-cloud.html#ignore-network-interfaces">Ignore Network Interfaces</a>章节。具体而言，就是分别编辑<a target="_blank" rel="noopener" href="https://github.com/ctripcorp/apollo/blob/master/apollo-configservice/src/main/resources/application.yml">apollo-configservice/src/main/resources/application.yml</a>和<a target="_blank" rel="noopener" href="https://github.com/ctripcorp/apollo/blob/master/apollo-adminservice/src/main/resources/application.yml">apollo-adminservice/src/main/resources/application.yml</a>，然后把需要忽略的网卡加进去。</p>
+<p>如下面这个例子就是对于<code>apollo-configservice</code>，把docker0和veth.*的网卡在注册到Eureka时忽略掉。</p>
+<figure class="highlight nestedtext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs nestedtext"><span class="hljs-attribute">spring</span><span class="hljs-punctuation">:</span><br>  <span class="hljs-attribute">application</span><span class="hljs-punctuation">:</span><br>      <span class="hljs-attribute">name</span><span class="hljs-punctuation">:</span> <span class="hljs-string">apollo-configservice</span><br>  <span class="hljs-attribute">profiles</span><span class="hljs-punctuation">:</span><br>    <span class="hljs-attribute">active</span><span class="hljs-punctuation">:</span> <span class="hljs-string">$&#123;apollo_profile&#125;</span><br>  <span class="hljs-attribute">cloud</span><span class="hljs-punctuation">:</span><br>    <span class="hljs-attribute">inetutils</span><span class="hljs-punctuation">:</span><br>      <span class="hljs-attribute">ignoredInterfaces</span><span class="hljs-punctuation">:</span><br>        <span class="hljs-bullet">-</span> <span class="hljs-string">docker0</span><br>        <span class="hljs-bullet">-</span> <span class="hljs-string">veth.*</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意，对于application.yml修改时要小心，千万不要把其它信息改错了，如spring.application.name等。</p>
+</blockquote>
+<h4 id="方案二：强制指定admin-server和config-server向eureka注册的IP"><a href="#方案二：强制指定admin-server和config-server向eureka注册的IP" class="headerlink" title="方案二：强制指定admin server和config server向eureka注册的IP"></a>方案二：强制指定admin server和config server向eureka注册的IP</h4><p>可以修改startup.sh，通过JVM System Property在运行时传入，如<code>-Deureka.instance.ip-address=$&#123;指定的IP&#125;</code>，或者也可以修改apollo-adminservice或apollo-configservice 的bootstrap.yml文件，加入以下配置</p>
+<figure class="highlight nestedtext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs nestedtext"><span class="hljs-attribute">eureka</span><span class="hljs-punctuation">:</span><br>  <span class="hljs-attribute">instance</span><span class="hljs-punctuation">:</span><br>    <span class="hljs-attribute">ip-address</span><span class="hljs-punctuation">:</span> <span class="hljs-string">$&#123;指定的IP&#125;</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="方案三：强制指定admin-server和config-server向eureka注册的IP和Port"><a href="#方案三：强制指定admin-server和config-server向eureka注册的IP和Port" class="headerlink" title="方案三：强制指定admin server和config server向eureka注册的IP和Port"></a>方案三：强制指定admin server和config server向eureka注册的IP和Port</h4><p>可以修改startup.sh，通过JVM System Property在运行时传入，如<code>-Deureka.instance.homePageUrl=http://$&#123;指定的IP&#125;:$&#123;指定的Port&#125;</code>，或者也可以修改apollo-adminservice或apollo-configservice 的bootstrap.yml文件，加入以下配置</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs dts"><span class="hljs-symbol">eureka:</span><br><span class="hljs-symbol">  instance:</span><br><span class="hljs-symbol">    homePageUrl:</span> http:<span class="hljs-comment">//$&#123;指定的IP&#125;:$&#123;指定的Port&#125;</span><br><span class="hljs-symbol">    preferIpAddress:</span> false<br></code></pre></td></tr></table></figure>
+
+<p>做完上述修改并重启后，可以查看Eureka页面（http://${config-service-url:port}）检查注册上来的IP信息是否正确。</p>
+<blockquote>
+<p>注：如果Apollo部署在公有云上，本地开发环境无法连接，但又需要做开发测试的话，客户端可以升级到0.11.0版本及以上，然后通过<code>-Dapollo.configService=http://config-service的公网IP:端口</code>来跳过meta service的服务发现，记得要对公网 SLB 设置 IP 白名单，避免数据泄露</p>
+</blockquote>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/wiki/categories/apollo/" class="category-chain-item">apollo</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/wiki/tags/apollo/">#apollo</a>
+      
+        <a href="/wiki/tags/%E8%BF%90%E7%BB%B4/">#运维</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>apollo 配置中心多环境部署</div>
+      <div>https://zps111.gitee.io/wiki/2021/12/03/apollo/apollo 配置中心多环境部署/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>赵培胜</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2021年12月3日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/wiki/2021/12/03/apollo/apollo%20%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83%E5%A4%9A%E7%8E%AF%E5%A2%83docker%E7%89%88%E6%9C%AC/" title="apollo 配置中心多环境docker版本">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">apollo 配置中心多环境docker版本</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/wiki/2021/12/01/docker/docker%E5%90%AF%E5%8A%A8%E7%AB%AF%E5%8F%A3%E7%A6%81%E6%AD%A2ipv6/" title="docker启动端口禁止ipv6">
+                        <span class="hidden-mobile">docker启动端口禁止ipv6</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/wiki/img/police_beian.png" srcset="/wiki/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京ICP备2020044488号-1</span>
+        </a>
+      </span>
+    
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/wiki/js/events.js" ></script>
+<script  src="/wiki/js/plugins.js" ></script>
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/wiki/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/wiki/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/wiki/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

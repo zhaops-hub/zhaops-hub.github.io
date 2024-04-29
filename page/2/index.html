@@ -1,1563 +1,968 @@
+
+
 <!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
 
 
 
-  
-
-
-<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="theme-color" content="#222">
-
-
-
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/wiki/img/favicon.png">
+  <link rel="icon" href="/wiki/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="赵培胜">
+  <meta name="keywords" content="">
+  
+    <meta property="og:type" content="website">
+<meta property="og:title" content="zps">
+<meta property="og:url" content="https://zps111.gitee.io/wiki/page/2/index.html">
+<meta property="og:site_name" content="zps">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="赵培胜">
+<meta name="twitter:card" content="summary_large_image">
   
   
-    
-    
-  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
-  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <title>zps</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
 
 
 
 
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
 
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
 
 
 
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+<link  rel="stylesheet" href="/wiki/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/wiki/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/wiki/css/highlight-dark.css" />
+  
 
 
 
 
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zps111.gitee.io","root":"/wiki/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/wiki/local-search.xml"};
 
-  <link rel="alternate" href="/atom.xml" title="zhaops's blog" type="application/atom+xml" />
-
-
-
-
-
-
-<meta property="og:type" content="website">
-<meta property="og:title" content="zhaops&#39;s blog">
-<meta property="og:url" content="https://zhaops-hub.github.io/page/2/index.html">
-<meta property="og:site_name" content="zhaops&#39;s blog">
-<meta property="article:author" content="zhaops">
-<meta name="twitter:card" content="summary">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Gemini',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
     }
-  };
-</script>
-
-
-
-  <link rel="canonical" href="https://zhaops-hub.github.io/page/2/"/>
-
-
-
-
-
-  <title>zhaops's blog</title>
+  </script>
+  <script  src="/wiki/js/utils.js" ></script>
+  <script  src="/wiki/js/color-schema.js" ></script>
   
 
 
-
-
-
-
-
-
-<meta name="generator" content="Hexo 4.2.0"></head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
   
-  
-    
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
   
 
-  <div class="container sidebar-position-left 
-  page-home">
-    <div class="headband">
-  
-    </div>
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+  <header>
     
 
-    <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">zhaops's blog</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-      
-        <p class="site-subtitle"></p>
-      
-  </div>
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/wiki/">
+      <strong>zhaopeisheng blog</strong>
+    </a>
 
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
     </button>
-  </div>
-</div>
 
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
-
-      
-        <li class="menu-item menu-item-search">
           
-            <a href="javascript:;" class="popup-trigger">
           
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            
-            搜索
-          </a>
-        </li>
-      
-    </ul>
-  
-
-  
-    <div class="site-search">
-      
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="搜索..." spellcheck="false"
-             type="text" id="local-search-input">
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/wiki/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/wiki/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/wiki/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/wiki/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/wiki/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
     </div>
   </div>
-  <div id="local-search-result"></div>
-</div>
-
-
-
-    </div>
-  
 </nav>
 
-
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-  <section id="posts" class="posts-expand">
-    
-      
-
   
 
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhaops-hub.github.io/2020/05/24/tcpip_2msl/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhaops">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zhaops's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/05/24/tcpip_2msl/" itemprop="url">为什么TCP4次挥手时等待为2MSL？</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-24T20:41:08+08:00">
-                2020-05-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
+<div id="banner" class="banner" parallax=true
+     style="background: url('/wiki/img/bj.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/tcp-ip/" itemprop="url" rel="index">
-                    <span itemprop="name">tcp/ip</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
+            <span id="subtitle" data-typed-text="zhaopeisheng blog"></span>
           
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
         
-          
-            <p>通信所要解决的首要问题就是，<strong>保持通信双方的信息对称，使通信双方处于同步状态。</strong></p>
-<p>先来一个例子：<br>罗密欧大学期间写信给中学同学朱丽叶，信的内容如下：</p>
-<p><strong>小叶子，我喜欢你！</strong></p>
-<p>这封信发出之后，罗密欧无法知道朱丽叶能否收到，只有收到小叶子的回信，才能知道自己的信已经到达对方。</p>
-<p>三天之后，小叶子回信了，信的内容如下：</p>
-<p><strong>小欧，来信已阅，我也喜欢你…</strong></p>
-<p>此时，小叶子眼中双方的状态是：<strong>互相爱慕</strong>！</p>
-<p>如果小欧收到回信，小欧眼中双方的状态也是：互相爱慕！</p>
-<p>如果小欧没有收到回信，小欧眼中双方的状态是：<strong>单相思</strong>！</p>
-<p>小叶子为了杜绝小欧模棱两可的状态，使他与自己达成“<strong>互相爱慕</strong>”的共识，需要做以下工作：</p>
-<p>1）先耐心地等小欧的第三封信</p>
-<p>2）如果若干天没有收到回信，需要把自己的第二封信再次发出</p>
-<p>如果收到了小欧的回信，那么双方的状态终于同步了：“互相爱慕”！</p>
-<p>即使2）发生了，N天之后也可以达成同步状态。</p>
-<p>之后，双方可以甜言蜜语地谈恋爱了。</p>
-<p>TCP四次挥手也遵循相似的套路。</p>
-<p>主动断开的一侧为A，被动断开的一侧为B。</p>
-<p><strong>第一个消息：A发FIN</strong></p>
-<p><strong>第二个消息：B回复ACK（回复的同时把tcp链接关掉，tcp处于半关闭状态）</strong></p>
-<p><strong>第三个消息：B发出FIN</strong></p>
-<p>此时此刻：B单方面认为自己与A达成了共识，即双方都同意关闭连接。</p>
-<p>此时，B能释放这个TCP连接占用的内存资源吗？<strong>不能，B一定要确保A收到自己的ACK、FIN。</strong></p>
-<p>所以B需要静静地等待A的第四个消息的到来：</p>
-<p><strong>第四个消息：A发出ACK，用于确认收到B的FIN</strong></p>
-<p>当B接收到此消息，即认为双方达成了同步：双方都知道连接可以释放了，此时B可以安全地释放此TCP连接所占用的内存资源、端口号。</p>
-<p>所以<strong>被动关闭的B无需任何wait time，直接释放资源。</strong></p>
-<p>但，A并不知道B是否接到自己的ACK，A是这么想的：</p>
-<p>1）如果B没有收到自己的ACK，会超时重传FiN</p>
-<p>那么A再次接到重传的FIN，会再次发送ACK</p>
-<p>2）如果B收到自己的ACK，也不会再发任何消息，包括ACK</p>
-<p>无论是1还是2，A都需要等待，要取这两种情况等待时间的最大值，<strong>以应对最坏的情况发生</strong>，这个最坏情况是：</p>
-<p>去向ACK消息最大存活时间（MSL) + 来向FIN消息的最大存活时间(MSL)。</p>
-<p>这恰恰就是<strong>2MSL( Maximum Segment Life)。</strong></p>
-<p>等待2MSL时间，A就可以放心地释放TCP占用的资源、端口号，<strong>此时可以使用该端口号连接任何服务器。</strong></p>
-<p><strong>为何一定要等2MSL？</strong><br><strong>如果不等，释放的端口可能会重连刚断开的服务器端口，这样依然存活在网络里的老的TCP报文可能与新TCP连接报文冲突，造成数据冲突，为避免此种情况，需要耐心等待网络老的TCP连接的活跃报文全部死翘翘，2MSL时间可以满足这个需求（尽管非常保守）！</strong></p>
+      </div>
 
-          
-        
       
     </div>
-    
-    
-    
-
-     <div>
-    
-</div>
-
-
-<div>
-      
-</div>
-
-
-    
-
-    
-
-    
- 
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
+</div>
 
+</div>
 
+  </header>
+
+  <main>
     
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/wiki/2023/12/18/%E8%AE%B0%E5%BD%95/%E5%B9%B3%E5%8F%B0%E8%AE%B0%E5%BD%95/" target="_self">
+          
+        </a>
+      </h1>
+
       
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhaops-hub.github.io/2020/05/23/docker_dockerfile/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhaops">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zhaops's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/05/23/docker_dockerfile/" itemprop="url">DockerFile 使用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-23T20:41:08+08:00">
-                2020-05-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
+      <a class="index-excerpt index-excerpt__noimg" href="/wiki/2023/12/18/%E8%AE%B0%E5%BD%95/%E5%B9%B3%E5%8F%B0%E8%AE%B0%E5%BD%95/" target="_self">
+        <div>
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/docker/" itemprop="url" rel="index">
-                    <span itemprop="name">docker</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
+      </a>
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
+      <div class="index-btm post-metas">
         
-          
-            <h3 id="什么是dockerfile"><a href="#什么是dockerfile" class="headerlink" title="什么是dockerfile?"></a>什么是dockerfile?</h3><p>Dockerfile是一个包含用于组合映像的命令的文本文档。可以使用在命令行中调用任何命令。 Docker通过读取Dockerfile中的指令自动生成映像。</p>
-<p>docker build命令用于从Dockerfile构建映像。可以在docker build命令中使用-f标志指向文件系统中任何位置的Dockerfile。<br>例：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -f /path/to/a/Dockerfile</span><br></pre></td></tr></table></figure>
-
-<h3 id="Dockerfile的基本结构"><a href="#Dockerfile的基本结构" class="headerlink" title="Dockerfile的基本结构"></a>Dockerfile的基本结构</h3><p>Dockerfile 一般分为四部分：基础镜像信息、维护者信息、镜像操作指令和容器启动时执行指令，’#’ 为 Dockerfile 中的注释。</p>
-<h3 id="Dockerfile文件说明"><a href="#Dockerfile文件说明" class="headerlink" title="Dockerfile文件说明"></a>Dockerfile文件说明</h3><p>Docker以从上到下的顺序运行Dockerfile的指令。为了指定基本映像，第一条指令必须是FROM。一个声明以＃字符开头则被视为注释。可以在Docker文件中使用RUN，CMD，FROM，EXPOSE，ENV等指令。</p>
-<h3 id="docker-build-命令详解"><a href="#docker-build-命令详解" class="headerlink" title="docker build 命令详解"></a>docker build 命令详解</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">docker build [OPTIONS] PATH | URL | -</span><br><span class="line"></span><br><span class="line">--build-arg=[] :设置镜像创建时的变量；</span><br><span class="line"></span><br><span class="line">--cpu-shares :设置 cpu 使用权重；</span><br><span class="line"></span><br><span class="line">--cpu-period :限制 CPU CFS周期；</span><br><span class="line"></span><br><span class="line">--cpu-quota :限制 CPU CFS配额；</span><br><span class="line"></span><br><span class="line">--cpuset-cpus :指定使用的CPU id；</span><br><span class="line"></span><br><span class="line">--cpuset-mems :指定使用的内存 id；</span><br><span class="line"></span><br><span class="line">--disable-content-trust :忽略校验，默认开启；</span><br><span class="line"></span><br><span class="line">-f :指定要使用的Dockerfile路径；</span><br><span class="line"></span><br><span class="line">--force-rm :设置镜像过程中删除中间容器；</span><br><span class="line"></span><br><span class="line">--isolation :使用容器隔离技术；</span><br><span class="line"></span><br><span class="line">--label=[] :设置镜像使用的元数据；</span><br><span class="line"></span><br><span class="line">-m :设置内存最大值；</span><br><span class="line"></span><br><span class="line">--memory-swap :设置Swap的最大值为内存+swap，"-1"表示不限swap；</span><br><span class="line"></span><br><span class="line">--no-cache :创建镜像的过程不使用缓存；</span><br><span class="line"></span><br><span class="line">--pull :尝试去更新镜像的新版本；</span><br><span class="line"></span><br><span class="line">--quiet, -q :安静模式，成功后只输出镜像 ID；</span><br><span class="line"></span><br><span class="line">--rm :设置镜像成功后删除中间容器；</span><br><span class="line"></span><br><span class="line">--shm-size :设置/dev/shm的大小，默认值是64M；</span><br><span class="line"></span><br><span class="line">--ulimit :Ulimit配置。</span><br><span class="line"></span><br><span class="line">--tag, -t: 镜像的名字及标签，通常 name:tag 或者 name 格式；可以在一次构建中为一个镜像设置多个标签。</span><br><span class="line"></span><br><span class="line">--network: 默认 default。在构建期间设置RUN指令的网络模式</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 实例</span><br><span class="line"></span><br><span class="line">// 使用当前目录的 Dockerfile 创建镜像，标签为 runoob/ubuntu:v1。</span><br><span class="line">docker build -t runoob/ubuntu:v1 . </span><br><span class="line"></span><br><span class="line">// 使用URL github.com/creack/docker-firefox 的 Dockerfile 创建镜像。</span><br><span class="line">docker build github.com/creack/docker-firefox</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 也可以通过 -f Dockerfile 文件的位置：</span><br><span class="line"><span class="meta">$</span><span class="bash"> docker build -f /path/to/a/Dockerfile .</span></span><br><span class="line"></span><br><span class="line">// 在 Docker 守护进程执行 Dockerfile 中的指令前，首先会对 Dockerfile 进行语法检查，有语法错误时会返回：</span><br><span class="line"><span class="meta">$</span><span class="bash"> docker build -t <span class="built_in">test</span>/myapp .</span></span><br><span class="line">Sending build context to Docker daemon 2.048 kB</span><br><span class="line">Error response from daemon: Unknown instruction: RUNCMD</span><br></pre></td></tr></table></figure>
-          
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-12-18 11:27" pubdate>
+              2023-12-18
+            </time>
+          </div>
         
-      
-    </div>
-    
-    
-    
-
-     <div>
-    
-</div>
-
-
-<div>
-      
-</div>
-
-
-    
-
-    
-
-    
- 
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
+        
+        
+      </div>
+    </article>
   </div>
-  
-  
-  
-  </article>
 
-
+  <div class="row mx-auto index-card">
     
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/wiki/2023/12/15/spring%20cloud/SpringBoot%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95%E8%8E%B7%E5%8F%96bean/" target="_self">
+          SpringBoot静态方法获取bean
+        </a>
+      </h1>
+
       
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhaops-hub.github.io/2020/05/23/Apollo%E5%88%86%E5%B8%83%E5%BC%8F%E9%83%A8%E7%BD%B2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhaops">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zhaops's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/05/23/Apollo%E5%88%86%E5%B8%83%E5%BC%8F%E9%83%A8%E7%BD%B2/" itemprop="url">Apollo(阿波罗)分布式部署.md</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-23T20:41:08+08:00">
-                2020-05-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Apollo/" itemprop="url" rel="index">
-                    <span itemprop="name">Apollo</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+      <a class="index-excerpt index-excerpt__noimg" href="/wiki/2023/12/15/spring%20cloud/SpringBoot%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95%E8%8E%B7%E5%8F%96bean/" target="_self">
+        <div>
+          通过实现ApplicationContextAware接口，可以获取ApplicationContext上下文，并在静态方法中获取bean12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970
         </div>
-      </header>
-    
+      </a>
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
+      <div class="index-btm post-metas">
         
-          
-            <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>Apollo（阿波罗）是携程框架部门研发的分布式配置中心，能够集中化管理应用不同环境、不同集群的配置，配置修改后能够实时推送到应用端，并且具备规范的权限、流程治理等特性，适用于微服务配置管理场景。<br><a href="https://github.com/zhaops-hub/apollo" target="_blank" rel="noopener">github地址</a>  </p>
-<p>直接搭建多环境Apollo  </p>
-<p>Apollo目前支持以下环境：</p>
-<ul>
-<li>DEV: 开发环境</li>
-<li>FAT：测试环境，相当于alpha环境(功能测试)</li>
-<li>UAT：集成环境，相当于beta环境（回归测试）</li>
-<li>PRO：生产环境  </li>
-</ul>
-<p>如果希望添加自定义的环境名称，<a href="https://github.com/ctripcorp/apollo/wiki/%E9%83%A8%E7%BD%B2&%E5%BC%80%E5%8F%91%E9%81%87%E5%88%B0%E7%9A%84%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98#42-%E6%B7%BB%E5%8A%A0%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9A%84%E7%8E%AF%E5%A2%83" target="_blank" rel="noopener">具体步骤可以参考</a></p>
-<p><strong>本次部署 dev pro 两套环境</strong></p>
-<table>
-<thead>
-<tr>
-<th>IP</th>
-<th>部署</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>172.16.100.222</td>
-<td>dev环境，mysql，包含管理页面 portal</td>
-</tr>
-<tr>
-<td>172.16.100.101</td>
-<td>pro环境</td>
-</tr>
-</tbody></table>
-<h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><p>本次部署是用docker部署<br>因为官方没有提供现成的镜像，但是提供了DockerFile ，需要自己打包</p>
-<h3 id="下载源码自己编译，或者直接去github上去下载Release包"><a href="#下载源码自己编译，或者直接去github上去下载Release包" class="headerlink" title="下载源码自己编译，或者直接去github上去下载Release包"></a>下载源码自己编译，或者直接去github上去下载Release包</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 下载源码</span><br><span class="line">$ git clone https:&#x2F;&#x2F;github.com&#x2F;ctripcorp&#x2F;apollo.git</span><br></pre></td></tr></table></figure>
-
-<p>结构如下  </p>
-<ul>
-<li>apollo-portal: 这个是管理页面</li>
-<li>apollo-adminservice: apollo 服务端，相当于后台服务</li>
-<li>apollo-configservice: apollo 注册中心</li>
-</ul>
-<p>一套环境（apollo-adminservice，apollo-configservice）两个服务，apollo-portal只部署一个就可以，可以配置多个环境进行管理</p>
-<p><img src="/2020/05/23/Apollo%E5%88%86%E5%B8%83%E5%BC%8F%E9%83%A8%E7%BD%B2/apollo_install_1.png" alt="image"></p>
-<p>编译代码（必须先装jdk 和 Maven ）<br>windows 直接双击 build.bat<br>linux build.sh<br><img src="/2020/05/23/Apollo%E5%88%86%E5%B8%83%E5%BC%8F%E9%83%A8%E7%BD%B2/apollo_install_2.png" alt="image"></p>
-<p>编译完的截图</p>
-<p><img src="/2020/05/23/Apollo%E5%88%86%E5%B8%83%E5%BC%8F%E9%83%A8%E7%BD%B2/apollo_install_3.png" alt="image"></p>
-<h4 id="配置数据库"><a href="#配置数据库" class="headerlink" title="配置数据库"></a>配置数据库</h4><p>Apollo服务端共需要两个数据库：ApolloPortalDB和ApolloConfigDB，我们把数据库、表的创建和样例数据都分别准备了sql文件，只需要导入数据库即可。  </p>
-<p>需要注意的是ApolloPortalDB只需要在生产环境部署一个即可，而ApolloConfigDB需要在每个环境部署一套，如fat、uat和pro分别部署3套ApolloConfigDB。</p>
-<p>脚本在源码里面   </p>
-<p><img src="/2020/05/23/Apollo%E5%88%86%E5%B8%83%E5%BC%8F%E9%83%A8%E7%BD%B2/apollo_install_4.png" alt="image"></p>
-<p>命令行进入到mysql里面，source apolloportaldb.sql source ApolloPortalDB.sql ，或者直接navicat导入  </p>
-<p> <img src="/2020/05/23/Apollo%E5%88%86%E5%B8%83%E5%BC%8F%E9%83%A8%E7%BD%B2/apollo_install_5.png" alt="image"></p>
-<h4 id="打包镜像-apollo-configservice"><a href="#打包镜像-apollo-configservice" class="headerlink" title="打包镜像 apollo-configservice"></a>打包镜像 apollo-configservice</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"># 先打包镜像，先找到源码里面的DockerFile</span><br><span class="line"># apollo-configservice &gt; src &gt; main &gt; docker &gt; DockerFile</span><br><span class="line"></span><br><span class="line"># Dockerfile for apollo-configservice</span><br><span class="line"># 1. Copy apollo-configservice-$&#123;VERSION&#125;-github.zip to current directory</span><br><span class="line"># 2. Build with: docker build -t apollo-configservice .</span><br><span class="line"># 3. Run with: docker run -p 8080:8080 -e DS_URL&#x3D;&quot;jdbc:mysql:&#x2F;&#x2F;fill-in-the-correct-server:3306&#x2F;ApolloConfigDB?characterEncoding&#x3D;utf8&quot; -e DS_USERNAME&#x3D;FillInCorrectUser -e DS_PASSWORD&#x3D;FillInCorrectPassword -d -v &#x2F;tmp&#x2F;logs:&#x2F;opt&#x2F;logs --name apollo-configservice apollo-configservice</span><br><span class="line"></span><br><span class="line">FROM openjdk:8-jre-alpine</span><br><span class="line">MAINTAINER ameizi &lt;sxyx2008@163.com&gt;</span><br><span class="line"></span><br><span class="line">ENV VERSION 1.7.0-SNAPSHOT</span><br><span class="line">ENV SERVER_PORT 8080</span><br><span class="line"># DataSource Info</span><br><span class="line">ENV DS_URL &quot;&quot;</span><br><span class="line">ENV DS_USERNAME &quot;&quot;</span><br><span class="line">ENV DS_PASSWORD &quot;&quot;</span><br><span class="line"></span><br><span class="line">RUN echo &quot;http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;alpine&#x2F;v3.8&#x2F;main&quot; &gt; &#x2F;etc&#x2F;apk&#x2F;repositories \</span><br><span class="line">    &amp;&amp; echo &quot;http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;alpine&#x2F;v3.8&#x2F;community&quot; &gt;&gt; &#x2F;etc&#x2F;apk&#x2F;repositories \</span><br><span class="line">    &amp;&amp; apk update upgrade \</span><br><span class="line">    &amp;&amp; apk add --no-cache procps unzip curl bash tzdata \</span><br><span class="line">    &amp;&amp; ln -sf &#x2F;usr&#x2F;share&#x2F;zoneinfo&#x2F;Asia&#x2F;Shanghai &#x2F;etc&#x2F;localtime \</span><br><span class="line">    &amp;&amp; echo &quot;Asia&#x2F;Shanghai&quot; &gt; &#x2F;etc&#x2F;timezone</span><br><span class="line"></span><br><span class="line">ADD apollo-configservice-$&#123;VERSION&#125;-github.zip &#x2F;apollo-configservice&#x2F;apollo-configservice-$&#123;VERSION&#125;-github.zip</span><br><span class="line"></span><br><span class="line">RUN unzip &#x2F;apollo-configservice&#x2F;apollo-configservice-$&#123;VERSION&#125;-github.zip -d &#x2F;apollo-configservice \</span><br><span class="line">    &amp;&amp; rm -rf &#x2F;apollo-configservice&#x2F;apollo-configservice-$&#123;VERSION&#125;-github.zip \</span><br><span class="line">    &amp;&amp; sed -i &#39;$d&#39; &#x2F;apollo-configservice&#x2F;scripts&#x2F;startup.sh \</span><br><span class="line">    &amp;&amp; chmod +x &#x2F;apollo-configservice&#x2F;scripts&#x2F;startup.sh \</span><br><span class="line">    &amp;&amp; echo &quot;tail -f &#x2F;dev&#x2F;null&quot; &gt;&gt; &#x2F;apollo-configservice&#x2F;scripts&#x2F;startup.sh</span><br><span class="line"></span><br><span class="line">EXPOSE $SERVER_PORT</span><br><span class="line"></span><br><span class="line">CMD [&quot;&#x2F;apollo-configservice&#x2F;scripts&#x2F;startup.sh&quot;]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 找到编译好的 apollo-configservice-1.7.0-SNAPSHOT-github.zip 包 ，根据它上面的dockerfile注释，把zip包放到当前目录，就可以打包了</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># apollo-configservice &gt; target &gt; apollo-configservice-1.7.0-SNAPSHOT-github.zip</span><br></pre></td></tr></table></figure>
-<p> <img src="/2020/05/23/Apollo%E5%88%86%E5%B8%83%E5%BC%8F%E9%83%A8%E7%BD%B2/apollo_install_6.png" alt="image"></p>
-<p> 把 dockerfile 和 zip包传到服务上 docker build</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost configservice]# ls</span><br><span class="line">apollo-configservice-1.7.0-SNAPSHOT-github.zip  Dockerfile</span><br><span class="line">[root@localhost configservice]#  docker build -t apollo-configservice .</span><br><span class="line"></span><br><span class="line"># 打包镜像依赖基础镜像 openjdk:8-jre-alpine，如果有网络会自动下载，内网的可以直接导入</span><br></pre></td></tr></table></figure>
-
-
-<h4 id="打包镜像-apollo-adminservice"><a href="#打包镜像-apollo-adminservice" class="headerlink" title="打包镜像 apollo-adminservice"></a>打包镜像 apollo-adminservice</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"># 先打包镜像，先找到源码里面的DockerFile</span><br><span class="line"># apollo-adminservice &gt; src &gt; main &gt; docker &gt; DockerFile</span><br><span class="line"></span><br><span class="line"># Dockerfile for apollo-adminservice</span><br><span class="line"># 1. Copy apollo-adminservice-$&#123;VERSION&#125;-github.zip to current directory</span><br><span class="line"># 2. Build with: docker build -t apollo-adminservice .</span><br><span class="line"># 3. Run with: docker run -p 8090:8090 -e DS_URL&#x3D;&quot;jdbc:mysql:&#x2F;&#x2F;fill-in-the-correct-server:3306&#x2F;ApolloConfigDB?characterEncoding&#x3D;utf8&quot; -e DS_USERNAME&#x3D;FillInCorrectUser -e DS_PASSWORD&#x3D;FillInCorrectPassword -d -v &#x2F;tmp&#x2F;logs:&#x2F;opt&#x2F;logs --name apollo-adminservice apollo-adminservice</span><br><span class="line"></span><br><span class="line">FROM openjdk:8-jre-alpine</span><br><span class="line">MAINTAINER ameizi &lt;sxyx2008@163.com&gt;</span><br><span class="line"></span><br><span class="line">ENV VERSION 1.7.0-SNAPSHOT</span><br><span class="line">ENV SERVER_PORT 8090</span><br><span class="line"># DataSource Info</span><br><span class="line">ENV DS_URL &quot;&quot;</span><br><span class="line">ENV DS_USERNAME &quot;&quot;</span><br><span class="line">ENV DS_PASSWORD &quot;&quot;</span><br><span class="line"></span><br><span class="line">RUN echo &quot;http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;alpine&#x2F;v3.8&#x2F;main&quot; &gt; &#x2F;etc&#x2F;apk&#x2F;repositories \</span><br><span class="line">    &amp;&amp; echo &quot;http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;alpine&#x2F;v3.8&#x2F;community&quot; &gt;&gt; &#x2F;etc&#x2F;apk&#x2F;repositories \</span><br><span class="line">    &amp;&amp; apk update upgrade \</span><br><span class="line">    &amp;&amp; apk add --no-cache procps unzip curl bash tzdata \</span><br><span class="line">    &amp;&amp; ln -sf &#x2F;usr&#x2F;share&#x2F;zoneinfo&#x2F;Asia&#x2F;Shanghai &#x2F;etc&#x2F;localtime \</span><br><span class="line">    &amp;&amp; echo &quot;Asia&#x2F;Shanghai&quot; &gt; &#x2F;etc&#x2F;timezone</span><br><span class="line"></span><br><span class="line">ADD apollo-adminservice-$&#123;VERSION&#125;-github.zip &#x2F;apollo-adminservice&#x2F;apollo-adminservice-$&#123;VERSION&#125;-github.zip</span><br><span class="line"></span><br><span class="line">RUN unzip &#x2F;apollo-adminservice&#x2F;apollo-adminservice-$&#123;VERSION&#125;-github.zip -d &#x2F;apollo-adminservice \</span><br><span class="line">    &amp;&amp; rm -rf &#x2F;apollo-adminservice&#x2F;apollo-adminservice-$&#123;VERSION&#125;-github.zip \</span><br><span class="line">    &amp;&amp; sed -i &#39;$d&#39; &#x2F;apollo-adminservice&#x2F;scripts&#x2F;startup.sh \</span><br><span class="line">    &amp;&amp; chmod +x &#x2F;apollo-adminservice&#x2F;scripts&#x2F;startup.sh \</span><br><span class="line">    &amp;&amp; echo &quot;tail -f &#x2F;dev&#x2F;null&quot; &gt;&gt; &#x2F;apollo-adminservice&#x2F;scripts&#x2F;startup.sh</span><br><span class="line"></span><br><span class="line">EXPOSE $SERVER_PORT</span><br><span class="line"></span><br><span class="line">CMD [&quot;&#x2F;apollo-adminservice&#x2F;scripts&#x2F;startup.sh&quot;]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 找到编译好的 apollo-adminservice-1.7.0-SNAPSHOT-github.zip 包 ，根据它上面的dockerfile注释，把zip包放到当前目录，就可以打包了</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># apollo-adminservice &gt; target &gt; apollo-adminservice-1.7.0-SNAPSHOT-github.zip</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 把 dockerfile 和 zip包传到服务上 docker build</span><br><span class="line"></span><br><span class="line">[root@localhost adminservice]# ls</span><br><span class="line">apollo-adminservice-1.7.0-SNAPSHOT-github.zip  Dockerfile</span><br><span class="line">[root@localhost adminservice]#  docker build -t apollo-adminservice .</span><br></pre></td></tr></table></figure>
-
-<h4 id="打包镜像-apollo-portal"><a href="#打包镜像-apollo-portal" class="headerlink" title="打包镜像 apollo-portal"></a>打包镜像 apollo-portal</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"># 先打包镜像，先找到源码里面的DockerFile</span><br><span class="line"># apollo-portal &gt; src &gt; main &gt; docker &gt; DockerFile</span><br><span class="line"></span><br><span class="line"># Dockerfile for apollo-portal</span><br><span class="line"># 1. Copy apollo-portal-$&#123;VERSION&#125;-github.zip to current directory</span><br><span class="line"># 2. Build with: docker build -t apollo-portal .</span><br><span class="line"># 3. Run with: docker run -p 8070:8070 -e DS_URL&#x3D;&quot;jdbc:mysql:&#x2F;&#x2F;fill-in-the-correct-server:3306&#x2F;ApolloPortalDB?characterEncoding&#x3D;utf8&quot; -e DS_USERNAME&#x3D;FillInCorrectUser -e DS_PASSWORD&#x3D;FillInCorrectPassword -e DEV_META&#x3D;http:&#x2F;&#x2F;fill-in-dev-meta-server:8080 -e PRO_META&#x3D;http:&#x2F;&#x2F;fill-in-pro-meta-server:8080 -d -v &#x2F;tmp&#x2F;logs:&#x2F;opt&#x2F;logs --name apollo-portal apollo-portal</span><br><span class="line"></span><br><span class="line">FROM openjdk:8-jre-alpine</span><br><span class="line">MAINTAINER ameizi &lt;sxyx2008@163.com&gt;</span><br><span class="line"></span><br><span class="line">ENV VERSION 1.7.0-SNAPSHOT</span><br><span class="line">ENV SERVER_PORT 8070</span><br><span class="line"># DataSource Info </span><br><span class="line">ENV DS_URL &quot;&quot;</span><br><span class="line">ENV DS_USERNAME &quot;&quot;</span><br><span class="line">ENV DS_PASSWORD &quot;&quot;</span><br><span class="line"># Environmental variable declaration (meta server url, different environments should have different meta server addresses)</span><br><span class="line">ENV DEV_META &quot;&quot;</span><br><span class="line">ENV FAT_META &quot;&quot;</span><br><span class="line">ENV UAT_META &quot;&quot;</span><br><span class="line">ENV LPT_META &quot;&quot;</span><br><span class="line">ENV PRO_META &quot;&quot;</span><br><span class="line"></span><br><span class="line">RUN echo &quot;http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;alpine&#x2F;v3.8&#x2F;main&quot; &gt; &#x2F;etc&#x2F;apk&#x2F;repositories \</span><br><span class="line">    &amp;&amp; echo &quot;http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;alpine&#x2F;v3.8&#x2F;community&quot; &gt;&gt; &#x2F;etc&#x2F;apk&#x2F;repositories \</span><br><span class="line">    &amp;&amp; apk update upgrade \</span><br><span class="line">    &amp;&amp; apk add --no-cache procps unzip curl bash tzdata \</span><br><span class="line">    &amp;&amp; ln -sf &#x2F;usr&#x2F;share&#x2F;zoneinfo&#x2F;Asia&#x2F;Shanghai &#x2F;etc&#x2F;localtime \</span><br><span class="line">    &amp;&amp; echo &quot;Asia&#x2F;Shanghai&quot; &gt; &#x2F;etc&#x2F;timezone</span><br><span class="line"></span><br><span class="line">ADD apollo-portal-$&#123;VERSION&#125;-github.zip &#x2F;apollo-portal&#x2F;apollo-portal-$&#123;VERSION&#125;-github.zip</span><br><span class="line"></span><br><span class="line">RUN unzip &#x2F;apollo-portal&#x2F;apollo-portal-$&#123;VERSION&#125;-github.zip -d &#x2F;apollo-portal \</span><br><span class="line">    &amp;&amp; rm -rf &#x2F;apollo-portal&#x2F;apollo-portal-$&#123;VERSION&#125;-github.zip \</span><br><span class="line">    &amp;&amp; sed -i &#39;$d&#39; &#x2F;apollo-portal&#x2F;scripts&#x2F;startup.sh \</span><br><span class="line">    &amp;&amp; chmod +x &#x2F;apollo-portal&#x2F;scripts&#x2F;startup.sh \</span><br><span class="line">    &amp;&amp; echo &quot;tail -f &#x2F;dev&#x2F;null&quot; &gt;&gt; &#x2F;apollo-portal&#x2F;scripts&#x2F;startup.sh</span><br><span class="line"></span><br><span class="line">EXPOSE $SERVER_PORT</span><br><span class="line"></span><br><span class="line">CMD [&quot;&#x2F;apollo-portal&#x2F;scripts&#x2F;startup.sh&quot;]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 找到编译好的 apollo-adminservice-1.7.0-SNAPSHOT-github.zip 包 ，根据它上面的dockerfile注释，把zip包放到当前目录，就可以打包了</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># apollo-portal &gt; target &gt; apollo-portal-1.7.0-SNAPSHOT-github.zip</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 把 dockerfile 和 zip包传到服务上 docker build</span><br><span class="line"></span><br><span class="line">[root@localhost portal]# ls</span><br><span class="line">apollo-portal-1.7.0-SNAPSHOT-github.zip  Dockerfile</span><br><span class="line">[root@localhost portal]# docker build -t apollo-portal .</span><br></pre></td></tr></table></figure>
-
-<h3 id="开始部署"><a href="#开始部署" class="headerlink" title="开始部署"></a>开始部署</h3><p>都打完镜像查看一下 </p>
-<p><img src="/2020/05/23/Apollo%E5%88%86%E5%B8%83%E5%BC%8F%E9%83%A8%E7%BD%B2/apollo_install_7.png" alt="image"></p>
-<h4 id="编写docker-compose-yml"><a href="#编写docker-compose-yml" class="headerlink" title="编写docker-compose.yml"></a>编写docker-compose.yml</h4><p>利用docker-compose 服务编排，比较省事</p>
-<p><strong>apollo.yml</strong></p>
-<p>包含 adminservice,configservice</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">version: &#39;3&#39;</span><br><span class="line">services:</span><br><span class="line">  apollo-configservice:</span><br><span class="line">    container_name: configservice</span><br><span class="line">    image: apollo-configservice:latest # 镜像地址，这里使用的是直接在当前主机上构建的镜像</span><br><span class="line">    # ports:</span><br><span class="line">    #   - &quot;8080:8080&quot;</span><br><span class="line">    network_mode: host </span><br><span class="line">    volumes:</span><br><span class="line">      # 日志挂载</span><br><span class="line">      - &#x2F;usr&#x2F;local&#x2F;apollo&#x2F;servers&#x2F;server2&#x2F;logs&#x2F;apollo-configservice:&#x2F;opt&#x2F;logs</span><br><span class="line">    environment:</span><br><span class="line">      # 可通过 SERVER_PORT 指定默认启动端口，ports 也需要对应修改</span><br><span class="line">      # SERVER_PORT: 8080</span><br><span class="line">      # 指定 homePageUrl 为当前宿主的 apollo-configservice 地址，不然会出现无法访问</span><br><span class="line">      # JAVA_OPTS: &quot;-Deureka.instance.homePageUrl&#x3D;http:&#x2F;&#x2F;172.16.100.6:8080&quot;</span><br><span class="line">      # 数据库连接地址</span><br><span class="line">      DS_URL: &quot;jdbc:mysql:&#x2F;&#x2F;172.16.100.6:3306&#x2F;ApolloConfigDB?characterEncoding&#x3D;utf8&quot;</span><br><span class="line">      # 数据库用户名</span><br><span class="line">      DS_USERNAME: &quot;root&quot;</span><br><span class="line">      # 数据库密码 </span><br><span class="line">      DS_PASSWORD: &quot;abc123&quot;</span><br><span class="line">      # 服务器的端口</span><br><span class="line">      SERVER_PORT: 8080</span><br><span class="line">      </span><br><span class="line">  apollo-adminservice:</span><br><span class="line">    container_name: adminservice</span><br><span class="line">    image: apollo-adminservice:latest # 镜像地址，这里使用的是直接在当前主机上构建的镜像</span><br><span class="line">    # ports:</span><br><span class="line">    #   - &quot;8090:8090&quot;</span><br><span class="line">    network_mode: host </span><br><span class="line">    volumes:</span><br><span class="line">      # 日志挂载</span><br><span class="line">      - &#x2F;usr&#x2F;local&#x2F;apollo&#x2F;servers&#x2F;server2&#x2F;logs&#x2F;apollo-adminservice:&#x2F;opt&#x2F;logs</span><br><span class="line">    environment:</span><br><span class="line">      # 指定 homePageUrl 为当前宿主的 apollo-adminservice 地址，不然会出现无法访问</span><br><span class="line">      # JAVA_OPTS: &quot;-Deureka.instance.homePageUrl&#x3D;http:&#x2F;&#x2F;172.16.100.6:8090&quot;</span><br><span class="line">      # 数据库连接地址</span><br><span class="line">      DS_URL: &quot;jdbc:mysql:&#x2F;&#x2F;172.16.100.6:3306&#x2F;ApolloConfigDB?characterEncoding&#x3D;utf8&quot;</span><br><span class="line">      # 数据库用户名</span><br><span class="line">      DS_USERNAME: &quot;root&quot;</span><br><span class="line">      # 数据库密码 </span><br><span class="line">      DS_PASSWORD: &quot;abc123&quot;</span><br><span class="line">      # 服务器的端口</span><br><span class="line">      SERVER_PORT: 8090</span><br><span class="line">    depends_on:</span><br><span class="line">      - apollo-configservice</span><br></pre></td></tr></table></figure>
-
-<p>启动容器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost apollo]# docker-compose -f apollo.yml up -d</span><br></pre></td></tr></table></figure>
-
-<p>测试一下</p>
-<p><a href="http://192.168.179.130:8080/" target="_blank" rel="noopener">http://192.168.179.130:8080/</a> 访问8080页面查看注册情况 </p>
-<p><img src="/2020/05/23/Apollo%E5%88%86%E5%B8%83%E5%BC%8F%E9%83%A8%E7%BD%B2/apollo_install_8.png" alt="image"></p>
-<p><strong>portal.yml</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">version: &#39;3&#39;</span><br><span class="line">services:</span><br><span class="line">  apollo-portal:</span><br><span class="line">    image: apollo-portal:latest # 镜像地址，这里使用的是直接在当前主机上构建的镜像</span><br><span class="line">    container_name: apollo-portal</span><br><span class="line">    ports:</span><br><span class="line">      - &quot;8070:8070&quot;</span><br><span class="line">    volumes:</span><br><span class="line">      # 日志挂载</span><br><span class="line">      - &#x2F;usr&#x2F;local&#x2F;apollo&#x2F;servers&#x2F;server1&#x2F;logs&#x2F;apollo-portal:&#x2F;opt&#x2F;logs  </span><br><span class="line">    environment:</span><br><span class="line">      # 数据库连接地址</span><br><span class="line">      DS_URL: &quot;jdbc:mysql:&#x2F;&#x2F;172.16.100.6:3306&#x2F;ApolloPortalDB?characterEncoding&#x3D;utf8&quot; </span><br><span class="line">      # 数据库用户名</span><br><span class="line">      DS_USERNAME: &quot;root&quot;</span><br><span class="line">      # 数据库密码      </span><br><span class="line">      DS_PASSWORD: &quot;abc123&quot;</span><br><span class="line">      # META_SERVER 地址，如 http:&#x2F;&#x2F;192.168.100.234:8080,http:&#x2F;&#x2F;192.168.100.234:8081（多个可用,分隔，建议使用 LB 域名）,</span><br><span class="line">      DEV_META: &quot;http:&#x2F;&#x2F;172.16.100.6:8080&quot;</span><br><span class="line">      PRO_META: &quot;http:&#x2F;&#x2F;172.16.100.6:8080&quot;</span><br></pre></td></tr></table></figure>
-
-<p>启动容器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost apollo]# docker-compose -f apollo-portal.yml up -d</span><br></pre></td></tr></table></figure>
-
-<p>测试一下</p>
-<p><a href="http://192.168.179.130:8070" target="_blank" rel="noopener">http://192.168.179.130:8070</a> 账号密码：apollo,admin </p>
-<p>查看系统信息</p>
-<p><img src="/2020/05/23/Apollo%E5%88%86%E5%B8%83%E5%BC%8F%E9%83%A8%E7%BD%B2/apollo_install_9.png" alt="image"></p>
-<h3 id="部署多环境"><a href="#部署多环境" class="headerlink" title="部署多环境"></a>部署多环境</h3><p>PRO 生产环境  </p>
-<p>其实多环境其实很简单，就是再多部署一个（adminservice,configservice），portal 就部署一套就可以，可以管理多套环境，注意数据库是一个环境一个数据库</p>
-<p>生产环境只需要安装 adminservice 和 configservice  </p>
-<h4 id="配置数据库-1"><a href="#配置数据库-1" class="headerlink" title="配置数据库"></a>配置数据库</h4><p>生一个 ApolloConfigDBPRO 数据库</p>
-<p>进入mysql命令行 source ApolloConfigDBPRO.sql</p>
-<p>直接把docker-compose.yml 脚本拿来</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">version: &#39;3&#39;</span><br><span class="line">services:</span><br><span class="line">  apollo-configservice:</span><br><span class="line">    container_name: configservice</span><br><span class="line">    image: apollo-configservice:latest # 镜像地址，这里使用的是直接在当前主机上构建的镜像</span><br><span class="line">    #ports:</span><br><span class="line">    #  - &quot;8080:8080&quot;</span><br><span class="line">    network_mode: host</span><br><span class="line">    volumes:</span><br><span class="line">      # 日志挂载</span><br><span class="line">      - &#x2F;usr&#x2F;local&#x2F;apollo&#x2F;servers&#x2F;server2&#x2F;logs&#x2F;apollo-configservice:&#x2F;opt&#x2F;logs</span><br><span class="line">    environment:</span><br><span class="line">      # 可通过 SERVER_PORT 指定默认启动端口，ports 也需要对应修改</span><br><span class="line">      # SERVER_PORT: 8080</span><br><span class="line">      # 指定 homePageUrl 为当前宿主的 apollo-configservice 地址，不然会出现无法访问</span><br><span class="line">      # JAVA_OPTS: &quot;-Deureka.instance.homePageUrl&#x3D;http:&#x2F;&#x2F;172.16.100.6:8080&quot;</span><br><span class="line">      # 数据库连接地址</span><br><span class="line">      DS_URL: &quot;jdbc:mysql:&#x2F;&#x2F;172.16.100.6:3306&#x2F;ApolloConfigDBPRO?characterEncoding&#x3D;utf8&quot;</span><br><span class="line">      # 数据库用户名</span><br><span class="line">      DS_USERNAME: &quot;root&quot;</span><br><span class="line">      # 数据库密码 </span><br><span class="line">      DS_PASSWORD: &quot;abc123&quot;</span><br><span class="line">      SERVER_IP: &quot;172.16.100.6&quot;</span><br><span class="line"></span><br><span class="line">  apollo-adminservice:</span><br><span class="line">    container_name: adminservice</span><br><span class="line">    image: apollo-adminservice:latest # 镜像地址，这里使用的是直接在当前主机上构建的镜像</span><br><span class="line">    # ports:</span><br><span class="line">    #   - &quot;8090:8090&quot;</span><br><span class="line">    network_mode: host # 网络模式</span><br><span class="line">    volumes:</span><br><span class="line">      # 日志挂载</span><br><span class="line">      - &#x2F;usr&#x2F;local&#x2F;apollo&#x2F;servers&#x2F;server2&#x2F;logs&#x2F;apollo-adminservice:&#x2F;opt&#x2F;logs</span><br><span class="line">    environment:</span><br><span class="line">      # 指定 homePageUrl 为当前宿主的 apollo-adminservice 地址，不然会出现无法访问</span><br><span class="line">      # JAVA_OPTS: &quot;-Deureka.instance.homePageUrl&#x3D;http:&#x2F;&#x2F;172.16.100.6:8090&quot;</span><br><span class="line">      # 数据库连接地址</span><br><span class="line">      DS_URL: &quot;jdbc:mysql:&#x2F;&#x2F;172.16.100.6:3306&#x2F;ApolloConfigDBPRO?characterEncoding&#x3D;utf8&quot;</span><br><span class="line">      # 数据库用户名</span><br><span class="line">      DS_USERNAME: &quot;root&quot;</span><br><span class="line">      # 数据库密码 </span><br><span class="line">      DS_PASSWORD: &quot;abc123&quot;</span><br><span class="line">      SERVER_PORT: 8090</span><br><span class="line">    depends_on:</span><br><span class="line">      - apollo-configservice</span><br></pre></td></tr></table></figure>
-
-
-<p>启动容器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost apollo]# docker-compose -f apollo.yml up -d</span><br></pre></td></tr></table></figure>
-
-
-
-<p>测试一下</p>
-<p><a href="http://172.16.100.101:8080/" target="_blank" rel="noopener">http://172.16.100.101:8080/</a> 访问8080页面查看注册情况  </p>
-<p><img src="/2020/05/23/Apollo%E5%88%86%E5%B8%83%E5%BC%8F%E9%83%A8%E7%BD%B2/apollo_install_10.png" alt="image"></p>
-<h3 id="protal-管理页面配置多集群"><a href="#protal-管理页面配置多集群" class="headerlink" title="protal 管理页面配置多集群"></a>protal 管理页面配置多集群</h3><ul>
-<li>找到 apolloportaldb.serverconfig :<ul>
-<li>apollo.portal.envs: dev,pro</li>
-<li>configView.memberOnly.envs: dev,pro</li>
-</ul>
-</li>
-</ul>
-<p>正在环境变量 PRO_META，PRO_META是生产环境对应的变量,直接在docker-compose.yml 配置文件中修改</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">version: &#39;3&#39;</span><br><span class="line">services:</span><br><span class="line">  apollo-portal:</span><br><span class="line">    image: apollo-portal:latest # 镜像地址，这里使用的是直接在当前主机上构建的镜像</span><br><span class="line">    container_name: apollo-portal</span><br><span class="line">    ports:</span><br><span class="line">      - &quot;8070:8070&quot;</span><br><span class="line">    volumes:</span><br><span class="line">      # 日志挂载</span><br><span class="line">      - &#x2F;usr&#x2F;local&#x2F;apollo&#x2F;logs&#x2F;apollo-portal:&#x2F;opt&#x2F;logs</span><br><span class="line">    environment:</span><br><span class="line">      # 数据库连接地址</span><br><span class="line">      DS_URL: &quot;jdbc:mysql:&#x2F;&#x2F;172.16.100.222:3306&#x2F;ApolloPortalDB?characterEncoding&#x3D;utf8&quot;</span><br><span class="line">      # 数据库用户名</span><br><span class="line">      DS_USERNAME: &quot;root&quot;</span><br><span class="line">      # 数据库密码      </span><br><span class="line">      DS_PASSWORD: &quot;abc123&quot;</span><br><span class="line">      # META_SERVER 地址，如 http:&#x2F;&#x2F;192.168.100.234:8080,http:&#x2F;&#x2F;192.168.100.234:8081（多个可用,分隔，建议使用 LB 域名）,</span><br><span class="line">      DEV_META: &quot;http:&#x2F;&#x2F;172.16.100.222:8080&quot;</span><br><span class="line">      PRO_META: &quot;http:&#x2F;&#x2F;172.16.100.101:8080&quot;</span><br></pre></td></tr></table></figure>
-
-
-<p>重启portal 容器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose -f apollo-portal.yml restart</span><br></pre></td></tr></table></figure>
-
-<p>查看系统信息</p>
-<p><img src="/2020/05/23/Apollo%E5%88%86%E5%B8%83%E5%BC%8F%E9%83%A8%E7%BD%B2/apollo_install_11.png" alt="image"></p>
-<p><strong>如果在docker-compose.yml 配置文件里面配置的环境变量不起作用的话</strong><br><strong>首先进入到容器里面查看一下 echo $PRO_META</strong><br><strong>如果输出是空的话，那就是得先把容器卸载再起来，restart 不起作用的。</strong><br><strong>这个一定要注意</strong>  </p>
-
-          
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-12-15 21:54" pubdate>
+              2023-12-15
+            </time>
+          </div>
         
-      
-    </div>
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
     
+      <span class="category-chain">
+        
+  <a href="/wiki/categories/spring-cloud/" class="category-chain-item">spring cloud</a>
+  
+  
+
+      </span>
     
-    
+  
+</span>
 
-     <div>
-    
-</div>
-
-
-<div>
-      
-</div>
-
-
-    
-
-    
-
-    
- 
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/wiki/tags/java/">#java</a>
+            
+              <a href="/wiki/tags/springcloud/">#springcloud</a>
+            
+              <a href="/wiki/tags/springboot/">#springboot</a>
+            
+          </div>
+        
+      </div>
+    </article>
   </div>
-  
-  
-  
-  </article>
 
-
+  <div class="row mx-auto index-card">
     
-  </section>
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/wiki/2023/12/06/%E8%AE%B0%E5%BD%95/aa/" target="_self">
+          
+        </a>
+      </h1>
 
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/wiki/2023/12/06/%E8%AE%B0%E5%BD%95/aa/" target="_self">
+        <div>
+          搜索 mysql 版本brew search mysql 安装 5.7brew install &#109;&#x79;&#115;&#113;&#x6c;&#64;&#x35;&#46;&#55; 配置环境变量，如下图红框1echo ‘export PATH=”/opt/homebrew/opt/&#x6d;&#121;&#115;&#x71;&#108;&#x40;&#53;&#x2e;&#x
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-12-06 12:11" pubdate>
+              2023-12-06
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/wiki/2023/03/11/ssl/keytool%20RSA%20DSA/" target="_self">
+          keytool RSA DSA
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/wiki/2023/03/11/ssl/keytool%20RSA%20DSA/" target="_self">
+        <div>
+          生成证书库keytool将密钥（key）和证书（certificates）存储在keystore文件中 1keytool -genkey -keysize 1024 -validity 3650 -keyalg RSA -alias &quot;privateKey&quot; -keystore &quot;privateKeys.keystore&quot; -storepass &quot;
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-03-11 10:52" pubdate>
+              2023-03-11
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
   
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/">&lt;i class&#x3D;&quot;fa fa-angle-left&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  
+    
+      <span class="category-chain">
+        
+  <a href="/wiki/categories/ssl/" class="category-chain-item">ssl</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/wiki/tags/%E5%BC%80%E5%8F%91/">#开发</a>
+            
+              <a href="/wiki/tags/ssl/">#ssl</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/wiki/2023/03/11/ssl/openssl%E9%93%BE%E5%BC%8F%E8%AF%81%E4%B9%A6/" target="_self">
+          openssl链式证书
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/wiki/2023/03/11/ssl/openssl%E9%93%BE%E5%BC%8F%E8%AF%81%E4%B9%A6/" target="_self">
+        <div>
+          vim ca.conf openssl genrsa -out root.key 2048 openssl req -new -key root.key -out root.csr -config ca.conf openssl x509 -req -days 3650 -sha256 -extfile ca.conf -extensions v3_ca -in root.csr -signkey
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-03-11 10:52" pubdate>
+              2023-03-11
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/wiki/categories/ssl/" class="category-chain-item">ssl</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/wiki/tags/%E5%BC%80%E5%8F%91/">#开发</a>
+            
+              <a href="/wiki/tags/ssl/">#ssl</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/wiki/2023/02/25/%E6%9E%9A%E4%B8%BE/enum/" target="_self">
+          enum 高效实现方式
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/wiki/2023/02/25/%E6%9E%9A%E4%B8%BE/enum/" target="_self">
+        <div>
+          js 实现方式123456789101112131415161718192021222324252627282930313233343536/** * 事件集合枚举 */const EVENTTYPES = &#123;    /**     * 交通事件     */    TrafficIncident: 1,    /**     * 门客伤     */    DoorGuestInjur
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-02-25 10:52" pubdate>
+              2023-02-25
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/wiki/categories/enum/" class="category-chain-item">enum</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/wiki/tags/%E5%BC%80%E5%8F%91/">#开发</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/wiki/2022/12/05/php/thinkphp%20nginx%E4%B8%8B%E5%87%BA%E7%8E%B0404%E9%97%AE%E9%A2%98/" target="_self">
+          thinkphp nginx下出现404问题
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/wiki/2022/12/05/php/thinkphp%20nginx%E4%B8%8B%E5%87%BA%E7%8E%B0404%E9%97%AE%E9%A2%98/" target="_self">
+        <div>
+          thinkphp的url访问：http://serverName/index.php（或者其它应用入口文件）/模块/控制器/操作/[参数名/参数值…]，这个需要支持pathinfo，Apache默认支持，而Nginx不支持。 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-12-05 10:52" pubdate>
+              2022-12-05
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/wiki/categories/thinkphp/" class="category-chain-item">thinkphp</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/wiki/tags/%E5%BC%80%E5%8F%91/">#开发</a>
+            
+              <a href="/wiki/tags/thinkphp/">#thinkphp</a>
+            
+              <a href="/wiki/tags/php/">#php</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/wiki/2022/11/10/hadoop/hive%E6%93%8D%E4%BD%9C/" target="_self">
+          hive操作
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/wiki/2022/11/10/hadoop/hive%E6%93%8D%E4%BD%9C/" target="_self">
+        <div>
+          1234567891011121314151617CREATE EXTERNAL TABLE accslog(key string,                              accs_time string,                              device_face_id string,                              accs_
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-11-10 10:52" pubdate>
+              2022-11-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/wiki/categories/hadoop/" class="category-chain-item">hadoop</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/wiki/tags/hadoop/">#hadoop</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/wiki/2022/04/22/cesium/%E7%94%B5%E5%AD%90%E5%9C%B0%E5%9B%BE%E7%93%A6%E7%89%87%E4%B8%8B%E8%BD%BD/" target="_self">
+          电子地图瓦片下载
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/wiki/2022/04/22/cesium/%E7%94%B5%E5%AD%90%E5%9C%B0%E5%9B%BE%E7%93%A6%E7%89%87%E4%B8%8B%E8%BD%BD/" target="_self">
+        <div>
+          
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-04-22 10:52" pubdate>
+              2022-04-22
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/wiki/categories/cesium/" class="category-chain-item">cesium</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/wiki/tags/cesium/">#cesium</a>
+            
+              <a href="/wiki/tags/GIS/">#GIS</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/wiki/2022/04/21/cesium/cesium%E5%8A%A0%E8%BD%BD%E9%AB%98%E7%A8%8B%E6%95%B0%E6%8D%AE/" target="_self">
+          cesium加载高程数据
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/wiki/2022/04/21/cesium/cesium%E5%8A%A0%E8%BD%BD%E9%AB%98%E7%A8%8B%E6%95%B0%E6%8D%AE/" target="_self">
+        <div>
+          高程数据下载国家地理空间数据下载：http://www.gscloud.cn 这上面的高程数据下载，高度有问题，这个需要在研究一下。用我再百度云盘里面下载好的，格式是 tif 格式。   2022-6-5  高度有问题是因为，选择的类型不对，下载时选择GDEMV2 30M 分辨率数字高程数据   高程数据切片cesium使用格式是 terrain，必须用工具切片。 使用 cesiumlab 工具来
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-04-21 10:52" pubdate>
+              2022-04-21
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/wiki/categories/cesium/" class="category-chain-item">cesium</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/wiki/tags/cesium/">#cesium</a>
+            
+              <a href="/wiki/tags/GIS/">#GIS</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/wiki/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/wiki/">1</a><span class="page-number current">2</span><a class="page-number" href="/wiki/page/3/#board">3</a><a class="page-number" href="/wiki/page/4/#board">4</a><span class="space">&hellip;</span><a class="page-number" href="/wiki/page/9/#board">9</a><a class="extend next" rel="next" href="/wiki/page/3/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
   </nav>
 
 
 
+              </div>
+            </div>
           </div>
-          
-
-
-          
-
         </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
     </div>
   </div>
+</div>
 
-  <aside id="sidebar" class="sidebar">
     
-    <div class="sidebar-inner">
 
-      
+    
+  </main>
 
-      
-
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image"
-                src="/images/avatar.jpg"
-                alt="zhaops" />
-            
-              <p class="site-author-name" itemprop="name">zhaops</p>
-              <p class="site-description motion-element" itemprop="description"></p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">13</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                
-                  <span class="site-state-item-count">6</span>
-                  <span class="site-state-item-name">标签</span>
-                
-              </div>
-            
-
-          </nav>
-
-          
-            <div class="feed-link motion-element">
-              <a href="/atom.xml" rel="alternate">
-                <i class="fa fa-rss"></i>
-                RSS
-              </a>
-            </div>
-          
-
-          
-            <div class="links-of-author motion-element">
-                
-                  <span class="links-of-author-item">
-                    <a href="https://github.com/zhaops-hub" target="_blank" title="GitHub">
-                      
-                        <i class="fa fa-fw fa-github"></i>GitHub</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="mailto:zhaops1993@gmail.com" target="_blank" title="E-Mail">
-                      
-                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-                  </span>
-                
-            </div>
-          
-
-          
-          
-
-          
-          
-            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
-              <div class="links-of-blogroll-title">
-                <i class="fa  fa-fw fa-link"></i>
-                推荐阅读
-              </div>
-              <ul class="links-of-blogroll-list">
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="http://example.com/" title="Apollo(阿波罗)分布式部署" target="_blank">Apollo(阿波罗)分布式部署</a>
-                  </li>
-                
-              </ul>
-            </div>
-          
-
-          
-
-        </div>
-      </section>
-
-      
-
-      
-
-
-
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
     </div>
-  </aside>
+  
+  
+    <div class="statistics">
+  
+  
 
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
 
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      
+    </a>
   </span>
-  <span class="author" itemprop="copyrightHolder">zhaops</span>
-
-
-
-<div class="powered-by">
-<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
-  本站访客数:<span id="busuanzi_value_site_uv"></span>
-</span>
-</div>
- 
-
-
   
-</div>
-
-
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
-
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
-
-
-
-
-<span class="post-meta-divider">|</span>
-<div class="theme-info">
-  <div class="powered-by"></div>
-  <span class="post-count">博客全站共13.1k字</span>
-</div>
-        
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
     
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/wiki/img/police_beian.png" srcset="/wiki/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京ICP备2020044488号-1</span>
+        </a>
+      </span>
     
-
-    
-
-  </div>
-
   
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-
-
-  
-
-
-  
-
-
-
-
-
-
-
-
-
-
+</div>
 
   
   
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
   
-
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
-
-
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  <script type="text/javascript">
-    // Popup Window;
-    var isfetched = false;
-    var isXml = true;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length === 0) {
-      search_path = "search.xml";
-    } else if (/json$/i.test(search_path)) {
-      isXml = false;
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-
-    var onPopupClose = function (e) {
-      $('.popup').hide();
-      $('#local-search-input').val('');
-      $('.search-result-list').remove();
-      $('#no-result').remove();
-      $(".local-search-pop-overlay").remove();
-      $('body').css('overflow', '');
-    }
-
-    function proceedsearch() {
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
-        .css('overflow', 'hidden');
-      $('.search-popup-overlay').click(onPopupClose);
-      $('.popup').toggle();
-      var $localSearchInput = $('#local-search-input');
-      $localSearchInput.attr("autocapitalize", "none");
-      $localSearchInput.attr("autocorrect", "off");
-      $localSearchInput.focus();
-    }
-
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-
-      // start loading animation
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
-          '<div id="search-loading-icon">' +
-          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
-          '</div>' +
-          '</div>')
-        .css('overflow', 'hidden');
-      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
-
-      $.ajax({
-        url: path,
-        dataType: isXml ? "xml" : "json",
-        async: true,
-        success: function(res) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = isXml ? $("entry", res).map(function() {
-            return {
-              title: $("title", this).text(),
-              content: $("content",this).text(),
-              url: $("url" , this).text()
-            };
-          }).get() : res;
-          var input = document.getElementById(search_id);
-          var resultContent = document.getElementById(content_id);
-          var inputEventFunction = function() {
-            var searchText = input.value.trim().toLowerCase();
-            var keywords = searchText.split(/[\s\-]+/);
-            if (keywords.length > 1) {
-              keywords.push(searchText);
-            }
-            var resultItems = [];
-            if (searchText.length > 0) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var hitCount = 0;
-                var searchTextCount = 0;
-                var title = data.title.trim();
-                var titleInLowerCase = title.toLowerCase();
-                var content = data.content.trim().replace(/<[^>]+>/g,"");
-                var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url);
-                var indexOfTitle = [];
-                var indexOfContent = [];
-                // only match articles with not empty titles
-                if(title != '') {
-                  keywords.forEach(function(keyword) {
-                    function getIndexByWord(word, text, caseSensitive) {
-                      var wordLen = word.length;
-                      if (wordLen === 0) {
-                        return [];
-                      }
-                      var startPosition = 0, position = [], index = [];
-                      if (!caseSensitive) {
-                        text = text.toLowerCase();
-                        word = word.toLowerCase();
-                      }
-                      while ((position = text.indexOf(word, startPosition)) > -1) {
-                        index.push({position: position, word: word});
-                        startPosition = position + wordLen;
-                      }
-                      return index;
-                    }
-
-                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
-                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
-                  });
-                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
-                    isMatch = true;
-                    hitCount = indexOfTitle.length + indexOfContent.length;
-                  }
-                }
-
-                // show search results
-
-                if (isMatch) {
-                  // sort index by position of keyword
-
-                  [indexOfTitle, indexOfContent].forEach(function (index) {
-                    index.sort(function (itemLeft, itemRight) {
-                      if (itemRight.position !== itemLeft.position) {
-                        return itemRight.position - itemLeft.position;
-                      } else {
-                        return itemLeft.word.length - itemRight.word.length;
-                      }
-                    });
-                  });
-
-                  // merge hits into slices
-
-                  function mergeIntoSlice(text, start, end, index) {
-                    var item = index[index.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    var hits = [];
-                    var searchTextCountInSlice = 0;
-                    while (position + word.length <= end && index.length != 0) {
-                      if (word === searchText) {
-                        searchTextCountInSlice++;
-                      }
-                      hits.push({position: position, length: word.length});
-                      var wordEnd = position + word.length;
-
-                      // move to next position of hit
-
-                      index.pop();
-                      while (index.length != 0) {
-                        item = index[index.length - 1];
-                        position = item.position;
-                        word = item.word;
-                        if (wordEnd > position) {
-                          index.pop();
-                        } else {
-                          break;
-                        }
-                      }
-                    }
-                    searchTextCount += searchTextCountInSlice;
-                    return {
-                      hits: hits,
-                      start: start,
-                      end: end,
-                      searchTextCount: searchTextCountInSlice
-                    };
-                  }
-
-                  var slicesOfTitle = [];
-                  if (indexOfTitle.length != 0) {
-                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
-                  }
-
-                  var slicesOfContent = [];
-                  while (indexOfContent.length != 0) {
-                    var item = indexOfContent[indexOfContent.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    // cut out 100 characters
-                    var start = position - 20;
-                    var end = position + 80;
-                    if(start < 0){
-                      start = 0;
-                    }
-                    if (end < position + word.length) {
-                      end = position + word.length;
-                    }
-                    if(end > content.length){
-                      end = content.length;
-                    }
-                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
-                  }
-
-                  // sort slices in content by search text's count and hits' count
-
-                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
-                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
-                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
-                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
-                      return sliceRight.hits.length - sliceLeft.hits.length;
-                    } else {
-                      return sliceLeft.start - sliceRight.start;
-                    }
-                  });
-
-                  // select top N slices in content
-
-                  var upperBound = parseInt('1');
-                  if (upperBound >= 0) {
-                    slicesOfContent = slicesOfContent.slice(0, upperBound);
-                  }
-
-                  // highlight title and content
-
-                  function highlightKeyword(text, slice) {
-                    var result = '';
-                    var prevEnd = slice.start;
-                    slice.hits.forEach(function (hit) {
-                      result += text.substring(prevEnd, hit.position);
-                      var end = hit.position + hit.length;
-                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
-                      prevEnd = end;
-                    });
-                    result += text.substring(prevEnd, slice.end);
-                    return result;
-                  }
-
-                  var resultItem = '';
-
-                  if (slicesOfTitle.length != 0) {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
-                  } else {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
-                  }
-
-                  slicesOfContent.forEach(function (slice) {
-                    resultItem += "<a href='" + articleUrl + "'>" +
-                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
-                      "...</p>" + "</a>";
-                  });
-
-                  resultItem += "</li>";
-                  resultItems.push({
-                    item: resultItem,
-                    searchTextCount: searchTextCount,
-                    hitCount: hitCount,
-                    id: resultItems.length
-                  });
-                }
-              })
-            };
-            if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
-            } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
-            } else {
-              resultItems.sort(function (resultLeft, resultRight) {
-                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
-                  return resultRight.searchTextCount - resultLeft.searchTextCount;
-                } else if (resultLeft.hitCount !== resultRight.hitCount) {
-                  return resultRight.hitCount - resultLeft.hitCount;
-                } else {
-                  return resultRight.id - resultLeft.id;
-                }
-              });
-              var searchResultList = '<ul class=\"search-result-list\">';
-              resultItems.forEach(function (result) {
-                searchResultList += result.item;
-              })
-              searchResultList += "</ul>";
-              resultContent.innerHTML = searchResultList;
-            }
-          }
-
-          if ('auto' === 'auto') {
-            input.addEventListener('input', inputEventFunction);
-          } else {
-            $('.search-icon').click(inputEventFunction);
-            input.addEventListener('keypress', function (event) {
-              if (event.keyCode === 13) {
-                inputEventFunction();
-              }
-            });
-          }
-
-          // remove loading animation
-          $(".local-search-pop-overlay").remove();
-          $('body').css('overflow', '');
-
-          proceedsearch();
-        }
-      });
-    }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched === false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(onPopupClose);
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-    $(document).on('keyup', function (event) {
-      var shouldDismissSearchPopup = event.which === 27 &&
-        $('.search-popup').is(':visible');
-      if (shouldDismissSearchPopup) {
-        onPopupClose();
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/wiki/js/events.js" ></script>
+<script  src="/wiki/js/plugins.js" ></script>
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
       }
-    });
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
   </script>
 
 
 
 
+  
+    <script  src="/wiki/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/wiki/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/wiki/js/boot.js" ></script>
+
 
   
 
-  
-
-  
-
-  
-  
-
-  
-
-  
-
-  
-
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
 </body>
 </html>

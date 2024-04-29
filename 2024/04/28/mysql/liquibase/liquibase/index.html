@@ -1,0 +1,699 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/wiki/img/favicon.png">
+  <link rel="icon" href="/wiki/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="赵培胜">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="下载地址https:&#x2F;&#x2F;github.com&#x2F;liquibase&#x2F;liquibase&#x2F;releases 根据自己的系统下载文件, 直接解压出来, 可执行文件. 免费命令12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626">
+<meta property="og:type" content="article">
+<meta property="og:title" content="zps">
+<meta property="og:url" content="https://zps111.gitee.io/wiki/2024/04/28/mysql/liquibase/liquibase/index.html">
+<meta property="og:site_name" content="zps">
+<meta property="og:description" content="下载地址https:&#x2F;&#x2F;github.com&#x2F;liquibase&#x2F;liquibase&#x2F;releases 根据自己的系统下载文件, 直接解压出来, 可执行文件. 免费命令12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-04-28T06:29:37.628Z">
+<meta property="article:modified_time" content="2024-04-29T02:36:36.866Z">
+<meta property="article:author" content="赵培胜">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>zps</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="/wiki/lib/hint/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/wiki/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/wiki/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/wiki/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zps111.gitee.io","root":"/wiki/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/wiki/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/wiki/js/utils.js" ></script>
+  <script  src="/wiki/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/wiki/">
+      <strong>zhaopeisheng blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/wiki/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/wiki/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/wiki/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/wiki/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/wiki/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/wiki/img/bj.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text=""></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-04-28 14:29" pubdate>
+          2024年4月28日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          6.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          20 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none"></h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h2><p><code>https://github.com/liquibase/liquibase/releases</code></p>
+<p>根据自己的系统下载文件, 直接解压出来, 可执行文件.</p>
+<h2 id="免费命令"><a href="#免费命令" class="headerlink" title="免费命令"></a>免费命令</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><code class="hljs sh">//版本<br>liquibase --version<br><br>//查看liquibase支持的所有命令<br>liquibase --<span class="hljs-built_in">help</span><br><br>//查看此个命令支持的参数选项信息<br>liquibase 命令 --<span class="hljs-built_in">help</span><br><br>//查看目标数据库是否能连接成功、pro证书信息是否有效（使用高级命令）<br>//当前目录需要有liquibase.properties文件<br>liquibase status<br><br><span class="hljs-comment"># 通过数据库更新 myChangeLog.xml</span><br>//前提：当前目录必须有liquibase.properties文件<br>//基于数据库信息生成一份原始changeLogFile文件<br>//数据库结构快照备份，备份完之后修改liquibase.properties的地址，运行 liquibase update 可快速迁移无需一个一个创建<br>liquibase generate-changelog<br><br>//前提：当前目录必须有liquibase.properties文件以及liquibase.properties定义的changeLogFile文件<br>//基于liquibase.properties属性里面定义的changeLogFile文件来更新、修改数据库<br>liquibase update<br><br><br>//前提：当前目录必须有liquibase.properties文件以及liquibase.properties定义的changeLogFile文件<br>//基于liquibase.properties属性里面定义的changeLogFile文件来更新、修改数据库（最多仅更新10个未部署的&lt;changgeset&gt;的语句，如果某个changeset之前已经部署过就不算）<br>liquibase updateCount 部署changeset节点的个数<br><br>//前提：当前目录必须有liquibase.properties文件以及liquibase.properties定义的changeLogFile文件<br>//基于changeLogFile的文件生成具体的真正可在数据库运行的SQL语句 == 仅仅生成SQL语句不会在数据库中生效，如果想让SQL语句的数据库生效请使用 liquibase update<br>liquibase update-sql<br><br><br>//其实就是展示databasechangelog的记录：FILENAME、ID、AUTHOR、DEPLOYMENT_ID<br>liquibase <span class="hljs-built_in">history</span><br><br><br>//比对数据库结构<br>//选项参数参看：liquibase diff --<span class="hljs-built_in">help</span> <br>//liquibase diff<br>//将比对结果保存在当前目录的diff.txt目录中  == 结果形式看下面的图片即可<br>//liquibase diff   --outputFile=diff.txt<br>//将比对结果保存在当前目录的diff.json目录中，且内容格式是json，结构化数据<br>//liquibase diff  --format=json --outputFile=diff.json<br>liquibase diff<br><br>//生成的文件，表示当前目标数据库在源库表结构相差的东西<br>//生成的文件最后可以使用（使得目标库与源库结构一致）：liquibase update --changelog-file=diffChangelog.xml  <br>liquibase diff-changelog --changelog-file=diffChangelog.xml<br><br><br>//生成数据库结构、changlog文件内容显示 -- 仅能生成html文档<br>liquibase db-doc --output-directory=文档输出目录<br><br><br>//查看当前是否有用户在运行liquibase更改数据库结构 == 即表DATABASECHANGELOGLOCK是否有LOCKED=1的记录<br>liquibase list-locks<br><br>//释放锁 = 将表DATABASECHANGELOGLOCK的LOCKED=1的记录，修改LOCKED=0且将被锁的开始时间LOCKGRANTED、使用锁的IP地址LOCKEDBY都置空<br>//一般来说用不上，因为liquibase正常变更、退出会自动释放锁，如果非正常退出可能锁的状态没来得及释放，需要你手动执行该条命令释放，或者直接去数据库修改锁状态设为0即可<br>liquibase release-locks<br><br><br>//数据库结构快照 == 感觉跟 generate-changgelog差不多 == 文件存放在当前目录下<br>liquibase --outputFile=snapshot.text  snapshot --snapshot-format=text<br>liquibase --outputFile=snapshot.yml  snapshot --snapshot-format=yml<br>liquibase --outputFile=snapshot.json  snapshot --snapshot-format=json<br><br>//表结构回滚<br>liquibase rollback 标签名<br><br>//基于某个changelog文件，表结构回滚最新部署的某几条变更（将SQL作用到数据库，建议使用这条命令前，先用 rollback-count-sql确认一下SQL语句）<br>liquibase rollback-count  回滚最新部署的条数<br>//基于某个changelog文件，表结构回滚最新部署的SQL查看（未作用SQL部署到数据库，仅是看SQL的命令而已）<br>liquibase rollback-count-sql 回滚最新部署的条数<br><br><br><br><br>//表结构回滚到某一个时间节点的部署 == 原本部署的是新增，回滚即是删除，如果原本部署的是删除，回滚新增是不支持的<br>//下面的语句是等价于  liquibase rollback-to-date  yyyy-MM-<span class="hljs-built_in">dd</span> 00:00:00<br>liquibase rollback-to-date  yyyy-MM-<span class="hljs-built_in">dd</span><br>//具体的时间节点 -- 更建议加上详细的时间点上去<br>liquibase rollback-to-date  yyyy-MM-<span class="hljs-built_in">dd</span> HH:mm:ss<br><br><br><span class="hljs-comment"># 针对当前数据库，我们通过liquibase tag进行打标签操作</span><br>liquibase tag v1.0<br><br><span class="hljs-comment"># 回滚到指定版本</span><br>liquibase rollback v1.0<br><br><span class="hljs-comment"># 更新历史</span><br>liquibase <span class="hljs-built_in">history</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="liquibase-properties"><a href="#liquibase-properties" class="headerlink" title="liquibase.properties"></a>liquibase.properties</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs xml"># mysql config<br>driver: com.mysql.cj.jdbc.Driver<br>classpath: ./lib/mysql-connector-java-8.0.11.jar<br>url: jdbc:mysql://127.0.0.1:3306/test?useSSL=false&amp;serverTimezone=UTC&amp;autoReconnect=true&amp;allowPublicKeyRetrieval=true&amp;useOldAliasMetadataBehavior=true<br>username: root<br>password: abc123<br>changeLogFile: myChangeLog.xml<br>liquibase.hub.mode=off<br></code></pre></td></tr></table></figure>
+
+<h3 id="myChangeLog-xml"><a href="#myChangeLog-xml" class="headerlink" title="myChangeLog.xml"></a>myChangeLog.xml</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;UTF-8&quot;</span>?&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">databaseChangeLog</span></span><br><span class="hljs-tag">                   <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://www.liquibase.org/xml/ns/dbchangelog&quot;</span></span><br><span class="hljs-tag">                   <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span><br><span class="hljs-tag">                   <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">&quot;http://www.liquibase.org/xml/ns/dbchangelog</span></span><br><span class="hljs-string"><span class="hljs-tag">                                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd&quot;</span>&gt;</span><br>  <br>  <span class="hljs-tag">&lt;<span class="hljs-name">include</span> <span class="hljs-attr">file</span>=<span class="hljs-string">&quot;./sql/create_table.xml&quot;</span> <span class="hljs-attr">relativeToChangelogFile</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">include</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">include</span> <span class="hljs-attr">file</span>=<span class="hljs-string">&quot;./sql/init_data.sql&quot;</span> <span class="hljs-attr">relativeToChangelogFile</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">include</span>&gt;</span><br>  <br><span class="hljs-tag">&lt;/<span class="hljs-name">databaseChangeLog</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="create-table-xml"><a href="#create-table-xml" class="headerlink" title="create_table.xml"></a>create_table.xml</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;UTF-8&quot;</span>?&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">databaseChangeLog</span></span><br><span class="hljs-tag">  <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://www.liquibase.org/xml/ns/dbchangelog&quot;</span></span><br><span class="hljs-tag">  <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span><br><span class="hljs-tag">  <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">&quot;http://www.liquibase.org/xml/ns/dbchangelog</span></span><br><span class="hljs-string"><span class="hljs-tag">         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd&quot;</span>&gt;</span><br><br>  <span class="hljs-tag">&lt;<span class="hljs-name">changeSet</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;1&quot;</span> <span class="hljs-attr">author</span>=<span class="hljs-string">&quot;bob&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">createTable</span> <span class="hljs-attr">tableName</span>=<span class="hljs-string">&quot;department&quot;</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;id&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;int&quot;</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">constraints</span> <span class="hljs-attr">primaryKey</span>=<span class="hljs-string">&quot;true&quot;</span> <span class="hljs-attr">nullable</span>=<span class="hljs-string">&quot;false&quot;</span>/&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">column</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;name&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;varchar(50)&quot;</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">constraints</span> <span class="hljs-attr">nullable</span>=<span class="hljs-string">&quot;false&quot;</span>/&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">column</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;active&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;varchar(1)&quot;</span> <span class="hljs-attr">defaultValue</span>=<span class="hljs-string">&quot;Y&quot;</span>/&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">createTable</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">changeSet</span>&gt;</span><br><br><br>  <span class="hljs-tag">&lt;<span class="hljs-name">changeSet</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;2&quot;</span> <span class="hljs-attr">author</span>=<span class="hljs-string">&quot;zhaops&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">createTable</span> <span class="hljs-attr">tableName</span>=<span class="hljs-string">&quot;department1&quot;</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;id&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;int&quot;</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">constraints</span> <span class="hljs-attr">primaryKey</span>=<span class="hljs-string">&quot;true&quot;</span> <span class="hljs-attr">nullable</span>=<span class="hljs-string">&quot;false&quot;</span>/&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">column</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;name&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;varchar(50)&quot;</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">constraints</span> <span class="hljs-attr">nullable</span>=<span class="hljs-string">&quot;false&quot;</span>/&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">column</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;active&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;varchar(1)&quot;</span> <span class="hljs-attr">defaultValue</span>=<span class="hljs-string">&quot;Y&quot;</span>/&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">createTable</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">changeSet</span>&gt;</span><br><br><br>  <span class="hljs-tag">&lt;<span class="hljs-name">changeSet</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;3&quot;</span> <span class="hljs-attr">author</span>=<span class="hljs-string">&quot;zhaops&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">createTable</span> <span class="hljs-attr">tableName</span>=<span class="hljs-string">&quot;department2&quot;</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;id&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;int&quot;</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">constraints</span> <span class="hljs-attr">primaryKey</span>=<span class="hljs-string">&quot;true&quot;</span> <span class="hljs-attr">nullable</span>=<span class="hljs-string">&quot;false&quot;</span>/&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">column</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;name&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;varchar(50)&quot;</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">constraints</span> <span class="hljs-attr">nullable</span>=<span class="hljs-string">&quot;false&quot;</span>/&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">column</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;active&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;varchar(1)&quot;</span> <span class="hljs-attr">defaultValue</span>=<span class="hljs-string">&quot;Y&quot;</span>/&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">createTable</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">changeSet</span>&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">databaseChangeLog</span>&gt;</span><br><br></code></pre></td></tr></table></figure>
+
+<h3 id="init-data-sql"><a href="#init-data-sql" class="headerlink" title="init_data.sql"></a>init_data.sql</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- liquibase formatted sql</span><br><span class="hljs-comment">-- changeset jack:2022_04_2</span><br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> department <span class="hljs-keyword">values</span>(<span class="hljs-number">1</span>, <span class="hljs-string">&#x27;研发部&#x27;</span>, <span class="hljs-string">&#x27;Y&#x27;</span>);<br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> department <span class="hljs-keyword">values</span>(<span class="hljs-number">2</span>, <span class="hljs-string">&#x27;销售部&#x27;</span>, <span class="hljs-string">&#x27;Y&#x27;</span>);<br><span class="hljs-comment">-- changeset tom:2022_04_22</span><br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> department <span class="hljs-keyword">values</span>(<span class="hljs-number">3</span>, <span class="hljs-string">&#x27;后勤部&#x27;</span>, <span class="hljs-string">&#x27;Y&#x27;</span>);<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<p>echo $PATH | tr : “\n”| sort</p>
+<p>eval <code>/usr/libexec/path_helper -s</code></p>
+<p>排序</p>
+<p>echo $PATH | tr : “\n”| sort | uniq | tr “\n” :</p>
+<p>给环境变量排序</p>
+<p>export PATH=$(echo $PATH | tr : “\n”| sort | uniq | tr “\n” :)</p>
+<p>删除第三处</p>
+<p>export PATH=echo $PATH | cut -d”:” -f1,2,4-</p>
+<p>删除第八行</p>
+<p>export PATH=$(echo $PATH | cut -d”:” -f1-7,9-) </p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div></div>
+      <div>https://zps111.gitee.io/wiki/2024/04/28/mysql/liquibase/liquibase/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>赵培胜</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年4月28日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/wiki/2024/04/29/mysql/liquibase/liquibase%20%E5%91%BD%E4%BB%A4%E8%A1%8C/" title="">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/wiki/2024/04/27/mysql/shardingsphere/shardingshphere%E6%95%B0%E6%8D%AE%E5%BA%93%E5%88%86%E7%89%87/" title="shardingshphere数据库分片">
+                        <span class="hidden-mobile">shardingshphere数据库分片</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/wiki/img/police_beian.png" srcset="/wiki/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京ICP备2020044488号-1</span>
+        </a>
+      </span>
+    
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/wiki/js/events.js" ></script>
+<script  src="/wiki/js/plugins.js" ></script>
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/wiki/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/wiki/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/wiki/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

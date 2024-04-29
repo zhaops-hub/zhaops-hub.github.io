@@ -1,0 +1,729 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/wiki/img/favicon.png">
+  <link rel="icon" href="/wiki/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="赵培胜">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="masterapi-server1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253# 创建node节点第一次访问时候的token# 生成随机数$ head -c 16 &#x2F;dev&#x2F;urandom | od -An -t x | tr -d &amp;#x27; &amp;#">
+<meta property="og:type" content="article">
+<meta property="og:title" content="k8s 集群部署(https)">
+<meta property="og:url" content="https://zps111.gitee.io/wiki/2021/11/24/k8s/k8s%20%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2(https)/index.html">
+<meta property="og:site_name" content="zps">
+<meta property="og:description" content="masterapi-server1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253# 创建node节点第一次访问时候的token# 生成随机数$ head -c 16 &#x2F;dev&#x2F;urandom | od -An -t x | tr -d &amp;#x27; &amp;#">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-11-24T08:58:06.000Z">
+<meta property="article:modified_time" content="2023-02-25T09:54:34.177Z">
+<meta property="article:author" content="赵培胜">
+<meta property="article:tag" content="运维">
+<meta property="article:tag" content="k8s">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>k8s 集群部署(https) - zps</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="/wiki/lib/hint/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/wiki/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/wiki/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/wiki/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zps111.gitee.io","root":"/wiki/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/wiki/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/wiki/js/utils.js" ></script>
+  <script  src="/wiki/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/wiki/">
+      <strong>zhaopeisheng blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/wiki/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/wiki/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/wiki/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/wiki/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/wiki/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/wiki/img/bj.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="k8s 集群部署(https)"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2021-11-24 16:58" pubdate>
+          2021年11月24日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          7.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          25 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">k8s 集群部署(https)</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="master"><a href="#master" class="headerlink" title="master"></a>master</h2><h3 id="api-server"><a href="#api-server" class="headerlink" title="api-server"></a>api-server</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">创建node节点第一次访问时候的token</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">生成随机数</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-built_in">head</span> -c 16 /dev/urandom | <span class="hljs-built_in">od</span> -An -t x | <span class="hljs-built_in">tr</span> -d <span class="hljs-string">&#x27; &#x27;</span></span><br>538d66be23b7d8e87ca8e0cf7b4191ae<br><span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-built_in">echo</span> 538d66be23b7d8e87ca8e0cf7b4191ae,kubelet-bootstrap,10001,system:kubelet-bootstrap &gt; token.csv</span><br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">环境变量文件</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-built_in">cat</span> kube-apiserver-env</span><br><br>KUBE_APISERVER_OPTS=&quot;--logtostderr=true \<br>--v=0 \<br>--etcd-servers=http://172.16.100.92:2379 \<br>--bind-address=172.16.100.92 \<br>--secure-port=6443 \<br>--advertise-address=172.16.100.92 \<br>--allow-privileged=true \<br>--service-cluster-ip-range=10.254.0.0/16 \<br>--enable-admission-plugins=NamespaceLifecycle,LimitRanger,ServiceAccount,ResourceQuota,NodeRestriction \<br>--authorization-mode=RBAC,Node \<br>--enable-bootstrap-token-auth \<br>--token-auth-file=/soyuan/k8s/token.csv \<br>--service-node-port-range=30000-50000 \<br>--tls-cert-file=/soyuan/k8s/ssl/server.pem  \<br>--tls-private-key-file=/soyuan/k8s/ssl/server-key.pem \<br>--client-ca-file=/soyuan/k8s/ssl/ca.pem \<br>--service-account-key-file=/soyuan/k8s/ssl/ca-key.pem &quot;<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">systemd 服务配置文件</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-built_in">cat</span> /usr/lib/systemd/system/kube-apiserver.service</span><br><br>[Unit]<br>Description=k8sapiserver<br>Documentation=k8sapiserver<br>After=etcd.server<br>Wants=etcd.server<br><br>[Service]<br>EnvironmentFile=-/soyuan/k8s/cfg/kube-apiserver-env<br>ExecStart=/usr/local/bin/kube-apiserver $KUBE_APISERVER_OPTS<br>Restart=failure<br>Type=notify<br>LimitNOFILE=65536<br><br><br>[Install]<br>WantedBy=multi-user.target<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">启动服务</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">systemctl daemon-reload</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">systemctl start kube-apiserver</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">systemctl <span class="hljs-built_in">enable</span> kube-apiserver</span><br></code></pre></td></tr></table></figure>
+
+<p><code>–logtostderr</code> 启用日志<br><code>—v</code> 日志等级<br><code>–etcd-servers etcd</code>集群地址<br><code>–bind-address</code> 监听地址<br><code>–secure-port</code> https安全端口<br><code>–advertise-address</code> 集群通告地址<br><code>–allow-privileged</code> 启用授权<br><code>–service-cluster-ip-range</code> Service虚拟IP地址段<br><code>–enable-admission-plugins</code> 准入控制模块<br><code>–authorization-mode</code> 认证授权，启用RBAC授权和节点自管理<br><code>–enable-bootstrap-token-auth</code> 启用TLS bootstrap功能，后面会讲到<br><code>–token-auth-file</code> token文件   </p>
+<h3 id="scheduler"><a href="#scheduler" class="headerlink" title="scheduler"></a>scheduler</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">环境变量文件</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-built_in">cat</span> kube-scheduler-env</span><br><br>KUBE_SCHEDULER_OPTS=&quot;--logtostderr=true \<br>--v=0 \<br>--master=127.0.0.1:8080 \<br>--leader-elect&quot;<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">systemd 系统服务文件</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-built_in">cat</span> /usr/lib/systemd/system/kube-scheduler.service</span><br><br>[Unit]<br>Description=Kubernetes Scheduler<br>After=kube-apiserver.service <br>Requires=kube-apiserver.service<br><br>[Service]<br>EnvironmentFile=-/soyuan/k8s/cfg/kube-scheduler-env<br>ExecStart=/usr/local/bin/kube-scheduler $KUBE_SCHEDULER_OPTS<br>Restart=on-failure<br>LimitNOFILE=65536<br><br>[Install]<br>WantedBy=multi-user.target<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">启动服务</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">systemctl daemon-reload</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">systemctl start kube-scheduler</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">systemctl <span class="hljs-built_in">enable</span> kube-scheduler</span><br></code></pre></td></tr></table></figure>
+
+<p><code>–master</code> 连接本地apiserver<br><code>–leader-elect</code> 当该组件启动多个时，自动选举（HA）</p>
+<h3 id="controller-manager"><a href="#controller-manager" class="headerlink" title="controller-manager"></a>controller-manager</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">环境变量文件</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-built_in">cat</span> kube-controller-manager-env</span><br><br>KUBE_CONTROLLER_MANAGER_OPTS=&quot;--logtostderr=true \<br>--v=0 \<br>--master=127.0.0.1:8080 \<br>--leader-elect=true \<br>--address=127.0.0.1 \<br>--service-cluster-ip-range=10.254.0.0/16 \<br>--cluster-name=kubernetes \<br>--cluster-signing-cert-file=/soyuan/k8s/ssl/ca.pem \<br>--cluster-signing-key-file=/soyuan/k8s/ssl/ca-key.pem  \<br>--root-ca-file=/soyuan/k8s/ssl/ca.pem \<br>--service-account-private-key-file=/soyuan/k8s/ssl/ca-key.pem&quot;<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">systemd 系统服务文件</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-built_in">cat</span> /usr/lib/systemd/system/kube-controller-manager.service</span><br><br>[Unit]<br>Description=controller manager<br>After=kube-apiserver.service<br>Requires=kube-apiserver.service<br><br>[Service]<br>EnvironmentFile=-/soyuan/k8s/cfg/kube-controller-manager-env<br>ExecStart=/usr/local/bin/kube-controller-manager $KUBE_CONTROLLER_MANAGER_OPTS<br>Restart=on-failure<br><br>[Install]<br>WantedBy=multi-user.target<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">启动服务</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">systemctl daemon-reload</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">systemctl start kube-controller-manager</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">systemctl <span class="hljs-built_in">enable</span> kube-controller-manager</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="Node"><a href="#Node" class="headerlink" title="Node"></a>Node</h2><p>Master apiserver启用TLS认证后，Node节点kubelet组件想要加入集群，必须使用CA签发的有效证书才能与apiserver通信，当Node节点很多时，签署证书是一件很繁琐的事情，因此有了TLS Bootstrapping机制，kubelet会以一个低权限用户自动向apiserver申请证书，kubelet的证书由apiserver动态签署。</p>
+<p>第一次访问使用token访问，然后自动申请证书</p>
+<h3 id="将kubelet-bootstrap用户绑定到系统集群角色"><a href="#将kubelet-bootstrap用户绑定到系统集群角色" class="headerlink" title="将kubelet-bootstrap用户绑定到系统集群角色"></a>将kubelet-bootstrap用户绑定到系统集群角色</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">kubectl create clusterrolebinding kubelet-bootstrap \</span><br><span class="language-bash">  --clusterrole=system:node-bootstrapper \</span><br><span class="language-bash">  --user=kubelet-bootstrap</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="创建kubeconfig文件"><a href="#创建kubeconfig文件" class="headerlink" title="创建kubeconfig文件"></a>创建kubeconfig文件</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">创建kubelet bootstrapping kubeconfig ,BOOTSTRAP_TOKEN 要和上面的apiserver生成的保持一直</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">BOOTSTRAP_TOKEN=538d66be23b7d8e87ca8e0cf7b4191ae</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">KUBE_APISERVER=<span class="hljs-string">&quot;https://172.16.100.92:6443&quot;</span></span><br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">设置集群参数</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">kubectl config set-cluster kubernetes \</span><br><span class="language-bash">  --certificate-authority=/soyuan/k8s/ssl/ca.pem \</span><br><span class="language-bash">  --embed-certs=<span class="hljs-literal">true</span> \</span><br><span class="language-bash">  --server=<span class="hljs-variable">$&#123;KUBE_APISERVER&#125;</span> \</span><br><span class="language-bash">  --kubeconfig=bootstrap.kubeconfig</span><br>  <br><span class="hljs-meta prompt_">  # </span><span class="language-bash">设置客户端认证参数</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">kubectl config set-credentials kubelet-bootstrap \</span><br><span class="language-bash">  --token=<span class="hljs-variable">$&#123;BOOTSTRAP_TOKEN&#125;</span> \</span><br><span class="language-bash">  --kubeconfig=bootstrap.kubeconfig</span><br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">设置上下文参数</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">kubectl config set-context default \</span><br><span class="language-bash">  --cluster=kubernetes \</span><br><span class="language-bash">  --user=kubelet-bootstrap \</span><br><span class="language-bash">  --kubeconfig=bootstrap.kubeconfig</span><br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">设置默认上下文</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">kubectl config use-context default --kubeconfig=bootstrap.kubeconfig</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="创建kube-proxy-kubeconfig文件"><a href="#创建kube-proxy-kubeconfig文件" class="headerlink" title="创建kube-proxy kubeconfig文件"></a>创建kube-proxy kubeconfig文件</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">kubectl config set-cluster kubernetes \</span><br><span class="language-bash">  --certificate-authority=/soyuan/k8s/ssl/ca.pem \</span><br><span class="language-bash">  --embed-certs=<span class="hljs-literal">true</span> \</span><br><span class="language-bash">  --server=<span class="hljs-variable">$&#123;KUBE_APISERVER&#125;</span> \</span><br><span class="language-bash">  --kubeconfig=kube-proxy.kubeconfig</span><br>  <br><span class="hljs-meta prompt_"> $ </span><span class="language-bash">kubectl config set-credentials kube-proxy \</span><br><span class="language-bash">  --client-certificate=/soyuan/k8s/ssl/kube-proxy.pem \</span><br><span class="language-bash">  --client-key=/soyuan/k8s/ssl/kube-proxy-key.pem \</span><br><span class="language-bash">  --embed-certs=<span class="hljs-literal">true</span> \</span><br><span class="language-bash">  --kubeconfig=kube-proxy.kubeconfig</span><br>  <br><span class="hljs-meta prompt_"> $ </span><span class="language-bash">kubectl config set-context default \</span><br><span class="language-bash">  --cluster=kubernetes \</span><br><span class="language-bash">  --user=kube-proxy \</span><br><span class="language-bash">  --kubeconfig=kube-proxy.kubeconfig</span><br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">kubectl config use-context default --kubeconfig=kube-proxy.kubeconfig</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="部署kubelet组件"><a href="#部署kubelet组件" class="headerlink" title="部署kubelet组件"></a>部署kubelet组件</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">环境变量文件</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-built_in">cat</span> kubelet-env</span><br><br>KUBELET_OPTS=&quot;--logtostderr=true \<br>--v=0 \<br>--hostname-override=172.16.100.63 \<br>--kubeconfig=/opt/k8s/cfg/kubelet.kubeconfig \<br>--bootstrap-kubeconfig=/opt/k8s/cfg/bootstrap.kubeconfig \<br>--config=/opt/k8s/cfg/kubelet.config \<br>--cert-dir=/opt/k8s/ssl &quot;<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">kubelet.config</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-built_in">cat</span> kubelet.config</span><br><br>kind: KubeletConfiguration<br>apiVersion: kubelet.config.k8s.io/v1beta1<br>address: 172.16.100.63<br>port: 10250<br>readOnlyPort: 10255<br>cgroupDriver: cgroupfs<br>clusterDNS: [&quot;10.254.0.2&quot;]<br>clusterDomain: cluster.local.<br>failSwapOn: false<br>authentication:<br>  anonymous:<br>    enabled: true <br>    <br><span class="hljs-meta prompt_"># </span><span class="language-bash">systemd 服务文件</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-built_in">cat</span> /usr/lib/systemd/system/kubelet.service</span><br><br><br>[Unit]<br>Description=Kubernetes Kubelet Server<br>Documentation=https://github.com/GoogleCloudPlatform/kubernetes<br>After=docker.service<br>Requires=docker.service<br> <br>[Service]<br>EnvironmentFile=/opt/k8s/cfg/kubelet-env<br>ExecStart=/usr/local/bin/kubelet $KUBELET_OPTS<br>Restart=on-failure<br>KillMode=process<br> <br>[Install]<br>WantedBy=multi-user.target<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">启动kubelet</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">systemctl daemon-reload</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">systemctl start kubelet</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">stytemctl <span class="hljs-built_in">enable</span> kubelet</span><br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">master节点的 kubelet-bootstrap 用户一定不要忘了创建，没有的话会报下面的错误</span><br>cannot create certificate signing request: certificatesigningrequests.certificates.k8s.io is forbidden: User &quot;kubelet-bootstrap&quot; cannot create resource &quot;certificatesigningrequests&quot; in API group &quot;certificates.k8s.io&quot; at the cluster scope<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">在master节点审批node节点加入集群</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">启动后还没有加入到集群中，需要手动允许该节点加入</span><br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">kubectl get csr</span><br><br>NAME                                                   AGE     SIGNERNAME                                    REQUESTOR           CONDITION<br>node-csr-B_510xY-Sd9or1Yu3kTLt6bnpCdbU0CS6nPFGNfp5eo   3m58s   kubernetes.io/kube-apiserver-client-kubelet   kubelet-bootstrap   Pending<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">kubectl certificate approve node-csr-B_510xY-Sd9or1Yu3kTLt6bnpCdbU0CS6nPFGNfp5eo</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">kubectl get node</span><br></code></pre></td></tr></table></figure>
+
+<p><code>–hostname-override</code> 在集群中显示的主机名<br><code>–kubeconfig</code> 指定kubeconfig文件位置，会自动生成<br><code>–bootstrap-kubeconfig</code> 指定刚才生成的bootstrap.kubeconfig文件<br><code>–cert-dir</code> 颁发证书存放位置<br><code>–pod-infra-container-image</code> 管理Pod网络的镜像</p>
+<h3 id="部署kube-proxy组件"><a href="#部署kube-proxy组件" class="headerlink" title="部署kube-proxy组件"></a>部署kube-proxy组件</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">环境变量文件</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-built_in">cat</span> kube-proxy-env</span><br><br>KUBE_PROXY_OPTS=&quot;--logtostderr=true \<br>--v=0 \<br>--hostname-override=172.16.100.63 \<br>--cluster-cidr=10.254.0.0/24 \<br>--masquerade-all=true \<br>--kubeconfig=/opt/k8s/cfg/kube-proxy.kubeconfig&quot;<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">systemd 系统文件</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-built_in">cat</span> /usr/lib/systemd/system/kube-proxy.service</span><br><br>[Unit]<br>Description=Kubernetes Kube-Proxy Server<br>Documentation=https://github.com/GoogleCloudPlatform/kubernetes<br>After=network.target<br> <br>[Service]<br>EnvironmentFile=/opt/k8s/cfg/kube-proxy-env<br>ExecStart=/usr/local/bin/kube-proxy $KUBE_PROXY_OPTS<br>Restart=on-failure<br>LimitNOFILE=65536<br> <br>[Install]<br>WantedBy=multi-user.target<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">启动服务</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">systemctl daemon-reload</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">systemctl start kube-proxy</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">systemctl <span class="hljs-built_in">enable</span> kube-proxy</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="查看集群状态"><a href="#查看集群状态" class="headerlink" title="查看集群状态"></a>查看集群状态</h2><p><code>kubectl get node</code></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/wiki/categories/k8s/" class="category-chain-item">k8s</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/wiki/tags/%E8%BF%90%E7%BB%B4/">#运维</a>
+      
+        <a href="/wiki/tags/k8s/">#k8s</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>k8s 集群部署(https)</div>
+      <div>https://zps111.gitee.io/wiki/2021/11/24/k8s/k8s 集群部署(https)/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>赵培胜</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2021年11月24日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/wiki/2021/11/24/k8s/k8s%20%E9%85%8D%E7%BD%AE%E8%87%AA%E7%AD%BE%E5%8F%91ssl%E8%AF%81%E4%B9%A6/" title="k8s 配置自签发ssl证书">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">k8s 配置自签发ssl证书</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/wiki/2021/11/24/k8s/k8sDashboard%E5%AE%89%E8%A3%85/" title="k8sDashboard安装">
+                        <span class="hidden-mobile">k8sDashboard安装</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/wiki/img/police_beian.png" srcset="/wiki/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京ICP备2020044488号-1</span>
+        </a>
+      </span>
+    
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/wiki/js/events.js" ></script>
+<script  src="/wiki/js/plugins.js" ></script>
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/wiki/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/wiki/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/wiki/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

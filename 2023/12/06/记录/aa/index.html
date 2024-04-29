@@ -1,0 +1,1140 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/wiki/img/favicon.png">
+  <link rel="icon" href="/wiki/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="赵培胜">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="搜索 mysql 版本brew search mysql 安装 5.7brew install &amp;#109;&amp;#x79;&amp;#115;&amp;#113;&amp;#x6c;&amp;#64;&amp;#x35;&amp;#46;&amp;#55; 配置环境变量，如下图红框1echo ‘export PATH&#x3D;”&#x2F;opt&#x2F;homebrew&#x2F;opt&#x2F;&amp;#x6d;&amp;#121;&amp;#115;&amp;#x71;&amp;#108;&amp;#x40;&amp;#53;&amp;#x2e;&amp;#x">
+<meta property="og:type" content="article">
+<meta property="og:title" content="zps">
+<meta property="og:url" content="https://zps111.gitee.io/wiki/2023/12/06/%E8%AE%B0%E5%BD%95/aa/index.html">
+<meta property="og:site_name" content="zps">
+<meta property="og:description" content="搜索 mysql 版本brew search mysql 安装 5.7brew install &amp;#109;&amp;#x79;&amp;#115;&amp;#113;&amp;#x6c;&amp;#64;&amp;#x35;&amp;#46;&amp;#55; 配置环境变量，如下图红框1echo ‘export PATH&#x3D;”&#x2F;opt&#x2F;homebrew&#x2F;opt&#x2F;&amp;#x6d;&amp;#121;&amp;#115;&amp;#x71;&amp;#108;&amp;#x40;&amp;#53;&amp;#x2e;&amp;#x">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-12-06T04:11:11.612Z">
+<meta property="article:modified_time" content="2024-01-22T08:53:57.466Z">
+<meta property="article:author" content="赵培胜">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>zps</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="/wiki/lib/hint/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/wiki/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/wiki/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/wiki/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zps111.gitee.io","root":"/wiki/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/wiki/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/wiki/js/utils.js" ></script>
+  <script  src="/wiki/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/wiki/">
+      <strong>zhaopeisheng blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/wiki/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/wiki/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/wiki/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/wiki/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/wiki/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/wiki/img/bj.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text=""></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-12-06 12:11" pubdate>
+          2023年12月6日 中午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          2.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          9 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none"></h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="搜索-mysql-版本"><a href="#搜索-mysql-版本" class="headerlink" title="搜索 mysql 版本"></a>搜索 mysql 版本</h1><p>brew search mysql</p>
+<h1 id="安装-5-7"><a href="#安装-5-7" class="headerlink" title="安装 5.7"></a>安装 5.7</h1><p>brew install <a href="mailto:&#109;&#x79;&#115;&#113;&#x6c;&#64;&#x35;&#46;&#55;">&#109;&#x79;&#115;&#113;&#x6c;&#64;&#x35;&#46;&#55;</a></p>
+<h1 id="配置环境变量，如下图红框1"><a href="#配置环境变量，如下图红框1" class="headerlink" title="配置环境变量，如下图红框1"></a>配置环境变量，如下图红框1</h1><p>echo ‘export PATH=”/opt/homebrew/opt/<a href="mailto:&#x6d;&#121;&#115;&#x71;&#108;&#x40;&#53;&#x2e;&#x37;">&#x6d;&#121;&#115;&#x71;&#108;&#x40;&#53;&#x2e;&#x37;</a>/bin:$PATH”‘ &gt;&gt; ~/.zshrc</p>
+<h1 id="使配置生效"><a href="#使配置生效" class="headerlink" title="使配置生效"></a>使配置生效</h1><p>source ~/.zshrc</p>
+<h1 id="启动-mysql-服务"><a href="#启动-mysql-服务" class="headerlink" title="启动 mysql 服务"></a>启动 mysql 服务</h1><h1 id="后台启动"><a href="#后台启动" class="headerlink" title="后台启动"></a>后台启动</h1><p>brew services start <a href="mailto:&#109;&#x79;&#115;&#x71;&#108;&#64;&#x35;&#46;&#55;">&#109;&#x79;&#115;&#x71;&#108;&#64;&#x35;&#46;&#55;</a><br>brew services stop <a href="mailto:&#x6d;&#121;&#115;&#113;&#108;&#x40;&#53;&#46;&#55;">&#x6d;&#121;&#115;&#113;&#108;&#x40;&#53;&#46;&#55;</a></p>
+<h1 id="前台启动"><a href="#前台启动" class="headerlink" title="前台启动"></a>前台启动</h1><p>/usr/local/opt/<a href="mailto:&#x6d;&#x79;&#x73;&#113;&#108;&#x40;&#53;&#x2e;&#55;">&#x6d;&#x79;&#x73;&#113;&#108;&#x40;&#53;&#x2e;&#55;</a>/bin/mysqld_safe –datadir=/usr/local/var/mysql </p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_58141314/article/details/130987308">https://blog.csdn.net/qq_58141314/article/details/130987308</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/3878ca88993d">https://www.jianshu.com/p/3878ca88993d</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/3878ca88993d">https://www.jianshu.com/p/3878ca88993d</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/laodanqiu/article/details/134277630">https://blog.csdn.net/laodanqiu/article/details/134277630</a></p>
+<p>ALTER USER ‘root‘@’localhost’ IDENTIFIED BY ‘abc123’; </p>
+<p>ALTER USER ‘root‘@’%’ IDENTIFIED WITH mysql_native_password BY ‘abc123’; </p>
+<p>FLUSH PRIVILEGES; </p>
+<p><a target="_blank" rel="noopener" href="https://brew.idayer.com/">https://brew.idayer.com/</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.51cto.com/u_16213366/6986511">https://blog.51cto.com/u_16213366/6986511</a></p>
+<p>node 版本高</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zjjxxh/article/details/127173968">https://blog.csdn.net/zjjxxh/article/details/127173968</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> NODE_OPTIONS=--openssl-legacy-provider<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<table>
+<thead>
+<tr>
+<th>表名</th>
+<th>SYS_USERS</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>注释</td>
+<td>系统用户表</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>索引</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>别名</td>
+<td>列名</td>
+<td>数据类型</td>
+<td>空值</td>
+<td>主键</td>
+<td>extra</td>
+</tr>
+<tr>
+<td>用户编码</td>
+<td>USER_ID</td>
+<td>bigint(20)</td>
+<td>NO</td>
+<td>PRI</td>
+<td></td>
+</tr>
+<tr>
+<td>用户名称</td>
+<td>USER_NAME</td>
+<td>varchar(32)</td>
+<td>YES</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>密码</td>
+<td>PASSWORD</td>
+<td>varchar(128)</td>
+<td>YES</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>账户状态 1：激活 2：删除 3：休眠 4：注销</td>
+<td>ACCOUNT_STATUS</td>
+<td>char(1)</td>
+<td>YES</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>安全级别</td>
+<td>SECURITY_LEVEL</td>
+<td>int(11)</td>
+<td>YES</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>允许创建的最大会话数</td>
+<td>MAX_SESSIONS</td>
+<td>int(11)</td>
+<td>YES</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>是否系统管理员</td>
+<td>IS_SYS</td>
+<td>char(1)</td>
+<td>YES</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>是否公司级公用账号</td>
+<td>IS_CPUBLIC</td>
+<td>char(1)</td>
+<td>YES</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>创建时间</td>
+<td>CREATE_TIME</td>
+<td>datetime</td>
+<td>YES</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>创建人</td>
+<td>CREATOR</td>
+<td>bigint(20)</td>
+<td>YES</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>最后一次更新时间</td>
+<td>LAST_TIME</td>
+<td>datetime</td>
+<td>YES</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>最后一次更新人</td>
+<td>LAST_EDITOR</td>
+<td>bigint(20)</td>
+<td>YES</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>锁定时间</td>
+<td>LOCK_TIME</td>
+<td>datetime</td>
+<td>YES</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>失效时间</td>
+<td>EXPIRED_TIME</td>
+<td>datetime</td>
+<td>YES</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>上次密码修改时间</td>
+<td>PSWD_UPT_TIME</td>
+<td>datetime</td>
+<td>YES</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>密码失效时间</td>
+<td>PSWD_TIME</td>
+<td>datetime</td>
+<td>YES</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>公司结构编码</td>
+<td>CORPORATION_ID</td>
+<td>bigint(20)</td>
+<td>YES</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>部门结构编码</td>
+<td>DEPARTMENT_ID</td>
+<td>bigint(20)</td>
+<td>YES</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>员工结构编码</td>
+<td>EMPLOYEE_ID</td>
+<td>bigint(20)</td>
+<td>YES</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>电子邮件</td>
+<td>E_MAIL</td>
+<td>varchar(128)</td>
+<td>YES</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>微信</td>
+<td>WECHAT</td>
+<td>varchar(64)</td>
+<td>YES</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>电话</td>
+<td>TELEPHONE</td>
+<td>varchar(32)</td>
+<td>YES</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>移动电话</td>
+<td>MOBILE</td>
+<td>varchar(32)</td>
+<td>YES</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>字符型扩充字段1</td>
+<td>CHAR_1</td>
+<td>varchar(64)</td>
+<td>YES</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>字符型扩充字段2</td>
+<td>CHAR_2</td>
+<td>varchar(64)</td>
+<td>YES</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>数字型扩充字段1</td>
+<td>NUM_1</td>
+<td>int(11)</td>
+<td>YES</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>数字型扩充字段2</td>
+<td>NUM_2</td>
+<td>int(11)</td>
+<td>YES</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>权限组织结构编码</td>
+<td>PERMISSION_STRU_ID</td>
+<td>bigint(20)</td>
+<td>YES</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>用户排序序号</td>
+<td>USER_ORDER</td>
+<td>int(11)</td>
+<td>YES</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>行政区代码</td>
+<td>PROVINCE_CODE</td>
+<td>varchar(32)</td>
+<td>YES</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>用户登录账号</td>
+<td>USER_ACCOUNT</td>
+<td>varchar(255)</td>
+<td>YES</td>
+<td>UNI</td>
+<td>对应人员表用户第一账号</td>
+</tr>
+<tr>
+<td>类型属性 0 临时账号 1长期账号</td>
+<td>TYPE_PROPERTY</td>
+<td>char(1)</td>
+<td>YES</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>开始时间</td>
+<td>START_TIME</td>
+<td>datetime</td>
+<td>YES</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>最后登录时间</td>
+<td>LAST_LOGIN_TIME</td>
+<td>datetime</td>
+<td>YES</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>允许登录时间</td>
+<td>ACCESS_LOGIN_START_TIME</td>
+<td>time</td>
+<td>YES</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>允许登录时间</td>
+<td>ACCESS_LOGIN_END_TIME</td>
+<td>time</td>
+<td>YES</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>身份验证</td>
+<td>TOTP_KEY</td>
+<td>varchar(64)</td>
+<td>YES</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>是否开启登录时间验证，1 开启 0不开启</td>
+<td>LOGIN_TIME_LIMIT</td>
+<td>char(1)</td>
+<td>YES</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>是否开启登录IP验证，1 开启 0不开启</td>
+<td>LOGIN_IP_LIMIT</td>
+<td>char(1)</td>
+<td>YES</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>数据权限类型</td>
+<td>DATA_SCOPE_TYPE</td>
+<td>char(1)</td>
+<td>YES</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>外部接口用户主键</td>
+<td>OUT_USER_ID</td>
+<td>varchar(64)</td>
+<td>YES</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>用户新登录账号</td>
+<td>USER_ACCOUNT_NEW</td>
+<td>varchar(255)</td>
+<td>YES</td>
+<td></td>
+<td>第二账号</td>
+</tr>
+<tr>
+<td>头像Url</td>
+<td>AVATAR_URL</td>
+<td>varchar(255)</td>
+<td>YES</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>删除标识(0未删除   1已删除)</td>
+<td>OUT_IS_DELETED</td>
+<td>int(11)</td>
+<td>YES</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>在职状态(0：停用 ；1：在职 ；2：离职 ；3：病假 ；)</td>
+<td>OUT_JOB_STATUS</td>
+<td>int(11)</td>
+<td>YES</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>用户类型值(0：公司用户;1：相关方用户;2：业主;3：分包商用户;4：供应商;5：其他用户;6：项目级分包用户;7：单位级分包用户)</td>
+<td>OUT_USER_TYPE_CODE</td>
+<td>int(11)</td>
+<td>YES</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>上游同步数据ID</td>
+<td>OUT_ORIGIN_ID</td>
+<td>varchar(64)</td>
+<td>YES</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>排序</td>
+<td>OUT_SORT_NUMBER</td>
+<td>varchar(255)</td>
+<td>YES</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>签名图片</td>
+<td>SIGN_PIC</td>
+<td>blob</td>
+<td>YES</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>是否推送到融云系统，1：是，0：不是</td>
+<td>IS_RONG</td>
+<td>int(11)</td>
+<td>YES</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>电子签名</td>
+<td>SIGNATURE</td>
+<td>blob</td>
+<td>YES</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div></div>
+      <div>https://zps111.gitee.io/wiki/2023/12/06/记录/aa/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>赵培胜</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年12月6日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/wiki/2023/12/15/spring%20cloud/SpringBoot%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95%E8%8E%B7%E5%8F%96bean/" title="SpringBoot静态方法获取bean">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">SpringBoot静态方法获取bean</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/wiki/2023/03/11/ssl/keytool%20RSA%20DSA/" title="keytool RSA DSA">
+                        <span class="hidden-mobile">keytool RSA DSA</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/wiki/img/police_beian.png" srcset="/wiki/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京ICP备2020044488号-1</span>
+        </a>
+      </span>
+    
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/wiki/js/events.js" ></script>
+<script  src="/wiki/js/plugins.js" ></script>
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/wiki/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/wiki/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/wiki/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

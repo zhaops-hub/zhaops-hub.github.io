@@ -1,0 +1,817 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/wiki/img/favicon.png">
+  <link rel="icon" href="/wiki/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="赵培胜">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="版本k8s: 1.19 docker:19.03 集群规划   机器 ip 分配节点    172.16.100.92 172.16.100.92 etcd,api-server,kube-controller,kube-scheduler   172.16.100.63 172.16.100.63 docker,kube-proxy,kubelet   172.16.100.64 172.16.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="k8s二进制文件部署">
+<meta property="og:url" content="https://zps111.gitee.io/wiki/2021/11/24/k8s/k8s%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E9%83%A8%E7%BD%B2/index.html">
+<meta property="og:site_name" content="zps">
+<meta property="og:description" content="版本k8s: 1.19 docker:19.03 集群规划   机器 ip 分配节点    172.16.100.92 172.16.100.92 etcd,api-server,kube-controller,kube-scheduler   172.16.100.63 172.16.100.63 docker,kube-proxy,kubelet   172.16.100.64 172.16.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zps111.gitee.io/wiki/img/k8s/1.png">
+<meta property="og:image" content="https://zps111.gitee.io/wiki/img/k8s/2.png">
+<meta property="article:published_time" content="2021-11-24T08:58:06.000Z">
+<meta property="article:modified_time" content="2023-02-25T09:54:34.177Z">
+<meta property="article:author" content="赵培胜">
+<meta property="article:tag" content="运维">
+<meta property="article:tag" content="k8s">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://zps111.gitee.io/wiki/img/k8s/1.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>k8s二进制文件部署 - zps</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="/wiki/lib/hint/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/wiki/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/wiki/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/wiki/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zps111.gitee.io","root":"/wiki/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/wiki/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/wiki/js/utils.js" ></script>
+  <script  src="/wiki/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/wiki/">
+      <strong>zhaopeisheng blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/wiki/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/wiki/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/wiki/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/wiki/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/wiki/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/wiki/img/bj.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="k8s二进制文件部署"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2021-11-24 16:58" pubdate>
+          2021年11月24日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          6.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          20 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">k8s二进制文件部署</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h2><p>k8s: <code>1.19</code></p>
+<p>docker:<code>19.03</code></p>
+<h2 id="集群规划"><a href="#集群规划" class="headerlink" title="集群规划"></a>集群规划</h2><table>
+<thead>
+<tr>
+<th>机器</th>
+<th>ip</th>
+<th>分配节点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>172.16.100.92</td>
+<td>172.16.100.92</td>
+<td>etcd,api-server,kube-controller,kube-scheduler</td>
+</tr>
+<tr>
+<td>172.16.100.63</td>
+<td>172.16.100.63</td>
+<td>docker,kube-proxy,kubelet</td>
+</tr>
+<tr>
+<td>172.16.100.64</td>
+<td>172.16.100.64</td>
+<td>docker,kube-proxy,kubelet</td>
+</tr>
+<tr>
+<td>172.16.100.71</td>
+<td>172.16.100.71</td>
+<td>docker,kube-proxy,kubelet</td>
+</tr>
+</tbody></table>
+<p><code>先在服务器安装etcd服务</code></p>
+<h2 id="服务器的-selinux-最好要要关掉"><a href="#服务器的-selinux-最好要要关掉" class="headerlink" title="服务器的 selinux 最好要要关掉"></a>服务器的 selinux 最好要要关掉</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">vi /etc/selinux/config</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">修改 SELINUX=disabled</span>	<br><span class="hljs-meta prompt_">$ </span><span class="language-bash">reboot</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h3><p><code>https://github.com/kubernetes/kubernetes/releases</code></p>
+<p>找到对应的版本点击 <code>CHANGELOG</code> 下载对应操作系统的压缩包</p>
+<p>1.19版本</p>
+<p><code>https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.19.md</code></p>
+<p>下载<code>Server Binaries</code>文件 </p>
+<p><code>kubernetes-server-linux-amd64.tar</code></p>
+<p>下载完成解压出来，二进制可执行文件在 <code>kubernetes\server\bin</code> 目录</p>
+<h2 id="安装-kube-apiserver"><a href="#安装-kube-apiserver" class="headerlink" title="安装 kube-apiserver"></a>安装 kube-apiserver</h2><p>将 <code>kube-apiserver</code> 上传到服务器</p>
+<p>新建服务服务文件</p>
+<p><code>vim /usr/lib/systemd/system/kube-apiserver.service</code> </p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[Unit]</span><br><span class="hljs-attr">Description</span>=k8sapiserver<br><span class="hljs-attr">Documentation</span>=k8sapiserver<br><span class="hljs-attr">After</span>=etcd.server<br><span class="hljs-attr">Wants</span>=etcd.server<br><br><span class="hljs-section">[Service]</span><br><span class="hljs-attr">EnvironmentFile</span>=/soyuan/k8s/api-server/apiserver<br><span class="hljs-attr">ExecStart</span>=/usr/local/bin/kube-apiserver <span class="hljs-variable">$KUBE_API_ADDRESS</span> <span class="hljs-variable">$KUBE_ETCD_SERVERS</span> <span class="hljs-variable">$KUBE_SERVICE_ADDRESSES</span> <span class="hljs-variable">$KUBE_ADMISSION_CONTROL</span> <span class="hljs-variable">$KUBE_API_ARGS</span><br><span class="hljs-attr">Restart</span>=failure<br><span class="hljs-attr">Type</span>=notify<br><span class="hljs-attr">LimitNOFILE</span>=<span class="hljs-number">65536</span><br><br><br><span class="hljs-section">[Install]</span><br><span class="hljs-attr">WantedBy</span>=multi-user.target<br></code></pre></td></tr></table></figure>
+
+<p><code>EnvironmentFile</code> 配置文件 <code>/soyuan/k8s/api-server/apiserver</code></p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">KUBE_API_ADDRESS</span>=<span class="hljs-string">&quot; --insecure-bind-address=0.0.0.0 --insecure-port=8080 --logtostderr=false --log-dir=/soyuan/k8s/api-server/logs --v=0&quot;</span><br><span class="hljs-attr">KUBE_ETCD_SERVERS</span>=<span class="hljs-string">&quot; --etcd-servers=http://172.16.100.92:2379&quot;</span><br><span class="hljs-attr">KUBE_SERVICE_ADDRESSES</span>=<span class="hljs-string">&quot; --service-cluster-ip-range=10.254.0.0/16 --service-node-port-range=1-65535&quot;</span><br><span class="hljs-attr">KUBE_ADMISSION_CONTROL</span>=<span class="hljs-string">&quot; --admission-control=NamespaceLifecycle,NamespaceExists,LimitRanger,ResourceQuota,ServiceAccount&quot;</span><br><span class="hljs-attr">KUBE_API_ARGS</span>=<span class="hljs-string">&quot;&quot;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="启动-kube-apiserver"><a href="#启动-kube-apiserver" class="headerlink" title="启动 kube-apiserver"></a>启动 kube-apiserver</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">重新加载系统服务文件</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">systemctl daemon-reload</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">启动api-server</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">systemctl start kube-apiserver</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">查看状态</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">systemctl status kube-apiserver</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">设置开机启动</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">systemctl <span class="hljs-built_in">enable</span> kube-apiserver</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="安装kube-controller-manager"><a href="#安装kube-controller-manager" class="headerlink" title="安装kube-controller-manager"></a>安装kube-controller-manager</h2><p>将 <code>kube-controller-manager</code> 上传到服务器</p>
+<p><code>vim /usr/lib/systemd/system/kube-controller-manager.service</code> </p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[Unit]</span><br><span class="hljs-attr">Description</span>=controller manager<br><span class="hljs-attr">After</span>=kube-apiserver.service<br><span class="hljs-attr">Requires</span>=kube-apiserver.service<br><br><span class="hljs-section">[Service]</span><br><span class="hljs-attr">EnvironmentFile</span>=/soyuan/k8s/kube-controller-manager/controller-manager<br><span class="hljs-attr">ExecStart</span>=/usr/local/bin/kube-controller-manager <span class="hljs-variable">$KUBE_CONTROLLER_MANAGER_AGE</span><br><span class="hljs-attr">Restart</span>=<span class="hljs-literal">on</span>-failure<br><span class="hljs-attr">LimitNOFILE</span>=<span class="hljs-number">65536</span><br><br><span class="hljs-section">[Install]</span><br><span class="hljs-attr">WantedBy</span>=multi-user.target<br></code></pre></td></tr></table></figure>
+
+<p><code>EnvironmentFile</code> 配置文件 <code>/soyuan/k8s/kube-controller-manager/controller-manager</code></p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">KUBE_CONTROLLER_MANAGER_AGE</span>=<span class="hljs-string">&quot;--master=http://172.16.100.92:8080 --service-account-private-key-file=/soyuan/k8s/172.16.100.92.key --logtostderr=false --log-dir=/soyuan/k8s/controller-manager/logs --v=0&quot;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="启动kube-controller-manager服务"><a href="#启动kube-controller-manager服务" class="headerlink" title="启动kube-controller-manager服务"></a>启动kube-controller-manager服务</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">重新加载系统服务文件</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">systemctl daemon-reload</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">启动服务</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">systemctl start kube-controller-manager</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">查看服务状态</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">systemctl status kube-controller-manager</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">设置开机启动</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">systemctl <span class="hljs-built_in">enable</span> kube-controller-manager</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="安装kube-scheduler服务"><a href="#安装kube-scheduler服务" class="headerlink" title="安装kube-scheduler服务"></a>安装kube-scheduler服务</h2><p>将 <code>kube-scheduler</code> 上传到服务器</p>
+<p><code>vim /usr/lib/systemd/system/kube-scheduler.service</code></p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[Unit]</span><br><span class="hljs-attr">Description</span>=Kubernetes Scheduler<br><span class="hljs-attr">After</span>=kube-apiserver.service <br><span class="hljs-attr">Requires</span>=kube-apiserver.service<br><br><span class="hljs-section">[Service]</span><br><span class="hljs-attr">EnvironmentFile</span>=/soyuan/k8s/kube-scheduler/scheduler<br><span class="hljs-attr">ExecStart</span>=/usr/local/bin/kube-scheduler <span class="hljs-variable">$KUBE_MASTER</span> <span class="hljs-variable">$KUBE_SCHEDULER_ARGS</span><br><span class="hljs-attr">Restart</span>=<span class="hljs-literal">on</span>-failure<br><span class="hljs-attr">LimitNOFILE</span>=<span class="hljs-number">65536</span><br><br><span class="hljs-section">[Install]</span><br><span class="hljs-attr">WantedBy</span>=multi-user.target<br></code></pre></td></tr></table></figure>
+
+<p><code>EnvironmentFile</code> 配置文件 <code>/soyuan/k8s/kube-scheduler/scheduler</code></p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">KUBE_MASTER</span>=<span class="hljs-string">&quot;--master=http://172.16.100.92:8080&quot;</span><br><span class="hljs-attr">KUBE_SCHEDULER_ARGS</span>=<span class="hljs-string">&quot;--logtostderr=true --log-dir=/soyuan/k8s/kube-schduler/logs --v=2&quot;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="启动kube-scheduler服务"><a href="#启动kube-scheduler服务" class="headerlink" title="启动kube-scheduler服务"></a>启动kube-scheduler服务</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">重新加载系统服务文件</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">systemctl daemon-reload</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">启动服务</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">systemctl start kube-scheduler</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">查看服务状态</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">systemctl status kube-scheduler</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">设置开机启动</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">systemctl <span class="hljs-built_in">enable</span> kube-scheduler</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="在node节点安装kube-proxy"><a href="#在node节点安装kube-proxy" class="headerlink" title="在node节点安装kube-proxy"></a>在node节点安装kube-proxy</h2><p><code>vim /usr/lib/systemd/system/kube-proxy.service</code></p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[Unit]</span><br><span class="hljs-attr">Description</span>=Kubernetes Kube-Proxy Server<br><span class="hljs-attr">Documentation</span>=https://github.com/GoogleCloudPlatform/kubernetes<br><span class="hljs-attr">After</span>=network.target<br> <br><span class="hljs-section">[Service]</span><br><span class="hljs-attr">EnvironmentFile</span>=/soyuan/k8s/kube-node/config<br><span class="hljs-attr">EnvironmentFile</span>=/soyuan/k8s/kube-node/proxy<br><span class="hljs-attr">ExecStart</span>=/usr/local/bin/kube-proxy \<br>            $KUBE_LOGTOSTDERR \<br>            $KUBE_LOG_LEVEL \<br>            $KUBE_MASTER \<br>            $KUBE_PROXY_ARGS<br><span class="hljs-attr">Restart</span>=<span class="hljs-literal">on</span>-failure<br><span class="hljs-attr">LimitNOFILE</span>=<span class="hljs-number">65536</span><br> <br><span class="hljs-section">[Install]</span><br><span class="hljs-attr">WantedBy</span>=multi-user.target<br></code></pre></td></tr></table></figure>
+
+<p><code>EnvironmentFile</code> 配置文件 </p>
+<p><code>/soyuan/k8s/kube-node/config</code></p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">KUBE_LOGTOSTDERR</span>=<span class="hljs-string">&quot;--logtostderr=true&quot;</span><br><span class="hljs-attr">KUBE_LOG_LEVEL</span>=<span class="hljs-string">&quot;--v=0&quot;</span><br><span class="hljs-attr">KUBE_ALLOW_PRIV</span>=<span class="hljs-string">&quot;--allow_privileged=false&quot;</span><br><span class="hljs-attr">KUBE_MASTER</span>=<span class="hljs-string">&quot;--master=http://172.16.100.92:8080 --kubeconfig /opt/k8s/kubeconfig&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p> <code>/soyuan/k8s/kube-node/proxy</code></p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">KUBE_PROXY_ARGS</span>=<span class="hljs-string">&quot;&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>可以再 <code>KUBE_PROXY_ARGS</code> 变量中增加启动可选参数</p>
+<h3 id="启动kube-proxy服务"><a href="#启动kube-proxy服务" class="headerlink" title="启动kube-proxy服务"></a>启动kube-proxy服务</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">重新加载系统服务文件</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">systemctl daemon-reload</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">启动服务</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">systemctl start kube-proxy</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">查看服务状态</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">systemctl status kube-proxy</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">设置开机启动</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">systemctl <span class="hljs-built_in">enable</span> kube-proxy</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="在node节点安装kubelet"><a href="#在node节点安装kubelet" class="headerlink" title="在node节点安装kubelet"></a>在node节点安装kubelet</h2><p>机器必须先按照docker</p>
+<p><code>vim /usr/lib/systemd/system/kubelet.service</code></p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[Unit]</span><br><span class="hljs-attr">Description</span>=Kubernetes Kubelet Server<br><span class="hljs-attr">Documentation</span>=https://github.com/GoogleCloudPlatform/kubernetes<br><span class="hljs-attr">After</span>=docker.service<br><span class="hljs-attr">Requires</span>=docker.service<br> <br><span class="hljs-section">[Service]</span><br><span class="hljs-attr">WorkingDirectory</span>=/soyuan/k8s/kube-node/kubelet<br><span class="hljs-attr">EnvironmentFile</span>=/soyuan/k8s/kube-node/kubeletenv<br><span class="hljs-attr">ExecStart</span>=/usr/local/bin/kubelet <span class="hljs-variable">$KUBELET_ARGS</span><br><span class="hljs-attr">Restart</span>=<span class="hljs-literal">on</span>-failure<br><span class="hljs-attr">KillMode</span>=process<br> <br><span class="hljs-section">[Install]</span><br><span class="hljs-attr">WantedBy</span>=multi-user.target<br></code></pre></td></tr></table></figure>
+
+<p><code>EnvironmentFile</code> 配置文件 </p>
+<p><code>/soyuan/k8s/kube-node/kubeletenv</code></p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">KUBELET_ARGS</span>=<span class="hljs-string">&quot;--enable-server=true --enable-debugging-handlers=true --fail-swap-on=false --kubeconfig=/soyuan/k8s/kube-node/kubeconfig --hostname-override=kube-master  --cluster-dns=172.16.100.92 --cluster-domain=kube-master --certificate-authority=/soyuan/k8s/ssl/ca.crt&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p><code>/soyuan/k8s/kube-node/kubeconfig</code></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">apiVersion:</span> <span class="hljs-string">v1</span><br><span class="hljs-attr">kind:</span> <span class="hljs-string">Config</span><br><span class="hljs-attr">users:</span><br><span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">kubelet</span><br><span class="hljs-attr">clusters:</span><br><span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">kubernetes</span><br>  <span class="hljs-attr">cluster:</span><br>    <span class="hljs-attr">server:</span> <span class="hljs-string">http://172.16.100.92:8080</span><br><span class="hljs-attr">contexts:</span><br><span class="hljs-bullet">-</span> <span class="hljs-attr">context:</span><br>    <span class="hljs-attr">cluster:</span> <span class="hljs-string">kubernetes</span><br>    <span class="hljs-attr">user:</span> <span class="hljs-string">kubelet</span><br>  <span class="hljs-attr">name:</span> <span class="hljs-string">service-account-context</span><br><span class="hljs-attr">current-context:</span> <span class="hljs-string">service-account-context</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="启动kebulet服务"><a href="#启动kebulet服务" class="headerlink" title="启动kebulet服务"></a>启动kebulet服务</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">重新加载系统服务文件</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">systemctl daemon-reload</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">创建工作目录</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-built_in">mkdir</span> -p /soyuan/k8s/kube-node/kubelet</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">启动服务</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">systemctl start kubelet</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">查看服务状态</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">systemctl status kubelet</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">设置开机启动</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">systemctl <span class="hljs-built_in">enable</span> kubelet</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="导入docker-基础镜像"><a href="#导入docker-基础镜像" class="headerlink" title="导入docker 基础镜像"></a>导入docker 基础镜像</h3><p>kubelet 运行时需要基础镜像，需要先下载，因为默认镜像下载地址需要翻墙，所以得自己手动下载。</p>
+<p>查看需要的镜像文件列表</p>
+<p><code>kubeadm config images list</code></p>
+<p><img src="/wiki/img/k8s/1.png" srcset="/wiki/img/loading.gif" lazyload></p>
+<p>从阿里云下载镜像，然后再把镜像名称改成k8s需要的</p>
+<p><code>vim pullk8s.sh</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell">for i in `kubeadm config images list`; do<br>        imageName=$&#123;i#k8s.gcr.io/&#125;<br>        docker pull registry.aliyuncs.com/google_containers/$imageName<br>        docker tag registry.aliyuncs.com/google_containers/$imageName k8s.gcr.io/$imageName<br>        docker rmi registry.aliyuncs.com/google_containers/$imageName<br>done;<br></code></pre></td></tr></table></figure>
+
+<p><code>sh ./pullk8s.sh</code></p>
+<p>下载完成如下图</p>
+<p><img src="/wiki/img/k8s/2.png" srcset="/wiki/img/loading.gif" lazyload></p>
+<h2 id="域名修改"><a href="#域名修改" class="headerlink" title="域名修改"></a>域名修改</h2><p>每个注册上来的node的 <code>hostname-override</code> 在<code>master</code>要配置<code>hosts</code>节点</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/wiki/categories/k8s/" class="category-chain-item">k8s</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/wiki/tags/%E8%BF%90%E7%BB%B4/">#运维</a>
+      
+        <a href="/wiki/tags/k8s/">#k8s</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>k8s二进制文件部署</div>
+      <div>https://zps111.gitee.io/wiki/2021/11/24/k8s/k8s二进制文件部署/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>赵培胜</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2021年11月24日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/wiki/2021/11/24/k8s/k8syaml/" title="k8syaml">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">k8syaml</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/wiki/2021/11/24/k8s/k8s%E5%88%B6%E4%BD%9Cssl%E8%AF%81%E4%B9%A6/" title="k8s制作ssl证书">
+                        <span class="hidden-mobile">k8s制作ssl证书</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/wiki/img/police_beian.png" srcset="/wiki/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京ICP备2020044488号-1</span>
+        </a>
+      </span>
+    
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/wiki/js/events.js" ></script>
+<script  src="/wiki/js/plugins.js" ></script>
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/wiki/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/wiki/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/wiki/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

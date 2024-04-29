@@ -1,993 +1,1858 @@
+
+
 <!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
 
 
 
-  
-
-
-<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="theme-color" content="#222">
-
-
-
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/wiki/img/favicon.png">
+  <link rel="icon" href="/wiki/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
   
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="赵培胜">
+  <meta name="keywords" content="">
   
-    
-    
-  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
-  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="Hexo, NexT" />
-
-
-
-
-
-  <link rel="alternate" href="/atom.xml" title="zhaops's blog" type="application/atom+xml" />
-
-
-
-
-
-
-<meta property="og:type" content="website">
+    <meta property="og:type" content="website">
 <meta property="og:title" content="分类">
-<meta property="og:url" content="https://zhaops-hub.github.io/categories/index.html">
-<meta property="og:site_name" content="zhaops&#39;s blog">
-<meta property="article:published_time" content="2020-05-23T12:19:45.000Z">
-<meta property="article:modified_time" content="2020-05-23T12:24:01.836Z">
-<meta property="article:author" content="zhaops">
-<meta name="twitter:card" content="summary">
+<meta property="og:url" content="https://zps111.gitee.io/wiki/categories/index.html">
+<meta property="og:site_name" content="zps">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="赵培胜">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>分类 - zps</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
 
 
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Gemini',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/wiki/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/wiki/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/wiki/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zps111.gitee.io","root":"/wiki/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/wiki/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
     }
-  };
-</script>
-
-
-
-  <link rel="canonical" href="https://zhaops-hub.github.io/categories/"/>
-
-
-
-
-
-  <title>分类 | zhaops's blog</title>
+  </script>
+  <script  src="/wiki/js/utils.js" ></script>
+  <script  src="/wiki/js/color-schema.js" ></script>
   
 
 
-
-
-
-
-
-
-<meta name="generator" content="Hexo 4.2.0"></head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
   
-  
-    
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
   
 
-  <div class="container sidebar-position-left page-post-detail">
-    <div class="headband">
-  
-    </div>
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+  <header>
     
 
-    <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">zhaops's blog</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-      
-        <p class="site-subtitle"></p>
-      
-  </div>
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/wiki/">
+      <strong>zhaopeisheng blog</strong>
+    </a>
 
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
     </button>
-  </div>
-</div>
 
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
-
-      
-        <li class="menu-item menu-item-search">
           
-            <a href="javascript:;" class="popup-trigger">
           
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            
-            搜索
-          </a>
-        </li>
-      
-    </ul>
-  
-
-  
-    <div class="site-search">
-      
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="搜索..." spellcheck="false"
-             type="text" id="local-search-input">
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/wiki/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/wiki/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/wiki/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/wiki/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/wiki/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
     </div>
   </div>
-  <div id="local-search-result"></div>
-</div>
-
-
-
-    </div>
-  
 </nav>
 
-
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
-    
-    
-    <div class="post-block page">
-      <header class="post-header">
-
-	<h1 class="post-title" itemprop="name headline">分类</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
-        
-        
-          <div class="category-all-page">
-            <div class="category-all-title">
-                目前共计 6 个分类
-            </div>
-            <div class="category-all">
-              <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Apollo/">Apollo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C%E8%AF%AD%E8%A8%80/">C语言</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MongoDB/">MongoDB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/netcore/">netcore</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tcp-ip/">tcp/ip</a><span class="category-list-count">6</span></li></ul>
-            </div>
-          </div>
-        
-      </div>
-      
-      
-      
-    </div>
-    
-    
-    
-  </div>
-
-
-          </div>
-          
-
-
-          
-
   
 
-
-
+<div id="banner" class="banner" parallax=true
+     style="background: url('/wiki/img/bj.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="分类"></span>
+          
         </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image"
-                src="/images/avatar.jpg"
-                alt="zhaops" />
-            
-              <p class="site-author-name" itemprop="name">zhaops</p>
-              <p class="site-description motion-element" itemprop="description"></p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">13</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                
-                  <span class="site-state-item-count">6</span>
-                  <span class="site-state-item-name">标签</span>
-                
-              </div>
-            
-
-          </nav>
-
-          
-            <div class="feed-link motion-element">
-              <a href="/atom.xml" rel="alternate">
-                <i class="fa fa-rss"></i>
-                RSS
-              </a>
-            </div>
-          
-
-          
-            <div class="links-of-author motion-element">
-                
-                  <span class="links-of-author-item">
-                    <a href="https://github.com/zhaops-hub" target="_blank" title="GitHub">
-                      
-                        <i class="fa fa-fw fa-github"></i>GitHub</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="mailto:zhaops1993@gmail.com" target="_blank" title="E-Mail">
-                      
-                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-                  </span>
-                
-            </div>
-          
-
-          
-          
-
-          
-          
-            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
-              <div class="links-of-blogroll-title">
-                <i class="fa  fa-fw fa-link"></i>
-                推荐阅读
-              </div>
-              <ul class="links-of-blogroll-list">
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="http://example.com/" title="Apollo(阿波罗)分布式部署" target="_blank">Apollo(阿波罗)分布式部署</a>
-                  </li>
-                
-              </ul>
-            </div>
-          
-
-          
-
-        </div>
-      </section>
-
-      
-
-      
-
-
-
-    </div>
-  </aside>
-
 
         
       </div>
-    </main>
 
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+      
+    </div>
+  </div>
+</div>
 
-<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="k8s"
+        id="heading-bfd47ab5b430c23c83ea0d7b87b6e244" role="tab" data-toggle="collapse" href="#collapse-bfd47ab5b430c23c83ea0d7b87b6e244"
+        aria-expanded="false"
+      >
+        k8s
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/wiki/categories/k8s/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>14</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-bfd47ab5b430c23c83ea0d7b87b6e244"
+           role="tabpanel" aria-labelledby="heading-bfd47ab5b430c23c83ea0d7b87b6e244">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/wiki/2022/03/02/k8s/free-fs/" title="free-fs"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">free-fs</span>
+        </a>
+      
+    
+      
+      
+        <a href="/wiki/2021/11/24/k8s/etcd%E5%AE%89%E8%A3%85/" title="etcd安装"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">etcd安装</span>
+        </a>
+      
+    
+      
+      
+        <a href="/wiki/2021/11/24/k8s/falnnel%E7%BD%91%E7%BB%9C/" title="falnnel网络"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">falnnel网络</span>
+        </a>
+      
+    
+      
+      
+        <a href="/wiki/2021/11/24/k8s/ingress/" title="ingress"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">ingress</span>
+        </a>
+      
+    
+      
+      
+        <a href="/wiki/2021/11/24/k8s/k8s%20gitlab/" title="k8s gitlab"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">k8s gitlab</span>
+        </a>
+      
+    
+      
+      
+        <a href="/wiki/2021/11/24/k8s/k8s%20jira/" title="k8s jira"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">k8s jira</span>
+        </a>
+      
+    
+      
+      
+        <a href="/wiki/2021/11/24/k8s/k8s%20pv%20pvc/" title="k8s pv pvc"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">k8s pv pvc</span>
+        </a>
+      
+    
+      
+      
+        <a href="/wiki/2021/11/24/k8s/k8s%20storageclass/" title="k8s storageclass"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">k8s storageclass</span>
+        </a>
+      
+    
+      
+      
+        <a href="/wiki/2021/11/24/k8s/k8s%20%E9%85%8D%E7%BD%AE%E8%87%AA%E7%AD%BE%E5%8F%91ssl%E8%AF%81%E4%B9%A6/" title="k8s 配置自签发ssl证书"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">k8s 配置自签发ssl证书</span>
+        </a>
+      
+    
+      
+      
+        <a href="/wiki/2021/11/24/k8s/k8s%20%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2(https)/" title="k8s 集群部署(https)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">k8s 集群部署(https)</span>
+        </a>
+      
+    
+      
+      
+        <a href="/wiki/categories/k8s/" class="list-group-item list-group-item-action">
+          <span class="category-post">More...</span>
+        </a>
+        
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="hadoop"
+        id="heading-0238775c7bd96e2eab98038afe0c4279" role="tab" data-toggle="collapse" href="#collapse-0238775c7bd96e2eab98038afe0c4279"
+        aria-expanded="false"
+      >
+        hadoop
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/wiki/categories/hadoop/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>9</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-0238775c7bd96e2eab98038afe0c4279"
+           role="tabpanel" aria-labelledby="heading-0238775c7bd96e2eab98038afe0c4279">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/wiki/2022/11/10/hadoop/hive%E6%93%8D%E4%BD%9C/" title="hive操作"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">hive操作</span>
+        </a>
+      
+    
+      
+      
+        <a href="/wiki/2021/11/30/hadoop/hadoop%E9%9B%86%E7%BE%A4/" title="hadoop集群"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">hadoop集群</span>
+        </a>
+      
+    
+      
+      
+        <a href="/wiki/2021/11/30/hadoop/hbase%E9%9B%86%E7%BE%A4/" title="hbase集群"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">hbase集群</span>
+        </a>
+      
+    
+      
+      
+        <a href="/wiki/2021/11/30/hadoop/hdfs%E6%93%8D%E4%BD%9C/" title="hdfs操作"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">hdfs操作</span>
+        </a>
+      
+    
+      
+      
+        <a href="/wiki/2021/11/30/hadoop/hive%E9%83%A8%E7%BD%B2/" title="hive部署"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">hive部署</span>
+        </a>
+      
+    
+      
+      
+        <a href="/wiki/2021/11/30/hadoop/hue%E5%AE%89%E8%A3%85/" title="hue安装"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">hue安装</span>
+        </a>
+      
+    
+      
+      
+        <a href="/wiki/2021/11/30/hadoop/kafka%E9%9B%86%E7%BE%A4/" title="kafka集群"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">kafka集群</span>
+        </a>
+      
+    
+      
+      
+        <a href="/wiki/2021/11/30/hadoop/kettle%E9%85%8D%E7%BD%AEhadoop,hbaseoutput/" title="kettle配置hadoop,hbaseoutput"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">kettle配置hadoop,hbaseoutput</span>
+        </a>
+      
+    
+      
+      
+        <a href="/wiki/2021/11/30/hadoop/phoneix%20%E5%AE%89%E8%A3%85/" title="phoneix 安装"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">phoneix 安装</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="cesium"
+        id="heading-1ef7fd0aa066ccb85bd3c07c0c37e7f8" role="tab" data-toggle="collapse" href="#collapse-1ef7fd0aa066ccb85bd3c07c0c37e7f8"
+        aria-expanded="false"
+      >
+        cesium
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/wiki/categories/cesium/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>6</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-1ef7fd0aa066ccb85bd3c07c0c37e7f8"
+           role="tabpanel" aria-labelledby="heading-1ef7fd0aa066ccb85bd3c07c0c37e7f8">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/wiki/2022/04/22/cesium/%E7%94%B5%E5%AD%90%E5%9C%B0%E5%9B%BE%E7%93%A6%E7%89%87%E4%B8%8B%E8%BD%BD/" title="电子地图瓦片下载"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">电子地图瓦片下载</span>
+        </a>
+      
+    
+      
+      
+        <a href="/wiki/2022/04/21/cesium/cesium%E5%8A%A0%E8%BD%BD%E9%AB%98%E7%A8%8B%E6%95%B0%E6%8D%AE/" title="cesium加载高程数据"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">cesium加载高程数据</span>
+        </a>
+      
+    
+      
+      
+        <a href="/wiki/2022/04/20/cesium/gdal/" title="gdal"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">gdal</span>
+        </a>
+      
+    
+      
+      
+        <a href="/wiki/2022/04/20/cesium/geoserver/" title="geoserver"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">geoserver</span>
+        </a>
+      
+    
+      
+      
+        <a href="/wiki/2022/04/20/cesium/%E5%8F%91%E5%B8%833dtiles/" title="发布3dtiles"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">发布3dtiles</span>
+        </a>
+      
+    
+      
+      
+        <a href="/wiki/2022/04/20/cesium/%E8%B7%AF%E7%BA%BF%E8%A7%84%E5%88%92graphhopper/" title="路线规划graphhopper"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">路线规划graphhopper</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="jenkins"
+        id="heading-ab63a76362c3972ac83d5cb8830fdb51" role="tab" data-toggle="collapse" href="#collapse-ab63a76362c3972ac83d5cb8830fdb51"
+        aria-expanded="false"
+      >
+        jenkins
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/wiki/categories/jenkins/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>5</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-ab63a76362c3972ac83d5cb8830fdb51"
+           role="tabpanel" aria-labelledby="heading-ab63a76362c3972ac83d5cb8830fdb51">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/wiki/2021/11/24/jenkins/jenkins-gitee%E6%8F%92%E4%BB%B6/" title="jenkins gitee插件"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">jenkins gitee插件</span>
+        </a>
+      
+    
+      
+      
+        <a href="/wiki/2021/11/24/jenkins/jenkins%E8%BF%9C%E7%A8%8B%E8%A7%A6%E5%8F%91%E6%9E%84%E5%BB%BA/" title="jenkins远程触发构建"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">jenkins远程触发构建</span>
+        </a>
+      
+    
+      
+      
+        <a href="/wiki/2021/11/03/jenkins/jenkins%E6%9E%84%E5%BB%BAvue/" title="jenkins构建vue"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">jenkins构建vue</span>
+        </a>
+      
+    
+      
+      
+        <a href="/wiki/2021/11/03/jenkins/jenlins%E6%9E%84%E5%BB%BAspringboot/" title="jenlins构建springboot"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">jenlins构建springboot</span>
+        </a>
+      
+    
+      
+      
+        <a href="/wiki/2021/11/02/jenkins/jenkins%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/" title="jenkins安装部署"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">jenkins安装部署</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="docker"
+        id="heading-05b6053c41a2130afd6fc3b158bda4e6" role="tab" data-toggle="collapse" href="#collapse-05b6053c41a2130afd6fc3b158bda4e6"
+        aria-expanded="false"
+      >
+        docker
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/wiki/categories/docker/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>4</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-05b6053c41a2130afd6fc3b158bda4e6"
+           role="tabpanel" aria-labelledby="heading-05b6053c41a2130afd6fc3b158bda4e6">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/wiki/2021/12/01/docker/docker%E5%90%AF%E5%8A%A8%E7%AB%AF%E5%8F%A3%E7%A6%81%E6%AD%A2ipv6/" title="docker启动端口禁止ipv6"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">docker启动端口禁止ipv6</span>
+        </a>
+      
+    
+      
+      
+        <a href="/wiki/2021/11/02/docker/dockerfile%20centos/" title="dockerfile centos"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">dockerfile centos</span>
+        </a>
+      
+    
+      
+      
+        <a href="/wiki/2021/11/02/docker/docker%E5%AE%89%E8%A3%85/" title="docker安装"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">docker安装</span>
+        </a>
+      
+    
+      
+      
+        <a href="/wiki/2021/11/02/docker/docker%E9%99%90%E5%88%B6%E6%97%A5%E5%BF%97%E5%A4%A7%E5%B0%8F/" title="docker限制日志大小"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">docker限制日志大小</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="elasticsearch"
+        id="heading-18897dcfce6a4e7ae63a3baeed443c48" role="tab" data-toggle="collapse" href="#collapse-18897dcfce6a4e7ae63a3baeed443c48"
+        aria-expanded="false"
+      >
+        elasticsearch
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/wiki/categories/elasticsearch/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>4</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-18897dcfce6a4e7ae63a3baeed443c48"
+           role="tabpanel" aria-labelledby="heading-18897dcfce6a4e7ae63a3baeed443c48">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/wiki/2021/11/16/elasticsearch/Metricbeat%E6%94%B6%E9%9B%86%E7%B3%BB%E7%BB%9F%E6%8C%87%E6%A0%87/" title="Metricbeat收集系统指标"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Metricbeat收集系统指标</span>
+        </a>
+      
+    
+      
+      
+        <a href="/wiki/2021/11/10/elasticsearch/elasticsearch%E9%83%A8%E7%BD%B2/" title="elasticsearch部署"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">elasticsearch部署</span>
+        </a>
+      
+    
+      
+      
+        <a href="/wiki/2021/11/10/elasticsearch/kibana%E9%83%A8%E7%BD%B2/" title="kibana部署"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">kibana部署</span>
+        </a>
+      
+    
+      
+      
+        <a href="/wiki/2021/11/10/elasticsearch/logstash%E9%83%A8%E7%BD%B2/" title="logstash部署"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">logstash部署</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="java"
+        id="heading-93f725a07423fe1c889f448b33d21f46" role="tab" data-toggle="collapse" href="#collapse-93f725a07423fe1c889f448b33d21f46"
+        aria-expanded="false"
+      >
+        java
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/wiki/categories/java/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>4</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-93f725a07423fe1c889f448b33d21f46"
+           role="tabpanel" aria-labelledby="heading-93f725a07423fe1c889f448b33d21f46">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/wiki/2021/12/07/java/java%E8%A7%A3%E6%9E%90netcore%20identity4%E6%8E%88%E6%9D%83token/" title="java解析netcore identity4授权token"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">java解析netcore identity4授权token</span>
+        </a>
+      
+    
+      
+      
+        <a href="/wiki/2021/11/03/java/centos%E9%85%8D%E7%BD%AEjdk%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="centos配置jdk环境变量"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">centos配置jdk环境变量</span>
+        </a>
+      
+    
+      
+      
+        <a href="/wiki/2021/11/03/java/maven%E5%AE%89%E8%A3%85/" title="maven安装"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">maven安装</span>
+        </a>
+      
+    
+      
+      
+        <a href="/wiki/2021/11/03/java/springboot%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF/" title="springboot开机自启"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">springboot开机自启</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="ssl"
+        id="heading-f9d5c16a7f42203f8c195432354a3271" role="tab" data-toggle="collapse" href="#collapse-f9d5c16a7f42203f8c195432354a3271"
+        aria-expanded="false"
+      >
+        ssl
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/wiki/categories/ssl/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>4</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-f9d5c16a7f42203f8c195432354a3271"
+           role="tabpanel" aria-labelledby="heading-f9d5c16a7f42203f8c195432354a3271">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/wiki/2023/03/11/ssl/keytool%20RSA%20DSA/" title="keytool RSA DSA"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">keytool RSA DSA</span>
+        </a>
+      
+    
+      
+      
+        <a href="/wiki/2023/03/11/ssl/openssl%E9%93%BE%E5%BC%8F%E8%AF%81%E4%B9%A6/" title="openssl链式证书"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">openssl链式证书</span>
+        </a>
+      
+    
+      
+      
+        <a href="/wiki/2021/11/02/ssl/cfssl%E5%B7%A5%E5%85%B7%E5%88%B6%E4%BD%9C%E8%AF%81%E4%B9%A6/" title="cfssl工具制作证书"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">cfssl工具制作证书</span>
+        </a>
+      
+    
+      
+      
+        <a href="/wiki/2021/11/02/ssl/%E5%88%B6%E4%BD%9C%E8%AF%81%E4%B9%A6/" title="制作ssl证书"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">制作ssl证书</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="mysql"
+        id="heading-81c3b080dad537de7e10e0987a4bf52e" role="tab" data-toggle="collapse" href="#collapse-81c3b080dad537de7e10e0987a4bf52e"
+        aria-expanded="false"
+      >
+        mysql
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/wiki/categories/mysql/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>3</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-81c3b080dad537de7e10e0987a4bf52e"
+           role="tabpanel" aria-labelledby="heading-81c3b080dad537de7e10e0987a4bf52e">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/wiki/2024/04/27/mysql/shardingsphere/shardingshphere%E6%95%B0%E6%8D%AE%E5%BA%93%E5%88%86%E7%89%87/" title="shardingshphere数据库分片"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">shardingshphere数据库分片</span>
+        </a>
+      
+    
+      
+      
+        <a href="/wiki/2024/04/27/mysql/shardingsphere/shardingshphere%E6%B0%B4%E5%B9%B3%E5%88%86%E7%89%87/" title="shardingshphere水平分片"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">shardingshphere水平分片</span>
+        </a>
+      
+    
+      
+      
+        <a href="/wiki/2024/04/27/mysql/mysql%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E9%83%A8%E7%BD%B2/" title="mysql主从复制部署"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">mysql主从复制部署</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="android"
+        id="heading-c31b32364ce19ca8fcd150a417ecce58" role="tab" data-toggle="collapse" href="#collapse-c31b32364ce19ca8fcd150a417ecce58"
+        aria-expanded="false"
+      >
+        android
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/wiki/categories/android/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>2</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-c31b32364ce19ca8fcd150a417ecce58"
+           role="tabpanel" aria-labelledby="heading-c31b32364ce19ca8fcd150a417ecce58">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/wiki/2022/02/21/android/android%20studio%20use%20lombok/" title="android studio use lombok"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">android studio use lombok</span>
+        </a>
+      
+    
+      
+      
+        <a href="/wiki/2022/02/21/android/gradle%E9%85%8D%E7%BD%AE/" title="gradle配置"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">gradle配置</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="apollo"
+        id="heading-31f2385ba9cc65dba7ccb9aa5c5b7600" role="tab" data-toggle="collapse" href="#collapse-31f2385ba9cc65dba7ccb9aa5c5b7600"
+        aria-expanded="false"
+      >
+        apollo
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/wiki/categories/apollo/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>2</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-31f2385ba9cc65dba7ccb9aa5c5b7600"
+           role="tabpanel" aria-labelledby="heading-31f2385ba9cc65dba7ccb9aa5c5b7600">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/wiki/2021/12/03/apollo/apollo%20%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83%E5%A4%9A%E7%8E%AF%E5%A2%83docker%E7%89%88%E6%9C%AC/" title="apollo 配置中心多环境docker版本"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">apollo 配置中心多环境docker版本</span>
+        </a>
+      
+    
+      
+      
+        <a href="/wiki/2021/12/03/apollo/apollo%20%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83%E5%A4%9A%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/" title="apollo 配置中心多环境部署"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">apollo 配置中心多环境部署</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="go"
+        id="heading-34d1f91fb2e514b8576fab1a75a89a6b" role="tab" data-toggle="collapse" href="#collapse-34d1f91fb2e514b8576fab1a75a89a6b"
+        aria-expanded="false"
+      >
+        go
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/wiki/categories/go/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>2</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-34d1f91fb2e514b8576fab1a75a89a6b"
+           role="tabpanel" aria-labelledby="heading-34d1f91fb2e514b8576fab1a75a89a6b">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/wiki/2021/12/22/go/go%20dlv%20%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95/" title="go dlv 远程调试"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">go dlv 远程调试</span>
+        </a>
+      
+    
+      
+      
+        <a href="/wiki/2021/11/02/go/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" title="环境配置"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">环境配置</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="srs"
+        id="heading-fd2a389677248c3d839524df77a9e73c" role="tab" data-toggle="collapse" href="#collapse-fd2a389677248c3d839524df77a9e73c"
+        aria-expanded="false"
+      >
+        srs
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/wiki/categories/srs/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>2</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-fd2a389677248c3d839524df77a9e73c"
+           role="tabpanel" aria-labelledby="heading-fd2a389677248c3d839524df77a9e73c">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/wiki/2021/11/02/srs/k8s%E9%83%A8%E7%BD%B2/" title="k8s部署"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">k8s部署</span>
+        </a>
+      
+    
+      
+      
+        <a href="/wiki/2021/11/02/srs/%E5%85%AC%E7%BD%91%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/" title="公网环境部署"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">公网环境部署</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="spring cloud"
+        id="heading-33d0d327026a3129f67aeecf0300507b" role="tab" data-toggle="collapse" href="#collapse-33d0d327026a3129f67aeecf0300507b"
+        aria-expanded="false"
+      >
+        spring cloud
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/wiki/categories/spring-cloud/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>2</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-33d0d327026a3129f67aeecf0300507b"
+           role="tabpanel" aria-labelledby="heading-33d0d327026a3129f67aeecf0300507b">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/wiki/2023/12/24/spring%20cloud/spring%20mybits%20plus%E5%8A%A8%E6%80%81%E5%88%87%E6%8D%A2%E6%95%B0%E6%8D%AE%E5%BA%93/" title="spring mybits plus动态切换数据库"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">spring mybits plus动态切换数据库</span>
+        </a>
+      
+    
+      
+      
+        <a href="/wiki/2023/12/15/spring%20cloud/SpringBoot%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95%E8%8E%B7%E5%8F%96bean/" title="SpringBoot静态方法获取bean"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">SpringBoot静态方法获取bean</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="cloud9-docker Ide"
+        id="heading-e4835b29c72f8ccef7fb76ef77300e5a" role="tab" data-toggle="collapse" href="#collapse-e4835b29c72f8ccef7fb76ef77300e5a"
+        aria-expanded="false"
+      >
+        cloud9-docker Ide
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/wiki/categories/cloud9-docker-Ide/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>1</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-e4835b29c72f8ccef7fb76ef77300e5a"
+           role="tabpanel" aria-labelledby="heading-e4835b29c72f8ccef7fb76ef77300e5a">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/wiki/2022/01/26/cloud9%20Ide/cloud9-docker/" title="cloud9-docker"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">cloud9-docker</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="cloud9 Ide"
+        id="heading-7c8b00c16b783f55a3dc64f2d4a543d7" role="tab" data-toggle="collapse" href="#collapse-7c8b00c16b783f55a3dc64f2d4a543d7"
+        aria-expanded="false"
+      >
+        cloud9 Ide
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/wiki/categories/cloud9-Ide/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>1</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-7c8b00c16b783f55a3dc64f2d4a543d7"
+           role="tabpanel" aria-labelledby="heading-7c8b00c16b783f55a3dc64f2d4a543d7">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/wiki/2022/01/26/cloud9%20Ide/cloud9/" title="cloud9"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">cloud9</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="git"
+        id="heading-ba9f11ecc3497d9993b933fdc2bd61e5" role="tab" data-toggle="collapse" href="#collapse-ba9f11ecc3497d9993b933fdc2bd61e5"
+        aria-expanded="false"
+      >
+        git
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/wiki/categories/git/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>1</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-ba9f11ecc3497d9993b933fdc2bd61e5"
+           role="tabpanel" aria-labelledby="heading-ba9f11ecc3497d9993b933fdc2bd61e5">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/wiki/2021/11/02/git/git%E9%85%8D%E7%BD%AEssh%E7%A7%98%E9%92%A5/" title="git配置ssh秘钥"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">git配置ssh秘钥</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="StackEdit"
+        id="heading-752af077c2a3077a4ec060546e9c2bc3" role="tab" data-toggle="collapse" href="#collapse-752af077c2a3077a4ec060546e9c2bc3"
+        aria-expanded="false"
+      >
+        StackEdit
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/wiki/categories/StackEdit/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>1</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-752af077c2a3077a4ec060546e9c2bc3"
+           role="tabpanel" aria-labelledby="heading-752af077c2a3077a4ec060546e9c2bc3">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/wiki/2022/01/26/idoc/idoc%20%E5%8A%A8%E6%80%81%E6%A3%80%E6%B5%8B%E6%96%87%E4%BB%B6%E5%8F%98%E5%8C%96/" title="StackEdit"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">StackEdit</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="js"
+        id="heading-32981a13284db7a021131df49e6cd203" role="tab" data-toggle="collapse" href="#collapse-32981a13284db7a021131df49e6cd203"
+        aria-expanded="false"
+      >
+        js
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/wiki/categories/js/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>1</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-32981a13284db7a021131df49e6cd203"
+           role="tabpanel" aria-labelledby="heading-32981a13284db7a021131df49e6cd203">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/wiki/2022/03/21/js/js%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85%E6%A8%A1%E5%BC%8F/" title="js发布订阅模式"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">js发布订阅模式</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="liunx"
+        id="heading-b8d2082b5d654daee6c58fb917c94d31" role="tab" data-toggle="collapse" href="#collapse-b8d2082b5d654daee6c58fb917c94d31"
+        aria-expanded="false"
+      >
+        liunx
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/wiki/categories/liunx/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>1</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-b8d2082b5d654daee6c58fb917c94d31"
+           role="tabpanel" aria-labelledby="heading-b8d2082b5d654daee6c58fb917c94d31">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/wiki/2021/12/22/liunx/linux%E4%B8%8B%E7%9A%84%E5%90%AF%E5%81%9C%E8%84%9A%E6%9C%AC/" title="linux下的启停脚本"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">linux下的启停脚本</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="thinkphp"
+        id="heading-4e5e5d7364f443e28fbf0d3ae744a59a" role="tab" data-toggle="collapse" href="#collapse-4e5e5d7364f443e28fbf0d3ae744a59a"
+        aria-expanded="false"
+      >
+        thinkphp
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/wiki/categories/thinkphp/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>1</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-4e5e5d7364f443e28fbf0d3ae744a59a"
+           role="tabpanel" aria-labelledby="heading-4e5e5d7364f443e28fbf0d3ae744a59a">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/wiki/2022/12/05/php/thinkphp%20nginx%E4%B8%8B%E5%87%BA%E7%8E%B0404%E9%97%AE%E9%A2%98/" title="thinkphp nginx下出现404问题"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">thinkphp nginx下出现404问题</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="八股文"
+        id="heading-e0c44a743c6ec57cfe704d84f1d3c852" role="tab" data-toggle="collapse" href="#collapse-e0c44a743c6ec57cfe704d84f1d3c852"
+        aria-expanded="false"
+      >
+        八股文
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/wiki/categories/%E5%85%AB%E8%82%A1%E6%96%87/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>1</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-e0c44a743c6ec57cfe704d84f1d3c852"
+           role="tabpanel" aria-labelledby="heading-e0c44a743c6ec57cfe704d84f1d3c852">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/wiki/2024/04/23/%E5%85%AB%E8%82%A1%E6%96%87/jvm/" title="jvm"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">jvm</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="微信小程序"
+        id="heading-439845b85c0a405cebc2e738b0786f15" role="tab" data-toggle="collapse" href="#collapse-439845b85c0a405cebc2e738b0786f15"
+        aria-expanded="false"
+      >
+        微信小程序
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/wiki/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>1</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-439845b85c0a405cebc2e738b0786f15"
+           role="tabpanel" aria-labelledby="heading-439845b85c0a405cebc2e738b0786f15">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/wiki/2021/12/09/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/%E5%8A%A8%E6%80%81%E7%94%9F%E6%88%90%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BA%8C%E7%BB%B4%E7%A0%81%E5%B8%A6%E5%8F%82%E6%95%B0/" title="动态生成小程序二维码带参数"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">动态生成小程序二维码带参数</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="计算机概论"
+        id="heading-eb3f438308a5df13db3c8c84fa3e579f" role="tab" data-toggle="collapse" href="#collapse-eb3f438308a5df13db3c8c84fa3e579f"
+        aria-expanded="false"
+      >
+        计算机概论
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/wiki/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%A6%82%E8%AE%BA/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>1</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-eb3f438308a5df13db3c8c84fa3e579f"
+           role="tabpanel" aria-labelledby="heading-eb3f438308a5df13db3c8c84fa3e579f">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/wiki/2021/11/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%A6%82%E8%AE%BA/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%87%8F%E6%B3%95/" title="二进制减法"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">二进制减法</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="enum"
+        id="heading-da45ec4be6574774008df9be683a4778" role="tab" data-toggle="collapse" href="#collapse-da45ec4be6574774008df9be683a4778"
+        aria-expanded="false"
+      >
+        enum
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/wiki/categories/enum/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>1</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-da45ec4be6574774008df9be683a4778"
+           role="tabpanel" aria-labelledby="heading-da45ec4be6574774008df9be683a4778">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/wiki/2023/02/25/%E6%9E%9A%E4%B8%BE/enum/" title="enum 高效实现方式"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">enum 高效实现方式</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      
+    </a>
   </span>
-  <span class="author" itemprop="copyrightHolder">zhaops</span>
-
-
-
-<div class="powered-by">
-<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
-  本站访客数:<span id="busuanzi_value_site_uv"></span>
-</span>
-</div>
- 
-
-
   
-</div>
-
-
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
-
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
-
-
-
-
-<span class="post-meta-divider">|</span>
-<div class="theme-info">
-  <div class="powered-by"></div>
-  <span class="post-count">博客全站共13.1k字</span>
-</div>
-        
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
     
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/wiki/img/police_beian.png" srcset="/wiki/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京ICP备2020044488号-1</span>
+        </a>
+      </span>
     
-
-    
-
-  </div>
-
   
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-
-
-  
-
-
-  
-
-
-
-
-
-
-
-
-
-
+</div>
 
   
   
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
   
-
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  <script type="text/javascript">
-    // Popup Window;
-    var isfetched = false;
-    var isXml = true;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length === 0) {
-      search_path = "search.xml";
-    } else if (/json$/i.test(search_path)) {
-      isXml = false;
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-
-    var onPopupClose = function (e) {
-      $('.popup').hide();
-      $('#local-search-input').val('');
-      $('.search-result-list').remove();
-      $('#no-result').remove();
-      $(".local-search-pop-overlay").remove();
-      $('body').css('overflow', '');
-    }
-
-    function proceedsearch() {
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
-        .css('overflow', 'hidden');
-      $('.search-popup-overlay').click(onPopupClose);
-      $('.popup').toggle();
-      var $localSearchInput = $('#local-search-input');
-      $localSearchInput.attr("autocapitalize", "none");
-      $localSearchInput.attr("autocorrect", "off");
-      $localSearchInput.focus();
-    }
-
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-
-      // start loading animation
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
-          '<div id="search-loading-icon">' +
-          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
-          '</div>' +
-          '</div>')
-        .css('overflow', 'hidden');
-      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
-
-      $.ajax({
-        url: path,
-        dataType: isXml ? "xml" : "json",
-        async: true,
-        success: function(res) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = isXml ? $("entry", res).map(function() {
-            return {
-              title: $("title", this).text(),
-              content: $("content",this).text(),
-              url: $("url" , this).text()
-            };
-          }).get() : res;
-          var input = document.getElementById(search_id);
-          var resultContent = document.getElementById(content_id);
-          var inputEventFunction = function() {
-            var searchText = input.value.trim().toLowerCase();
-            var keywords = searchText.split(/[\s\-]+/);
-            if (keywords.length > 1) {
-              keywords.push(searchText);
-            }
-            var resultItems = [];
-            if (searchText.length > 0) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var hitCount = 0;
-                var searchTextCount = 0;
-                var title = data.title.trim();
-                var titleInLowerCase = title.toLowerCase();
-                var content = data.content.trim().replace(/<[^>]+>/g,"");
-                var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url);
-                var indexOfTitle = [];
-                var indexOfContent = [];
-                // only match articles with not empty titles
-                if(title != '') {
-                  keywords.forEach(function(keyword) {
-                    function getIndexByWord(word, text, caseSensitive) {
-                      var wordLen = word.length;
-                      if (wordLen === 0) {
-                        return [];
-                      }
-                      var startPosition = 0, position = [], index = [];
-                      if (!caseSensitive) {
-                        text = text.toLowerCase();
-                        word = word.toLowerCase();
-                      }
-                      while ((position = text.indexOf(word, startPosition)) > -1) {
-                        index.push({position: position, word: word});
-                        startPosition = position + wordLen;
-                      }
-                      return index;
-                    }
-
-                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
-                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
-                  });
-                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
-                    isMatch = true;
-                    hitCount = indexOfTitle.length + indexOfContent.length;
-                  }
-                }
-
-                // show search results
-
-                if (isMatch) {
-                  // sort index by position of keyword
-
-                  [indexOfTitle, indexOfContent].forEach(function (index) {
-                    index.sort(function (itemLeft, itemRight) {
-                      if (itemRight.position !== itemLeft.position) {
-                        return itemRight.position - itemLeft.position;
-                      } else {
-                        return itemLeft.word.length - itemRight.word.length;
-                      }
-                    });
-                  });
-
-                  // merge hits into slices
-
-                  function mergeIntoSlice(text, start, end, index) {
-                    var item = index[index.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    var hits = [];
-                    var searchTextCountInSlice = 0;
-                    while (position + word.length <= end && index.length != 0) {
-                      if (word === searchText) {
-                        searchTextCountInSlice++;
-                      }
-                      hits.push({position: position, length: word.length});
-                      var wordEnd = position + word.length;
-
-                      // move to next position of hit
-
-                      index.pop();
-                      while (index.length != 0) {
-                        item = index[index.length - 1];
-                        position = item.position;
-                        word = item.word;
-                        if (wordEnd > position) {
-                          index.pop();
-                        } else {
-                          break;
-                        }
-                      }
-                    }
-                    searchTextCount += searchTextCountInSlice;
-                    return {
-                      hits: hits,
-                      start: start,
-                      end: end,
-                      searchTextCount: searchTextCountInSlice
-                    };
-                  }
-
-                  var slicesOfTitle = [];
-                  if (indexOfTitle.length != 0) {
-                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
-                  }
-
-                  var slicesOfContent = [];
-                  while (indexOfContent.length != 0) {
-                    var item = indexOfContent[indexOfContent.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    // cut out 100 characters
-                    var start = position - 20;
-                    var end = position + 80;
-                    if(start < 0){
-                      start = 0;
-                    }
-                    if (end < position + word.length) {
-                      end = position + word.length;
-                    }
-                    if(end > content.length){
-                      end = content.length;
-                    }
-                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
-                  }
-
-                  // sort slices in content by search text's count and hits' count
-
-                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
-                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
-                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
-                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
-                      return sliceRight.hits.length - sliceLeft.hits.length;
-                    } else {
-                      return sliceLeft.start - sliceRight.start;
-                    }
-                  });
-
-                  // select top N slices in content
-
-                  var upperBound = parseInt('1');
-                  if (upperBound >= 0) {
-                    slicesOfContent = slicesOfContent.slice(0, upperBound);
-                  }
-
-                  // highlight title and content
-
-                  function highlightKeyword(text, slice) {
-                    var result = '';
-                    var prevEnd = slice.start;
-                    slice.hits.forEach(function (hit) {
-                      result += text.substring(prevEnd, hit.position);
-                      var end = hit.position + hit.length;
-                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
-                      prevEnd = end;
-                    });
-                    result += text.substring(prevEnd, slice.end);
-                    return result;
-                  }
-
-                  var resultItem = '';
-
-                  if (slicesOfTitle.length != 0) {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
-                  } else {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
-                  }
-
-                  slicesOfContent.forEach(function (slice) {
-                    resultItem += "<a href='" + articleUrl + "'>" +
-                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
-                      "...</p>" + "</a>";
-                  });
-
-                  resultItem += "</li>";
-                  resultItems.push({
-                    item: resultItem,
-                    searchTextCount: searchTextCount,
-                    hitCount: hitCount,
-                    id: resultItems.length
-                  });
-                }
-              })
-            };
-            if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
-            } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
-            } else {
-              resultItems.sort(function (resultLeft, resultRight) {
-                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
-                  return resultRight.searchTextCount - resultLeft.searchTextCount;
-                } else if (resultLeft.hitCount !== resultRight.hitCount) {
-                  return resultRight.hitCount - resultLeft.hitCount;
-                } else {
-                  return resultRight.id - resultLeft.id;
-                }
-              });
-              var searchResultList = '<ul class=\"search-result-list\">';
-              resultItems.forEach(function (result) {
-                searchResultList += result.item;
-              })
-              searchResultList += "</ul>";
-              resultContent.innerHTML = searchResultList;
-            }
-          }
-
-          if ('auto' === 'auto') {
-            input.addEventListener('input', inputEventFunction);
-          } else {
-            $('.search-icon').click(inputEventFunction);
-            input.addEventListener('keypress', function (event) {
-              if (event.keyCode === 13) {
-                inputEventFunction();
-              }
-            });
-          }
-
-          // remove loading animation
-          $(".local-search-pop-overlay").remove();
-          $('body').css('overflow', '');
-
-          proceedsearch();
-        }
-      });
-    }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched === false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(onPopupClose);
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-    $(document).on('keyup', function (event) {
-      var shouldDismissSearchPopup = event.which === 27 &&
-        $('.search-popup').is(':visible');
-      if (shouldDismissSearchPopup) {
-        onPopupClose();
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/wiki/js/events.js" ></script>
+<script  src="/wiki/js/plugins.js" ></script>
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
       }
-    });
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
   </script>
 
 
 
 
+  
+    <script  src="/wiki/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/wiki/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/wiki/js/boot.js" ></script>
+
 
   
 
-  
-
-  
-
-  
-  
-
-  
-
-  
-
-  
-
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
 </body>
 </html>

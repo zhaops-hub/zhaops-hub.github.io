@@ -1,0 +1,713 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/wiki/img/favicon.png">
+  <link rel="icon" href="/wiki/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="赵培胜">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="注册租户的流程, 研发平台, 官网, 授权中心  REDIS_HOST&#x3D;10.198.40.77;REDIS_PORT&#x3D;6379;REDIS_PASSWORD&#x3D;root 10.198.40.773306root1yrVZP%KqZ#SS_cscec81_Z#98hussar-base-cloud Nacos SHjvK*&amp;^!q6HjEud_zj81 123456789101112131">
+<meta property="og:type" content="article">
+<meta property="og:title" content="zps">
+<meta property="og:url" content="https://zps111.gitee.io/wiki/2024/02/06/%E8%AE%B0%E5%BD%95/%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:site_name" content="zps">
+<meta property="og:description" content="注册租户的流程, 研发平台, 官网, 授权中心  REDIS_HOST&#x3D;10.198.40.77;REDIS_PORT&#x3D;6379;REDIS_PASSWORD&#x3D;root 10.198.40.773306root1yrVZP%KqZ#SS_cscec81_Z#98hussar-base-cloud Nacos SHjvK*&amp;^!q6HjEud_zj81 123456789101112131">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-02-06T09:22:38.361Z">
+<meta property="article:modified_time" content="2024-02-19T08:33:28.237Z">
+<meta property="article:author" content="赵培胜">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>zps</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="/wiki/lib/hint/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/wiki/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/wiki/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/wiki/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zps111.gitee.io","root":"/wiki/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/wiki/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/wiki/js/utils.js" ></script>
+  <script  src="/wiki/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/wiki/">
+      <strong>zhaopeisheng blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/wiki/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/wiki/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/wiki/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/wiki/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/wiki/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/wiki/img/bj.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text=""></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-02-06 17:22" pubdate>
+          2024年2月6日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          4.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          16 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none"></h1>
+            
+            
+              <div class="markdown-body">
+                
+                <ul>
+<li>注册租户的流程, 研发平台, 官网, 授权中心</li>
+</ul>
+<p>REDIS_HOST=10.198.40.77;REDIS_PORT=6379;REDIS_PASSWORD=root</p>
+<p>10.198.40.77<br>3306<br>root<br>1yrVZP%KqZ#SS_cscec81_Z#98<br>hussar-base-cloud</p>
+<p>Nacos</p>
+<p>SHjvK*&amp;^!q6HjEud_zj81</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs shell">前端上传相关<br>ip地址：10.198.40.39<br>用户：root<br>密码：Bbn3Q@*BXC<br><br>cd /usr/local/nginx<br>cd ./html<br>cd ./bussness<br>rm -rf static/<br>rm -rf  bim-project/<br>rm -rf hussartheme/<br>rm -rf hussarvfg/<br>rm -rf dist.zip<br>unzip dist.zip<br><br>/usr/local/nginx/sbin/nginx -s reload<br><br><br><br>后端上传相关<br>ip地址：10.198.32.92<br>用户名：zj81<br>密码：KyyAlvz91M<br><br>命令相关<br>sudo su<br>/opt/rq_smart_construction/<br><br><br>停止进度微服务：ps -ef | grep java | grep -E &#x27;progress-application-exec&#x27;| grep -v &quot;grep&quot; |grep -v &quot;tail&quot; |grep -v &quot;tomcat&quot; | awk &#x27;&#123;print $2&#125;&#x27;| xargs kill -9<br>启动进度微服务：nohup java -Xms50m -Xmx500m -Dfastjson.parser.autoTypeSupport=true -Dfastjson.parser.safeMode=true -jar /opt/rq_smart_construction/progress-application-exec.jar &gt; /opt/rq_smart_construction/progress-server.log 2&gt;&amp;1 &amp;<br>tail -f /opt/rq_smart_construction/progress-server.log<br></code></pre></td></tr></table></figure>
+
+
+
+<p>数据库表</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-operator">/</span><span class="hljs-operator">/</span> 单位工程列表<br> <span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> progress_unitproject pu ;<br><span class="hljs-operator">/</span><span class="hljs-operator">/</span> 总计划列表<br> <span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> progrees_total_plan ptp ;<br><span class="hljs-operator">/</span><span class="hljs-operator">/</span> 总计划明细表<br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> progress_total_plan_item ptpi ;<br><span class="hljs-operator">/</span><span class="hljs-operator">/</span> 总计划明细与构件关联关系表<br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> progress_total_plan_detail ptpd ; <br><span class="hljs-operator">/</span><span class="hljs-operator">/</span> 进度反馈 反馈列表<br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> progress_feedback_record pfr ;<br><br><span class="hljs-operator">/</span><span class="hljs-operator">/</span> 月计划编制<span class="hljs-operator">/</span>月计划反馈<br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> progress_month_plan pmp ;<br><span class="hljs-operator">/</span><span class="hljs-operator">/</span> 准备工作计划<br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> progress_month_plan_phys_constr pmppc ;<br><span class="hljs-operator">/</span><span class="hljs-operator">/</span> 实体实施计划<br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> progress_month_plan_prepare pmpp ;<br><span class="hljs-operator">/</span><span class="hljs-operator">/</span> 验收工作计划<br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> progress_month_plan_verify_work pmpvw ;<br> <br><span class="hljs-operator">/</span><span class="hljs-operator">/</span> 周计划编制<span class="hljs-operator">/</span>周计划反馈<br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> progress_week_plan pwp <br><span class="hljs-operator">/</span><span class="hljs-operator">/</span> 准备工作计划<br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> progress_week_plan_phys_constr pwppc <br><span class="hljs-operator">/</span><span class="hljs-operator">/</span> 实体实施计划<br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> progress_week_plan_prepare pwpp <br><span class="hljs-operator">/</span><span class="hljs-operator">/</span> 验收工作计划<br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> progress_week_plan_verify_work pwpvw <br>        <br><span class="hljs-operator">/</span><span class="hljs-operator">/</span> 工期预警列表<br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> progress_plan_alert ppa ;<br><span class="hljs-operator">/</span><span class="hljs-operator">/</span> 工期预警明细<br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> progress_plan_alert_item ppai ;<br></code></pre></td></tr></table></figure>
+<h3 id="前端安装依赖-和启动问题"><a href="#前端安装依赖-和启动问题" class="headerlink" title="前端安装依赖, 和启动问题"></a>前端安装依赖, 和启动问题</h3><p>npm i –legacy-peer-deps</p>
+<p>export NODE_OPTIONS=–openssl-legacy-provider</p>
+<p>npm run start : </p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/asplover/p/17188483.html">https://www.cnblogs.com/asplover/p/17188483.html</a></p>
+<h3 id="轻骑兵相关文档"><a href="#轻骑兵相关文档" class="headerlink" title="轻骑兵相关文档"></a>轻骑兵相关文档</h3><p><a target="_blank" rel="noopener" href="http://10.198.6.41:8080/help/login?backUrl=/?v=1.14">http://10.198.6.41:8080/help/login?backUrl=/?v=1.14</a><br>账号：研发中心<br>密码：cscec81#</p>
+<h3 id="本地docker地址"><a href="#本地docker地址" class="headerlink" title="本地docker地址"></a>本地docker地址</h3><p>/Users/zhaopeisheng/创联/zonghejnts_docker</p>
+<h3 id="progress-配置文件"><a href="#progress-配置文件" class="headerlink" title="progress 配置文件"></a>progress 配置文件</h3><p>分组: hussar-base-cloud</p>
+<p>id: progress-server-dev.yml</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">spring:</span><br>  <span class="hljs-attr">datasource:</span><br>    <span class="hljs-attr">dynamic:</span><br>      <span class="hljs-attr">primary:</span> <span class="hljs-string">master</span><br>      <span class="hljs-attr">seata:</span> <span class="hljs-literal">false</span><br>      <span class="hljs-attr">datasource:</span><br>        <span class="hljs-attr">master:</span><br>          <span class="hljs-attr">url:</span> <span class="hljs-string">jdbc:mysql://10.198.40.77:3306/hussar-base-cloud?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=utf8&amp;zeroDateTimeBehavior=convertToNull&amp;useSSL=false&amp;useTimezone=true&amp;serverTimezone=GMT%2B8&amp;allowMultiQueries=true</span><br>          <span class="hljs-attr">username:</span> <span class="hljs-string">root</span><br>          <span class="hljs-attr">password:</span> <span class="hljs-string">1yrVZP%KqZ#SS_cscec81_Z#98</span><br>          <span class="hljs-attr">driver-class-name:</span>   <span class="hljs-string">com.mysql.cj.jdbc.Driver</span><br>  <span class="hljs-attr">redis:</span><br>    <span class="hljs-attr">host:</span> <span class="hljs-number">10.198</span><span class="hljs-number">.40</span><span class="hljs-number">.77</span><br>    <span class="hljs-attr">port:</span> <span class="hljs-number">6379</span><br>    <span class="hljs-attr">password:</span> <span class="hljs-string">root</span> <br><span class="hljs-attr">mybatis-plus:</span><br>  <span class="hljs-attr">type-handlers-package:</span>   <span class="hljs-string">com.jxdinfo.hussar.support.mp.typeconvter</span><br>  <span class="hljs-attr">check-config-location:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">mapper-locations:</span>   <span class="hljs-string">classpath*:com/jxdinfo/hussar/**/mapping/*.xml</span><br>  <span class="hljs-attr">typeAliasesPackage:</span>   <span class="hljs-string">com.jxdinfo.hussar.**.model,com.xxxx.**.model</span><br>  <span class="hljs-attr">typeEnumsPackage:</span>   <span class="hljs-string">com.jxdinfo.hussar.common.constant.enums</span><br>  <span class="hljs-attr">global-config:</span><br>    <span class="hljs-attr">banner:</span> <span class="hljs-literal">false</span><br>    <span class="hljs-attr">enable-sql-runner:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">configuration:</span><br>    <span class="hljs-attr">map-underscore-to-camel-case:</span> <span class="hljs-literal">true</span><br>    <span class="hljs-attr">cache-enabled:</span> <span class="hljs-literal">true</span><br>    <span class="hljs-attr">lazyLoadingEnabled:</span> <span class="hljs-literal">true</span><br>    <span class="hljs-attr">multipleResultSetsEnabled:</span> <span class="hljs-literal">true</span><br>    <span class="hljs-attr">log-impl:</span> <span class="hljs-string">org.apache.ibatis.logging.stdout.StdOutImpl</span><br><span class="hljs-attr">logging:</span><br>  <span class="hljs-attr">config:</span> <span class="hljs-string">classpath:log4j2.xml</span><br>  <span class="hljs-attr">level:</span><br>    <span class="hljs-attr">root:</span> <span class="hljs-string">INFO</span><br><span class="hljs-attr">open:</span><br>  <span class="hljs-attr">type:</span> <span class="hljs-number">1</span> <span class="hljs-comment">#系统内页面打开方式，0代表本页面，1代表新页签</span><br>  <span class="hljs-attr">isMultiple:</span> <span class="hljs-literal">true</span> <span class="hljs-comment">#是否允许打开多个页面</span><br><span class="hljs-attr">seata:</span><br>  <span class="hljs-attr">enabled:</span> <span class="hljs-literal">false</span><br>  <span class="hljs-attr">enable-auto-data-source-proxy:</span> <span class="hljs-literal">false</span><br>  <span class="hljs-attr">application-id:</span> <span class="hljs-string">$&#123;spring.application.name&#125;</span><br>  <span class="hljs-attr">tx-service-group:</span> <span class="hljs-string">my_tx_group</span><br>  <span class="hljs-attr">service:</span><br>    <span class="hljs-attr">vgroup-mapping:</span><br>      <span class="hljs-attr">my_tx_group:</span> <span class="hljs-string">default</span><br>  <span class="hljs-attr">registry:</span><br>    <span class="hljs-attr">type:</span> <span class="hljs-string">nacos</span><br>    <span class="hljs-attr">nacos:</span><br>      <span class="hljs-attr">application:</span> <span class="hljs-string">seata-server</span><br>      <span class="hljs-attr">server-addr:</span> <span class="hljs-number">10.198</span><span class="hljs-number">.40</span><span class="hljs-number">.77</span><span class="hljs-string">:8848</span><br>      <span class="hljs-attr">group:</span> <span class="hljs-string">&quot;SEATA_GROUP&quot;</span><br>      <span class="hljs-attr">namespace:</span>   <span class="hljs-string">&quot;hussar-base-cloud&quot;</span><br>      <span class="hljs-attr">cluster:</span> <span class="hljs-string">default</span><br>  <span class="hljs-attr">config:</span><br>    <span class="hljs-attr">type:</span> <span class="hljs-string">nacos</span><br>    <span class="hljs-attr">nacos:</span><br>      <span class="hljs-attr">server-addr:</span> <span class="hljs-number">10.198</span><span class="hljs-number">.40</span><span class="hljs-number">.77</span><span class="hljs-string">:8848</span><br>      <span class="hljs-attr">group:</span> <span class="hljs-string">&quot;SEATA_GROUP&quot;</span><br>      <span class="hljs-attr">namespace:</span>   <span class="hljs-string">&quot;hussar-base-cloud&quot;</span><br>      <span class="hljs-attr">dataId:</span>   <span class="hljs-string">&quot;seataServer.properties&quot;</span><br>      <span class="hljs-attr">username:</span> <span class="hljs-string">&quot;nacos&quot;</span><br>      <span class="hljs-attr">password:</span> <span class="hljs-string">&quot;SHjvK*&amp;^!q6HjEud_zj81&quot;</span><br><span class="hljs-attr">hussar:</span><br>  <span class="hljs-attr">refer-whitelist:</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-string">http://</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-string">https://</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="seata-配置文件"><a href="#seata-配置文件" class="headerlink" title="seata 配置文件"></a>seata 配置文件</h3><p>分组: seata</p>
+<p>id: seataServer.properties</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">service.vgroupMapping.my_tx_group</span>=default<br><span class="hljs-attr">store.mode</span>=redis<br><span class="hljs-attr">store.db.datasource</span>=druid<br><span class="hljs-attr">store.db.dbType</span>=mysql<br><span class="hljs-attr">store.db.driverClassName</span>=com.mysql.jdbc.Driver<br><span class="hljs-attr">store.db.url</span>=jdbc:mysql://hussar-mysql:<span class="hljs-number">3306</span>/seata?useUnicode=<span class="hljs-literal">true</span><br><span class="hljs-attr">store.db.user</span>=root<br><span class="hljs-attr">store.db.password</span>=<span class="hljs-number">123456</span><br><span class="hljs-attr">store.redis.host</span>=hussar-redis<br><span class="hljs-attr">store.redis.port</span>=<span class="hljs-number">6379</span><br><span class="hljs-attr">store.redis.maxConn</span>=<span class="hljs-number">10</span><br><span class="hljs-attr">store.redis.minConn</span>=<span class="hljs-number">1</span><br><span class="hljs-attr">store.redis.database</span>=<span class="hljs-number">0</span><br><span class="hljs-attr">store.redis.password</span>=root<br><span class="hljs-attr">store.redis.queryLimit</span>=<span class="hljs-number">100</span><br><span class="hljs-attr">client.undo.logTable</span>=sys_seata_undo_log <br><span class="hljs-attr">client.undo.logSerialization</span> = hussarJackson<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="srs"><a href="#srs" class="headerlink" title="srs"></a>srs</h3><p>源码: <a target="_blank" rel="noopener" href="https://github.com/ossrs/srs">https://github.com/ossrs/srs</a></p>
+<p><a target="_blank" rel="noopener" href="http://localhost/mgmt/zh/routers-scenario?tab=live">http://localhost/mgmt/zh/routers-scenario?tab=live</a></p>
+<p><a target="_blank" rel="noopener" href="http://localhost/console/ng_index.html#/streams?port=80&amp;http=80">http://localhost/console/ng_index.html#/streams?port=80&amp;http=80</a></p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs stylus">docker run <span class="hljs-attr">--rm</span> -it -<span class="hljs-selector-tag">p</span> <span class="hljs-number">80</span>:<span class="hljs-number">2022</span> -<span class="hljs-selector-tag">p</span> <span class="hljs-number">443</span>:<span class="hljs-number">2443</span> -<span class="hljs-selector-tag">p</span> <span class="hljs-number">1935</span>:<span class="hljs-number">1935</span> \<br>  -<span class="hljs-selector-tag">p</span> <span class="hljs-number">8080</span>:<span class="hljs-number">8080</span> -<span class="hljs-selector-tag">p</span> <span class="hljs-number">8000</span>:<span class="hljs-number">8000</span>/udp -<span class="hljs-selector-tag">p</span> <span class="hljs-number">10080</span>:<span class="hljs-number">10080</span>/udp <span class="hljs-attr">--name</span> srs-stack \<br>  -v <span class="hljs-variable">$HOME</span>/data:/data registry<span class="hljs-selector-class">.cn-hangzhou</span><span class="hljs-selector-class">.aliyuncs</span>.com/ossrs/srs-stack:<span class="hljs-number">5</span><br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<p>rtsp &gt; rtmp</p>
+<p><a target="_blank" rel="noopener" href="http://www.ossrs.net/lts/zh-cn/docs/v6/doc/ingest">http://www.ossrs.net/lts/zh-cn/docs/v6/doc/ingest</a></p>
+<p>zl</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/ZLMediaKit/ZLMediaKit/wiki/%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B">https://github.com/ZLMediaKit/ZLMediaKit/wiki/%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B</a></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div></div>
+      <div>https://zps111.gitee.io/wiki/2024/02/06/记录/问题/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>赵培胜</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年2月6日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/wiki/2024/04/23/%E5%85%AB%E8%82%A1%E6%96%87/jvm/" title="jvm">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">jvm</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/wiki/2023/12/24/spring%20cloud/spring%20mybits%20plus%E5%8A%A8%E6%80%81%E5%88%87%E6%8D%A2%E6%95%B0%E6%8D%AE%E5%BA%93/" title="spring mybits plus动态切换数据库">
+                        <span class="hidden-mobile">spring mybits plus动态切换数据库</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/wiki/img/police_beian.png" srcset="/wiki/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京ICP备2020044488号-1</span>
+        </a>
+      </span>
+    
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/wiki/js/events.js" ></script>
+<script  src="/wiki/js/plugins.js" ></script>
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/wiki/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/wiki/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/wiki/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
