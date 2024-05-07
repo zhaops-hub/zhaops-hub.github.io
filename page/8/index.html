@@ -221,6 +221,132 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2021/11/03/jenkins/jenlins%E6%9E%84%E5%BB%BAspringboot/" target="_self">
+          jenlins构建springboot
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/11/03/jenkins/jenlins%E6%9E%84%E5%BB%BAspringboot/" target="_self">
+        <div>
+          
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-03 16:58" pubdate>
+              2021-11-03
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/jenkins/" class="category-chain-item">jenkins</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E8%BF%90%E7%BB%B4/">#运维</a>
+            
+              <a href="/tags/jenkins/">#jenkins</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/03/java/centos%E9%85%8D%E7%BD%AEjdk%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" target="_self">
+          centos配置jdk环境变量
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/11/03/java/centos%E9%85%8D%E7%BD%AEjdk%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" target="_self">
+        <div>
+          下载jdkhttps://www.oracle.com/java/technologies/downloads/ 增加环境变量vi /etc/profile  1234export JAVA_HOME=/opt/jdk/jdk1.8.0_301export CLASSPATH=$JAVA_HOME/lib/export PATH=$PATH:$JAVA_HOME/binexport PATH JA
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-03 10:53" pubdate>
+              2021-11-03
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/java/" class="category-chain-item">java</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E8%BF%90%E7%BB%B4/">#运维</a>
+            
+              <a href="/tags/java/">#java</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2021/11/03/java/maven%E5%AE%89%E8%A3%85/" target="_self">
           maven安装
         </a>
@@ -475,15 +601,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/11/02/docker/docker%E5%AE%89%E8%A3%85/" target="_self">
-          docker安装
+        <a href="/2021/11/02/docker/docker%E9%99%90%E5%88%B6%E6%97%A5%E5%BF%97%E5%A4%A7%E5%B0%8F/" target="_self">
+          docker限制日志大小
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2021/11/02/docker/docker%E5%AE%89%E8%A3%85/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/11/02/docker/docker%E9%99%90%E5%88%B6%E6%97%A5%E5%BF%97%E5%A4%A7%E5%B0%8F/" target="_self">
         <div>
-          下载docker二进制文件https://download.docker.com/linux/static/stable/x86_64/docker-19.03.6.tgz 解压tar xf docker-19.03.6.tgz 复制到/usr/local/binmv docker/* /usr/local/bin/ 直接运行/usr/bin/dockerd demon模式运行,并保存日志nohu
+          新建/etc/docker/daemon.json，若有就不用新建了。添加log-dirver和log-opts参数，样例如下： 123456# vim /etc/docker/daemon.json&#123;  &quot;log-driver&quot;:&quot;json-file&quot;,  &quot;log-opts&quot;: &#123;&quot;max-size&qu
         </div>
       </a>
 
@@ -538,15 +664,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/11/02/docker/docker%E9%99%90%E5%88%B6%E6%97%A5%E5%BF%97%E5%A4%A7%E5%B0%8F/" target="_self">
-          docker限制日志大小
+        <a href="/2021/11/02/docker/docker%E5%AE%89%E8%A3%85/" target="_self">
+          docker安装
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2021/11/02/docker/docker%E9%99%90%E5%88%B6%E6%97%A5%E5%BF%97%E5%A4%A7%E5%B0%8F/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/11/02/docker/docker%E5%AE%89%E8%A3%85/" target="_self">
         <div>
-          新建/etc/docker/daemon.json，若有就不用新建了。添加log-dirver和log-opts参数，样例如下： 123456# vim /etc/docker/daemon.json&#123;  &quot;log-driver&quot;:&quot;json-file&quot;,  &quot;log-opts&quot;: &#123;&quot;max-size&qu
+          下载docker二进制文件https://download.docker.com/linux/static/stable/x86_64/docker-19.03.6.tgz 解压tar xf docker-19.03.6.tgz 复制到/usr/local/binmv docker/* /usr/local/bin/ 直接运行/usr/bin/dockerd demon模式运行,并保存日志nohu
         </div>
       </a>
 
@@ -714,132 +840,6 @@
               <a href="/tags/%E5%BC%80%E5%8F%91/">#开发</a>
             
               <a href="/tags/go/">#go</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/11/02/srs/k8s%E9%83%A8%E7%BD%B2/" target="_self">
-          k8s部署
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2021/11/02/srs/k8s%E9%83%A8%E7%BD%B2/" target="_self">
-        <div>
-          证书1kubectl create secret generic 92-ssl --from-file=ssh-privatekey=172.16.100.92-key.pem --from-file=ssh-publickey=172.16.100.92.pem  配置文件srs.yaml 12345678910111213141516171819202122232425262728293031
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-11-02 10:52" pubdate>
-              2021-11-02
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/srs/" class="category-chain-item">srs</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%BC%80%E5%8F%91/">#开发</a>
-            
-              <a href="/tags/srs/">#srs</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/11/02/srs/%E5%85%AC%E7%BD%91%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/" target="_self">
-          公网环境部署
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2021/11/02/srs/%E5%85%AC%E7%BD%91%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/" target="_self">
-        <div>
-          服务器规划   服务器 域名 备注    221.226.4.130 meeting.soyuan.com.cn    服务改用docker方式部署，后期测试完成改成k8s 端口规划   服务 端口 备注 目录    signaling 48031:1989 信令服务 信令服务 /opt/srs/signaling   signaling proxy 48032:443 信令服务代理 信令服务代理
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-11-02 10:52" pubdate>
-              2021-11-02
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/srs/" class="category-chain-item">srs</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%BC%80%E5%8F%91/">#开发</a>
-            
-              <a href="/tags/srs/">#srs</a>
             
           </div>
         
