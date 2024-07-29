@@ -221,6 +221,197 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2021/11/03/java/springboot%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF/" target="_self">
+          springboot开机自启
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/11/03/java/springboot%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF/" target="_self">
+        <div>
+          编写service脚本vim /etc/systemd/system/transform.service 12345678910[Unit]Description= transform serviceDocumentation=transform serviceAfter=network-online.target firewalld.serviceWants=network-online.tar
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-03 10:52" pubdate>
+              2021-11-03
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/java/" class="category-chain-item">java</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%BC%80%E5%8F%91/">#开发</a>
+            
+              <a href="/tags/java/">#java</a>
+            
+              <a href="/tags/spring-boot/">#spring boot</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/02/jenkins/jenkins%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/" target="_self">
+          jenkins安装部署
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/11/02/jenkins/jenkins%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/" target="_self">
+        <div>
+          下载war包https://www.jenkins.io/zh/download/ 前台直接运行java -jar jenkins.war --httpPort=7000 初始化配置浏览器运行  http://172.16.100.92:7000   按照提示进行配置  admin初始化密码修改 可以新创建用户，如果使用admin账户可以修改配置文件初始化密码  找到储存密码位置/root/.je
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-02 16:58" pubdate>
+              2021-11-02
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/jenkins/" class="category-chain-item">jenkins</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E8%BF%90%E7%BB%B4/">#运维</a>
+            
+              <a href="/tags/jenkins/">#jenkins</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/02/docker/docker%E9%99%90%E5%88%B6%E6%97%A5%E5%BF%97%E5%A4%A7%E5%B0%8F/" target="_self">
+          docker限制日志大小
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/11/02/docker/docker%E9%99%90%E5%88%B6%E6%97%A5%E5%BF%97%E5%A4%A7%E5%B0%8F/" target="_self">
+        <div>
+          新建/etc/docker/daemon.json，若有就不用新建了。添加log-dirver和log-opts参数，样例如下： 123456# vim /etc/docker/daemon.json&#123;  &quot;log-driver&quot;:&quot;json-file&quot;,  &quot;log-opts&quot;: &#123;&quot;max-size&qu
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-02 10:52" pubdate>
+              2021-11-02
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/docker/" class="category-chain-item">docker</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/docker/">#docker</a>
+            
+              <a href="/tags/%E5%BC%80%E5%8F%91/">#开发</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2021/11/02/docker/docker%E5%AE%89%E8%A3%85/" target="_self">
           docker安装
         </a>
@@ -230,6 +421,69 @@
       <a class="index-excerpt index-excerpt__noimg" href="/2021/11/02/docker/docker%E5%AE%89%E8%A3%85/" target="_self">
         <div>
           下载docker二进制文件https://download.docker.com/linux/static/stable/x86_64/docker-19.03.6.tgz 解压tar xf docker-19.03.6.tgz 复制到/usr/local/binmv docker/* /usr/local/bin/ 直接运行/usr/bin/dockerd demon模式运行,并保存日志nohu
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-02 10:52" pubdate>
+              2021-11-02
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/docker/" class="category-chain-item">docker</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/docker/">#docker</a>
+            
+              <a href="/tags/%E5%BC%80%E5%8F%91/">#开发</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/02/docker/dockerfile%20centos/" target="_self">
+          dockerfile centos
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/11/02/docker/dockerfile%20centos/" target="_self">
+        <div>
+          12345FROM centos:7COPY test /ENTRYPOINT tail -f /test
         </div>
       </a>
 
@@ -410,132 +664,6 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/11/02/srs/k8s%E9%83%A8%E7%BD%B2/" target="_self">
-          k8s部署
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2021/11/02/srs/k8s%E9%83%A8%E7%BD%B2/" target="_self">
-        <div>
-          证书1kubectl create secret generic 92-ssl --from-file=ssh-privatekey=172.16.100.92-key.pem --from-file=ssh-publickey=172.16.100.92.pem  配置文件srs.yaml 12345678910111213141516171819202122232425262728293031
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-11-02 10:52" pubdate>
-              2021-11-02
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/srs/" class="category-chain-item">srs</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%BC%80%E5%8F%91/">#开发</a>
-            
-              <a href="/tags/srs/">#srs</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/11/02/srs/%E5%85%AC%E7%BD%91%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/" target="_self">
-          公网环境部署
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2021/11/02/srs/%E5%85%AC%E7%BD%91%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/" target="_self">
-        <div>
-          服务器规划   服务器 域名 备注    221.226.4.130 meeting.soyuan.com.cn    服务改用docker方式部署，后期测试完成改成k8s 端口规划   服务 端口 备注 目录    signaling 48031:1989 信令服务 信令服务 /opt/srs/signaling   signaling proxy 48032:443 信令服务代理 信令服务代理
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-11-02 10:52" pubdate>
-              2021-11-02
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/srs/" class="category-chain-item">srs</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%BC%80%E5%8F%91/">#开发</a>
-            
-              <a href="/tags/srs/">#srs</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
         <a href="/2021/11/02/ssl/cfssl%E5%B7%A5%E5%85%B7%E5%88%B6%E4%BD%9C%E8%AF%81%E4%B9%A6/" target="_self">
           cfssl工具制作证书
         </a>
@@ -656,11 +784,74 @@
     </article>
   </div>
 
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/02/srs/k8s%E9%83%A8%E7%BD%B2/" target="_self">
+          k8s部署
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/11/02/srs/k8s%E9%83%A8%E7%BD%B2/" target="_self">
+        <div>
+          证书1kubectl create secret generic 92-ssl --from-file=ssh-privatekey=172.16.100.92-key.pem --from-file=ssh-publickey=172.16.100.92.pem  配置文件srs.yaml 12345678910111213141516171819202122232425262728293031
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-02 10:52" pubdate>
+              2021-11-02
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/srs/" class="category-chain-item">srs</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%BC%80%E5%8F%91/">#开发</a>
+            
+              <a href="/tags/srs/">#srs</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/8/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/#board">7</a><a class="page-number" href="/page/8/#board">8</a><span class="page-number current">9</span>
+      <a class="extend prev" rel="prev" href="/page/8/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/#board">7</a><a class="page-number" href="/page/8/#board">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/#board">10</a><a class="extend next" rel="next" href="/page/10/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 

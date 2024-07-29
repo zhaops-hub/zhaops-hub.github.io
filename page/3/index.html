@@ -221,6 +221,230 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2023/12/15/spring%20cloud/SpringBoot%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95%E8%8E%B7%E5%8F%96bean/" target="_self">
+          SpringBoot静态方法获取bean
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/15/spring%20cloud/SpringBoot%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95%E8%8E%B7%E5%8F%96bean/" target="_self">
+        <div>
+          通过实现ApplicationContextAware接口，可以获取ApplicationContext上下文，并在静态方法中获取bean12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-12-15 21:54" pubdate>
+              2023-12-15
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/spring-cloud/" class="category-chain-item">spring cloud</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/java/">#java</a>
+            
+              <a href="/tags/springcloud/">#springcloud</a>
+            
+              <a href="/tags/springboot/">#springboot</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/12/06/%E8%AE%B0%E5%BD%95/aa/" target="_self">
+          
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/06/%E8%AE%B0%E5%BD%95/aa/" target="_self">
+        <div>
+          搜索 mysql 版本brew search mysql 安装 5.7brew install &#109;&#121;&#x73;&#x71;&#108;&#x40;&#x35;&#x2e;&#55; 配置环境变量，如下图红框1echo ‘export PATH=”/opt/homebrew/opt/&#x6d;&#x79;&#x73;&#x71;&#x6c;&#64;&#x35;&#x2e;&
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-12-06 12:11" pubdate>
+              2023-12-06
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/03/11/ssl/keytool%20RSA%20DSA/" target="_self">
+          keytool RSA DSA
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/03/11/ssl/keytool%20RSA%20DSA/" target="_self">
+        <div>
+          生成证书库keytool将密钥（key）和证书（certificates）存储在keystore文件中 1keytool -genkey -keysize 1024 -validity 3650 -keyalg RSA -alias &quot;privateKey&quot; -keystore &quot;privateKeys.keystore&quot; -storepass &quot;
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-03-11 10:52" pubdate>
+              2023-03-11
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/ssl/" class="category-chain-item">ssl</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%BC%80%E5%8F%91/">#开发</a>
+            
+              <a href="/tags/ssl/">#ssl</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/03/11/ssl/openssl%E9%93%BE%E5%BC%8F%E8%AF%81%E4%B9%A6/" target="_self">
+          openssl链式证书
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/03/11/ssl/openssl%E9%93%BE%E5%BC%8F%E8%AF%81%E4%B9%A6/" target="_self">
+        <div>
+          vim ca.conf openssl genrsa -out root.key 2048 openssl req -new -key root.key -out root.csr -config ca.conf openssl x509 -req -days 3650 -sha256 -extfile ca.conf -extensions v3_ca -in root.csr -signkey
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-03-11 10:52" pubdate>
+              2023-03-11
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/ssl/" class="category-chain-item">ssl</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%BC%80%E5%8F%91/">#开发</a>
+            
+              <a href="/tags/ssl/">#ssl</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2023/02/25/%E6%9E%9A%E4%B8%BE/enum/" target="_self">
           enum 高效实现方式
         </a>
@@ -591,263 +815,11 @@
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/04/20/cesium/geoserver/" target="_self">
-          geoserver
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/04/20/cesium/geoserver/" target="_self">
-        <div>
-          下载geoserver安装包http://geoserver.org/ 安装geoserver解压文件 修改启动端口12$ vim start.inijetty.http.port=9999  启动服务,停止服务12345$ cd bin# 启动服务$ sh ./startup.sh# 停止服务$ sh ./shutdown.sh  web页面默认登录用户名密码 admin/geoserver 登
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-04-20 10:52" pubdate>
-              2022-04-20
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/cesium/" class="category-chain-item">cesium</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/cesium/">#cesium</a>
-            
-              <a href="/tags/GIS/">#GIS</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/04/20/cesium/%E5%8F%91%E5%B8%833dtiles/" target="_self">
-          发布3dtiles
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/04/20/cesium/%E5%8F%91%E5%B8%833dtiles/" target="_self">
-        <div>
-          nginx 发布三维数据服务，地形数据docker-compose.yaml 123456789101112131415161718192021version: &quot;3&quot;services:  3dtiles:    image: nginx    container_name: 3dtiles    ports:      - 10000:80    volumes:
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-04-20 10:52" pubdate>
-              2022-04-20
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/cesium/" class="category-chain-item">cesium</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/cesium/">#cesium</a>
-            
-              <a href="/tags/GIS/">#GIS</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/04/20/cesium/%E8%B7%AF%E7%BA%BF%E8%A7%84%E5%88%92graphhopper/" target="_self">
-          路线规划graphhopper
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/04/20/cesium/%E8%B7%AF%E7%BA%BF%E8%A7%84%E5%88%92graphhopper/" target="_self">
-        <div>
-          下载安装包下载graphhopper官网地址 https://graphhopper.com github 地址 https://github.com/graphhopper/graphhopper，可以下载自己编译； 直接下载releases版本 https://github.com/graphhopper/graphhopper/releases , 下载jar包，和 config-examp
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-04-20 10:52" pubdate>
-              2022-04-20
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/cesium/" class="category-chain-item">cesium</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/cesium/">#cesium</a>
-            
-              <a href="/tags/GIS/">#GIS</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/03/21/js/js%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85%E6%A8%A1%E5%BC%8F/" target="_self">
-          js发布订阅模式
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/03/21/js/js%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85%E6%A8%A1%E5%BC%8F/" target="_self">
-        <div>
-          12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849export var msgHandler = &#123;&#125;;/** * 消息队列 */msgHandler.msgQueue = &#123;&#125;;/** * 订阅消息 * @param &#123;
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-03-21 16:58" pubdate>
-              2022-03-21
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/js/" class="category-chain-item">js</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/js/">#js</a>
-            
-              <a href="/tags/%E5%89%8D%E7%AB%AF/">#前端</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/2/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#board">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/#board">4</a><a class="page-number" href="/page/5/#board">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/#board">9</a><a class="extend next" rel="next" href="/page/4/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/2/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#board">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/#board">4</a><a class="page-number" href="/page/5/#board">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/#board">10</a><a class="extend next" rel="next" href="/page/4/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 
