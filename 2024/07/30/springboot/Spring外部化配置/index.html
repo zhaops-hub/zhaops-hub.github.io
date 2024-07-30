@@ -16,28 +16,26 @@
   <meta name="author" content="赵培胜">
   <meta name="keywords" content="">
   
-    <meta name="description" content="因为服务器没有联网，需要从联网的个人电脑上dockerpull下镜像再传入服务器。但个人电脑上的架构是arm64v8，服务器上的架构是amd64，所以需要在arm64v8系统架构的个人电脑上拉取amd64系统架构的镜像。这里以拉取nginx为例。  把MANIFEST DIGEST 复制下来, 先获取到本地电脑1docker pull nginx:stable-perl@sha256:2be2f6">
+    <meta name="description" content="Spring外部化配置：JSON应用程序属性当应用程序启动时，任何spring.application.json或SPRING_APPLICATION_JSON属性都会被解析并添加到Environment中。 1$ SPRING_APPLICATION_JSON&#x3D;&amp;#x27;&amp;#123;&quot;my&quot;:&amp;#123;&quot;name&quot;:&quot;test&quot;&amp;#">
 <meta property="og:type" content="article">
-<meta property="og:title" content="docker pull 跨系统架构拉取镜像">
-<meta property="og:url" content="https://zhaops-hub.github.io/2024/07/29/docker/%E8%B7%A8%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E6%8B%89%E5%8F%96%E9%95%9C%E5%83%8F/index.html">
+<meta property="og:title" content="Spring外部化配置：JSON应用程序属性">
+<meta property="og:url" content="https://zhaops-hub.github.io/2024/07/30/springboot/Spring%E5%A4%96%E9%83%A8%E5%8C%96%E9%85%8D%E7%BD%AE/index.html">
 <meta property="og:site_name" content="zps">
-<meta property="og:description" content="因为服务器没有联网，需要从联网的个人电脑上dockerpull下镜像再传入服务器。但个人电脑上的架构是arm64v8，服务器上的架构是amd64，所以需要在arm64v8系统架构的个人电脑上拉取amd64系统架构的镜像。这里以拉取nginx为例。  把MANIFEST DIGEST 复制下来, 先获取到本地电脑1docker pull nginx:stable-perl@sha256:2be2f6">
+<meta property="og:description" content="Spring外部化配置：JSON应用程序属性当应用程序启动时，任何spring.application.json或SPRING_APPLICATION_JSON属性都会被解析并添加到Environment中。 1$ SPRING_APPLICATION_JSON&#x3D;&amp;#x27;&amp;#123;&quot;my&quot;:&amp;#123;&quot;name&quot;:&quot;test&quot;&amp;#">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://zhaops-hub.github.io/img/docker/3.png">
-<meta property="og:image" content="https://zhaops-hub.github.io/img/docker/4.png">
-<meta property="article:published_time" content="2024-07-29T11:52:06.000Z">
-<meta property="article:modified_time" content="2024-07-30T10:39:57.834Z">
+<meta property="article:published_time" content="2024-07-30T13:54:06.000Z">
+<meta property="article:modified_time" content="2024-07-30T11:00:07.949Z">
 <meta property="article:author" content="赵培胜">
-<meta property="article:tag" content="docker">
-<meta property="article:tag" content="开发">
+<meta property="article:tag" content="java">
+<meta property="article:tag" content="springboot">
+<meta property="article:tag" content="Spring外部化配置">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://zhaops-hub.github.io/img/docker/3.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>docker pull 跨系统架构拉取镜像 - zps</title>
+  <title>Spring外部化配置：JSON应用程序属性 - zps</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -202,7 +200,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="docker pull 跨系统架构拉取镜像"></span>
+            <span id="subtitle" data-typed-text="Spring外部化配置：JSON应用程序属性"></span>
           
         </div>
 
@@ -213,8 +211,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-07-29 19:52" pubdate>
-          2024年7月29日 晚上
+        <time datetime="2024-07-30 21:54" pubdate>
+          2024年7月30日 晚上
         </time>
       </span>
     
@@ -226,7 +224,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          373 字
+          1.1k 字
         
       </span>
     
@@ -238,7 +236,7 @@
         
         
           <!-- compatible with older versions-->
-          2 分钟
+          4 分钟
         
       </span>
     
@@ -276,20 +274,18 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">docker pull 跨系统架构拉取镜像</h1>
+            <h1 style="display: none">Spring外部化配置：JSON应用程序属性</h1>
             
             
               <div class="markdown-body">
                 
-                <p>因为服务器没有联网，需要从联网的个人电脑上<code>dockerpull</code>下镜像再传入服务器。但个人电脑上的架构是arm64v8，服务器上的架构是<code>amd64</code>，所以需要在<code>arm64v8</code>系统架构的个人电脑上拉取<code>amd64</code>系统架构的镜像。这里以拉取<code>nginx</code>为例。</p>
-<p><img src="/img/docker/3.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="把MANIFEST-DIGEST-复制下来-先获取到本地电脑"><a href="#把MANIFEST-DIGEST-复制下来-先获取到本地电脑" class="headerlink" title="把MANIFEST DIGEST 复制下来, 先获取到本地电脑"></a>把<code>MANIFEST DIGEST</code> 复制下来, 先获取到本地电脑</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">docker pull nginx:stable-perl@sha256:2be2f6de4e3bab0d267409dcf1f563f43dd66523986a8d2037cdfed478e025e1<br></code></pre></td></tr></table></figure>
+                <h3 id="Spring外部化配置：JSON应用程序属性"><a href="#Spring外部化配置：JSON应用程序属性" class="headerlink" title="Spring外部化配置：JSON应用程序属性"></a>Spring外部化配置：JSON应用程序属性</h3><p>当应用程序启动时，任何<code>spring.application.json</code>或<code>SPRING_APPLICATION_JSON</code>属性都会被解析并添加到<code>Environment</code>中。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ SPRING_APPLICATION_JSON=<span class="hljs-string">&#x27;&#123;&quot;my&quot;:&#123;&quot;name&quot;:&quot;test&quot;&#125;&#125;&#x27;</span> java -jar myapp.jar<br></code></pre></td></tr></table></figure>
 
-<p><img src="/img/docker/4.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="修改镜像标签"><a href="#修改镜像标签" class="headerlink" title="修改镜像标签"></a>修改镜像标签</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">docker tag ffdc2eeba36d nginx:stable-perl<br></code></pre></td></tr></table></figure>
+<p>如果是<code>docker-compose</code> 可以直接设置环境变量</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">version:</span> <span class="hljs-string">&#x27;3.4&#x27;</span><br><span class="hljs-attr">services:</span><br>  <span class="hljs-attr">serve:</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">go-view-service</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span><br>    <span class="hljs-attr">ports:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&quot;$&#123;SERVICE_APP_PORT&#125;:8080&quot;</span><br>    <span class="hljs-attr">volumes:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">$&#123;SERVICE_RESOURCE_FILE_PATH&#125;:/data/files</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">$&#123;SERVICE_APP_WAR_PATH&#125;:/app.war</span><br>    <span class="hljs-attr">environment:</span><br>      <span class="hljs-comment">## 覆盖关于文件上传的配置</span><br>      <span class="hljs-attr">SPRING_APPLICATION_JSON:</span> <span class="hljs-string">&#x27;&#123;&quot;fuce&quot;:&#123;&quot;default-base-dir&quot;:&quot;/data/files&quot;, &quot;upload_img_url&quot;: &quot;http://192.168.1.241:8081/static/file_upload/&quot;&#125;&#125;&#x27;</span><br>      <span class="hljs-comment">## 数据库配置</span><br>      <span class="hljs-attr">SPRING_DATASOURCE_DRUID_MASTER_URL:</span> <span class="hljs-string">&#x27;jdbc:mysql://192.168.1.241:3307/go-view?useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true&amp;useSSL=false&#x27;</span><br>      <span class="hljs-attr">SPRING_DATASOURCE_DRUID_MASTER_USERNAME:</span> <span class="hljs-string">greatsql</span><br>      <span class="hljs-attr">SPRING_DATASOURCE_DRUID_MASTER_PASSWORD:</span> <span class="hljs-string">abc123</span><br></code></pre></td></tr></table></figure>
 
-<h3 id="打包发送到服务器导入"><a href="#打包发送到服务器导入" class="headerlink" title="打包发送到服务器导入"></a>打包发送到服务器导入</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sh">docker save -o nginx.tar ffdc2eeba36d<br><br><span class="hljs-comment"># 到服务器执行</span><br>docker load &lt; nginx.tar <br></code></pre></td></tr></table></figure>
-
+<p>数据库配置也可以用环境变量<code>SPRING_DATASOURCE_DRUID_MASTER</code>配置</p>
 
                 
               </div>
@@ -308,7 +304,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/docker/" class="category-chain-item">docker</a>
+  <a href="/categories/spring/" class="category-chain-item">spring</a>
   
   
 
@@ -323,9 +319,11 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/docker/">#docker</a>
+        <a href="/tags/java/">#java</a>
       
-        <a href="/tags/%E5%BC%80%E5%8F%91/">#开发</a>
+        <a href="/tags/springboot/">#springboot</a>
+      
+        <a href="/tags/Spring%E5%A4%96%E9%83%A8%E5%8C%96%E9%85%8D%E7%BD%AE/">#Spring外部化配置</a>
       
     </div>
   
@@ -337,8 +335,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>docker pull 跨系统架构拉取镜像</div>
-      <div>https://zhaops-hub.github.io/2024/07/29/docker/跨系统架构拉取镜像/</div>
+      <div>Spring外部化配置：JSON应用程序属性</div>
+      <div>https://zhaops-hub.github.io/2024/07/30/springboot/Spring外部化配置/</div>
     </div>
     <div class="license-meta">
       
@@ -350,7 +348,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年7月29日</div>
+          <div>2024年7月30日</div>
         </div>
       
       
@@ -382,18 +380,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/07/30/springboot/Spring%E5%A4%96%E9%83%A8%E5%8C%96%E9%85%8D%E7%BD%AE/" title="Spring外部化配置：JSON应用程序属性">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Spring外部化配置：JSON应用程序属性</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/07/20/git/idea%20git%20%E4%BC%98%E9%80%89/" title="">
-                        <span class="hidden-mobile"></span>
+                      <a href="/2024/07/29/docker/%E8%B7%A8%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E6%8B%89%E5%8F%96%E9%95%9C%E5%83%8F/" title="docker pull 跨系统架构拉取镜像">
+                        <span class="hidden-mobile">docker pull 跨系统架构拉取镜像</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
